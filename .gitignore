@@ -12,3 +12,4 @@ data/backups/
 __pycache__/
 *.pyc
 .pytest_cache/
+docs/evidence/DEMO_ACCESS.md

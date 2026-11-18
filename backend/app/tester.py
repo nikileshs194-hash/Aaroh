@@ -69,7 +69,7 @@ CLASSROOM_QUESTIONS = [
     ("hi", "भारत में कौन-कौन सी ऋतुएँ होती हैं?"),
 ]
 
-QUICK = {"reps": 1, "prompts_per_lang": 2, "max_tokens": 96, "cooldown": 2, "cap_step_s": 30, "quality_n": 15}
+QUICK = {"reps": 1, "prompts_per_lang": 2, "max_tokens": 96, "cooldown": 2, "cap_step_s": 30, "quality_n": 20}
 FULL = {"reps": 3, "prompts_per_lang": 4, "max_tokens": 160, "cooldown": 8, "cap_step_s": 120, "quality_n": None}
 CAP_STEPS = [1, 2, 4, 6, 8, 10, 12]
 
@@ -134,8 +134,13 @@ def _mcq_prompt(item: dict) -> list[dict]:
     ]
 
 
+_INDIC_DIGITS = str.maketrans("೧೨೩೪१२३४১২৩৪௧௨௩௪", "1234123412341234")
+
+
 def _parse_choice(text: str) -> int | None:
-    m = re.search(r"[1-4]", text or "")
+    """First option number in the reply. Models sometimes answer with Kannada or Devanagari digits."""
+    text = (text or "").translate(_INDIC_DIGITS)
+    m = re.search(r"[1-4]", text)
     if m:
         return int(m.group(0)) - 1
     m = re.search(r"\b([A-D])\b", (text or "").upper())
@@ -297,9 +302,10 @@ class TestRunner:
 
     # ------------------------------------------------------------------ capacity
     async def capacity(self, cfg: EngineConfig, mode: dict, min_tps: float, max_ttft: float, on_step=None) -> dict:
-        slots = int(db.get_setting("slots") or 4)
-        cap_cfg = EngineConfig(cfg.model_file, cfg.model_path, cfg.threads, int(db.get_setting("ctx_per_slot") or 2048),
-                               cfg.batch, slots, "capacity")
+        # Enough parallel slots that the slot count itself never caps the answer; serving slots are then
+        # sized from the measured capacity (apply_selection).
+        slots = max(CAP_STEPS)
+        cap_cfg = EngineConfig(cfg.model_file, cfg.model_path, cfg.threads, 2048, cfg.batch, slots, "capacity")
         eng = engines["T"]
         eng.affinity = hardware.cpu_affinity_for(cfg.threads)
         await eng.start(cap_cfg)
@@ -448,7 +454,15 @@ def _by_lang(sets: dict) -> dict:
 
 
 def apply_quality(results: list[dict], quality: dict, models: list[dict], langs: list[str], margin: float, floor: float) -> None:
-    """Mark each setting pass/fail against its 8-bit reference, per language (D5.2)."""
+    """Mark each setting pass/fail per language (D5.2).
+
+    A setting passes when, in every chosen language, it is within `margin` points of its own 8-bit
+    reference AND at or above the `floor`. If no tested model reaches the floor in a language, that
+    language is marked weak for all settings instead (shown honestly, teacher review label stays on),
+    so the school still gets a recommendation."""
+    floor_reachable = {}
+    for lang in langs:
+        floor_reachable[lang] = any((q.get("by_lang", {}).get(lang, {}).get("acc") or 0) >= floor for q in quality.values())
     for r in results:
         if r.get("error"):
             continue
@@ -472,16 +486,23 @@ def apply_quality(results: list[dict], quality: dict, models: list[dict], langs:
                 if delta > margin:
                     fails.append(f"{lang} dropped {delta:.0f} points")
             if a < floor:
-                if ra is not None and ra >= floor:
+                if floor_reachable.get(lang):
                     fails.append(f"{lang} below the {floor:g}% floor")
                 else:
-                    weak.append(lang)  # even the best version is weak: show honestly, review label stays on
+                    weak.append(lang)
+            elif not floor_reachable.get(lang):
+                weak.append(lang)
         r["quality"] = per
         r["quality_score"] = round(sum(v["acc"] for v in per.values()) / max(1, len(per)), 1) if per else None
         r["quality_delta"] = round(worst_delta, 1) if refq else None
         r["quality_pass"] = not fails
         r["quality_fail_why"] = "; ".join(fails) or None
         r["weak_langs"] = weak
+    for r in results:  # languages that are weak relative to English get the honest warning too
+        if r.get("quality") and "en" in r["quality"]:
+            for lang, v in r["quality"].items():
+                if lang != "en" and v["acc"] < r["quality"]["en"]["acc"] - 25 and lang not in r.get("weak_langs", []):
+                    r.setdefault("weak_langs", []).append(lang)
 
 
 def _brief(r: dict) -> dict:
@@ -496,7 +517,7 @@ def _sel_brief(sel: dict) -> dict:
         "recommended": _brief(sel["recommended"]) if sel["recommended"] else None,
         "runner_up": _brief(sel["runner_up"]) if sel["runner_up"] else None,
         "fast": _brief(sel["fast"]) if sel["fast"] else None,
-        "reason": sel["reason"], "goal": sel["goal"],
+        "reason": sel["reason"], "goal": sel["goal"], "fast_note": sel.get("fast_note"),
         "scored": [_brief(x) for x in sel["scored"]], "rejected": [_brief(x) for x in sel["rejected"]],
     }
 
@@ -546,7 +567,10 @@ async def apply_selection(run: dict, use: str = "recommended") -> dict:
     chosen = sel.get(use) or sel.get("recommended")
     if not chosen:
         raise RuntimeError("There is no recommended setting yet. Run the test first.")
-    slots = int(db.get_setting("slots") or 4)
+    cap = run["data"].get("capacity") or {}
+    # Serving slots follow the measured capacity: a couple more than N so a short burst still starts quickly.
+    slots = min(max(CAP_STEPS), max(4, int(cap.get("n") or 0) + 2))
+    db.set_setting("slots", slots)
     ctx = int(db.get_setting("ctx_per_slot") or 2048)
     c = chosen["config"]
     a = EngineConfig(c["model_file"], c["model_path"], c["threads"], ctx, c["batch"], slots, "quality model")
@@ -560,7 +584,6 @@ async def apply_selection(run: dict, use: str = "recommended") -> dict:
             # Both engines share the processor; the fast one gets all cores too (they rarely both run hard).
             b = EngineConfig(f["model_file"], f["model_path"], f["threads"], ctx, f["batch"], slots, "fast model")
     await start_engines(a, b)
-    cap = run["data"].get("capacity") or {}
     save_active(a, b, {"run_id": run["id"], "capacity_n": cap.get("n"), "label": chosen.get("label"),
                        "fast_label": fast.get("label") if b and fast else None})
     return {"A": asdict(a), "B": asdict(b) if b else None}

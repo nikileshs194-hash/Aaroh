@@ -64,6 +64,7 @@ const en = {
     capNote: "Simulated with up to {{n}} students · first word within {{t}} s",
     noCapacity: "This computer could not keep even one student within the comfort limits. Try the lightest model or lower the limits in Settings.",
     recSetup: "Recommended setup", why: "Why", runnerUp: "Runner-up", seeAll: "See all results", useThis: "Use this setup",
+    alreadyFast: "The recommended model is already the fastest one, so busy periods use shorter answers instead.",
     fastModel: "Fast model for busy periods", noFast: "No second model fits in memory, so busy periods use shorter answers instead.",
     weakLang: "{{lang}} answers are weaker on this computer's models. They will carry a 'please check' label.",
     launchTitle: "Ready", launchBody: "Open InferSmart on any phone or PC on the school Wi-Fi",

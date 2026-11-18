@@ -257,7 +257,7 @@ function Testing() {
       {p.preview && p.phase === "speed" && (
         <Card className="mt-5">
           <div className="label">{t("setup.preview")}</div>
-          <p className="mt-2 text-text italic caret" lang="en">“{p.preview}”</p>
+          <p className="mt-2 text-text italic caret">“{String(p.preview).replace(/[*#]/g, "")}”</p>
         </Card>
       )}
       <p className="mt-6 text-center text-sm text-muted">{t("setup.canStop")}</p>
@@ -308,7 +308,7 @@ function Result() {
           </div>
           <div className="mt-4 border-t border-line pt-3 text-sm text-muted">
             {sel.runner_up && <>{t("setup.runnerUp")}: <span className="text-text">{sel.runner_up.label}</span> · </>}
-            {sel.fast ? <>{t("setup.fastModel")}: <span className="text-text">{sel.fast.label}</span></> : t("setup.noFast")}
+            {sel.fast ? <>{t("setup.fastModel")}: <span className="text-text">{sel.fast.label}</span></> : t(sel.fast_note === "already_fastest" ? "setup.alreadyFast" : "setup.noFast")}
             {" · "}<Link to="/admin/results" className="font-semibold text-accent">{t("setup.seeAll")} →</Link>
           </div>
         </Card>

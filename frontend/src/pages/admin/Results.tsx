@@ -51,7 +51,7 @@ export default function Results() {
           <div className="label">{t("setup.recSetup")}</div>
           <div className="mt-1 text-xl font-bold text-ink">{sel.recommended?.label || "–"}</div>
           <p className="mt-2">{sel.reason}</p>
-          <p className="mt-2 text-sm text-muted">{t("setup.runnerUp")}: {sel.runner_up?.label || "–"} · {t("setup.fastModel")}: {sel.fast?.label || t("setup.noFast")}</p>
+          <p className="mt-2 text-sm text-muted">{t("setup.runnerUp")}: {sel.runner_up?.label || "–"} · {t("setup.fastModel")}: {sel.fast?.label || t(sel.fast_note === "already_fastest" ? "setup.alreadyFast" : "setup.noFast")}</p>
           <div className="mt-4 border-t border-line pt-3">
             <div className="label mb-2">{t("admin.goal")}</div>
             <div className="flex flex-wrap gap-2">

@@ -24,6 +24,38 @@
       "sha256": "aaf42c8b7c3cab2bf3d69c355048d4a0ee9973d48f16c731c0520ee914699223",
       "source": "https://huggingface.co/unsloth/Qwen3.5-2B-GGUF",
       "licence": "Apache-2.0"
+    },
+    "Qwen3.5-4B-Q4_K_M.gguf": {
+      "family": "Qwen3.5-4B",
+      "quant": "Q4_K_M",
+      "size": 2740937888,
+      "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+      "source": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF",
+      "licence": "Apache-2.0"
+    },
+    "Qwen3.5-2B-Q8_0.gguf": {
+      "family": "Qwen3.5-2B",
+      "quant": "Q8_0",
+      "size": 2012012800,
+      "sha256": "1b04acba824817554f4ce23639bc8495ff70453b8fcb047900c731521021f2c1",
+      "source": "https://huggingface.co/unsloth/Qwen3.5-2B-GGUF",
+      "licence": "Apache-2.0"
+    },
+    "Qwen3.5-2B-Q5_K_M.gguf": {
+      "family": "Qwen3.5-2B",
+      "quant": "Q5_K_M",
+      "size": 1435238656,
+      "sha256": "1885b3a9195f8cc09da9a7a7a75afdc1e8d5cbf9fc4a499c3961dddea37098ac",
+      "source": "https://huggingface.co/unsloth/Qwen3.5-2B-GGUF",
+      "licence": "Apache-2.0"
+    },
+    "Qwen3.5-0.8B-Q8_0.gguf": {
+      "family": "Qwen3.5-0.8B",
+      "quant": "Q8_0",
+      "size": 811843840,
+      "sha256": "0ad885ffd4bb022fc4f0d33a3308fa108ef8613159d3b3a67e23abca056b7a6c",
+      "source": "https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF",
+      "licence": "Apache-2.0"
     }
   }
 }

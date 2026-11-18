@@ -286,7 +286,7 @@ async def setup_finish(body: dict = Body(...)):
 
 # ------------------------------------------------------------------ tests and results
 @app.post("/api/test/start", tags=["admin"], dependencies=ADMIN)
-def test_start(body: dict = Body(default={})):
+async def test_start(body: dict = Body(default={})):
     goal = body.get("goal") or db.get_setting("goal")
     langs = body.get("languages") or db.get_setting("languages")
     db.set_setting("goal", goal)
@@ -307,7 +307,7 @@ async def test_stop():
 
 
 @app.post("/api/test/resume", tags=["admin"], dependencies=ADMIN)
-def test_resume():
+async def test_resume():
     row = db.one("SELECT * FROM test_run WHERE status IN ('stopped','error','running') ORDER BY id DESC LIMIT 1")
     if not row:
         raise HTTPException(404, "Nothing to resume.")
@@ -485,7 +485,7 @@ def lock_mode(body: dict = Body(...)):
 
 
 @app.post("/api/simulate", tags=["admin"], dependencies=ADMIN)
-def simulate(body: dict = Body(...)):
+async def simulate(body: dict = Body(...)):
     if body.get("stop"):
         return classsim.stop()
     return classsim.start(max(1, min(30, int(body.get("students", 10)))), max(20, min(900, int(body.get("seconds", 180)))))

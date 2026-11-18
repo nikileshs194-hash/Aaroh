@@ -72,7 +72,7 @@ DEFAULTS: dict[str, Any] = {
     "max_ttft": 3.0,           # comfort: slow-case time to first word (s)
     "quality_margin": 3.0,     # percentage points below the 8-bit reference
     "quality_floor": 35.0,     # minimum accuracy % (chance is 25 %)
-    "quality_n": 30,           # questions per language
+    "quality_n": 40,           # questions per language
     "goal": "balanced",
     "class_size": "class",
     "languages": ["en", "kn", "hi"],

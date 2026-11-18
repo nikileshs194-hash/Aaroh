@@ -102,7 +102,12 @@ def select(results: list[dict], budget_gb: float, goal: str, min_tps: float, lan
     scored = score(kept, budget_gb, goal)
     rec, runner = pick(scored)
     fast = pick_fast(kept, rec, budget_gb) if rec else None
+    fast_note = None
+    if rec and not fast:
+        fastest = max(kept, key=lambda r: r["tps"])
+        fast_note = "already_fastest" if fastest["tps"] <= rec["tps"] * 1.15 else "no_memory"
     return {
+        "fast_note": fast_note,
         "recommended": rec, "runner_up": runner, "fast": fast,
         "reason": reason(rec, goal, langs, budget_gb) if rec else
         "No setting met the comfort limits on this computer. Try the lightest model or lower the limits in Settings.",

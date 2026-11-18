@@ -169,7 +169,14 @@ def test_quality_guard_flags_rough_setting():
         tester.apply_quality(results, q, models, ["en", "kn"], 3.0, 35.0)
         assert results[0]["quality_pass"] is False and "en dropped 10" in results[0]["quality_fail_why"]
         assert results[1]["quality_pass"] is True
-        assert results[1]["weak_langs"] == ["kn"]  # weak even at reference: shown, not rejected
+        assert results[1]["weak_langs"] == ["kn"]  # no model reaches the floor in kn: shown as weak, not rejected
+        # once another model reaches the floor, a model below it is rejected
+        models.append({"file": "M-4B-Q4_K_M.gguf", "family": "M", "params_b": 4.0, "quant": "Q4_K_M"})
+        results = [{"model_file": "M-2B-Q8_0.gguf"}, {"model_file": "M-4B-Q4_K_M.gguf"}]
+        q["M-4B-Q4_K_M.gguf"] = {"by_lang": {"en": {"acc": 80.0, "n": 30}, "kn": {"acc": 50.0, "n": 30}}}
+        tester.apply_quality(results, q, models, ["en", "kn"], 3.0, 35.0)
+        assert results[0]["quality_pass"] is False and "floor" in results[0]["quality_fail_why"]
+        assert results[1]["quality_pass"] is True
     finally:
         models_lib.find = orig
 
@@ -179,6 +186,8 @@ def test_parse_choice():
     assert tester._parse_choice("Answer: 1.") == 0
     assert tester._parse_choice("B") == 1
     assert tester._parse_choice("none") is None
+    assert tester._parse_choice("೩") == 2       # Kannada digit three
+    assert tester._parse_choice("उत्तर: २") == 1  # Devanagari digit two
 
 
 def test_grid_fits_memory():

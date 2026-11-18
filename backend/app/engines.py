@@ -24,6 +24,7 @@ class EngineConfig:
     batch: int = 512
     parallel: int = 1
     label: str = ""
+    threads_batch: int = 0     # prompt reading; 0 = all logical CPUs (compute-bound, unlike writing)
 
     def key(self) -> str:
         return f"{self.model_file}|t{self.threads}|c{self.ctx}|b{self.batch}|p{self.parallel}"
@@ -84,7 +85,8 @@ class Engine:
         ]
         # threads/batch of 0 mean "engine defaults" (used for the before-vs-after comparison)
         if cfg.threads > 0:
-            args += ["-t", str(cfg.threads), "-tb", str(cfg.threads)]
+            tb = cfg.threads_batch or (len(self.affinity) if self.affinity else (psutil.cpu_count(logical=True) or cfg.threads))
+            args += ["-t", str(cfg.threads), "-tb", str(tb)]
         if cfg.batch > 0:
             args += ["-b", str(cfg.batch), "-ub", str(min(cfg.batch, 512))]
         logf = open(LOG_DIR / f"engine_{self.name}.log", "ab")
@@ -199,6 +201,8 @@ async def stream_chat(engine: Engine, messages: list[dict], max_tokens: int = 51
     body = {
         "messages": messages, "stream": True, "max_tokens": max_tokens,
         "temperature": temperature, "top_p": 0.9,
+        # Small models tend to loop, especially in Indian languages: discourage repeated phrases.
+        "repeat_penalty": 1.1, "repeat_last_n": 256, "dry_multiplier": 0.8, "dry_base": 1.75, "dry_allowed_length": 3,
         "chat_template_kwargs": {"enable_thinking": False},
         "cache_prompt": True,
     }
