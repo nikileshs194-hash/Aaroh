@@ -310,7 +310,7 @@ function Queue() {
             <Progress tone="teacher" value={(done / Math.max(1, done + left)) * 100} className="mt-2" />
             <p className="mt-2 text-sm text-muted">{q.paused ? t("teacher.pauseAll") : q.running ? `${t("teacher.queueRunning")}: ${q.running.label}` : q.waiting_for_quiet ? t("teacher.queueWaiting") : ""}</p>
           </>}
-          <Toggle id="pwb" checked={true} onChange={(v) => api("/api/batch/pause", { body: { paused: q.paused, pause_when_busy: v } })} label={t("teacher.pauseWhenBusy")} />
+          <Toggle id="pwb" checked={!!q.pause_when_busy} onChange={(v) => api("/api/batch/pause", { body: { paused: q.paused, pause_when_busy: v } }).then(load)} label={t("teacher.pauseWhenBusy")} />
           <Button variant="secondary" icon={q.paused ? <Play size={16} /> : <Pause size={16} />} onClick={() => api("/api/batch/pause", { body: { paused: !q.paused } }).then(load)}>{q.paused ? t("teacher.resumeAll") : t("teacher.pauseAll")}</Button>
         </Card>
       )}

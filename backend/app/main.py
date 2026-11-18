@@ -317,6 +317,19 @@ async def test_resume():
     return {"run_id": rid}
 
 
+@app.post("/api/test/capacity", tags=["admin"], dependencies=ADMIN)
+async def test_capacity():
+    """Re-measure classroom capacity for the latest finished test (about 15 minutes)."""
+    run = tester.latest_run()
+    if not run:
+        raise HTTPException(404, "Run the test first.")
+    try:
+        tester.runner.recheck_capacity(run["id"])
+    except RuntimeError as ex:
+        raise HTTPException(409, str(ex))
+    return {"run_id": run["id"]}
+
+
 @app.get("/api/test/progress", tags=["admin"], dependencies=ADMIN)
 def test_progress():
     p = dict(tester.runner.progress())
@@ -783,7 +796,7 @@ def batch_list(x_teacher: str | None = Header(default=None)):
     jobs = studio.list_jobs()
     return {"jobs": jobs, "paused": studio.batch.paused, "running": studio.batch.current,
             "waiting_for_quiet": (not studio.batch.can_run()) and not studio.batch.paused,
-            "avg_answer_s": router.avg_answer_s()}
+            "avg_answer_s": router.avg_answer_s(), "pause_when_busy": bool(db.get_setting("batch_pause_when_busy"))}
 
 
 @app.post("/api/batch/pause", tags=["teacher"], dependencies=TEACHER)

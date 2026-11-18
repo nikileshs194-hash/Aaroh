@@ -64,6 +64,14 @@
       "sha256": "8814232b85594dcd46c50e5b8b29324a7efe9e746edbe8a3d1df3d3fce7aad39",
       "source": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF",
       "licence": "Apache-2.0"
+    },
+    "Qwen3.5-4B-Q8_0.gguf": {
+      "family": "Qwen3.5-4B",
+      "quant": "Q8_0",
+      "size": 4482403488,
+      "sha256": "10cc391b403021dd11c614679d2fd92f611c3681d29e29651b717316965d61e1",
+      "source": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF",
+      "licence": "Apache-2.0"
     }
   }
 }

@@ -45,13 +45,17 @@ def main():
     insights = []
     half, full = find("2B · light", "half the cores"), find("2B · light", "all cores")
     if half and full:
-        diff = (half["tps"] / full["tps"] - 1) * 100
-        insights.append(f"Writing with {half['config']['threads']} threads gave {half['tps']:.1f} tokens/s versus {full['tps']:.1f} with "
-                        f"{full['config']['threads']} ({diff:+.0f}%): on this laptop memory speed, not core count, limits writing, "
-                        f"so InferSmart reads prompts with all threads but writes with fewer.")
+        diff = (full["tps"] / half["tps"] - 1) * 100
+        if abs(diff) < 3:
+            insights.append(f"Writing with {half['config']['threads']} threads was as fast as with {full['config']['threads']} "
+                            f"({half['tps']:.1f} vs {full['tps']:.1f} tokens/s): memory speed, not core count, limits writing.")
+        else:
+            insights.append(f"Writing with {full['config']['threads']} threads gave {full['tps']:.1f} tokens/s versus {half['tps']:.1f} with "
+                            f"{half['config']['threads']} ({diff:+.0f}%).")
     q2 = {r["model_file"]: r for r in rows if r.get("quality")}
-    small = next((r for r in rows if "2B-Q4" in r["model_file"] and r.get("quality")), None)
     big = next((r for r in rows if "4B-Q4" in r["model_file"] and r.get("quality")), None)
+    same = [r for r in rows if "2B-Q4" in r["model_file"] and r.get("quality")]
+    small = next((r for r in same if big and r["config"]["threads"] == big["config"]["threads"]), same[0] if same else None)
     if small and big:
         langs = [l for l in ("kn", "hi") if l in small["quality"] and l in big["quality"]]
         if langs:
@@ -68,7 +72,12 @@ def main():
     sg = acc.get("speed_gain")
     if sg:
         b, af = list(sg.values())
-        speed = f"Same model, engine defaults {b['median']:.1f} → InferSmart's setting {af['median']:.1f} tokens/s ({(af['median']/b['median']-1)*100:+.0f}%, median of 3)."
+        gain = (af['median'] / b['median'] - 1) * 100
+        if abs(gain) < 3:
+            speed = (f"Same model: InferSmart's setting writes as fast as the engine's defaults ({af['median']:.1f} vs {b['median']:.1f} tokens/s, median of 3). "
+                     "The gain is in choosing the right model and class size, not in this number.")
+        else:
+            speed = f"Same model, engine defaults {b['median']:.1f} → InferSmart's setting {af['median']:.1f} tokens/s ({gain:+.0f}%, median of 3)."
     else:
         speed = f"Recommended setting writes {rec.get('tps', 0):.1f} tokens/s with first word in {rec.get('ttft', 0):.1f} s for one user."
     rt = acc.get("red_team") or []
@@ -86,7 +95,8 @@ def main():
         "PRIV": str(privacy_after.get("outside_count", 0)),
         "SELFTEST": ("yes" if (acc.get("privacy_selftest") or {}).get("caught") else "run the self-test") ,
         "RECOV": f"{rc['seconds_to_ready']:.0f} s" if rc.get("pass") else "–",
-        "QN": str(max([v.get("n", 0) for v in (rec.get("quality") or {}).values()] or [0])),
+        "QN": (lambda ns: f"{min(ns)}–{max(ns)}" if ns and min(ns) != max(ns) else str(ns[0] if ns else 0))(
+            sorted(v.get("n", 0) for v in (rec.get("quality") or {}).values())),
         "QUALITY_ROWS": qrows, "SPEEDGAIN": html.escape(speed), "REDTEAM": html.escape(redteam),
         "HW": html.escape(f"{hw['cpu']}, {hw['cores']} cores / {hw['threads']} threads, {hw['mem_total_gb']} GB, {hw['os']}" + (" (SIMULATED)" if hw.get("simulated") else "")),
         "INSIGHT": html.escape(insight),
@@ -110,6 +120,9 @@ def main():
         L.append(f"| {r.get('label')} | {r.get('detail')} | {r['config']['threads']} | {r.get('tps', 0):.1f} | {r.get('ttft', 0):.2f} | {r.get('peak_mem_gb', 0):.2f} | {'yes' if r.get('noisy') else ''} | {g('en')} | {g('kn')} | {g('hi')} | {r.get('quality_pass')} | {rej.get(r['key']) or r.get('quality_fail_why') or ''} |")
     L += ["", "## Capacity steps", "", "| students | answers | typical tokens/s | slow-case first word s | comfortable |", "|---|---|---|---|---|"]
     L += [f"| {s['students']} | {s['requests']} | {s['tps_med']} | {s['ttft_p95']} | {'yes' if s['ok'] else 'no'} |" for s in cap.get("steps", [])]
+    if d.get("capacity_rechecked"):
+        L += ["", f"Capacity was measured again on {time.strftime('%d %b %Y %H:%M', time.localtime(d['capacity_rechecked']))} "
+              "with nothing else running, because the first capacity run overlapped a manual dashboard simulation."]
     L += ["", "## Quality per model file", ""]
     for f, qv in (d.get("quality") or {}).items():
         L.append(f"- {f}: " + "; ".join(f"{v['source']} {v['correct']}/{v['n']} ({v['acc']:.0f}%)" for v in qv["sets"].values()))

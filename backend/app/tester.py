@@ -152,6 +152,7 @@ class TestRunner:
         self.task: asyncio.Task | None = None
         self.stop_flag = asyncio.Event()
         self.state: dict = {"status": "idle"}
+        self.measuring = False   # while True, nothing else may start the serving engines (fair measurements)
 
     # ------------------------------------------------------------------ public
     def progress(self) -> dict:
@@ -175,6 +176,48 @@ class TestRunner:
         self.stop_flag = asyncio.Event()
         self.task = asyncio.create_task(self._run(run_id, goal, languages, quick, hw, only))
         return run_id
+
+    def recheck_capacity(self, run_id: int) -> None:
+        """Measure classroom capacity again for a finished run (e.g. after something else used the PC)."""
+        if self.running():
+            raise RuntimeError("A test is already running.")
+        self.stop_flag = asyncio.Event()
+        self.task = asyncio.create_task(self._recheck(run_id))
+
+    async def _recheck(self, run_id: int) -> None:
+        row = db.one("SELECT * FROM test_run WHERE id=?", (run_id,))
+        data = db.jload(row["data"], {})
+        rec = (data.get("selection") or {}).get("recommended")
+        mode = QUICK if data.get("quick") else FULL
+        min_tps, max_ttft = float(db.get_setting("min_tps")), float(db.get_setting("max_ttft"))
+        self.state = {"status": "running", "run_id": run_id, "phase": "capacity", "index": 1, "total": 1,
+                      "units_done": 0, "units_total": 1, "settings": [], "started": time.time(), "cap_steps": [],
+                      "eta_s": mode["cap_step_s"] * len(CAP_STEPS)}
+        was_serving = [n for n in ("A", "B") if engines[n].status in ("ready", "starting") or engines[n].wanted]
+        self.measuring = True
+        for n in ("A", "B"):
+            await engines[n].stop()
+        log_event("test", "Checking classroom capacity again (student chat paused for about 15 minutes).")
+        try:
+            cap = await self.capacity(EngineConfig(**rec["config"]), mode, min_tps, max_ttft,
+                                      on_step=lambda s: self._pub(cap_steps=self.state.get("cap_steps", []) + [s]))
+            if self.stop_flag.is_set():
+                raise asyncio.CancelledError
+            db.execute("INSERT INTO capacity_result(run_id,ts,data) VALUES(?,?,?)", (run_id, time.time(), json.dumps(cap)))
+            data["capacity"] = cap
+            data["capacity_rechecked"] = time.time()
+            db.execute("UPDATE test_run SET data=? WHERE id=?", (json.dumps(data), run_id))
+            log_event("test", f"Capacity checked again: about {cap['n']} students comfortably (simulated, tested up to {cap['tested_up_to']}).")
+            self._pub(status="done", phase="done", units_done=1, eta_s=0)
+        except asyncio.CancelledError:
+            await engines["T"].stop()
+            self._pub(status="stopped")
+        except Exception as ex:
+            await engines["T"].stop()
+            log_event("error", f"The capacity check stopped because of a problem: {ex}")
+            self._pub(status="error", error=str(ex))
+        self.measuring = False
+        await _resume_serving(was_serving)
 
     async def stop(self) -> None:
         self.stop_flag.set()
@@ -349,8 +392,9 @@ class TestRunner:
                       "started": time.time(), "eta_s": None, "quick": quick, "goal": goal, "languages": langs}
         log_event("test", f"Test started: {len(grid)} settings on this computer ({'quick' if quick else 'full'} test).")
         # Fair test: the serving engines would compete for the processor and memory, so pause them.
-        was_serving = [n for n in ("A", "B") if engines[n].status in ("ready", "starting")]
-        for n in was_serving:
+        was_serving = [n for n in ("A", "B") if engines[n].status in ("ready", "starting") or engines[n].wanted]
+        self.measuring = True
+        for n in ("A", "B"):
             await engines[n].stop()
         if was_serving:
             log_event("info", "Student chat is paused while the test runs, so the measurements are fair.")
@@ -431,18 +475,21 @@ class TestRunner:
             else:
                 log_event("test", "Test finished, but no setting met the comfort limits on this computer.")
             self._pub(status="done", phase="done", run_id=run_id, eta_s=0)
+            self.measuring = False
             await _resume_serving(was_serving)
         except asyncio.CancelledError:
             await engines["T"].stop()
             db.execute("UPDATE test_run SET status='stopped' WHERE id=?", (run_id,))
             log_event("test", "Test paused. Press Continue to resume where it stopped.")
             self._pub(status="stopped")
+            self.measuring = False
             await _resume_serving(was_serving)
         except Exception as ex:  # never leave a raw error on screen
             await engines["T"].stop()
             db.execute("UPDATE test_run SET status='error' WHERE id=?", (run_id,))
             log_event("error", f"The test stopped because of a problem: {ex}")
             self._pub(status="error", error=str(ex))
+            self.measuring = False
             await _resume_serving(was_serving)
 
 
@@ -621,6 +668,8 @@ async def apply_selection(run: dict, use: str = "recommended") -> dict:
 
 
 async def start_engines(a: EngineConfig, b: EngineConfig | None) -> None:
+    if runner.measuring:
+        raise RuntimeError("A test is measuring this computer right now; student chat comes back when it finishes.")
     for name, cfg in (("A", a), ("B", b)):
         e = engines[name]
         if cfg is None:
