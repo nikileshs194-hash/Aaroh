@@ -194,4 +194,57 @@ class Router:
             bus.publish("live", point)
 
 
+class ClassSimulator:
+    """Virtual students sent through the real router, so the dashboard and controller react (demo, F6)."""
+    QUESTIONS = [
+        "What is photosynthesis? Explain simply.", "Why is the sky blue?", "What is the difference between mass and weight?",
+        "Explain Ohm's law with an example.", "Give two examples of renewable energy in India.", "What causes the monsoon?",
+        "ದ್ಯುತಿಸಂಶ್ಲೇಷಣೆ ಎಂದರೇನು? ಸರಳವಾಗಿ ವಿವರಿಸಿ.", "प्रकाश संश्लेषण क्या है? सरल शब्दों में समझाइए।",
+    ]
+
+    def __init__(self) -> None:
+        self.task: asyncio.Task | None = None
+        self.students = 0
+        self.until = 0.0
+        self.answers = 0
+
+    def state(self) -> dict:
+        return {"running": bool(self.task and not self.task.done()), "students": self.students,
+                "seconds_left": max(0, round(self.until - time.time())), "answers": self.answers}
+
+    async def _student(self, i: int, stop_at: float) -> None:
+        import random
+        from .safety import SYSTEM_PROMPT
+        await asyncio.sleep(random.uniform(0, 4))
+        while time.time() < stop_at:
+            q = random.choice(self.QUESTIONS)
+            msgs = [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": q}]
+            async for ev in router.chat(msgs, f"sim-{i}", "student", 220):
+                if ev["type"] == "done":
+                    self.answers += 1
+            await asyncio.sleep(random.uniform(3, 10))
+
+    async def _run(self, n: int, seconds: int) -> None:
+        stop_at = time.time() + seconds
+        log_event("info", f"Simulating {n} students for {seconds} s (virtual students, clearly a simulation).")
+        await asyncio.gather(*(self._student(i, stop_at) for i in range(n)))
+        log_event("info", f"Student simulation finished: {self.answers} answers given.")
+        self.students = 0
+
+    def start(self, n: int, seconds: int) -> dict:
+        if self.task and not self.task.done():
+            self.task.cancel()
+        self.students, self.answers, self.until = n, 0, time.time() + seconds
+        self.task = asyncio.create_task(self._run(n, seconds))
+        return self.state()
+
+    def stop(self) -> dict:
+        if self.task and not self.task.done():
+            self.task.cancel()
+            log_event("info", "Student simulation stopped by the admin.")
+        self.students, self.until = 0, 0
+        return self.state()
+
+
 router = Router()
+classsim = ClassSimulator()

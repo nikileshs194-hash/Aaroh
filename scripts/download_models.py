@@ -10,8 +10,12 @@ import hashlib
 import json
 import os
 import sys
+import threading
 import time
 import urllib.request
+
+SEGMENTS = 8  # parallel connections per file (each connection is throttled by the server)
+PRIORITY = ["2B-Q4_K_M", "4B-Q4_K_M", "0.8B-Q4_K_M", "2B-Q8_0", "2B-Q5_K_M", "0.8B-Q8_0", "4B-Q5_K_M", "0.8B-Q5_K_M", "4B-Q8_0"]
 
 REPOS = {
     "unsloth/Qwen3.5-0.8B-GGUF": "Qwen3.5-0.8B",
@@ -35,7 +39,59 @@ def sha256(path):
     return h.hexdigest()
 
 
+def _segment(url, path, start, end, errors):
+    for attempt in range(20):
+        have = os.path.getsize(path) if os.path.exists(path) else 0
+        if start + have > end:
+            return
+        req = urllib.request.Request(url, headers={"Range": f"bytes={start + have}-{end}"})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r, open(path, "ab") as f:
+                while True:
+                    chunk = r.read(1 << 20)
+                    if not chunk:
+                        break
+                    f.write(chunk)
+        except Exception as e:
+            time.sleep(3)
+    errors.append(path)
+
+
 def download(url, dest, size):
+    if os.path.exists(dest + ".part"):  # legacy single-stream partial: finish it the old way
+        return download_single(url, dest, size)
+    step = -(-size // SEGMENTS)
+    parts, threads, errors = [], [], []
+    for i in range(SEGMENTS):
+        start, end = i * step, min(size, (i + 1) * step) - 1
+        if start > end:
+            continue
+        path = f"{dest}.seg{i}"
+        parts.append((path, end - start + 1))
+        t = threading.Thread(target=_segment, args=(url, path, start, end, errors), daemon=True)
+        t.start()
+        threads.append(t)
+    while any(t.is_alive() for t in threads):
+        time.sleep(15)
+        have = sum(os.path.getsize(p) for p, _ in parts if os.path.exists(p))
+        print(f"  {os.path.basename(dest)}: {have/size*100:.0f}%", flush=True)
+    for p, n in parts:
+        if not os.path.exists(p) or os.path.getsize(p) != n:
+            sys.exit(f"segment {p} incomplete; run again to resume")
+    with open(dest + ".joining", "wb") as out:
+        for p, _ in parts:
+            with open(p, "rb") as f:
+                while True:
+                    b = f.read(1 << 24)
+                    if not b:
+                        break
+                    out.write(b)
+    os.replace(dest + ".joining", dest)
+    for p, _ in parts:
+        os.remove(p)
+
+
+def download_single(url, dest, size):
     tmp = dest + ".part"
     for attempt in range(8):
         have = os.path.getsize(tmp) if os.path.exists(tmp) else 0
@@ -79,7 +135,10 @@ def main():
         for f in tree:
             if f["path"].endswith(".gguf") and any(q in f["path"] for q in QUANTS) and "/" not in f["path"]:
                 jobs.append((f["size"], repo, family, f))
-    jobs.sort(key=lambda j: j[0])
+    def prio(j):
+        name = j[3]["path"]
+        return next((i for i, k in enumerate(PRIORITY) if k in name), 99)
+    jobs.sort(key=prio)
 
     for size, repo, family, f in jobs:
         name = f["path"]

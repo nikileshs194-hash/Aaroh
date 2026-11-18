@@ -20,7 +20,8 @@ from . import auth, db, hardware, models_lib, privacy, safety, studio, templates
 from .config import APP_PORT, APP_VERSION, ENGINE_EXE, ENGINE_RELEASE, FRONTEND_DIST, ROOT
 from .engines import EngineConfig, engines, load_active, save_active
 from .events import bus, log_event, recent_events
-from .router import router
+from .router import classsim, router
+from urllib.parse import unquote
 
 ADMIN = [Depends(auth.require_admin)]
 TEACHER = [Depends(auth.require_teacher)]
@@ -483,6 +484,18 @@ def lock_mode(body: dict = Body(...)):
     return {"lock_mode": db.get_setting("lock_mode")}
 
 
+@app.post("/api/simulate", tags=["admin"], dependencies=ADMIN)
+def simulate(body: dict = Body(...)):
+    if body.get("stop"):
+        return classsim.stop()
+    return classsim.start(max(1, min(30, int(body.get("students", 10)))), max(20, min(900, int(body.get("seconds", 180)))))
+
+
+@app.get("/api/simulate", tags=["admin"], dependencies=ADMIN)
+def simulate_state():
+    return classsim.state()
+
+
 @app.get("/api/why-slow", tags=["admin"], dependencies=ADMIN)
 def why_slow():
     """F26: explain current performance in one sentence from the system's own numbers."""
@@ -717,13 +730,13 @@ def library(scope: str = "mine", x_teacher: str | None = Header(default=None)):
         return studio.list_items(shared_only=True)
     if scope == "all":
         return studio.list_items()
-    return studio.list_items(author=x_teacher or "Teacher")
+    return studio.list_items(author=unquote(x_teacher) if x_teacher else "Teacher")
 
 
 @app.post("/api/library", tags=["teacher"], dependencies=TEACHER)
 def library_save(body: dict = Body(...), x_teacher: str | None = Header(default=None)):
     iid = studio.save_item(body.get("template", "lesson_plan"), body.get("fields", {}), str(body.get("body", "")),
-                           x_teacher or "Teacher", body.get("title"))
+                           unquote(x_teacher) if x_teacher else "Teacher", body.get("title"))
     return studio.get_item(iid)
 
 
@@ -754,7 +767,7 @@ def batch_add(body: dict = Body(...), x_teacher: str | None = Header(default=Non
     """'Prepare all lessons in this chapter': N lesson plans (+ optional quiz) queued for when the PC is free."""
     fields = body.get("fields", {})
     n = max(1, min(10, int(body.get("lessons", 3))))
-    author = x_teacher or "Teacher"
+    author = unquote(x_teacher) if x_teacher else "Teacher"
     ids = []
     for i in range(n):
         f = {**fields, "part": f"lesson {i + 1} of {n}"}
