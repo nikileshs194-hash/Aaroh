@@ -1,0 +1,14 @@
+.venv/
+node_modules/
+frontend/dist/
+engine/bin/
+engine/*.zip
+models/*.gguf
+data/*.db
+data/*.db-*
+data/logs/
+data/download.log
+data/backups/
+__pycache__/
+*.pyc
+.pytest_cache/

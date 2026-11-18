@@ -1,0 +1,2669 @@
+{
+ "_about": "Samples from facebook/belebele (CC-BY-SA 4.0) and allenai/ai2_arc ARC-Easy (CC-BY-SA 4.0), test splits, first 60 rows each. Used only to score multiple-choice accuracy.",
+ "sets": {
+  "belebele_en": {
+   "lang": "en",
+   "source": "Belebele eng_Latn",
+   "items": [
+    {
+     "passage": "Make sure your hand is as relaxed as possible while still hitting all the notes correctly - also try not to make much extraneous motion with your fingers. This way, you will tire yourself out as little as possible. Remember there's no need to hit the keys with a lot of force for extra volume like on the piano. On the accordion, to get extra volume, you use the bellows with more pressure or speed.",
+     "question": "According to the passage, what would not be considered an accurate tip for successfully playing the accordion?",
+     "options": [
+      "For additional volume, increase the force with which you hit the keys",
+      "Keep unnecessary movement to a minimum in order to preserve your stamina",
+      "Be mindful of hitting the notes while maintaining a relaxed hand",
+      "Increase the speed with which you operate the bellows to achieve extra volume"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "Make sure your hand is as relaxed as possible while still hitting all the notes correctly - also try not to make much extraneous motion with your fingers. This way, you will tire yourself out as little as possible. Remember there's no need to hit the keys with a lot of force for extra volume like on the piano. On the accordion, to get extra volume, you use the bellows with more pressure or speed.",
+     "question": "When playing the accordion, which of the following will help to increase the volume?",
+     "options": [
+      "More speed",
+      "More force",
+      "Less pressure",
+      "Less finger motion"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "One of the most common problems when trying to convert a movie to DVD format is the overscan. Most televisions are made in a way to please the general public. For that reason, everything you see on the TV had the borders cut, top, bottom and sides. This is made to ensure that the image covers the whole screen. That is called overscan. Unfortunately, when you make a DVD, it's borders will most likely be cut too, and if the video had subtitles too close to the bottom, they won't be fully shown.",
+     "question": "Why do the images on television have their borders cut?",
+     "options": [
+      "To allow for subtitles",
+      "So the image fills the entire screen",
+      "To allow for simple conversion into other formats",
+      "To cut subtitles too close to the bottom"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "One of the most common problems when trying to convert a movie to DVD format is the overscan. Most televisions are made in a way to please the general public. For that reason, everything you see on the TV had the borders cut, top, bottom and sides. This is made to ensure that the image covers the whole screen. That is called overscan. Unfortunately, when you make a DVD, it's borders will most likely be cut too, and if the video had subtitles too close to the bottom, they won't be fully shown.",
+     "question": "According to the passage, which of the following problems might one encounter when converting a movie to DVD format?",
+     "options": [
+      "An image that doesn’t fill the entire screen",
+      "Partially cut subtitles",
+      "An image that fills the entire screen",
+      "Cut borders"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "The American plan relied on launching coordinated attacks from three different directions. General John Cadwalder would launch a diversionary attack against the British garrison at Bordentown, in order to block off any reinforcements. General James Ewing would take 700 militia across the river at Trenton Ferry, seize the bridge over the Assunpink Creek and prevent any enemy troops from escaping. The main assault force of 2,400 men would cross the river nine miles north of Trenton, and then split into two groups, one under Greene and one under Sullivan, in order to launch a pre-dawn attack.",
+     "question": "Where was there a British garrison located?",
+     "options": [
+      "Assunpink Creek",
+      "Trenton",
+      "Bordentown",
+      "Princeton"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "\"After its adoption by Congress on July 4, a handwritten draft signed by the President of Congress John Hancock and the Secretary Charles Thomson was then sent a few blocks away to the printing shop of John Dunlap. Through the night between 150 and 200 copies were made, now known as \"\"Dunlap broadsides\"\". The first public reading of the document was by John Nixon in the yard of Independence Hall on July 8. One was sent to George Washington on July 6, who had it read to his troops in New York on July 9. A copy reached London on August 10. The 25 Dunlap broadsides still known to exist are the oldest surviving copies of the document. The original handwritten copy has not survived.\"",
+     "question": "Whose signature appeared on the handwritten draft?",
+     "options": [
+      "John Dunlap",
+      "George Washington",
+      "John Nixon",
+      "Charles Thomson"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "\"After its adoption by Congress on July 4, a handwritten draft signed by the President of Congress John Hancock and the Secretary Charles Thomson was then sent a few blocks away to the printing shop of John Dunlap. Through the night between 150 and 200 copies were made, now known as \"\"Dunlap broadsides\"\". The first public reading of the document was by John Nixon in the yard of Independence Hall on July 8. One was sent to George Washington on July 6, who had it read to his troops in New York on July 9. A copy reached London on August 10. The 25 Dunlap broadsides still known to exist are the oldest surviving copies of the document. The original handwritten copy has not survived.\"",
+     "question": "Out of the following locations, where did a Dunlap broadside arrive last?",
+     "options": [
+      "New York",
+      "Dunlap’s printing shop",
+      "London",
+      "Independence Hall"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "The Colonists, seeing this activity, had also called for reinforcements. Troops reinforcing the forward positions included the 1st and 3rd New Hampshire regiments of 200 men, under Colonels John Stark and James Reed (both later became generals). Stark's men took positions along the fence on the north end of the Colonist's position. When low tide opened a gap along the Mystic River along the northeast of the peninsula, they quickly extended the fence with a short stone wall to the north ending at the water's edge on a small beach. Gridley or Stark placed a stake about 100 feet (30 m) in front of the fence and ordered that no one fire until the regulars passed it.",
+     "question": "Where were Colonel Stark’s troops situated?",
+     "options": [
+      "On the north end, along the fence",
+      "On a beach at the water’s edge",
+      "Along the northeast of the peninsula",
+      "In front of the fence"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "The Colonists, seeing this activity, had also called for reinforcements. Troops reinforcing the forward positions included the 1st and 3rd New Hampshire regiments of 200 men, under Colonels John Stark and James Reed (both later became generals). Stark's men took positions along the fence on the north end of the Colonist's position. When low tide opened a gap along the Mystic River along the northeast of the peninsula, they quickly extended the fence with a short stone wall to the north ending at the water's edge on a small beach. Gridley or Stark placed a stake about 100 feet (30 m) in front of the fence and ordered that no one fire until the regulars passed it.",
+     "question": "According to the passage, when did Stark’s men extend their fence?",
+     "options": [
+      "While the Colonists called for reinforcements",
+      "After the regulars passed the stake",
+      "During low tide",
+      "While troops assumed forward positions"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "Ancient China had a unique way of showing different time periods; each stage of China or each family that was in power was a distinctive dynasty. Also between each dynasty was an unstable age of divided provinces. The best-known of these periods was the Three Kingdoms epoch taking place for 60 years between the Han and the Jin Dynasty. During these periods fierce warfare took place between many nobles fighting for the throne. The Three Kingdoms was one of the bloodiest eras in Ancient China’s history thousands of people died fighting to sit in the highest seat in the grand palace at Xi’an.",
+     "question": "According to the passage, which of the following was one of China’s most violent eras?",
+     "options": [
+      "The Jin Dynasty",
+      "The Xi’an era",
+      "The Han Dynasty",
+      "The Three Kingdoms era"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "Army ant colonies march and nest in different phases as well. In the nomadic phase, army ants march at night and stop to camp during the day. The colony begins a nomadic phase when available food has decreased. During this phase, the colony makes temporary nests that are changed everyday. Each of these nomadic rampages or marches lasts for approximately 17 days.",
+     "question": "According to the passage, what is true of an army ant colony entering a nomadic phase?",
+     "options": [
+      "They nest during the night",
+      "They have a low supply of food",
+      "They make nests that are changed after 17 days",
+      "They march during the day"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "Army ant colonies march and nest in different phases as well. In the nomadic phase, army ants march at night and stop to camp during the day. The colony begins a nomadic phase when available food has decreased. During this phase, the colony makes temporary nests that are changed everyday. Each of these nomadic rampages or marches lasts for approximately 17 days.",
+     "question": "According to the passage, which statement accurately reflects the nesting habits of army ant colonies during the nomadic phase?",
+     "options": [
+      "They build nests during the night",
+      "They march for 17 days without nesting",
+      "They change nests daily",
+      "They use the same nests for the duration of the phase"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "Many observed rhythms in physiology and behavior often crucially depend on the presence of endogenous cycles and their production through biological clocks. Periodic rhythms, which are not simply responses to external periodic cues, have been documented for most living beings, including bacteria, fungi, plants, and animals. Biological clocks are self sustaining oscillators which will continue a period of free-running cycling even in the absence of external cues.",
+     "question": "Which of the following will continue despite the presence of external cues?",
+     "options": [
+      "Endogenous cycles",
+      "Periodic rhythms",
+      "Biological clocks",
+      "Observed rhythms"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "A population is the collection of organisms of a particular species within a given geographic area. When all individuals in a population are identical with regard to a particular phenotypic trait they are known as monomorphic. When the individuals show several variants of a particular trait they are polymorphic.",
+     "question": "Which term describes individuals that display variances of a certain phenotypic trait?",
+     "options": [
+      "Monomorphic",
+      "Organisms",
+      "Species",
+      "Polymorphic"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "A population is the collection of organisms of a particular species within a given geographic area. When all individuals in a population are identical with regard to a particular phenotypic trait they are known as monomorphic. When the individuals show several variants of a particular trait they are polymorphic.",
+     "question": "Which of the following is the correct term for organisms that occupy a particular area?",
+     "options": [
+      "Monomorphic",
+      "Population",
+      "Species",
+      "Polymorphic"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "Nature-based tourism attracts people interested in visiting natural areas for the purpose of enjoying the scenery, including plant and animal wildlife. Examples of on-site activities include hunting, fishing, photography, bird watching, and visiting parks and studying information about the ecosystem. An example is visiting, photographing, and learning about organgatuangs in Borneo.",
+     "question": "Which of the following would not be an example of a nature-based tourism activity?",
+     "options": [
+      "Hiking to a waterfall",
+      "Photographing wildflowers",
+      "Visiting a science museum",
+      "Fly fishing"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "Every morning, people leave small country towns in cars to go their workplace and are passed by others whose work destination is the place they have just left. In this dynamic transport shuttle everyone is somehow connected with, and supporting, a transport system based on private cars. Science now indicates that this massive carbon economy has dislodged the biosphere from one of its stable states that has supported human evolution for the past two million years.",
+     "question": "According to the passage, which of the following is the basis of the transport system?",
+     "options": [
+      "Work destinations",
+      "Private cars",
+      "A stable biosphere",
+      "Human evolution"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "The atom can be considered to be one of the fundamental building blocks of all matter. Its a very complex entity which consists, according to a simplified Bohr model, of a central nucleus orbited by electrons, somewhat similar to planets orbiting the sun - see Figure 1.1. The nucleus consists of two particles - neutrons and protons. Protons have a positive electric charge while neutrons have no charge. The electrons have a negative electric charge.",
+     "question": "The particles that orbit the nucleus have which type of charge?",
+     "options": [
+      "Positive charge",
+      "No charge",
+      "Negative charge",
+      "Positive and negative charge"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "The atom can be considered to be one of the fundamental building blocks of all matter. Its a very complex entity which consists, according to a simplified Bohr model, of a central nucleus orbited by electrons, somewhat similar to planets orbiting the sun - see Figure 1.1. The nucleus consists of two particles - neutrons and protons. Protons have a positive electric charge while neutrons have no charge. The electrons have a negative electric charge.",
+     "question": "The nucleus is composed of which particles?",
+     "options": [
+      "Protons and neutrons",
+      "Neutrons and electrons",
+      "Electrons and protons",
+      "Protons, neutrons, and electrons"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "Virtually all computers in use today are based on the manipulation of information which is coded in the form of binary numbers. A binary number can have only one of two values, i.e. 0 or 1, and these numbers are referred to as binary digits - or bits, to use computer jargon.",
+     "question": "According to the passage, which of the following is an example of a five bit binary number?",
+     "options": [
+      "1010",
+      "12001",
+      "10010",
+      "110101"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "Virtually all computers in use today are based on the manipulation of information which is coded in the form of binary numbers. A binary number can have only one of two values, i.e. 0 or 1, and these numbers are referred to as binary digits - or bits, to use computer jargon.",
+     "question": "Binary digits are also referred to as what?",
+     "options": [
+      "Bits",
+      "Values",
+      "Jargon",
+      "Forms"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "\"Blogs can also help improve student writing. While students often begin their blog experience with sloppy grammar and spelling, the presence of an audience generally changes that. Since students are often the most critical audience, the blog writer begins to strive to improve writing to avoid criticism. Also blogging \"\"forces students to become more savvy about the world around them.\"\" The need to feed the interest of the audience inspires students to be clever and interesting (Toto, 2004). Blogging is a tool that inspires collaboration, and encourages students to extend learning well beyond the traditional school day. Appropriate use of blogs \"\"can empower students to become more analytical and critical; through actively responding to Internet materials, students can define their positions in the context of others' writings as well as outline their own perspectives on particular issues (Oravec, 2002).\"",
+     "question": "Which of the following is not mentioned in the passage as a primary benefit of student blogging?",
+     "options": [
+      "An improvement in grammar and writing ability",
+      "A decrease in criticism from peers",
+      "A broadened awareness of surroundings",
+      "An increased desire for continued learning"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "\"Blogs can also help improve student writing. While students often begin their blog experience with sloppy grammar and spelling, the presence of an audience generally changes that. Since students are often the most critical audience, the blog writer begins to strive to improve writing to avoid criticism. Also blogging \"\"forces students to become more savvy about the world around them.\"\" The need to feed the interest of the audience inspires students to be clever and interesting (Toto, 2004). Blogging is a tool that inspires collaboration, and encourages students to extend learning well beyond the traditional school day. Appropriate use of blogs \"\"can empower students to become more analytical and critical; through actively responding to Internet materials, students can define their positions in the context of others' writings as well as outline their own perspectives on particular issues (Oravec, 2002).\"",
+     "question": "Which of the following aspects of blogging is cited as a motivator for student’s to improve their writing skills?",
+     "options": [
+      "Frequently responding to materials on the internet",
+      "The urge to avoid criticism",
+      "Maintaining the interest of their audience",
+      "The need for collaboration"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "Asynchronous communication encourages time for reflection and reaction to others. It allows students the ability to work at their own pace and control the pace of instructional information. In addition, there are fewer time restrictions with the possibility of flexible working hours. (Bremer, 1998) The use of the Internet and the World Wide Web allows learners to have access to information at all times. Students can also submit questions to instructors at any time of day and expect reasonably quick responses, rather than waiting until the next face-to-face meeting.",
+     "question": "Which of the following is not a benefit of asynchronous communication for students? ",
+     "options": [
+      "The use of internet as a resource",
+      "Face-to-face access to instructors at any time of day",
+      "Flexible working hours",
+      "Pace control"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "Asynchronous communication encourages time for reflection and reaction to others. It allows students the ability to work at their own pace and control the pace of instructional information. In addition, there are fewer time restrictions with the possibility of flexible working hours. (Bremer, 1998) The use of the Internet and the World Wide Web allows learners to have access to information at all times. Students can also submit questions to instructors at any time of day and expect reasonably quick responses, rather than waiting until the next face-to-face meeting.",
+     "question": "According to the passage, which of the following aspects of asynchronous communication is not flexible for students?",
+     "options": [
+      "Learning pace",
+      "Working hours",
+      "Instructional material",
+      "Internet usage"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "The traditional medieval castle has long inspired the imagination, conjuring up images of jousts, banquets and Arthurian chivalry. Even standing amidst thousand year-old ruins it is easy to bring to mind the sounds and smells of battles long gone, to almost hear the clatter of hooves on the cobbles and to smell the fear rising from the dungeon pits. But is our imagination based on reality? Why were castles built in the first place? How were they designed and built?",
+     "question": "What is not mentioned in the passage as something one might associate with medieval castles?",
+     "options": [
+      "Dungeon pits",
+      "Jousts",
+      "Chivalry",
+      "Knights"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "The traditional medieval castle has long inspired the imagination, conjuring up images of jousts, banquets and Arthurian chivalry. Even standing amidst thousand year-old ruins it is easy to bring to mind the sounds and smells of battles long gone, to almost hear the clatter of hooves on the cobbles and to smell the fear rising from the dungeon pits. But is our imagination based on reality? Why were castles built in the first place? How were they designed and built?",
+     "question": "Which of the following is not mentioned in the passage as a smell or sound that could be conjured among castle ruins?",
+     "options": [
+      "Battles",
+      "Fear",
+      "Banquets",
+      "Hooves"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "Typical for the period, Kirby Muxloe Castle is more of a fortified house than a true castle. Its large glazed windows and thin walls would not have been able to resist a determined attack for long. In the 1480s, when its construction was begun by Lord Hastings, the country was relatively peaceful and defense was only required against small bands of roving marauders.",
+     "question": "Which of the following is an accurate description of Kirby Muxloe Castle?",
+     "options": [
+      "The castle’s thick walls were requested by Lord Hastings ",
+      "It required minimal fortification due to the country’s peaceful nature at the time of construction ",
+      "The castle’s construction wasn’t typical for the time period",
+      "It was built to sustain long and determined attacks"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "Typical for the period, Kirby Muxloe Castle is more of a fortified house than a true castle. Its large glazed windows and thin walls would not have been able to resist a determined attack for long. In the 1480s, when its construction was begun by Lord Hastings, the country was relatively peaceful and defense was only required against small bands of roving marauders.",
+     "question": "Which of the following construction features would be considered atypical for Kirby Muxloe Castle during the time period described in the passage?",
+     "options": [
+      "Huge windows",
+      "A foundation built to sustain attacks",
+      "Less fortification than some castles",
+      "Thin walls"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "With the change from the quarter to the half mile run, speed becomes of much less importance and endurance becomes an absolute necessity. Of course a first-class half-miler, a man who can beat two minutes, must be possessed of a fair amount of speed, but endurance must be cultivated at all hazards. Some cross country running during the winter, combined with gymnasium work for the upper part of the body, is the best preparation for the running season.",
+     "question": "According to the passage, which of the following would be the most beneficial for a runner preparing for the upcoming season?",
+     "options": [
+      "Practicing cross country running in the summer",
+      "Focusing on cultivating speed while training",
+      "Beating a three minute time",
+      "Utilizing the gym to work out the upper body"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "With the change from the quarter to the half mile run, speed becomes of much less importance and endurance becomes an absolute necessity. Of course a first-class half-miler, a man who can beat two minutes, must be possessed of a fair amount of speed, but endurance must be cultivated at all hazards. Some cross country running during the winter, combined with gymnasium work for the upper part of the body, is the best preparation for the running season.",
+     "question": "According to the passage, which of the following is of utmost importance for a first-class half-mile runner?",
+     "options": [
+      "Practicing cross country running during the winter months",
+      "Cultivating endurance over speed",
+      "Clocking in under two minutes",
+      "Cultivating speed over endurance"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "Proper nutritional practices alone cannot generate elite performances, but they can significantly affect young athletes' overall wellness. Maintaining a healthy energy balance, practicing effective hydration habits, and understanding the various aspects of supplementation practices can help athletes improve their performance and increase their enjoyment of the sport.",
+     "question": "For an athlete, which of the following can not be achieved solely through nutritional practices?",
+     "options": [
+      "Improved performance",
+      "Increased enjoyment ",
+      "Elite performance",
+      "General wellness"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "Proper nutritional practices alone cannot generate elite performances, but they can significantly affect young athletes' overall wellness. Maintaining a healthy energy balance, practicing effective hydration habits, and understanding the various aspects of supplementation practices can help athletes improve their performance and increase their enjoyment of the sport.",
+     "question": "Based on the passage, which of the following is not suggested as a way for young athletes to find more enjoyment in their sport?",
+     "options": [
+      "Practicing proper nutrition",
+      "Consistently performing at an elite level",
+      "Hydrating effectively",
+      "Maintaining a healthy energy balance"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "Middle distance running is a relatively inexpensive sport; however, there are many misconceptions regarding the few pieces of equipment required to participate. Products can be purchased as needed, but most will have little or no real impact on performance. Athletes may feel that they prefer a product even when it provides no real benefits.",
+     "question": "According to the passage, why might a middle distance runner purchase a more expensive piece of equipment?",
+     "options": [
+      "It’s their personal preference",
+      "It has proven benefits",
+      "It will greatly impact their performance",
+      "There are misconceptions surrounding less expensive equipment"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "Middle distance running is a relatively inexpensive sport; however, there are many misconceptions regarding the few pieces of equipment required to participate. Products can be purchased as needed, but most will have little or no real impact on performance. Athletes may feel that they prefer a product even when it provides no real benefits.",
+     "question": "According to the passage, what does middle distance running require?",
+     "options": [
+      "A lot of equipment",
+      "An established athletic background",
+      "Very little equipment",
+      "A lot of money"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "MRI is based on a physics phenomenon called nuclear magnetic resonance (NMR), which was discovered in the 1930s by Felix Bloch (working at Stanford University) and Edward Purcell (from Harvard University). In this resonance, magnetic field and radio waves cause atoms to give off tiny radio signals. In the year 1970, Raymond Damadian, a medical doctor and research scientist, discovered the basis for using magnetic resonance imaging as a tool for medical diagnosis. Four years later a patent was granted, which was the world's first patent issued in the field of MRI. In 1977, Dr. Damadian completed the construction of the first “whole-body” MRI scanner, which he called the ”Indomitable”.",
+     "question": "Who discovered nuclear magnetic resonance? ",
+     "options": [
+      "Purcell",
+      "Damadian",
+      "Bloch and Purcell",
+      "Bloch and Damadian"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "MRI is based on a physics phenomenon called nuclear magnetic resonance (NMR), which was discovered in the 1930s by Felix Bloch (working at Stanford University) and Edward Purcell (from Harvard University). In this resonance, magnetic field and radio waves cause atoms to give off tiny radio signals. In the year 1970, Raymond Damadian, a medical doctor and research scientist, discovered the basis for using magnetic resonance imaging as a tool for medical diagnosis. Four years later a patent was granted, which was the world's first patent issued in the field of MRI. In 1977, Dr. Damadian completed the construction of the first “whole-body” MRI scanner, which he called the ”Indomitable”.",
+     "question": "In what year was the first patent granted for medical imaging resonance? ",
+     "options": [
+      "1977",
+      "1974",
+      "1930",
+      "1970"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "Humans are by far the most talented species in reading the minds of others. That means we are able to successfully predict what other humans perceive, intend, believe, know or desire. Among these abilities, understanding the intention of others is crucial. It allows us to resolve possible ambiguities of physical actions. For example, if you were to see someone breaking a car window, you would probably assume he was trying to steal a stranger’s car. He would need to be judged differently if he had lost his car keys and it was his own car that he was trying to break into.",
+     "question": "According to the passage, what should humans have a strong understanding of in order to interpret the physical actions of others?",
+     "options": [
+      "Desire",
+      "Intention",
+      "Belief",
+      "Perception"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "Humans are by far the most talented species in reading the minds of others. That means we are able to successfully predict what other humans perceive, intend, believe, know or desire. Among these abilities, understanding the intention of others is crucial. It allows us to resolve possible ambiguities of physical actions. For example, if you were to see someone breaking a car window, you would probably assume he was trying to steal a stranger’s car. He would need to be judged differently if he had lost his car keys and it was his own car that he was trying to break into.",
+     "question": "According to the passage, understanding intention helps humans to do what?",
+     "options": [
+      "Eliminate uncertainty behind physical actions",
+      "Predict desires",
+      "View other humans without judgement",
+      "Read the minds of others"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "Although AI has a strong connotation of science fiction, AI forms a very important branch of computer science, dealing with behavior, learning and intelligent adaptation in a machine. Research in AI involves making machines to automate tasks that require intelligent behavior. Examples include control, planning and scheduling, the ability to answer customer diagnoses and questions, as well as handwriting recognition, voice and face. Such things have become separate disciplines, which focus on providing solutions to real life problems. The AI ​​system is now often used in the fields of economics, medicine, engineering and the military, as has been built in several home computer and video game software applications.",
+     "question": "According to the passage, which of the following is an accurate summary of AI’s main purpose?",
+     "options": [
+      "Planning",
+      "Voice recognition ",
+      "Scheduling",
+      "Task automation"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "Although AI has a strong connotation of science fiction, AI forms a very important branch of computer science, dealing with behavior, learning and intelligent adaptation in a machine. Research in AI involves making machines to automate tasks that require intelligent behavior. Examples include control, planning and scheduling, the ability to answer customer diagnoses and questions, as well as handwriting recognition, voice and face. Such things have become separate disciplines, which focus on providing solutions to real life problems. The AI ​​system is now often used in the fields of economics, medicine, engineering and the military, as has been built in several home computer and video game software applications.",
+     "question": "According to the passage, which of the following is AI often associated with?",
+     "options": [
+      "Customer service",
+      "Planning and scheduling",
+      "Science fiction",
+      "Handwriting recognition"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "Convergent thinking patterns are problem solving techniques that unite different ideas or fields to find a solution. The focus of this mindset is speed, logic and accuracy, also identification of facts, reapplying existing techniques, gathering information. The most important factor of this mindset is: there is only one correct answer. You only think of two answers, namely right or wrong. This type of thinking is associated with certain science or standard procedures. People with this type of thinking have logical thinking, are able to memorize patterns, solve problems and work on scientific tests.",
+     "question": "According to the passage, which of the following is a strength of someone with convergent thinking patterns?",
+     "options": [
+      "Identifying multiple correct answers to a problem",
+      "Applying new techniques to a problem",
+      "Taking their time to solve problems",
+      "Memorizing patterns"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "Convergent thinking patterns are problem solving techniques that unite different ideas or fields to find a solution. The focus of this mindset is speed, logic and accuracy, also identification of facts, reapplying existing techniques, gathering information. The most important factor of this mindset is: there is only one correct answer. You only think of two answers, namely right or wrong. This type of thinking is associated with certain science or standard procedures. People with this type of thinking have logical thinking, are able to memorize patterns, solve problems and work on scientific tests.",
+     "question": "According to the passage, which of following is not considered a focus of the convergent thinking mindset?",
+     "options": [
+      "Understanding that there is only one correct answer",
+      "Taking one’s time",
+      "Identifying facts",
+      "Gathering information"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "The use of video recording has led to important discoveries in the interpretation of micro-expressions, facial movements which last a few milliseconds. In particular, it is claimed that one can detect whether a person is lying by interpreting micro-expressions correctly. Oliver Sacks, in his paper The President's Speech, indicated how people who are unable to understand speech because of brain damage are nevertheless able to assess sincerity accurately. He even suggests that such abilities in interpreting human behavior may be shared by animals such as domestic dogs.",
+     "question": "According to the passage, which of the following would not be considered a micro-expression?",
+     "options": [
+      "Glancing away while speaking",
+      "Furrowing the brow",
+      "Blinking rapidly",
+      "Giving a thumb’s up"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "The use of video recording has led to important discoveries in the interpretation of micro-expressions, facial movements which last a few milliseconds. In particular, it is claimed that one can detect whether a person is lying by interpreting micro-expressions correctly. Oliver Sacks, in his paper The President's Speech, indicated how people who are unable to understand speech because of brain damage are nevertheless able to assess sincerity accurately. He even suggests that such abilities in interpreting human behavior may be shared by animals such as domestic dogs.",
+     "question": "Which of the following statements about micro-expression interpretation is not true?",
+     "options": [
+      "Video recordings have led to significant advancements",
+      "Correct interpretation may detect lying",
+      "Speech as well as facial expressions are interpreted",
+      "It can help assess sincerity"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "As the ability to obtain knowledge and to learn changed in such a way as mentioned above the base rate at which knowledge was obtained changed. The approach to obtaining information was different. No longer did pressure reside within individual recall, but the ability to recall text became more of a focus. In essence, the Renaissance made a significant change in the approach to learning and the dissemination of knowledge.",
+     "question": "Which of the following became more important as a result of the Renaissance? ",
+     "options": [
+      "Individual recall",
+      "Circulating knowledge",
+      "Text recall",
+      "Obtaining information"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "As the ability to obtain knowledge and to learn changed in such a way as mentioned above the base rate at which knowledge was obtained changed. The approach to obtaining information was different. No longer did pressure reside within individual recall, but the ability to recall text became more of a focus. In essence, the Renaissance made a significant change in the approach to learning and the dissemination of knowledge.",
+     "question": "As a result of the Renaissance, less emphasis was put on which of the following?",
+     "options": [
+      "Individual recall",
+      "Obtaining knowledge",
+      "Text recall",
+      "Distribution of information"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "The Internet combines elements of both mass and interpersonal communication. The distinct characteristics of the Internet lead to additional dimensions in terms of the uses and gratifications approach. For example, “learning” and “socialization” are suggested as important motivations for Internet use (James et al., 1995). “Personal involvement” and “continuing relationships” were also identified as new motivation aspects by Eighmey and McCord (1998) when they investigated audience reactions to websites.",
+     "question": "Which of the following does not reflect a motivation to use the internet for continuing relationships?",
+     "options": [
+      "Business networking",
+      "Staying in touch with family",
+      "Researching travel",
+      "Meeting new people"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "The Internet combines elements of both mass and interpersonal communication. The distinct characteristics of the Internet lead to additional dimensions in terms of the uses and gratifications approach. For example, “learning” and “socialization” are suggested as important motivations for Internet use (James et al., 1995). “Personal involvement” and “continuing relationships” were also identified as new motivation aspects by Eighmey and McCord (1998) when they investigated audience reactions to websites.",
+     "question": "Which of the following does not reflect a motivation to use the internet for personal involvement?",
+     "options": [
+      "Looking up a recipe",
+      "Posting on an online discussion board",
+      "Researching healthcare products",
+      "Managing finances"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "Gothic style peaked in the period between the 10th - 11th centuries and the 14th century. At the beginning dress was heavily influenced by the Byzantine culture in the east. However, due to the slow communication channels, styles in the west could lag behind by 25 to 30 year. towards the end of the Middle Ages western Europe began to develop their own style. one of the biggest developments of the time as a result of the crusades people began to use buttons to fasten clothing.",
+     "question": "When did western Europe stop relying heavily on influences and start developing its own style?",
+     "options": [
+      "Around the end of the Middle Ages",
+      "During the Byzantine era",
+      "About 25 years after the Middle Ages",
+      "During the 11th century"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "Gothic style peaked in the period between the 10th - 11th centuries and the 14th century. At the beginning dress was heavily influenced by the Byzantine culture in the east. However, due to the slow communication channels, styles in the west could lag behind by 25 to 30 year. towards the end of the Middle Ages western Europe began to develop their own style. one of the biggest developments of the time as a result of the crusades people began to use buttons to fasten clothing.",
+     "question": "Using buttons to fasten clothing was a result of what? ",
+     "options": [
+      "The Gothic period",
+      "The Byzantine era",
+      "The Crusades",
+      "The Middle Ages"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "We can start living more friendly to the environment, we can join to the environmental movement, and we can even be activists in order to reduce the future suffering in some degree. This is just like symptomatic treatment in many cases. However, if we do not only want a temporary solution, then we should find the root of the problems, and we should deactivate them. It is obvious enough that the world has changed much because of humankind's scientific and technological advancements, and problems have become greater because of overpopulation and mankind's extravagant lifestyle.",
+     "question": "According to the passage, which of the following is considered a viable longterm solution to environmental issues?",
+     "options": [
+      "Boycotting extravagant lifestyle choices",
+      "Activism",
+      "Identifying the cause of the issues",
+      "Becoming an ally of the environmental movement"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "We can start living more friendly to the environment, we can join to the environmental movement, and we can even be activists in order to reduce the future suffering in some degree. This is just like symptomatic treatment in many cases. However, if we do not only want a temporary solution, then we should find the root of the problems, and we should deactivate them. It is obvious enough that the world has changed much because of humankind's scientific and technological advancements, and problems have become greater because of overpopulation and mankind's extravagant lifestyle.",
+     "question": "According to the passage, which of the following solutions would not be considered a symptomatic treatment of environmental issues?",
+     "options": [
+      "Engaging in activism",
+      "Deactivating the root causes of the issues",
+      "Voicing opinions about extravagant lifestyle choices",
+      "Living in a more environmentally-friendly way"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "The balance of power was a system in which European nations sought to maintain the national sovereignty of all European states. The concept was that all European nations had to seek to prevent one nation from becoming powerful, and thus national governments often changed their alliances in order to maintain the balance. The War of Spanish Succession marked the first war whose central issue was the balance of power. This marked an important change, as European powers would no longer have the pretext of being religious wars. Thus, the Thirty Years' War would be the last war to be labeled a religious war.",
+     "question": "In which country was the first war in Europe whose central issue was said to relate to the balance of power rather than having a religious context?",
+     "options": [
+      "England",
+      "Germany",
+      "Portugal",
+      "Spain"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "The balance of power was a system in which European nations sought to maintain the national sovereignty of all European states. The concept was that all European nations had to seek to prevent one nation from becoming powerful, and thus national governments often changed their alliances in order to maintain the balance. The War of Spanish Succession marked the first war whose central issue was the balance of power. This marked an important change, as European powers would no longer have the pretext of being religious wars. Thus, the Thirty Years' War would be the last war to be labeled a religious war.",
+     "question": "What war is sometimes described as the last ‘religious war’?",
+     "options": [
+      "Thirty Years’ War",
+      "Hundred Years’ War",
+      "War of Spanish Succession",
+      "Spanish Civil War"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "During this period of European history, the Catholic Church, which had become rich and powerful, came under scrutiny. For over a thousand years the Christian religion had bound European states together despite differences in language and customs. I Its all-pervading power affected everyone from king to commoner. One of the main Christian tenets is that wealth should be used to alleviate suffering and poverty and that the monetary funds of the church are there specifically for that reason. The central authority of the church had been in Rome for over a thousand years and this concentration of power and money led many to question whether this tenet was being met.",
+     "question": "Which of the following aspects of the Catholic Church was not being scrutinized?",
+     "options": [
+      "If the allocation of wealth within the Church was appropriate",
+      "If the main tenets of the religion should be amended",
+      "The concentration of power within the Church",
+      "If the main tenets of the Church were being met"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "The terrified King Louis XVI, Queen Marie Antoinette their two young children (11 year old Marie Therese and four year old Louis-Charles) and the King's sister, Madam Elizabeth, on the 6th October 1789 were forced back to Paris from Versailles by a mob of market women. In a carriage, they traveled back to Paris surrounded by a mob of people screaming and shouting threats against the King and Queen. The mob of people forced the King And Queen to have their carriage windows wide open. At one point a member of the mob waved the head of a royal guard killed at Versailles in front of the terrified Queen.",
+     "question": "According to the passage, who was murdered at Versailles?",
+     "options": [
+      "One of the market women",
+      "King Louis XVI",
+      "A member of the mob",
+      "A guard"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "The terrified King Louis XVI, Queen Marie Antoinette their two young children (11 year old Marie Therese and four year old Louis-Charles) and the King's sister, Madam Elizabeth, on the 6th October 1789 were forced back to Paris from Versailles by a mob of market women. In a carriage, they traveled back to Paris surrounded by a mob of people screaming and shouting threats against the King and Queen. The mob of people forced the King And Queen to have their carriage windows wide open. At one point a member of the mob waved the head of a royal guard killed at Versailles in front of the terrified Queen.",
+     "question": "Which of the following was not forced upon the King and the Queen by the mob?",
+     "options": [
+      "The opening of their carriage windows",
+      "An abrupt exit from Versailles ",
+      "A viewing of the guard’s beheading",
+      "A trip back to Paris"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "Soon after the outbreak of hostilities, Britain initiated a naval blockade of Germany. The strategy proved effective, cutting off vital military and civilian supplies, although this blockade violated generally accepted international law codified by several international agreements of the past two centuries. Britain mined international waters to prevent any ships from entering entire sections of ocean, causing danger to even neutral ships. Since there was limited response to this tactic, Germany expected a similar response to its unrestricted submarine warfare.",
+     "question": "Which of the following was not a result of Britain’s unconventional naval warfare?",
+     "options": [
+      "Germany’s wish to employ similar warfare tactics",
+      "Uninvolved ships were put in harm’s way",
+      "Changes were made to international law",
+      "Crucial supplies were unaccessible "
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "Soon after the outbreak of hostilities, Britain initiated a naval blockade of Germany. The strategy proved effective, cutting off vital military and civilian supplies, although this blockade violated generally accepted international law codified by several international agreements of the past two centuries. Britain mined international waters to prevent any ships from entering entire sections of ocean, causing danger to even neutral ships. Since there was limited response to this tactic, Germany expected a similar response to its unrestricted submarine warfare.",
+     "question": "Which statement does not accurately describe Britain’s naval blockage against Germany?",
+     "options": [
+      "It went against international law",
+      "It prompted Germany’s submarine warfare",
+      "It interrupted the flow of German supplies",
+      "It ensured that neutral ships wouldn’t be jeopardized"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  "belebele_hi": {
+   "lang": "hi",
+   "source": "Belebele hin_Deva",
+   "items": [
+    {
+     "passage": "सुनिश्चित करें कि आपका हाथ सभी नोट्स को सही से बजाते हुए भी जितना हो सके, उतना स्थिर है - यह भी प्रयास करें कि आपकी उंगलियाँं अत्यधिक गतिवान न हो। इस तरह, आप जितना हो सकेगा, अपने को थका लेंगे. याद रखें कि ज़्यादा आवाज़ के लिए उसकी कुंजियों को ज़्यादा ज़ोर से दबाने की ज़रूरत नहीं होती है, जैसा कि पियानो में होता है. अकॉर्डियन पर, अतिरिक्त वॉल्यूम प्राप्त करने के लिए, आप कुहनी का उपयोग अधिक दबाव या गति के साथ करते हैं।",
+     "question": "गद्यांश के अनुसार, संगीत के लिए अक्कादियन को सटीक रूप से पुनर्स्थापित करने के लिए वास्तव में क्या संभव नहीं है?",
+     "options": [
+      "अधिक मात्रा में उत्पन्न करने के लिए कुंजियों को अधिक बल के साथ दबाया जाना चाहिए",
+      "अपनी उंगलियों से अनावश्यक हरकत करने से बचें ताकि आपकी शक्ति कम न हो",
+      "यह सुनिश्चित करने के लिए ध्यान रखा जाना चाहिए कि आपके हाथ अक्काडियन को सही ढंग से पुनः प्राप्त करने के लिए सहज हों",
+      "उच्च मात्रा प्राप्त करने के लिए उच्च दबाव या वेग वाले अकॉर्डियन का उपयोग किया जा सकता है"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "सुनिश्चित करें कि आपका हाथ सभी नोट्स को सही से बजाते हुए भी जितना हो सके, उतना स्थिर है - यह भी प्रयास करें कि आपकी उंगलियाँं अत्यधिक गतिवान न हो। इस तरह, आप जितना हो सकेगा, अपने को थका लेंगे. याद रखें कि ज़्यादा आवाज़ के लिए उसकी कुंजियों को ज़्यादा ज़ोर से दबाने की ज़रूरत नहीं होती है, जैसा कि पियानो में होता है. अकॉर्डियन पर, अतिरिक्त वॉल्यूम प्राप्त करने के लिए, आप कुहनी का उपयोग अधिक दबाव या गति के साथ करते हैं।",
+     "question": "अक्कडियन को पुनः प्राप्त करते समय, निम्न में से कौन सा आयतन बढ़ाता है?",
+     "options": [
+      "ज्यादा रफ्तार",
+      "ज्यादा दबाव",
+      "कम दबाव",
+      "उंगली की गति कम"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "जब मूवी को डीवीडी प्रारूप में बदलने का प्रयास किया जाता है, तो ओवरस्कैन सबसे आम समस्याओं में से एक है। ज़्यादातर टेलीविज़न इस तरह से बनाए जाते हैं कि वे आम लोगों को खुश करें. इस कारण से, आप जो कुछ भी टीवी पर देखते हैं, उसमें ऊपर, नीचे और दाएँ-बाएँ सीमाएँ कटी होती हैं। इसे यह सुनिश्चित करने के लिए बनाया गया है ताकि तस्वीर पूरी स्क्रीन को कवर करे। इसे ओवरस्कैन कहा जाता है। दुर्भाग्य से, जब आप एक डीवीडी बनाते हैं, तो अधिक सम्भावना है कि सीमाएँ कट जाएँगी, और यदि वीडियो में उपशीर्षक भी निचले भाग के अत्यधिक पास था, तो वे पूरी तरह से नहीं दिखाए जाएँगे।",
+     "question": "टेलीविजन फिल्मों में किनारे क्यों काटे जाते हैं?",
+     "options": [
+      "उपशीर्षक प्रसारित करने के लिए",
+      "छवि पूरी स्क्रीन में फिट होनी चाहिए",
+      "साधारण बातचीत को अन्य स्वरूपों में परिवर्तित करने की अनुमति देने के लिए",
+      "यदि उपशीर्षक नीचे तक पहुँचते हैं तो उन्हें काटें"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "जब मूवी को डीवीडी प्रारूप में बदलने का प्रयास किया जाता है, तो ओवरस्कैन सबसे आम समस्याओं में से एक है। ज़्यादातर टेलीविज़न इस तरह से बनाए जाते हैं कि वे आम लोगों को खुश करें. इस कारण से, आप जो कुछ भी टीवी पर देखते हैं, उसमें ऊपर, नीचे और दाएँ-बाएँ सीमाएँ कटी होती हैं। इसे यह सुनिश्चित करने के लिए बनाया गया है ताकि तस्वीर पूरी स्क्रीन को कवर करे। इसे ओवरस्कैन कहा जाता है। दुर्भाग्य से, जब आप एक डीवीडी बनाते हैं, तो अधिक सम्भावना है कि सीमाएँ कट जाएँगी, और यदि वीडियो में उपशीर्षक भी निचले भाग के अत्यधिक पास था, तो वे पूरी तरह से नहीं दिखाए जाएँगे।",
+     "question": "दिए गए गद्यांश के अनुसार, मूवी को डीवीडी प्रारूप में परिवर्तित करते समय निम्नलिखित में से कौन सी समस्या का सामना करना पड़ सकता है?",
+     "options": [
+      "एक छवि जो पूरी स्क्रीन को नहीं भरती है",
+      "कुछ उपशीर्षक काट दिए गए हैं",
+      "स्क्रीन भरने वाली तस्वीर",
+      "कट बॉर्डर्स"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "अमेरिका की योजना तीन अलग जगहों से साझा हमले करने पर टिकी थी. जनरल जॉन कैडवलेडर अपने किसी भी सुदृढ़ीकरण को बंद करने के लिए बोर्दनटाउन में ब्रिटिश गैरीसन के ख़िलाफ़ एक ध्यान आकर्षित करने वाले हमले की शुरुआत करेंगे. जनरल जेम्स इविंग ट्रेंटन फ़ेरी में नदी के पार 700 मिलिशिया ले जाएगा, असुनपिंक क्रीक पर पुल को अपने अधिकार में ले लेगा और दुश्मन के किसी भी सैनिक को भागने से रोक देगा. 2,400 लोगों का मुख्य दल ट्रेंटन से नौ मील उत्तर की ओर नदी को पार करेगा और फिर दो समूहों में बंट जाएगा. इसके बाद, सुबह होने से पहले हमला करने के लिए एक समूह ग्रीन में और दूसरा सुलिवान में जाएगा.",
+     "question": "ब्रिटिश पुलिस कहाँ थी?",
+     "options": [
+      "असुनपिंक क्रीक",
+      "ट्रेंटन",
+      "बोर्डनटाउन",
+      "प्रिंसटोन"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "4 जुलाई को कांग्रेस द्वारा अपनाए जाने के बाद, एक हाथ से लिखे गए मसौदे पर कांग्रेस के अध्यक्ष जॉन हैनकॉक और सचिव चार्ल्स थ्रॉन द्वारा हस्ताक्षर किये गए थे, फिर इसे कुछ ब्लॉक दूर जॉन डनलप की प्रिंटिंग की दुकान पर भेजा गया था. रात के समय 150 और 200 के बीच प्रतियों बनती है , जिन्हे अब “डनलप ब्रॉडसाइड्स” के रूप में जाना जाता है। जॉन निक्सन द्वारा डॉक्यूमेंट की पहली पब्लिक रीडिंग 8 जुलाई को इंडिपेंडेंस हॉल के यार्ड में की गई थी. उनमें से एक जॉर्ज वाशिंगटन को 6 जुलाई को भेजा गया, जिसने कि इसको अपनी सेना के लिए न्यूयॉर्क में 9 जुलाई को पढ़ा। उसकी एक कॉपी 10 अगस्त को लंदन पहुंची। मौजूदा 25 डनलप ब्रॉडसाइड अब तक बची हुई सबसे पुरानी कॉपी के डॉक्यूमेंट हैं. हाथ से लिखी गई मूल कॉपी सहेजी नहीं जा सकी है.",
+     "question": "हस्तलिखित मसौदे पर किसके हस्ताक्षर थे?",
+     "options": [
+      "जॉन डनलप",
+      "जॉर्ज वाशिंगटन",
+      "जॉन निक्सन",
+      "चार्ल्स थॉमसन"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "4 जुलाई को कांग्रेस द्वारा अपनाए जाने के बाद, एक हाथ से लिखे गए मसौदे पर कांग्रेस के अध्यक्ष जॉन हैनकॉक और सचिव चार्ल्स थ्रॉन द्वारा हस्ताक्षर किये गए थे, फिर इसे कुछ ब्लॉक दूर जॉन डनलप की प्रिंटिंग की दुकान पर भेजा गया था. रात के समय 150 और 200 के बीच प्रतियों बनती है , जिन्हे अब “डनलप ब्रॉडसाइड्स” के रूप में जाना जाता है। जॉन निक्सन द्वारा डॉक्यूमेंट की पहली पब्लिक रीडिंग 8 जुलाई को इंडिपेंडेंस हॉल के यार्ड में की गई थी. उनमें से एक जॉर्ज वाशिंगटन को 6 जुलाई को भेजा गया, जिसने कि इसको अपनी सेना के लिए न्यूयॉर्क में 9 जुलाई को पढ़ा। उसकी एक कॉपी 10 अगस्त को लंदन पहुंची। मौजूदा 25 डनलप ब्रॉडसाइड अब तक बची हुई सबसे पुरानी कॉपी के डॉक्यूमेंट हैं. हाथ से लिखी गई मूल कॉपी सहेजी नहीं जा सकी है.",
+     "question": "निम्नलिखित स्थानों में से डनलप ब्रॉडसाइड आखिर कहाँ से आया था?",
+     "options": [
+      "न्यू यॉर्क",
+      "डनलप की प्रिंटिंग शॉप",
+      "लंदन",
+      "इंडिपेंडेंस हॉल"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "उपनिवेशिकों ने इस गतिविधि को देखकर बलवृद्धि के लिए भी बुलाया था. अग्रिम मोर्चे को मजबूत करने वाले सैनिकों में कर्नल जॉन स्टार्क और जेम्स रीड (दोनों बाद में सेनापति बने) के नेतृत्व में 200 सैनिकों की पहली और तीसरी न्यू हैम्पशायर रेजिमेंट शामिल थीे। स्टार्क के आदमियों ने उपनिवेशवादियों की स्थिति के उत्तरी छोर पर बाड़ के साथ-साथ अपनाी मोर्चा संभाला. जब पानी के कम प्रवाह की वजह से प्रायद्वीप के उत्तर-पूर्व में मिस्टिक नदी पर एक खाई बन गई, तब उन्होंने जल्दी से उस एक छोटी पत्थर की दीवार से उत्तर की ओर बाड़ आगे तक बढ़ा दिया, जो कि समुद्र तट के छोटे किनारे पर खत्म होती है. ग्रिडली या स्टार्क ने बाड़ के आगे 100 फ़ीट (30 मीटर) तक एक खूंटा लगा रखा था और ऑर्डर दिया था कि सैनिकों के निकल जाने तक कोई भी गोली नहीं चलाएगा.",
+     "question": "कर्नल स्टार्क की सेनाएँ कहाँ थीं?",
+     "options": [
+      "उत्तरी बाड़ के साथ",
+      "समुद्र तट पर जहां पानी समाप्त होता है",
+      "प्रायद्वीप के उत्तर-पूर्व में",
+      "बाड़ के सामने"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "उपनिवेशिकों ने इस गतिविधि को देखकर बलवृद्धि के लिए भी बुलाया था. अग्रिम मोर्चे को मजबूत करने वाले सैनिकों में कर्नल जॉन स्टार्क और जेम्स रीड (दोनों बाद में सेनापति बने) के नेतृत्व में 200 सैनिकों की पहली और तीसरी न्यू हैम्पशायर रेजिमेंट शामिल थीे। स्टार्क के आदमियों ने उपनिवेशवादियों की स्थिति के उत्तरी छोर पर बाड़ के साथ-साथ अपनाी मोर्चा संभाला. जब पानी के कम प्रवाह की वजह से प्रायद्वीप के उत्तर-पूर्व में मिस्टिक नदी पर एक खाई बन गई, तब उन्होंने जल्दी से उस एक छोटी पत्थर की दीवार से उत्तर की ओर बाड़ आगे तक बढ़ा दिया, जो कि समुद्र तट के छोटे किनारे पर खत्म होती है. ग्रिडली या स्टार्क ने बाड़ के आगे 100 फ़ीट (30 मीटर) तक एक खूंटा लगा रखा था और ऑर्डर दिया था कि सैनिकों के निकल जाने तक कोई भी गोली नहीं चलाएगा.",
+     "question": "गद्यांश के अनुसार, स्टार्क के आदमियों ने अपनी बाड़ कब बढ़ाई?",
+     "options": [
+      "उपनिवेशिकों ने बलवृद्धि के लिए बुलाये थे",
+      "नियमित रूप से शेयर देने के बाद आत्मसमर्पण करने के बाद",
+      "कम लहर पर",
+      "जैसे-जैसे सेना ताकत में आगे बढ़ती है"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "प्राचीन चीन में अलग-अलग समय अवधि दिखाने का एक अनूठा तरीका था; चीन का प्रत्येक चरण या प्रत्येक परिवार जो सत्ता में था, एक ख़ास राजवंश था. इसके अलावा, यह हर राजवंशों में राज्यों के बंटवारे को लेकर अस्थिरता का दौर था. इसी काल में तीन राज्यों के बंटवारे को लेकर हान और जिन राजवंशों के बीच 60 वर्षों तक चला संघर्ष काफ़ी मशहूर है. इस अवधि के दौरान सिंहासन के लिए लड़ रहे कई अमीरजादों के बीच भयंकर युद्ध हुआ। द थ्री किंग़डम्स प्राचीन चीन के इतिहास में सबसे खूनी धब्बों में एक युग था, हजारों लोगों की मृत्यु हो गई थी, जो शीआन में भव्य महल में सबसे ऊंची सीट पर बैठने के लिए लड़ रहे थे।",
+     "question": "गद्यांश के अनुसार, निम्नलिखित में से कौन सा चीन के सबसे हिंसक काल में से एक था?",
+     "options": [
+      "जिन राजवंश",
+      "शियान युग",
+      "हान राजवंश",
+      "तीन राज्यों का युग"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "सैनिक चींटी अलग-अलग चरणों में एक कतार में चलते हुए कॉलोनी और घर बनाती हैं. खानाबदोश चरण में, चींटियों की फ़ौज रात में मार्च करती हैं और दिन के समय डेरे में रुक जाती हैं. जब खाना कम हो जाता है तो बस्ती बंजारा चरण शुरू करती है। इस चरण में बस्ती अस्थायी घोंसले बनाती है जिन्हें प्रतिदिन बदला जाता है। इनमें से प्रत्येक खानाबदोश भगदड़ या मार्च लगभग 17 दिनों तक रहता है.",
+     "question": "गद्यांश के अनुसार, चींटियों की बस्ती के खानाबदोश काल के संभावित घटक क्या हैं?",
+     "options": [
+      "वे रात के दौरान घोंसले बनाते हैं",
+      "उनके पास भोजन की कम आपूर्ति है",
+      "वे घोंसले बनाते हैं जो 17 दिनों के बाद बदल जाते हैं",
+      "वे दिन में मार्च करते हैं"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "सैनिक चींटी अलग-अलग चरणों में एक कतार में चलते हुए कॉलोनी और घर बनाती हैं. खानाबदोश चरण में, चींटियों की फ़ौज रात में मार्च करती हैं और दिन के समय डेरे में रुक जाती हैं. जब खाना कम हो जाता है तो बस्ती बंजारा चरण शुरू करती है। इस चरण में बस्ती अस्थायी घोंसले बनाती है जिन्हें प्रतिदिन बदला जाता है। इनमें से प्रत्येक खानाबदोश भगदड़ या मार्च लगभग 17 दिनों तक रहता है.",
+     "question": "गद्यांश के अनुसार, कौन सा कथन खानाबदोश काल के दौरान सेना की चींटियों की कॉलोनियों की घोंसला बनाने की आदतों को सटीक रूप से दर्शाता है?",
+     "options": [
+      "वे रात में घोंसले बनाते हैं",
+      "वे घोंसले में नहीं रहके 17 दिनों तक मार्च करते हैं",
+      "वे रोजाना घोंसले बदलते हैं",
+      "वे सभी अवधियों के लिए एक ही घोंसले का उपयोग करते हैं"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "काफी लोगो में यह देखा गया है शारीरिक विज्ञान और व्यवहार में, अक्सर अंतर्जात चक्रों की उपस्थिति जैविक घड़ियों के माध्यम और उनके उत्पादन पर निर्भर करते हैं। ऐसी सामयिक लय जो सिर्फ़ बाहरी सामयिक संकेतों की प्रतिक्रियाएँ नहीं हैं, को बैक्टीरिया, कवक, पौधों और जानवरों सहित ज़्यादातर जीवित प्राणियों के लिए दर्ज किया गया है. जैविक घड़ियां आत्मनिर्भर ऑसिलेटर हैं जो बाहरी संकेतों के अभाव में भी मुक्त चलने वाले साइकिल को एक अवधि तक जारी रखेंगे।",
+     "question": "निम्नलिखित में से कौन सा बाहरी संदर्भों के अनुसार निरंतर है?",
+     "options": [
+      "अंतर्जात चक्र",
+      "आवधिक लय",
+      "जैविक घड़ियाँ",
+      "देखी गई लय"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "किसी दिए गए भौगोलिक क्षेत्र के अंदर किसी एक विशेष प्रजाति के जीवों के समूह को आबादी कहते है। जब एक आबादी के सभी व्यक्ति एक विशेष फ़ेनोटाइपिक विशेषता के संबंध में समान होते हैं, तो उन्हें मोनोमॉर्फ़िक के रूप में जाना जाता है. जब व्यक्ति किसी विशेषता के कई रूप दिखाता है, तो वह बहुरूपिया होता है.",
+     "question": "कौन सा शब्द उन व्यक्तियों का वर्णन करता है जो एक विशेष फेनोटाइपिक विशेषता के रूपांतर दिखाते हैं?",
+     "options": [
+      "मोनोमॉर्फिक",
+      "जीवों",
+      "प्रजाति",
+      "बहुरूपिया"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "किसी दिए गए भौगोलिक क्षेत्र के अंदर किसी एक विशेष प्रजाति के जीवों के समूह को आबादी कहते है। जब एक आबादी के सभी व्यक्ति एक विशेष फ़ेनोटाइपिक विशेषता के संबंध में समान होते हैं, तो उन्हें मोनोमॉर्फ़िक के रूप में जाना जाता है. जब व्यक्ति किसी विशेषता के कई रूप दिखाता है, तो वह बहुरूपिया होता है.",
+     "question": "किसी विशेष क्षेत्र पर कब्जा करने वाले जीवों के लिए निम्नलिखित में से कौन सा सही शब्द है?",
+     "options": [
+      "मोनोमॉर्फिक",
+      "आबादी",
+      "प्रजाति",
+      "बहुरूपिया"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "प्रकृति आधारित पर्यटन, प्राकृतिक दृश्यों को देखने में रूचि रखने वाले लोगों को आकर्षित करने के उद्देश्य से आकर्षित करता है, जिसमें पौधे और पशु वन्यजीव शामिल हैं। ऑन साइट गतिविधियों के उदाहरणों में शामिल है शिकार, मछली पकड़ना, फोटोग्राफी, बर्ड वॉचिंग और पार्कों का दौरा करना और पारिस्थितिकी तंत्र के बारे में जानकारी का अध्ययन करना। बॉर्नियो में जाना, फोटोग्राफी करना, और औरैंगउटान के बारे में जानना एक उदाहरण है.",
+     "question": "निम्नलिखित में से कौन सा प्रकृति आधारित पर्यटन गतिविधि का उदाहरण नहीं है?",
+     "options": [
+      "झरने पर लंबी पैदल यात्रा",
+      "वाइल्डफ्लावर की तस्वीरें लेना",
+      "विज्ञान संग्रहालय पर जाएँ",
+      "मछली पकड़ने"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "काम पर जाने के लिए अपनी गाड़ियों से छोटे शहरो को छोड़ देते हैं और दूसरों द्वारा पारित किया गया काम की स्थान है जो उन्होंने अभी छोड़ी है। इस गतिशील परिवहन शटल में हर कोई किसी न किसी तरह से जुड़ा हुआ है, और निजी कारों पर आधारित परिवहन प्रणाली का समर्थन करता है. विज्ञान अब यह संकेत देता है कि इस विशाल कार्बन अर्थव्यवस्था ने जीवमंडल को उसकी स्थिर स्थितियों में से एक से हटा दिया है जिसने पिछले बीस लाख सालों में मानव विकास में सहायता की है.",
+     "question": "गद्यांश के अनुसार, निम्नलिखित में से कौन सा परिवहन के साधन का आधार है?",
+     "options": [
+      "कार्य स्थल",
+      "निजी कार",
+      "स्थिर जीवमंडल",
+      "मानव विकास"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "परमाणु को सभी तत्वों के निर्माण के मूल खंडों का एक हिस्सा माना जा सकता है. एक सरलीकृत बोहर मॉडल के अनुसार यह एक बहुत ही जटिल इकाई है जिसमें इलेक्ट्रॉनों द्वारा परिक्रमा करने वाला एक केंद्रीय नाभिक है, जो कुछ हद तक सूर्य की परिक्रमा करने वाले ग्रहों के समान है - चित्र 1.1 देखें। न्यूक्लियस दो कणों – न्यूट्रॉन और प्रोटॉन से मिलकर बनता है. प्रोटॉन का धनात्मक विद्युत आवेश होता है जबकि न्यूट्रॉन का कोई आवेश नहीं होता. इलेक्ट्रॉन्स का नकारात्मक विद्युत आवेश होता है.",
+     "question": "नाभिक के चारों ओर के कणों पर किस प्रकार का आवेश होता है?",
+     "options": [
+      "सकारात्मक चार्ज",
+      "कोई चार्ज नहीं",
+      "नकारात्मक चार्ज",
+      "सकारात्मक और नकारात्मक चार्ज"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "परमाणु को सभी तत्वों के निर्माण के मूल खंडों का एक हिस्सा माना जा सकता है. एक सरलीकृत बोहर मॉडल के अनुसार यह एक बहुत ही जटिल इकाई है जिसमें इलेक्ट्रॉनों द्वारा परिक्रमा करने वाला एक केंद्रीय नाभिक है, जो कुछ हद तक सूर्य की परिक्रमा करने वाले ग्रहों के समान है - चित्र 1.1 देखें। न्यूक्लियस दो कणों – न्यूट्रॉन और प्रोटॉन से मिलकर बनता है. प्रोटॉन का धनात्मक विद्युत आवेश होता है जबकि न्यूट्रॉन का कोई आवेश नहीं होता. इलेक्ट्रॉन्स का नकारात्मक विद्युत आवेश होता है.",
+     "question": "नाभिक किन कणों से मिलकर बना होता है?",
+     "options": [
+      "प्रोटॉन और न्यूट्रॉन",
+      "न्यूट्रॉन और इलेक्ट्रॉन",
+      "इलेक्ट्रॉन और प्रोटॉन",
+      "प्रोटॉन, न्यूट्रॉन और इलेक्ट्रॉन"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "आजकल उपयोग किए जाने वाले सभी कंप्यूटर, जानकारी के हेरफेर पर आधारित हैं इन्हें बाइनरी नंबर के रूप में कोड किया गया है. किसी बाइनरी संख्या में दो में से एक ही मान हो सकता है, यानी 0 या 1, और इन संख्याओं को ही बाइनरी अंक - या कंप्यूटर की शब्दावली में बिट कहा जाता है.",
+     "question": "गद्यांश के अनुसार, निम्न में से कौन सा पांच-बिट बाइनरी नंबर का उदाहरण है?",
+     "options": [
+      "1010",
+      "12001",
+      "10010",
+      "110101"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "आजकल उपयोग किए जाने वाले सभी कंप्यूटर, जानकारी के हेरफेर पर आधारित हैं इन्हें बाइनरी नंबर के रूप में कोड किया गया है. किसी बाइनरी संख्या में दो में से एक ही मान हो सकता है, यानी 0 या 1, और इन संख्याओं को ही बाइनरी अंक - या कंप्यूटर की शब्दावली में बिट कहा जाता है.",
+     "question": "बाइनरी डिजिट किसे कहते हैं?",
+     "options": [
+      "बिट्स",
+      "वैल्यूज",
+      "जारगन",
+      "फॉर्म्स"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "ब्लॉग से छात्र लेखन में सुधार करने में भी मदद मिल सकती है. जहां छात्र अपने ब्लॉग अनुभव की शुरुआत अक्सर बेतरतीब व्याकरण और वर्तनी के साथ करते हैं, वहीं दर्शकों की मौजूदगी से इसमें आम तौर पर बदलाव आता है. चूंकि छात्र अक्सर सबसे आलोचनात्मक दर्शक होते हैं, इसलिए ब्लॉग लेखक आलोचना या समीक्षा से बचने के लिए लेखन में सुधार करने का प्रयास करना शुरू कर देता/देती है। साथ ही ब्लॉगिंग “छात्रों को अपने आस-पास की दुनिया के बारे में ज़्यादा जानकारी रखने के लिए मजबूर करती है.” दर्शकों की दिलचस्पी को पूरा करने की ज़रूरत छात्रों को चपल और दिलचस्प बनने के प्रेरित करती है. (टोटो, 2004). ब्लॉगिंग एक ऐसा टूल है जो सहयोग को प्रेरित करता है, और छात्रों को पारंपरिक स्कूल के दिन से बेहतर सीखने के लिए प्रोत्साहित करता है. ब्लॉग्स का सही इस्तेमाल “स्टूडेंट्स को ज्यादा विश्लेषणात्मक और विवेचनात्मक बनाने के लिए सशक्त बना सकते हैं; इंटरनेट सामग्रियों पर सक्रिय रूप से जवाब देकर, स्टूडेंट्स दूसरों के लेखन के संदर्भ में अपनी स्थितियों को परिभाषित कर सकते हैं. साथ ही किसी खास विषय पर खुद के दृष्टिकोण को ऑनलाइन कर सकते हैं (ओरावेक, 2002).",
+     "question": "छात्र ब्लॉग के प्राथमिक लाभ के रूप में गद्यांश में निम्नलिखित में से किसका उल्लेख नहीं किया गया है?",
+     "options": [
+      "व्याकरण और लेखन क्षमता में सुधार",
+      "दर्शकों से कम समीक्षा",
+      "परिवेश के बारे में जागरूकता को व्यापक बनाना",
+      "निरंतर सीखने की बढ़ती इच्छा"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ब्लॉग से छात्र लेखन में सुधार करने में भी मदद मिल सकती है. जहां छात्र अपने ब्लॉग अनुभव की शुरुआत अक्सर बेतरतीब व्याकरण और वर्तनी के साथ करते हैं, वहीं दर्शकों की मौजूदगी से इसमें आम तौर पर बदलाव आता है. चूंकि छात्र अक्सर सबसे आलोचनात्मक दर्शक होते हैं, इसलिए ब्लॉग लेखक आलोचना या समीक्षा से बचने के लिए लेखन में सुधार करने का प्रयास करना शुरू कर देता/देती है। साथ ही ब्लॉगिंग “छात्रों को अपने आस-पास की दुनिया के बारे में ज़्यादा जानकारी रखने के लिए मजबूर करती है.” दर्शकों की दिलचस्पी को पूरा करने की ज़रूरत छात्रों को चपल और दिलचस्प बनने के प्रेरित करती है. (टोटो, 2004). ब्लॉगिंग एक ऐसा टूल है जो सहयोग को प्रेरित करता है, और छात्रों को पारंपरिक स्कूल के दिन से बेहतर सीखने के लिए प्रोत्साहित करता है. ब्लॉग्स का सही इस्तेमाल “स्टूडेंट्स को ज्यादा विश्लेषणात्मक और विवेचनात्मक बनाने के लिए सशक्त बना सकते हैं; इंटरनेट सामग्रियों पर सक्रिय रूप से जवाब देकर, स्टूडेंट्स दूसरों के लेखन के संदर्भ में अपनी स्थितियों को परिभाषित कर सकते हैं. साथ ही किसी खास विषय पर खुद के दृष्टिकोण को ऑनलाइन कर सकते हैं (ओरावेक, 2002).",
+     "question": "ब्लॉगिंग के निम्नलिखित पहलुओं में से कौन सा छात्रों के लिए उनके लेखन कौशल में सुधार करने के लिए एक प्रेरक के रूप में उद्धृत किया गया है?",
+     "options": [
+      "इंटरनेट पर सामग्री के लिए अक्सर प्रतिक्रिया देना",
+      "क्रिटिसिज्म से बचने की इच्छा",
+      "अपने दर्शकों की रुचि बनाए रखना",
+      "सहयोग की जरूरत"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "अतुल्यकालिक संचार प्रतिबिंब और दूसरों की प्रतिक्रिया के लिए समय को बढ़ावा देता है. यह स्टूडेंट्स को अपनी गति से काम करने और प्रशिक्षण संबंधी जानकारी की गति को नियंत्रित करने की अनुमति देता है. इसके अलावा, समय की पाबंदी कम है और अपनी पसंद के अनुसार काम करने के घंटों में बदलाव किया जा सकता है. (ब्रेमर, 1998) इंटरनेट और वर्ल्ड वाइड वेब के उपयोग से शिक्षार्थियों को हर वक्त जानकारी प्राप्त करने की सुविधा मिलती है। छात्र दिन में कभी भी शिक्षक को सवाल भेज सकते हैं और अगली बार आमने-सामने होने वाली मीटिंग होने तक इंतज़ार करने के बजाय कभी भी अपने सवाल का तुंरत जवाब पा सकते हैं.",
+     "question": "निम्नलिखित में से कौन सा छात्रों के लिए अतुल्यकालिक संचार का लाभ नहीं है?",
+     "options": [
+      "एक संसाधन के रूप में इंटरनेट का उपयोग करना",
+      "छात्रों को किसी भी समय प्रशिक्षकों के लिए आमने-सामने का दृष्टिकोण है",
+      "लचीले काम के घंटे",
+      "गति नियंत्रण"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "अतुल्यकालिक संचार प्रतिबिंब और दूसरों की प्रतिक्रिया के लिए समय को बढ़ावा देता है. यह स्टूडेंट्स को अपनी गति से काम करने और प्रशिक्षण संबंधी जानकारी की गति को नियंत्रित करने की अनुमति देता है. इसके अलावा, समय की पाबंदी कम है और अपनी पसंद के अनुसार काम करने के घंटों में बदलाव किया जा सकता है. (ब्रेमर, 1998) इंटरनेट और वर्ल्ड वाइड वेब के उपयोग से शिक्षार्थियों को हर वक्त जानकारी प्राप्त करने की सुविधा मिलती है। छात्र दिन में कभी भी शिक्षक को सवाल भेज सकते हैं और अगली बार आमने-सामने होने वाली मीटिंग होने तक इंतज़ार करने के बजाय कभी भी अपने सवाल का तुंरत जवाब पा सकते हैं.",
+     "question": "दिए गए परिच्छेद के अनुसार, अतुल्यकालिक संचार के निम्नलिखित पहलुओं में से कौन सा छात्रों के लिए लचीला नहीं है?",
+     "options": [
+      "सीखने की गति",
+      "काम के घंटे",
+      "अनुदेशात्मक सामग्",
+      "इंटरनेट का उपयोग"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "पारंपरिक मध्ययुगीन महल ने लंबे समय से कल्पना को प्रेरित किया है, जो जत्थों, भोजों और आर्थरियन शिष्टता की छवियाँ मन में लाता है। हज़ार साल पुराने खंडहरों के बीच खड़े होकर भी लंबे समय से चली आ रही लड़ाइयों की आवाज़ और खुशबू को मन में लाना आसान है, लगभग कोयलों पर खुरों की खटपट सुनने और कालकोठरी के कब्रों से उठने वाले डर को सूँघने जैसा. लेकिन क्या हमारी कल्पना वास्तविकता पर आधारित है? महल बनाए ही क्यों गए थे? उन्हें कैसे डिज़ाइन और बनाया गया था?",
+     "question": "परिच्छेद में किन बातों का उल्लेख नहीं किया गया है जो मध्यकालीन किलेबंदी से जुड़ी हो सकती है?",
+     "options": [
+      "कालकोठरी के गड्ढे",
+      "जोउस्ट्स",
+      "क्षात्रधर्म",
+      "शूरवीर"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "पारंपरिक मध्ययुगीन महल ने लंबे समय से कल्पना को प्रेरित किया है, जो जत्थों, भोजों और आर्थरियन शिष्टता की छवियाँ मन में लाता है। हज़ार साल पुराने खंडहरों के बीच खड़े होकर भी लंबे समय से चली आ रही लड़ाइयों की आवाज़ और खुशबू को मन में लाना आसान है, लगभग कोयलों पर खुरों की खटपट सुनने और कालकोठरी के कब्रों से उठने वाले डर को सूँघने जैसा. लेकिन क्या हमारी कल्पना वास्तविकता पर आधारित है? महल बनाए ही क्यों गए थे? उन्हें कैसे डिज़ाइन और बनाया गया था?",
+     "question": "किले के खंडहरों के बीच दिखाई देने वाली गंध या खुरों के शोर-शराबे में निम्नलिखित में से किसका उल्लेख नहीं किया गया है?",
+     "options": [
+      "लड़ाई",
+      "डर",
+      "भोज",
+      "खुरों"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "अपने समय के हिसाब से, किर्बी मक्सलो किला एक वास्तविक किले की तुलना में एक मज़बूत घर अधिक है। इसकी बड़ी चमकदार खिड़कियाँं और पतली दीवारें लंबे समय तक  निर्धारित हमले का विरोध करने में सक्षम नहीं होतीं। 1480 में, जब लॉर्ड हेस्टिंग्स द्वारा इसका निर्माण शुरू किया गया था, तब देश अपेक्षाकृत रूप से शांत था. इसके साथ ही बचाव की ज़रूरत केवल घुमक्कड़ उपद्रवियों के छोटे समूहों के खिलाफ़ होती थी.",
+     "question": "निम्नलिखित में से क्या द कीर्बी मुक्स्लो कैसल का सटीक विवरण है?",
+     "options": [
+      "किले की मजबूत दीवारें लॉर्ड हेस्टिंग्स के अनुरोध पर बनाई गई थीं",
+      "निर्माण के दौरान देश की शांति के लिए न्यूनतम सुरक्षा की आवश्यकता थी",
+      "किले का निर्माण उस अवधि के समान नहीं था",
+      "यह इस तरह से बनाया गया था कि यह लंबा और दृढ़ था और लंबे समय तक हमलों का विरोध कर सकता था"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "अपने समय के हिसाब से, किर्बी मक्सलो किला एक वास्तविक किले की तुलना में एक मज़बूत घर अधिक है। इसकी बड़ी चमकदार खिड़कियाँं और पतली दीवारें लंबे समय तक  निर्धारित हमले का विरोध करने में सक्षम नहीं होतीं। 1480 में, जब लॉर्ड हेस्टिंग्स द्वारा इसका निर्माण शुरू किया गया था, तब देश अपेक्षाकृत रूप से शांत था. इसके साथ ही बचाव की ज़रूरत केवल घुमक्कड़ उपद्रवियों के छोटे समूहों के खिलाफ़ होती थी.",
+     "question": "गद्यांश में वर्णित अवधि के दौरान निम्नलिखित संरचनात्मक पहलुओं में से कौन सा किर्बी मुक्सलो के महल के लिए असामान्य माना जाता है?",
+     "options": [
+      "बड़ी चमकती खिड़कियां",
+      "लंबे समय तक हमलों का विरोध करने के लिए बनाई गई नींव",
+      "कुछ किलों की तुलना में कम फोर्टिफाइंग",
+      "पतली दीवारें"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "तिमाही से आधे-मील तक के बदलाव के साथ, गति बहुत कम महत्व की हो जाती है और स्थिरता एक अत्यंत आवश्यकता बन जाती है. निश्चय ही एक प्रथम श्रेणी का आधा मील वाला धावक, एक व्यक्ति जो दो मिनट से कम समय ले सकता हो, उसमें काफी सारी गति होनी चाहिए, लेकिन सभी खतरों के लिए सहन-शक्ति का विकास होना जरूरी है. सर्दियों के दौरान दौड़ कराने वाली कुछ क्रॉस कंट्री, शरीर के ऊपरी हिस्से की मज़बूती के लिए जिम वालों से जुड़ गए हैं जो कि रनिंग सीज़न के लिए सबसे सही तैयारी है.",
+     "question": "गद्यांश के अनुसार, आगामी सीज़न की तैयारी करने वाले धावक के लिए निम्नलिखित में से कौन सा सबसे प्रभावी है?",
+     "options": [
+      "गर्मियों में क्रॉस कंट्री रनिंग का अभ्यास करें",
+      "ट्रेनिंग के दौरान स्पीड बढ़ाने पर फोकस",
+      "तीन मिनट में जीत",
+      "ऊपरी शरीर के लिए जिमनास्टिक व्यायाम करना"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "तिमाही से आधे-मील तक के बदलाव के साथ, गति बहुत कम महत्व की हो जाती है और स्थिरता एक अत्यंत आवश्यकता बन जाती है. निश्चय ही एक प्रथम श्रेणी का आधा मील वाला धावक, एक व्यक्ति जो दो मिनट से कम समय ले सकता हो, उसमें काफी सारी गति होनी चाहिए, लेकिन सभी खतरों के लिए सहन-शक्ति का विकास होना जरूरी है. सर्दियों के दौरान दौड़ कराने वाली कुछ क्रॉस कंट्री, शरीर के ऊपरी हिस्से की मज़बूती के लिए जिम वालों से जुड़ गए हैं जो कि रनिंग सीज़न के लिए सबसे सही तैयारी है.",
+     "question": "दिए गए गद्यांश के अनुसार, प्रथम श्रेणी के आधे मील के धावक के लिए निम्नलिखित में से कौन सा अत्यंत महत्वपूर्ण है?",
+     "options": [
+      "सर्दियों में कुछ क्रॉस कंट्री दौड़ रहे हैं",
+      "गति के बजाय धीरज विकसित करना",
+      "दो मिनट में जीत",
+      "धीरज के बजाय गति विकसित करना"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "उचित पोषण संबंधी सेवन अकेले कुलीन प्रदर्शन उत्पन्न नहीं कर सकते, लेकिन वे युवा एथलीटों के संपूर्ण स्वास्थ्य को महत्वपूर्ण रूप से प्रभावित कर सकते हैं. एक स्वस्थ ऊर्जा संतुलन बनाए रखना, प्रभावी जलयोजन आदतें बनाना, और सप्लीमेंटेशन के विभिन्न पहलुओं को समझना एथलीटों को अपने प्रदर्शन को बेहतर बनाने और खेल का आनंद बढ़ाने में मदद कर सकता है.",
+     "question": "एक एथलीट के लिए, निम्नलिखित में से क्या अकेले पोषण प्रथाओं द्वारा प्राप्त नहीं किया जा सकता है?",
+     "options": [
+      "बेहतर प्रदर्शन",
+      "बढ़ती खुशी",
+      "क्लासिक प्रदर्शन",
+      "सामान्य स्वास्थ्य"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "उचित पोषण संबंधी सेवन अकेले कुलीन प्रदर्शन उत्पन्न नहीं कर सकते, लेकिन वे युवा एथलीटों के संपूर्ण स्वास्थ्य को महत्वपूर्ण रूप से प्रभावित कर सकते हैं. एक स्वस्थ ऊर्जा संतुलन बनाए रखना, प्रभावी जलयोजन आदतें बनाना, और सप्लीमेंटेशन के विभिन्न पहलुओं को समझना एथलीटों को अपने प्रदर्शन को बेहतर बनाने और खेल का आनंद बढ़ाने में मदद कर सकता है.",
+     "question": "दिए गए गद्यांश के अनुसार, युवा एथलीटों को अपने खेल में अधिक आनंद पाने के तरीके के रूप में निम्नलिखित में से क्या अनुशंसित नहीं है?",
+     "options": [
+      "उचित पोषण का अभ्यास करना",
+      "कुलीन स्तर पर लगातार प्रदर्शन",
+      "हाइड्रेटिंग प्रभावी ढंग से",
+      "एक स्वस्थ ऊर्जा संतुलन बनाए रखना"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "मध्यदूरी की दौड़ अपेक्षाकृत एक सस्ता खेल है; हालाँकि, इसमें हिस्सा लेने के लिए ज़रूरी उपकरणों के कुछ भागों के बारे में कई गलतफ़हमियाँ हैं. ज़रूरत के हिसाब से उत्पाद खरीदे जा सकते हैं, लेकिन ज़्यादातर के प्रदर्शन पर कोई खास असर नहीं होगा. खिलाड़ियों को लग सकता है कि उन्हें कोई उत्पाद अधिक पसंद हैं, जबकि वह कोई वास्तविक लाभ भी न देता हो।",
+     "question": "दिए गए गद्यांश के अनुसार, एक मध्यम दूरी का धावक अधिक महंगा उपकरण क्यों खरीदता है?",
+     "options": [
+      "उनकी व्यक्तिगत पसंद है",
+      "इसके सिद्ध लाभ हैं",
+      "यह उनके प्रदर्शन को बहुत प्रभावित करेगा",
+      "कम लागत वाले उपकरणों के बारे में गलत धारणाएं हैं"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "मध्यदूरी की दौड़ अपेक्षाकृत एक सस्ता खेल है; हालाँकि, इसमें हिस्सा लेने के लिए ज़रूरी उपकरणों के कुछ भागों के बारे में कई गलतफ़हमियाँ हैं. ज़रूरत के हिसाब से उत्पाद खरीदे जा सकते हैं, लेकिन ज़्यादातर के प्रदर्शन पर कोई खास असर नहीं होगा. खिलाड़ियों को लग सकता है कि उन्हें कोई उत्पाद अधिक पसंद हैं, जबकि वह कोई वास्तविक लाभ भी न देता हो।",
+     "question": "गद्यांश के अनुसार, मध्यम दूरी के प्रवाह के लिए क्या आवश्यक है?",
+     "options": [
+      "बहुत सारे उपकरण",
+      "एक स्थापित एथलेटिक पृष्ठभूमि",
+      "बहुत कम उपकरण",
+      "बहुत सारा पैसा"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "एमआरआई एक भौतिकी घटना पर आधारित है जिसे परमाणु चुंबकीय अनुनाद (एनएमआर) कहा जाता है, जिसकी खोज 1930 के दशक में फ़ेलिक्स बलोच (स्टैनफ़ोर्ड विश्वविद्यालय में कार्यरत) और एडवर्ड परसेल (हार्वर्ड विश्वविद्यालय) ने की थी. इस अनुनाद में, चुंबकीय क्षेत्र और रेडियो तरंगें परमाणुओं को छोटे रेडियो संकेतों को छोड़ने का कारण बनते हैं. साल 1970 में, मेडिकल डॉक्टर और अनुसंधान वैज्ञानिक रेमंड डेमेडियन ने चिकित्सा निदान के लिए एक उपकरण के रूप में चुंबकीय अनुनाद इमेजिंग का इस्तेमाल करने के लिए आधार की खोज की. चार साल बाद कोई पेटेंट दिया गया. यह एमआरआई के क्षेत्र में जारी किया गया दुनिया का पहला पेटेंट था. 1977 में, डॉ. डेमेडियन ने सबसे पहले “पूरे शरीर पर” एमआरआई स्कैनर की संरचना का निर्माण किया, जिसे उन्होंने “अदम्य” नाम दिया.",
+     "question": "परमाणु चुंबकीय अनुनाद की खोज किसने की थी?",
+     "options": [
+      "परसेल",
+      "डेमेडियन",
+      "बलोच और परसेल",
+      "बलोच और डेमेडियन"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "एमआरआई एक भौतिकी घटना पर आधारित है जिसे परमाणु चुंबकीय अनुनाद (एनएमआर) कहा जाता है, जिसकी खोज 1930 के दशक में फ़ेलिक्स बलोच (स्टैनफ़ोर्ड विश्वविद्यालय में कार्यरत) और एडवर्ड परसेल (हार्वर्ड विश्वविद्यालय) ने की थी. इस अनुनाद में, चुंबकीय क्षेत्र और रेडियो तरंगें परमाणुओं को छोटे रेडियो संकेतों को छोड़ने का कारण बनते हैं. साल 1970 में, मेडिकल डॉक्टर और अनुसंधान वैज्ञानिक रेमंड डेमेडियन ने चिकित्सा निदान के लिए एक उपकरण के रूप में चुंबकीय अनुनाद इमेजिंग का इस्तेमाल करने के लिए आधार की खोज की. चार साल बाद कोई पेटेंट दिया गया. यह एमआरआई के क्षेत्र में जारी किया गया दुनिया का पहला पेटेंट था. 1977 में, डॉ. डेमेडियन ने सबसे पहले “पूरे शरीर पर” एमआरआई स्कैनर की संरचना का निर्माण किया, जिसे उन्होंने “अदम्य” नाम दिया.",
+     "question": "चिकित्सा इमेजिंग कंपन के लिए पहला पेटेंट किस वर्ष में दिया गया था?",
+     "options": [
+      "1977",
+      "1974",
+      "1930",
+      "1970"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "मानव प्रजाति, दूसरों का दिमाग पढ़ने वाली अब तक की सबसे प्रतिभाशाली प्रजाति है. इसका मतलब है कि हम अन्य मनुष्यों की समझ, इरादा, विश्वास, अनुभव या इच्छा का सफलतापूर्वक अनुमान लगाने में सक्षम हैं. इन क्षमताओं के बावजूद, दूसरों के इरादे को समझना महत्वपूर्ण है। यह हमें शारीरिक क्रियाओं की संभावित अस्पष्टताओं को हल करने के योग्य बनाता है। उदाहरण के लिए, अगर आप किसी को कार की खिड़की तोड़ते हुए देखते हैं, तो आप शायद समझेंगे कि वह किसी अजनबी की कार चोरी करने की कोशिश कर रहा है. अगर उसने अपनी कार की चाबी खोई है और वह अपनी ही कार को तोड़ कर खोलने का प्रयास कर रहा था, तो उसे अलग तरह से आंका जाना चाहिए।",
+     "question": "दिए गए अंश के अनुसार, दूसरों की शारीरिक गतिविधियों को समझाने के लिए मनुष्यों को किस बारे में मजबूत समझ होनी चाहिए?",
+     "options": [
+      "इच्छा",
+      "इरादा",
+      "विश्वास",
+      "अनुभूति"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "मानव प्रजाति, दूसरों का दिमाग पढ़ने वाली अब तक की सबसे प्रतिभाशाली प्रजाति है. इसका मतलब है कि हम अन्य मनुष्यों की समझ, इरादा, विश्वास, अनुभव या इच्छा का सफलतापूर्वक अनुमान लगाने में सक्षम हैं. इन क्षमताओं के बावजूद, दूसरों के इरादे को समझना महत्वपूर्ण है। यह हमें शारीरिक क्रियाओं की संभावित अस्पष्टताओं को हल करने के योग्य बनाता है। उदाहरण के लिए, अगर आप किसी को कार की खिड़की तोड़ते हुए देखते हैं, तो आप शायद समझेंगे कि वह किसी अजनबी की कार चोरी करने की कोशिश कर रहा है. अगर उसने अपनी कार की चाबी खोई है और वह अपनी ही कार को तोड़ कर खोलने का प्रयास कर रहा था, तो उसे अलग तरह से आंका जाना चाहिए।",
+     "question": "गद्यांश के अनुसार, उद्देश्य को समझने की क्षमता मनुष्यों की क्या मदद करती है?",
+     "options": [
+      "शारीरिक कार्यों के पीछे अनिश्चितता को खत्म करें",
+      "इच्छाओं की भविष्यवाणी करें",
+      "निर्णय के बिना अन्य मनुष्यों को देखें",
+      "दूसरों के मन को पढ़ना"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "हालाँकि एआई में विज्ञान कथाओं का एक मज़बूत अर्थ होता है, लेकिन एआई कंप्यूटर विज्ञान की एक बहुत ही अहम शाखा बनाता है, जिसमें बर्ताव से निपटना, किसी मशीन में सीखना और बुद्धिमान अनुकूलन शामिल है. एआई में अनुसंधान में ऐसे कार्यों को स्वचालित करने के लिए मशीनें बनाना शामिल है जिनमें बुद्धिमान व्यवहार की आवश्यकता होती है। इसके उदाहरणों में नियंत्रण, नियोजन और समय निर्धारण, ग्राहक के निदान और सवालों के जवाब देने के साथ ही हाथ से लिखे होने की पहचान करना, बोली और चेहरा शामिल है. ऐसी चीजें अलग-अलग अनुशासन बन गई हैं, जो वास्तविक जीवन की समस्याओं के समाधान प्रदान करने पर ध्यान देती हैं। आजकल एआई सिस्टम का इस्तेमाल अक्सर अर्थशास्त्र, दवाइयों, इंजीनियरिंग और सैन्य क्षेत्रों में किया जाता है, जैसा कि कई होम कंप्यूटर और वीडियो गेम सॉफ़्टवेयर ऐप्लिकेशन में बनाया गया है.",
+     "question": "गद्यांश के अनुसार, निम्नलिखित में से कौन सा कृत्रिम बुद्धि के मुख्य उद्देश्य का सटीक सारांश है?",
+     "options": [
+      "नियोजन",
+      "आवाज की पहचान",
+      "अनुसूचन",
+      "कार्य स्वचालन"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "हालाँकि एआई में विज्ञान कथाओं का एक मज़बूत अर्थ होता है, लेकिन एआई कंप्यूटर विज्ञान की एक बहुत ही अहम शाखा बनाता है, जिसमें बर्ताव से निपटना, किसी मशीन में सीखना और बुद्धिमान अनुकूलन शामिल है. एआई में अनुसंधान में ऐसे कार्यों को स्वचालित करने के लिए मशीनें बनाना शामिल है जिनमें बुद्धिमान व्यवहार की आवश्यकता होती है। इसके उदाहरणों में नियंत्रण, नियोजन और समय निर्धारण, ग्राहक के निदान और सवालों के जवाब देने के साथ ही हाथ से लिखे होने की पहचान करना, बोली और चेहरा शामिल है. ऐसी चीजें अलग-अलग अनुशासन बन गई हैं, जो वास्तविक जीवन की समस्याओं के समाधान प्रदान करने पर ध्यान देती हैं। आजकल एआई सिस्टम का इस्तेमाल अक्सर अर्थशास्त्र, दवाइयों, इंजीनियरिंग और सैन्य क्षेत्रों में किया जाता है, जैसा कि कई होम कंप्यूटर और वीडियो गेम सॉफ़्टवेयर ऐप्लिकेशन में बनाया गया है.",
+     "question": "गद्यांश के अनुसार, निम्नलिखित में से कौन सा कृत्रिम बुद्धि के साथ संगत है?",
+     "options": [
+      "ग्राहक सेवा",
+      "योजना और अनुसूचन",
+      "विज्ञान कथा",
+      "हस्तलेखन पहचान"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "सम्मिलित सोच पैटर्न समस्या समाधान तकनीक है जो विभिन्न विचारों या क्षेत्रों को एक समाधान खोजने के लिए एकजुट करती है. इस मानसिकता का लक्ष्य गति, तर्क और सटीकता है, तथ्यों की पहचान, मौजूदा तकनीकों को फिर से लागू करना और सूचना एकत्र करना है. इस मानसिकता का सबसे महत्वपूर्ण कारक है: केवल एक ही सही उत्तर है। आप केवल दो उत्तरों के बारे में सोचते हैं - सही या गलत। इस तरह की सोच खास विज्ञान या मानक तरीकों से जुड़ी होती है. इस तरह की सोच वाले लोग तार्किक सोच रखते हैं, जो पैटर्न को याद रखने, समस्याओं को हल करने और वैज्ञानिक परीक्षणों पर काम करने में सक्षम होते हैं.",
+     "question": "गद्यांश के अनुसार, निम्नलिखित में से कौन सा एकीकृत विचार पैटर्न वाले व्यक्ति की ताकत है?",
+     "options": [
+      "किसी समस्या के कई सही उत्तर ढूँढना",
+      "एक समस्या के लिए नई तकनीकों को लागू करना",
+      "समस्याओं को हल करने के लिए अपना समय लेना",
+      "पैटर्न को याद रखना"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "सम्मिलित सोच पैटर्न समस्या समाधान तकनीक है जो विभिन्न विचारों या क्षेत्रों को एक समाधान खोजने के लिए एकजुट करती है. इस मानसिकता का लक्ष्य गति, तर्क और सटीकता है, तथ्यों की पहचान, मौजूदा तकनीकों को फिर से लागू करना और सूचना एकत्र करना है. इस मानसिकता का सबसे महत्वपूर्ण कारक है: केवल एक ही सही उत्तर है। आप केवल दो उत्तरों के बारे में सोचते हैं - सही या गलत। इस तरह की सोच खास विज्ञान या मानक तरीकों से जुड़ी होती है. इस तरह की सोच वाले लोग तार्किक सोच रखते हैं, जो पैटर्न को याद रखने, समस्याओं को हल करने और वैज्ञानिक परीक्षणों पर काम करने में सक्षम होते हैं.",
+     "question": "गद्यांश के अनुसार, निम्नलिखित में से किसे एकीकृत सोच मानसिकता का केंद्र नहीं माना जाता है?",
+     "options": [
+      "यह समझते हुए कि केवल एक सही उत्तर होगा",
+      "खुद का समय को उपयोग करना",
+      "तथ्यों की पहचान",
+      "जानकारी एकत्र करना"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "माइक्रो-एक्सप्रेशन्स, फ़ेशियल मूवमेंट्स जिसमें कुछ मिलीसेकंड्स लगते हैं, उसकी व्याख्या करने में वीडियो रिकॉर्डिंग के इस्तेमाल ने महत्वपूर्ण खोजों को बढ़ावा दिया है. विशेष रूप से, यह दावा किया जाता है कि किसी व्यक्ति की सूक्ष्म अभिव्यक्तियों की सही व्याख्या करके यह समझा सकता है कि वह झूठ बोल रहा है या नहीं। ओलिवर सैक्स ने अपने पेपर द प्रेसिडेंट स्पीच में संकेत दिया कि कैसे जो लोग दिमागी नुकसान के कारण भाषण को समझ नहीं पाते हैं फिर भी वे ईमानदारी का सही आकलन कर पाते हैं. वे यह भी सुझाव देते हैं कि मानव व्यवहार में व्याख्या करने की जो क्षमताएँ हैं उसे पालतू कुत्ते जैसे जानवर के ज़रिए भी शेयर किया जा सकता है.",
+     "question": "गद्यांश के अनुसार, निम्नलिखित में से किसे सूक्ष्म भावनाओं के रूप में नहीं माना जाएगा?",
+     "options": [
+      "बोलते समय दूर देखना",
+      "भौंह को झुकाना",
+      "तेजी से पलक झपकाना",
+      "थम्ब्स अप करना"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "माइक्रो-एक्सप्रेशन्स, फ़ेशियल मूवमेंट्स जिसमें कुछ मिलीसेकंड्स लगते हैं, उसकी व्याख्या करने में वीडियो रिकॉर्डिंग के इस्तेमाल ने महत्वपूर्ण खोजों को बढ़ावा दिया है. विशेष रूप से, यह दावा किया जाता है कि किसी व्यक्ति की सूक्ष्म अभिव्यक्तियों की सही व्याख्या करके यह समझा सकता है कि वह झूठ बोल रहा है या नहीं। ओलिवर सैक्स ने अपने पेपर द प्रेसिडेंट स्पीच में संकेत दिया कि कैसे जो लोग दिमागी नुकसान के कारण भाषण को समझ नहीं पाते हैं फिर भी वे ईमानदारी का सही आकलन कर पाते हैं. वे यह भी सुझाव देते हैं कि मानव व्यवहार में व्याख्या करने की जो क्षमताएँ हैं उसे पालतू कुत्ते जैसे जानवर के ज़रिए भी शेयर किया जा सकता है.",
+     "question": "गद्यांश के अनुसार, सूक्ष्म भावनाओं की व्याख्या के बारे में दावों में निम्नलिखित में से कौन सा असत्य है?",
+     "options": [
+      "कुछ प्रगति वीडियो रिकॉर्डिंग के कारण हुई थी",
+      "सही व्याख्या झूठ बोलने का पता लगा सकती है",
+      "अर्थ भाषण और चेहरे की गतिविधियों में व्यक्त किया जाता है",
+      "यह ईमानदारी का आकलन करने में मदद कर सकता है"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ऊपर बताये हुए तरीके से जैसे जैसे ज्ञान प्राप्त करने और सीखने की क्षमता में बदलाव आया वैसे ही ज्ञान प्राप्त करने की मूल दर भी बदल गयी। जानकारी प्राप्त करने का दृष्टिकोण अलग था। व्यक्तिगत तौर भीतरी दबाव नहीं बना, लेकिन पाठ को याद करने की क्षमता की अधिक हो गई। संक्षेप में, पुनर्जागरण से सीखने और ज्ञान के प्रसार के दृष्टिकोण में एक महत्वपूर्ण बदलाव हुआ है.",
+     "question": "पुनर्जागरण के परिणामस्वरूप निम्नलिखित में से किसे अधिक महत्व दिया गया था?",
+     "options": [
+      "व्यक्तिगत याद",
+      "ज्ञान का प्रसार",
+      "टेक्स्ट को याद करना",
+      "जानकारी प्राप्त करना"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ऊपर बताये हुए तरीके से जैसे जैसे ज्ञान प्राप्त करने और सीखने की क्षमता में बदलाव आया वैसे ही ज्ञान प्राप्त करने की मूल दर भी बदल गयी। जानकारी प्राप्त करने का दृष्टिकोण अलग था। व्यक्तिगत तौर भीतरी दबाव नहीं बना, लेकिन पाठ को याद करने की क्षमता की अधिक हो गई। संक्षेप में, पुनर्जागरण से सीखने और ज्ञान के प्रसार के दृष्टिकोण में एक महत्वपूर्ण बदलाव हुआ है.",
+     "question": "पुनर्जागरण के परिणामस्वरूप निम्नलिखित में से किसे कम महत्व दिया गया था?",
+     "options": [
+      "व्यक्तिगत याद",
+      "ज्ञान प्राप्त करना",
+      "टेक्स्ट को याद करना",
+      "जानकारी का वितरण"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "इंटरनेट, लोगों और अंतर-परस्पर संचार, दोनों के तत्वों को मिलाता है. इंटरनेट की अलग-अलग विशेषताएँ उपयोग और संतुष्टि के दृष्टिकोण के संदर्भ में अतिरिक्त आयामों की ओर ले जाती हैं. उदाहरण के लिए, “लर्निंग” और “सोशलाइजेशन” को इंटरनेट इस्तेमाल करने की अहम वजह के तौर पर बताया गया है (जेम्स एट अल., 1995). “जब ऐमी और मॅकॉर्ड (1998) ने वेबसाइटों पर दर्शकों की प्रतिक्रियाओं की जांच-पड़ताल की थी, तब “निजी भागीदारी” और “सतत संबंध” को भी प्रेरणा देने वाले नए पहलूओं के तौर पर पहचान हुई.",
+     "question": "निम्नलिखित में से कौन सा अनुक्रमिक संबंधों के लिए इंटरनेट का उपयोग करने के लिए प्रोत्साहन को प्रतिबिंबित नहीं करता है?",
+     "options": [
+      "व्यापार नेटवर्किंग",
+      "परिवार के संपर्क में रहना",
+      "यात्रा पर शोध करना",
+      "नए लोग से मिलना"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "इंटरनेट, लोगों और अंतर-परस्पर संचार, दोनों के तत्वों को मिलाता है. इंटरनेट की अलग-अलग विशेषताएँ उपयोग और संतुष्टि के दृष्टिकोण के संदर्भ में अतिरिक्त आयामों की ओर ले जाती हैं. उदाहरण के लिए, “लर्निंग” और “सोशलाइजेशन” को इंटरनेट इस्तेमाल करने की अहम वजह के तौर पर बताया गया है (जेम्स एट अल., 1995). “जब ऐमी और मॅकॉर्ड (1998) ने वेबसाइटों पर दर्शकों की प्रतिक्रियाओं की जांच-पड़ताल की थी, तब “निजी भागीदारी” और “सतत संबंध” को भी प्रेरणा देने वाले नए पहलूओं के तौर पर पहचान हुई.",
+     "question": "निम्नलिखित में से कौन सा व्यक्तिगत जुड़ाव के लिए इंटरनेट का उपयोग करने की प्रेरणाओं को प्रतिबिंबित नहीं करता है?",
+     "options": [
+      "पकाने का विधि देखना",
+      "एक ऑनलाइन चर्चा बोर्ड पर पोस्ट करना",
+      "स्वास्थ्य देखभाल उत्पादों पर शोध",
+      "वित्त प्रबंधन"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "10वीं से लेकर 11वीं सदी के बीच और 14वीं सदी में गोथिक स्टाइल चरम पर थी. शुरुआत में पोशाक, पूर्व में बीजान्टिन संस्कृति से काफी प्रभावित थी। हालाँकि धीमे कम्युनिकेशन चैनल की वजह से पश्चिम का रहन-सहन 25-30 साल पीछे जा सकता है. मध्य युग के अंत में पश्चिमी यूरोप ने अपनी शैली विकसित करना शुरू कर दिया. धर्मयुद्ध के परिणामस्वरूप उस समय के सबसे बड़े विकास में से एक लोगों ने कपड़ों को बाँधने के लिए बटन का उपयोग करना शुरू किया",
+     "question": "पश्चिमी यूरोप ने कब प्रभावों पर बहुत अधिक भरोसा करना बंद कर दिया और अपनी शैली विकसित करना शुरू कर दिया?",
+     "options": [
+      "मध्य युग के अंत में",
+      "बीजान्टिन युग के दौरान",
+      "जब मध्य युग के अंत के 25 साल थे",
+      "11 वीं शताब्दी के दौरान"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "10वीं से लेकर 11वीं सदी के बीच और 14वीं सदी में गोथिक स्टाइल चरम पर थी. शुरुआत में पोशाक, पूर्व में बीजान्टिन संस्कृति से काफी प्रभावित थी। हालाँकि धीमे कम्युनिकेशन चैनल की वजह से पश्चिम का रहन-सहन 25-30 साल पीछे जा सकता है. मध्य युग के अंत में पश्चिमी यूरोप ने अपनी शैली विकसित करना शुरू कर दिया. धर्मयुद्ध के परिणामस्वरूप उस समय के सबसे बड़े विकास में से एक लोगों ने कपड़ों को बाँधने के लिए बटन का उपयोग करना शुरू किया",
+     "question": "कपड़े बांधने के लिए बटन का उपयोग करने का परिणाम क्या है?",
+     "options": [
+      "गॉथिक काल",
+      "बीजान्टिन युग",
+      "धर्मयुद्ध",
+      "मध्य युग"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "हम पर्यावरण के साथ ज़्यादा दोस्ताना तरीके से रहना शुरू कर सकते हैं, इसके लिए पर्यावरण आंदोलन में शामिल हो सकते हैं, और हम भविष्य को कुछ हद तक कष्ट से बचाने के लिए पर्यावरण कार्यकर्ता भी बन सकते हैं. यह कई मामलों में रोगसूचक उपचार की तरह ही है। हालाँकि, अगर हम केवल अस्थायी समाधान नहीं चाहते हैं, तो हमें समस्याओं की जड़ को ढूँढ कर उन्हें निष्क्रिय करना चाहिए। यह अत्यंत स्पष्ट है कि मानव जाति की वैज्ञानिक और तकनीकी प्रगति के कारण दुनिया बहुत बदल गई है, तथा अधिक जनसंख्या और मानव जाति की अतिव्ययी जीवन शैली के कारण समस्याएँ बढ़ गई हैं।",
+     "question": "गद्यांश के अनुसार, निम्नलिखित में से किसे पर्यावरणीय समस्याओं का दीर्घकालिक समाधान माना जाता है?",
+     "options": [
+      "असाधारण जीवन शैली विकल्पों का बहिष्कार",
+      "सक्रियतावाद",
+      "समस्याओं के कारण की पहचान करना",
+      "पर्यावरण आंदोलन का सहयोगी बनना"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "हम पर्यावरण के साथ ज़्यादा दोस्ताना तरीके से रहना शुरू कर सकते हैं, इसके लिए पर्यावरण आंदोलन में शामिल हो सकते हैं, और हम भविष्य को कुछ हद तक कष्ट से बचाने के लिए पर्यावरण कार्यकर्ता भी बन सकते हैं. यह कई मामलों में रोगसूचक उपचार की तरह ही है। हालाँकि, अगर हम केवल अस्थायी समाधान नहीं चाहते हैं, तो हमें समस्याओं की जड़ को ढूँढ कर उन्हें निष्क्रिय करना चाहिए। यह अत्यंत स्पष्ट है कि मानव जाति की वैज्ञानिक और तकनीकी प्रगति के कारण दुनिया बहुत बदल गई है, तथा अधिक जनसंख्या और मानव जाति की अतिव्ययी जीवन शैली के कारण समस्याएँ बढ़ गई हैं।",
+     "question": "गद्यांश के अनुसार, निम्नलिखित में से कौन सा उपचार पर्यावरणीय समस्याओं का रोगसूचक उपचार नहीं माना जाएगा?",
+     "options": [
+      "सक्रियता में संलग्न",
+      "समस्याओं के स्रोत का पता लगाएं और उन्हें निष्क्रिय करें",
+      "असाधारण जीवन शैली विकल्पों के बारे में अपनी राय",
+      "ज़्यादा पर्यावरण के अनुकूल तरीके से रहना"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "शक्ति का संतुलन' एक तरह की व्यवस्था थी. इस व्यवस्था के अंतर्गत सभी यूरोपीय राष्ट्रों ने एक-दूसरे की राष्ट्रीय संप्रभुता का सम्मान करने की मांग की. संकल्पना यह थी कि सभी यूरोपीय देश किसी एक राष्ट्र को शक्तिशाली बनने से रोकें, और इसलिए राष्ट्रीय सरकारों ने संतुलन बनाए रखने के लिए अक्सर अपने गठबंधनों को बदल दिया। स्पेनिश उत्तराधिकार का युद्ध पहला ऐसा युद्ध था जिसका मूल मुद्दा शक्ति संतुलन स्थापित करना था। इससे एक महत्वपूर्ण बदलाव हुआ, क्योंकि यूरोपीय शक्तियों के पास अब धार्मिक युद्धों के बहाने नहीं होंगे। इस प्रकार, तीस साल का युद्ध एक धार्मिक युद्ध कहलाने वाला अंतिम युद्ध होगा।",
+     "question": "यूरोप में पहला युद्ध किस देश में हुआ था जब इसका केंद्रीय मुद्दा धार्मिक पृष्ठभूमि के बिना शक्ति संतुलन से संबंधित बताया गया था?",
+     "options": [
+      "इंग्लैंड",
+      "जर्मनी",
+      "पोर्टच्यूगल",
+      "स्पेन"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "शक्ति का संतुलन' एक तरह की व्यवस्था थी. इस व्यवस्था के अंतर्गत सभी यूरोपीय राष्ट्रों ने एक-दूसरे की राष्ट्रीय संप्रभुता का सम्मान करने की मांग की. संकल्पना यह थी कि सभी यूरोपीय देश किसी एक राष्ट्र को शक्तिशाली बनने से रोकें, और इसलिए राष्ट्रीय सरकारों ने संतुलन बनाए रखने के लिए अक्सर अपने गठबंधनों को बदल दिया। स्पेनिश उत्तराधिकार का युद्ध पहला ऐसा युद्ध था जिसका मूल मुद्दा शक्ति संतुलन स्थापित करना था। इससे एक महत्वपूर्ण बदलाव हुआ, क्योंकि यूरोपीय शक्तियों के पास अब धार्मिक युद्धों के बहाने नहीं होंगे। इस प्रकार, तीस साल का युद्ध एक धार्मिक युद्ध कहलाने वाला अंतिम युद्ध होगा।",
+     "question": "अंतिम युद्ध किसे कहा जाता है, जिसे धार्मिक युद्ध कहा जाता है?",
+     "options": [
+      "तीस साल का युद्ध",
+      "सौ साल का युद्ध",
+      "स्पेनिश उत्तराधिकार का युद्ध",
+      "स्पेनिश सिविल युद्ध"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "यूरोपीय इतिहास की इस अवधि के दौरान कैथोलिक चर्च जो समृद्ध और शक्तिशाली हो गया था, जाँच के दायरे में आ गया. भाषा और रीति-रिवाज़ में अंतर के बावजूद हज़ारों सालों से ईसाई धर्म ने यूरोपीय देशों को एक साथ बांधे रखा है. इसकी सर्वव्यापी शक्ति ने राजा से लेकर आम तक सभी को प्रभावित किया. मुख्य ईसाई सिद्धातों में से एक यह है कि धन का उपयोग दुख और गरीबी को कम करने के लिए किया जाना चाहिए और चर्च के मौद्रिक कोष विशेष रूप से इसीलिए हैं. रोम में चर्च का केंद्रीय प्राधिकरण एक हज़ार से भी ज़्यादा सालों से है और ताकत और पैसे के इस तरह एक ही जगह पर केंद्रित होने से कई लोगों के मन में सवाल है कि यह सिद्धांत पूरा हो रहा था या नहीं.",
+     "question": "कैथोलिक चर्च द्वारा निम्नलिखित में से किस पहलू की जांच नहीं की गई है?",
+     "options": [
+      "यदि चर्चों के धन का वितरण उचित है",
+      "यदि धार्मिक सिद्धांतों को ठीक किया जाना है",
+      "चर्चों में शक्ति का केंद्रीकरण",
+      "यदि चर्चों के महत्वपूर्ण सिद्धांतों का पालन किया जाता है"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "घबराए हुए राजा लुईस XVI, रानी मैरी एंटोनेट और उनके दो बच्चे (11 साल की मैरी थैरेस और चार साल का लुईस चार्ल्स) और राजा की बहन मैडम एलिजावेथ को 6 अक्टूबर 1789 को बाज़ार में मौजूद महिलाओं की भीड़ ने वर्साय से वापस पेरिस जाने के लिए मजबूर किया था. महाराजा और महारानी के ख़िलाफ़ चीखते-चिल्लाते लोगों की भीड़ से घिरी एक गाड़ी में सफर करते हुए वे लोग पेरिस वापस आए. लोगों की भीड़ ने राजा और रानी को अपनी गाड़ी की खिड़की खोलने के लिए मजबूर किया. एक मौके पर तो भीड़ में मौजूद किसी व्यक्ति ने घबराई हुई महारानी के सामने ही वर्सेल्स में मारे गए शाही अंगरक्षक का सिर पकड़कर हिला दिया.",
+     "question": "दिए गए गद्यांश के अनुसार, वर्साय में वह किसके द्वारा मारा गया था?",
+     "options": [
+      "बाजार की महिलाओं में से एक",
+      "किंग लुई XVI",
+      "भीड़ का एक सदस्य",
+      "गार्ड"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "घबराए हुए राजा लुईस XVI, रानी मैरी एंटोनेट और उनके दो बच्चे (11 साल की मैरी थैरेस और चार साल का लुईस चार्ल्स) और राजा की बहन मैडम एलिजावेथ को 6 अक्टूबर 1789 को बाज़ार में मौजूद महिलाओं की भीड़ ने वर्साय से वापस पेरिस जाने के लिए मजबूर किया था. महाराजा और महारानी के ख़िलाफ़ चीखते-चिल्लाते लोगों की भीड़ से घिरी एक गाड़ी में सफर करते हुए वे लोग पेरिस वापस आए. लोगों की भीड़ ने राजा और रानी को अपनी गाड़ी की खिड़की खोलने के लिए मजबूर किया. एक मौके पर तो भीड़ में मौजूद किसी व्यक्ति ने घबराई हुई महारानी के सामने ही वर्सेल्स में मारे गए शाही अंगरक्षक का सिर पकड़कर हिला दिया.",
+     "question": "निम्नलिखित में से भीड़ ने राजा और रानी को क्या करने के लिए नहीं कहा?",
+     "options": [
+      "उनकी गाड़ी की खिड़कियों का उद्घाटन",
+      "वर्साय से अचानक बाहर निकलना",
+      "गार्ड का सिर कलम करने का दृश्य",
+      "पेरिस की यात्रा"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "शत्रुता फैलाने के तुरंत बाद, ब्रिटेन ने जर्मनी की समुद्री घेराबंदी शुरू कर दी थी. रणनीति महत्वपूर्ण सैन्य और असैन्य आपूर्ति को काटते हुए प्रभावी साबित हुई, हालाँकि इस नाकाबंदी ने पिछले दो शताब्दियों के कई अंतरराष्ट्रीय समझौतों द्वारा आमतौर पर स्वीकृत अंतर्राष्ट्रीय कानून का उल्लंघन किया। ब्रिटेन ने किसी भी जहाज को समुद्र के पूरे हिस्सों में प्रवेश करने से रोकने के लिए अंतरराष्ट्रीय जल का खनन किया, जिससे तट पर खड़े जहाजों के लिए भी खतरा पैदा हो गया। चूँकि इस रणनीति को सीमित प्रतिसाद ही मिला था, इसलिए जर्मनी ने अपने अप्रतिबंधित पनडुब्बी युद्ध को लेकर भी इसी तरह के प्रतिसाद की उम्मीद की थी.",
+     "question": "निम्नलिखित में से कौन सा ब्रिटेन के अपरंपरागत नौसैनिक युद्ध का परिणाम नहीं है?",
+     "options": [
+      "जर्मनी इसी तरह की युद्ध रणनीति का उपयोग करना चाहता है",
+      "असंबंधित जहाजों को हानिकारक तरीके से रखा गया था",
+      "अंतरराष्ट्रीय कानून में किए गए थे बदलाव",
+      "महत्वपूर्ण आपूर्ति तक पहुंच नहीं थी"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "शत्रुता फैलाने के तुरंत बाद, ब्रिटेन ने जर्मनी की समुद्री घेराबंदी शुरू कर दी थी. रणनीति महत्वपूर्ण सैन्य और असैन्य आपूर्ति को काटते हुए प्रभावी साबित हुई, हालाँकि इस नाकाबंदी ने पिछले दो शताब्दियों के कई अंतरराष्ट्रीय समझौतों द्वारा आमतौर पर स्वीकृत अंतर्राष्ट्रीय कानून का उल्लंघन किया। ब्रिटेन ने किसी भी जहाज को समुद्र के पूरे हिस्सों में प्रवेश करने से रोकने के लिए अंतरराष्ट्रीय जल का खनन किया, जिससे तट पर खड़े जहाजों के लिए भी खतरा पैदा हो गया। चूँकि इस रणनीति को सीमित प्रतिसाद ही मिला था, इसलिए जर्मनी ने अपने अप्रतिबंधित पनडुब्बी युद्ध को लेकर भी इसी तरह के प्रतिसाद की उम्मीद की थी.",
+     "question": "कौन सी रिपोर्ट जर्मनी के खिलाफ ब्रिटेन की नौसैनिक नाकाबंदी का सटीक वर्णन नहीं करती है?",
+     "options": [
+      "यह अंतरराष्ट्रीय कानून के खिलाफ गया",
+      "इसने जर्मनी के पनडुब्बी युद्ध को प्रेरित किया",
+      "इसने जर्मन सामानों के आगमन को रोक दिया",
+      "इसने सुनिश्चित किया कि तटस्थ जहाजों को बिल्कुल नुकसान नहीं पहुंचाया गया था"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  "belebele_kn": {
+   "lang": "kn",
+   "source": "Belebele kan_Knda",
+   "items": [
+    {
+     "passage": "ನೋಟ್ಸ್ ಬರೆಯುವಾಗ ನಿಮ್ಮ ಕೈ ಸಾಧ್ಯವಾದಷ್ಟು ಶಾಂತಚಿತ್ತವಾಗಿದೆಯೇ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ - ನಿಮ್ಮ ಬೆರಳುಗಳಿಂದ ಹೆಚ್ಚು ಬಾಹ್ಯ ಚಲನೆಯನ್ನು ಮಾಡದಿರಲು ಸಹ ಪ್ರಯತ್ನಿಸಿ. ಈ ರೀತಿ ಮಾಡಿದರೆ, ನೀವು ಸಾಧ್ಯವಾದಷ್ಟು ಕಡಿಮೆ ಆಯಾಸಗೊಳಿಸುತ್ತೀರಿ. ಪಿಯಾನೋದಲ್ಲಿರುವಂತೆ ಹೆಚ್ಚುವರಿ ಪರಿಮಾಣಕ್ಕಾಗಿ ಕೀಗಳನ್ನು ಸಾಕಷ್ಟು ಬಲದಿಂದ ಹೊಡೆಯುವ ಅಗತ್ಯವಿಲ್ಲ ಎಂಬುದು ನಿಮ್ಮ ಗಮನಕ್ಕಿರಲಿ. ಅಕಾರ್ಡಿಯನ್‌ನಲ್ಲಿ ಹೆಚ್ಚಿನ ಧ್ವನಿಗಾಗಿ, ನೀವು ಹೆಚ್ಚಿನ ಒತ್ತಡ ಅಥವಾ ವೇಗದ ಜೊತೆಗೆ ಬೆಲ್ಲೊಗಳನ್ನು ಬಳಸಬೇಕಾಗುತ್ತದೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಅಕಾರ್ಡಿಯನ್ ಅನ್ನು ಯಶಸ್ವಿಯಾಗಿ ನುಡಿಸಲು ನಿಖರವಾದ ಸೂಚನೆ ಎಂದು ಯಾವುದನ್ನು ಪರಿಗಣಿಸಲಾಗುವುದಿಲ್ಲ?",
+     "options": [
+      "ಹೆಚ್ಚುವರಿ ಧ್ವನಿಗಾಗಿ, ನೀವು ಕೀಲಿಗಳನ್ನು ಒತ್ತುವ ಬಲವನ್ನು ಹೆಚ್ಚಿಸಿ",
+      "ನಿಮ್ಮ ದೇಹಬಲವನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಲು ಅಗತ್ಯವಿಲ್ಲದ ಚಲನೆಯನ್ನು ಕನಿಷ್ಠಗೊಳಿಸಿ",
+      "ಸಡಿಲವಾದ ಕೈಯನ್ನು ನಿರ್ವಹಿಸುವಾಗ ನುಡಿಸುವ ಸ್ವರಗಳ ಮೇಲೆ ಗಮನವಿರಲಿ",
+      "ಹೆಚ್ಚುವರಿ ಧ್ವನಿಯನ್ನು ಪಡೆಯಲು ನೀವು ಬೆಲ್ಲೋಗಳನ್ನು ನಿರ್ವಹಿಸುವ ವೇಗವನ್ನು ಹೆಚ್ಚಿಸಿ"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "ನೋಟ್ಸ್ ಬರೆಯುವಾಗ ನಿಮ್ಮ ಕೈ ಸಾಧ್ಯವಾದಷ್ಟು ಶಾಂತಚಿತ್ತವಾಗಿದೆಯೇ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ - ನಿಮ್ಮ ಬೆರಳುಗಳಿಂದ ಹೆಚ್ಚು ಬಾಹ್ಯ ಚಲನೆಯನ್ನು ಮಾಡದಿರಲು ಸಹ ಪ್ರಯತ್ನಿಸಿ. ಈ ರೀತಿ ಮಾಡಿದರೆ, ನೀವು ಸಾಧ್ಯವಾದಷ್ಟು ಕಡಿಮೆ ಆಯಾಸಗೊಳಿಸುತ್ತೀರಿ. ಪಿಯಾನೋದಲ್ಲಿರುವಂತೆ ಹೆಚ್ಚುವರಿ ಪರಿಮಾಣಕ್ಕಾಗಿ ಕೀಗಳನ್ನು ಸಾಕಷ್ಟು ಬಲದಿಂದ ಹೊಡೆಯುವ ಅಗತ್ಯವಿಲ್ಲ ಎಂಬುದು ನಿಮ್ಮ ಗಮನಕ್ಕಿರಲಿ. ಅಕಾರ್ಡಿಯನ್‌ನಲ್ಲಿ ಹೆಚ್ಚಿನ ಧ್ವನಿಗಾಗಿ, ನೀವು ಹೆಚ್ಚಿನ ಒತ್ತಡ ಅಥವಾ ವೇಗದ ಜೊತೆಗೆ ಬೆಲ್ಲೊಗಳನ್ನು ಬಳಸಬೇಕಾಗುತ್ತದೆ.",
+     "question": "ಅಕಾರ್ಡಿಯನ್ ಅನ್ನು ನುಡಿಸುವಾಗ, ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಧ್ವನಿಯನ್ನು ಹೆಚ್ಚಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ?",
+     "options": [
+      "ಅತಿಯಾದ ವೇಗ",
+      "ಅತಿಯಾದ ಬಲ",
+      "ಕಡಿಮೆ ಒತ್ತಡ",
+      "ಸೀಮಿತ ಬೆರಳಿನ ಚಲನೆ"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "ಯಾವುದೇ ಒಂದು ಚಲನಚಿತ್ರವನ್ನು ಡಿವಿಡಿ ಫಾರ್ಮ್ಯಾಟ್ ಗೆ  ಪರಿವರ್ತಿಸಲು  ಯತ್ನಿಸುವಾಗ ಎದುರಿಸುವ ಸಾಮಾನ್ಯ ಸಮಸ್ಯೆಗಳಲ್ಲಿ ಒಂದೆಂದರೆ ಓವರ್ ಸ್ಕ್ಯಾನ್ . ಬಹಳಷ್ಟು ದೂರದರ್ಶನ ಕಾರ್ಯಕ್ರಮಗಳನ್ನು ಸಾಮಾನ್ಯ ಜನತೆಗೆ ಇಷ್ಟವಾಗುವ ರೀತಿಯಲ್ಲಿ ತಯಾರಿಸಲಾಗಿರುತ್ತದೆ. ಆ ಕಾರಣಕ್ಕಾಗಿ, ದೂರದರ್ಶನದಲ್ಲಿ ನೀವು ನೋಡುವ ಪ್ರತಿಯೊಂದು ಗಡಿಯನ್ನು  ಕತ್ತರಿಸಿ, ಮೇಲಿನ, ಕೆಳಗಿನ ಮತ್ತು ಬದಿಗಳನ್ನು ಹೊಂದಿವೆ. ಇದನ್ನು ಮಾಡುವ ಉದ್ದೇಶವೆಂದರೆ ಸಂಪೂರ್ಣ ಸ್ಕ್ರೀನ್ ಅನ್ನು ಇಮೇಜ್ ಇಂದ ಮುಚ್ಚವುದು. ಇದನ್ನು ಓವರ್ ಸ್ಕ್ಯಾನ್ ಎನ್ನಲಾಗುತ್ತದೆ. ದುರದೃಷ್ಟವಶಾತ್, ನೀವು DVD ತಯಾರಿಸುವಾಗ, ಅದರ ಅಂಚುಗಳನ್ನು ಹೆಚ್ಚಾಗಿ ಕತ್ತರಿಸಲಾಗುತ್ತದೆ, ಮತ್ತು ವೀಡಿಯೊ ಉಪಶೀರ್ಷಿಕೆಗಳು ಕೆಳಭಾಗಕ್ಕೆ ಹತ್ತಿರದಲ್ಲಿದ್ದರೆ, ಅವುಗಳನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಪ್ರದರ್ಶಿಸಲಾಗುವುದಿಲ್ಲ.",
+     "question": "ದೂರದರ್ಶನದಲ್ಲಿರುವ ಚಿತ್ರಗಳ ಅಂಚುಗಳನ್ನು ಏಕೆ ಕತ್ತರಿಸಲಾಗಿದೆ ?",
+     "options": [
+      "ಉಪಶೀರ್ಷಿಕೆಗಳಿಗೆ ಅನುಮತಿಯನ್ನು ನೀಡಲು",
+      "ಆದ್ದರಿಂದ ಚಿತ್ರವು ಸಂಪೂರ್ಣ ಪರದೆಯನ್ನು ತುಂಬುತ್ತದೆ",
+      "ಇತರ ಸ್ವರೂಪಗಳಿಗೆ ಸರಳ ಪರಿವರ್ತನೆಯನ್ನು ಅನುಮತಿಸಲು",
+      "ಆದಷ್ಟು ಕೆಳಭಾಗದವರೆಗೆ ಉಪಶೀರ್ಷಿಕೆಗಳನ್ನು ಹಾಕಲು"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಯಾವುದೇ ಒಂದು ಚಲನಚಿತ್ರವನ್ನು ಡಿವಿಡಿ ಫಾರ್ಮ್ಯಾಟ್ ಗೆ  ಪರಿವರ್ತಿಸಲು  ಯತ್ನಿಸುವಾಗ ಎದುರಿಸುವ ಸಾಮಾನ್ಯ ಸಮಸ್ಯೆಗಳಲ್ಲಿ ಒಂದೆಂದರೆ ಓವರ್ ಸ್ಕ್ಯಾನ್ . ಬಹಳಷ್ಟು ದೂರದರ್ಶನ ಕಾರ್ಯಕ್ರಮಗಳನ್ನು ಸಾಮಾನ್ಯ ಜನತೆಗೆ ಇಷ್ಟವಾಗುವ ರೀತಿಯಲ್ಲಿ ತಯಾರಿಸಲಾಗಿರುತ್ತದೆ. ಆ ಕಾರಣಕ್ಕಾಗಿ, ದೂರದರ್ಶನದಲ್ಲಿ ನೀವು ನೋಡುವ ಪ್ರತಿಯೊಂದು ಗಡಿಯನ್ನು  ಕತ್ತರಿಸಿ, ಮೇಲಿನ, ಕೆಳಗಿನ ಮತ್ತು ಬದಿಗಳನ್ನು ಹೊಂದಿವೆ. ಇದನ್ನು ಮಾಡುವ ಉದ್ದೇಶವೆಂದರೆ ಸಂಪೂರ್ಣ ಸ್ಕ್ರೀನ್ ಅನ್ನು ಇಮೇಜ್ ಇಂದ ಮುಚ್ಚವುದು. ಇದನ್ನು ಓವರ್ ಸ್ಕ್ಯಾನ್ ಎನ್ನಲಾಗುತ್ತದೆ. ದುರದೃಷ್ಟವಶಾತ್, ನೀವು DVD ತಯಾರಿಸುವಾಗ, ಅದರ ಅಂಚುಗಳನ್ನು ಹೆಚ್ಚಾಗಿ ಕತ್ತರಿಸಲಾಗುತ್ತದೆ, ಮತ್ತು ವೀಡಿಯೊ ಉಪಶೀರ್ಷಿಕೆಗಳು ಕೆಳಭಾಗಕ್ಕೆ ಹತ್ತಿರದಲ್ಲಿದ್ದರೆ, ಅವುಗಳನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಪ್ರದರ್ಶಿಸಲಾಗುವುದಿಲ್ಲ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಚಲನಚಿತ್ರವನ್ನು ಡಿವಿಡಿ ಸ್ವರೂಪಕ್ಕೆ ಪರಿವರ್ತಿಸುವಾಗ ಕೆಳಗಿನ ಯಾವ ಸಮಸ್ಯೆಗಳನ್ನು ಒಬ್ಬರು ಎದುರಿಸಬಹುದು?",
+     "options": [
+      "ಸಂಪೂರ್ಣ ಪರದೆಯನ್ನು ತುಂಬದೇ ಇರುವ ಒಂದು ಚಿತ್ರ",
+      "ಭಾಗಶಃ ಕತ್ತರಿಸಲಾಗಿರುವ ಉಪಶೀರ್ಷಿಕೆಗಳು",
+      "ಸಂಪೂರ್ಣ ಪರದೆಯನ್ನು ತುಂಬುವ ಒಂದು ಚಿತ್ರ",
+      "ಅಂಚುಗಳನ್ನು ಕತ್ತರಿಸಿ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಮೂರು ಬೇರೆಬೇರೆ ದಿಕ್ಕುಗಳಿಂದ ಸಂಯೋಜಿತ ದಾಳಿಯನ್ನು ನಡೆಸುವುದೆಂಬ ಯೋಜನೆಯನ್ನು ಅಮೆರಿಕಾ ನೆಚ್ಚಿಕೊಂಡಿತ್ತು. ಜನರಲ್ ಜಾನ್ ಕ್ಯಾಡ್‌ವಾಲ್ಡರ್ ಅವರು ಬೋರ್ಡೆಂಟೌನ್‌ನಲ್ಲಿರುವ ಬ್ರಿಟಿಷ್ ಗ್ಯಾರಿಸನ್ ಹೆಚ್ಚು ಪ್ರಬಲಗೊಳ್ಳುವುದನ್ನು ತಡೆಯುವ ನಿಟ್ಟಿನಲ್ಲಿ ಪ್ರತಿದಾಳಿ ನಡೆಸುತ್ತಾರೆ. ಟ್ರೆನ್ಟಾನ್ ಫೆರ್ರಿಯ ಬಳಿ ತನ್ನೊಡನೆ 700 ಸೈನಿಕರನ್ನು ಕರೆದುಕೊಂಡು ನದಿ ದಾಟುತಿದ್ದ ಜನರಲ್ ಜೇಮ್ಸ್ ಈವಿಂಗ್, ಅಸ್ಸುನ್‌ಪಿಂಕ್ ಕ್ರಿಕ್‍‌ನ ಮೇಲೆ ಸೇತುವೆಯನ್ನು ವಶಪಡಿಸಿಕೊಂಡು ಯಾವುದೇ ಶತ್ರುವಿನ ತುಕಡಿ  ತಪ್ಪಿಸಿಕೊಳ್ಳುವುದನ್ನು ತಡೆಯುತ್ತಿದ್ದ. 2,400 ಪುರುಷರ ಮುಖ್ಯ ದಾಳಿಯು ಟ್ರೆಂಟನ್‌ನಿಂದ ಉತ್ತರಕ್ಕೆ 9 ಮೈಲಿ ದೂರದಲ್ಲಿ ನದಿಯನ್ನು ದಾಟಿ ನಂತರ ಎರಡು ಗುಂಪುಗಳಾಗಿ ವಿಭಜನೆಯಾಗುತ್ತದೆ, ಒಂದು ಗ್ರೀನ್‌ನ ಅಡಿಯಲ್ಲಿ ಮತ್ತು ಇನ್ನೊಂದು ಸುಲ್ಲಿವಾನ್ ಅಡಿಯಲ್ಲಿ ಪೂರ್ವ ಆಕ್ರಮಣವನ್ನು ಪ್ರಾರಂಭಿಸುತ್ತದೆ.",
+     "question": "ಬ್ರಿಟಿಷ್ ಗ್ಯಾರಿಸನ್ ಎಲ್ಲಿದೆ?",
+     "options": [
+      "ಅಸುನ್‌ಪಿಂಕ್ ಕ್ರೀಕ್",
+      "ಟ್ರೆಂಟನ್",
+      "ಬೋರ್ಡೆನ್‌ಟೌನ್",
+      "ಪ್ರಿನ್ಸ್‌ಟನ್"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "\"ಜುಲೈ 4 ರಂದು ಕಾಂಗ್ರೆಸ್ ಮಸೂದೆಯನ್ನು ಅಂಗೀಕರಿಸಿದ ನಂತರ, ಕಾಂಗ್ರೆಸ್ ಅಧ್ಯಕ್ಷ ಜಾನ್ ಹ್ಯಾನ್ಕಾಕ್ ಮತ್ತು ಕಾರ್ಯದರ್ಶಿ ಚಾರ್ಲ್ಸ್ ಥಾಮ್ಸನ್ ಅವರು ಸಹಿ ಮಾಡಿದ ಕೈಬರಹದ ಕರಡನ್ನು ನಂತರ ಜಾನ್ ಡನ್‌ಲಾಪ್‌ನ ಕೆಲವು ಬ್ಲಾಕ್‌ಗಳ ದೂರದಲ್ಲಿರುವ ಪ್ರಿಂಟಿಂಗ್ ಶಾಪ್‌ಗೆ ಕಳುಹಿಸಲಾಯಿತು. ಇಡೀ ರಾತ್ರಿ 150 ರಿಂದ 200 ಪ್ರತಿಗಳನ್ನು ಮಾಡಲಾಯಿತು, ಇದನ್ನು ಈಗ \"\"ಡನ್‌ಲಾಪ್ ಬ್ರಾಡ್‌ಸೈಡ್ಸ್\"\" ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ. ಡಾಕ್ಯುಮೆಂಟ್‌ನ ಮೊದಲ ಸಾರ್ವಜನಿಕ ಓದುವಿಕೆ ಜುಲೈ 8 ರಂದು ಸ್ವಾತಂತ್ರ್ಯ ಸಭಾಂಗಣದ ಅಂಗಳದಲ್ಲಿ ಜಾನ್ ನಿಕ್ಸನ್ (ಜಾನ್ ನಿಕ್ಸನ್). ಒಂದನ್ನು ಜುಲೈ 6 ರಂದು ಜಾರ್ಜ್ ವಾಷಿಂಗ್ಟನ್‌ಗೆ ಕಳುಹಿಸಲಾಗಿದ್ದು, ಅವರು ಅದನ್ನು ಜುಲೈ 9 ರಂದು ನ್ಯೂಯಾರ್ಕ್‌ನಲ್ಲಿ ತನ್ನ ಪಡೆಗೆ ಓದಿದರು. ಆಗಸ್ಟ್‌ 10 ರಂದು ಒಂದು ಪ್ರತಿಯು ಲಂಡನ್‌ ತಲುಪಿದೆ. ಇನ್ನೂ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ ಎಂದು ತಿಳಿದಿರುವ 25 ಡನ್‌ಲಾಪ್ ಬ್ರಾಡ್‌ಸೈಡ್‌ಗಳು ಡಾಕ್ಯುಮೆಂಟ್‌ನ ಉಳಿದಿರುವ ಅತ್ಯಂತ ಹಳೆಯ ಪ್ರತಿಗಳಾಗಿವೆ. ಪ್ರತಿಗಳ ಮೂಲ ಕೈಬರಹದ ನಕಲುಗಳು ಉಳಿದಿಲ್ಲ.\"",
+     "question": "ಕೈಬರಹದ ಕರಡು ಪ್ರತಿಯಲ್ಲಿ ಯಾರ ಸಹಿಯು ಕಾಣಿಸಿಕೊಂಡಿತ್ತು?",
+     "options": [
+      "ಜಾನ್ ಡನ್ಲಪ್",
+      "ಜಾರ್ಜ್ ವಾಷಿಂಗ್ಟನ್",
+      "ಜಾನ್ ನಿಕ್ಸನ್",
+      "ಚಾರ್ಲ್ಸ್ ಥಾಮ್ಸನ್"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "\"ಜುಲೈ 4 ರಂದು ಕಾಂಗ್ರೆಸ್ ಮಸೂದೆಯನ್ನು ಅಂಗೀಕರಿಸಿದ ನಂತರ, ಕಾಂಗ್ರೆಸ್ ಅಧ್ಯಕ್ಷ ಜಾನ್ ಹ್ಯಾನ್ಕಾಕ್ ಮತ್ತು ಕಾರ್ಯದರ್ಶಿ ಚಾರ್ಲ್ಸ್ ಥಾಮ್ಸನ್ ಅವರು ಸಹಿ ಮಾಡಿದ ಕೈಬರಹದ ಕರಡನ್ನು ನಂತರ ಜಾನ್ ಡನ್‌ಲಾಪ್‌ನ ಕೆಲವು ಬ್ಲಾಕ್‌ಗಳ ದೂರದಲ್ಲಿರುವ ಪ್ರಿಂಟಿಂಗ್ ಶಾಪ್‌ಗೆ ಕಳುಹಿಸಲಾಯಿತು. ಇಡೀ ರಾತ್ರಿ 150 ರಿಂದ 200 ಪ್ರತಿಗಳನ್ನು ಮಾಡಲಾಯಿತು, ಇದನ್ನು ಈಗ \"\"ಡನ್‌ಲಾಪ್ ಬ್ರಾಡ್‌ಸೈಡ್ಸ್\"\" ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ. ಡಾಕ್ಯುಮೆಂಟ್‌ನ ಮೊದಲ ಸಾರ್ವಜನಿಕ ಓದುವಿಕೆ ಜುಲೈ 8 ರಂದು ಸ್ವಾತಂತ್ರ್ಯ ಸಭಾಂಗಣದ ಅಂಗಳದಲ್ಲಿ ಜಾನ್ ನಿಕ್ಸನ್ (ಜಾನ್ ನಿಕ್ಸನ್). ಒಂದನ್ನು ಜುಲೈ 6 ರಂದು ಜಾರ್ಜ್ ವಾಷಿಂಗ್ಟನ್‌ಗೆ ಕಳುಹಿಸಲಾಗಿದ್ದು, ಅವರು ಅದನ್ನು ಜುಲೈ 9 ರಂದು ನ್ಯೂಯಾರ್ಕ್‌ನಲ್ಲಿ ತನ್ನ ಪಡೆಗೆ ಓದಿದರು. ಆಗಸ್ಟ್‌ 10 ರಂದು ಒಂದು ಪ್ರತಿಯು ಲಂಡನ್‌ ತಲುಪಿದೆ. ಇನ್ನೂ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ ಎಂದು ತಿಳಿದಿರುವ 25 ಡನ್‌ಲಾಪ್ ಬ್ರಾಡ್‌ಸೈಡ್‌ಗಳು ಡಾಕ್ಯುಮೆಂಟ್‌ನ ಉಳಿದಿರುವ ಅತ್ಯಂತ ಹಳೆಯ ಪ್ರತಿಗಳಾಗಿವೆ. ಪ್ರತಿಗಳ ಮೂಲ ಕೈಬರಹದ ನಕಲುಗಳು ಉಳಿದಿಲ್ಲ.\"",
+     "question": "ಈ ಕೆಳಗಿನ ಸ್ಥಳಗಳಲ್ಲಿ, ಡನ್‌ಲ್ಯಾಪ್ ಬ್ರಾಡ್‌ಸೈಡ್ ಕೊನೆಯದಾಗಿ ಎಲ್ಲಿಗೆ ತಲುಪಿತು?",
+     "options": [
+      "ನ್ಯೂ ಯಾರ್ಕ್",
+      "ಡನ್‌ಲ್ಯಾಪ್‌ನ ಪ್ರಿಂಟಿಂಗ್ ಶಾಪ್",
+      "ಲಂಡನ್‌",
+      "ಸ್ವಾತಂತ್ರ್ಯ ಸಭಾಂಗಣ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ವಸಾಹತುಶಾಹಿಗಳು, ಈ ಚಟುವಟಿಕೆಯನ್ನು ನೋಡಿ, ಬಲವರ್ಧನೆಗೊಳ್ಳುವಂತೆ ಕರೆ ನೀಡಿದ್ದರು. ಫಾರ್ವರ್ಡ್ ಸ್ಥಾನಗಳನ್ನು ಬಲಪಡಿಸುವ ಸೈನಿಕರು ಕರ್ನಲ್ ಜಾನ್ ಸ್ಟಾರ್ಕ್ ಮತ್ತು ಜೇಮ್ಸ್ ರೀಡ್ ಅವರ ಅಡಿಯಲ್ಲಿ 200 ಪುರುಷರ 1 ಮತ್ತು 3ನೇ ನ್ಯೂ ಹ್ಯಾಂಪ್‌ಶೈರ್ ರೆಜಿಮೆಂಟ್‌ಗಳನ್ನು ಒಳಗೊಂಡಿತ್ತು (ಇಬ್ಬರೂ ನಂತರ ಜನರಲ್‌ಗಳಾದರು). ವಸಾಹತುಗಾರರ ಸ್ಥಾನದ ಉತ್ತರ ತುದಿಯಲ್ಲಿರುವ ಬೇಲಿಯ ಉದ್ದಕ್ಕೂ ಸ್ಟಾರ್ಕ್‌ನ ಪುರುಷರು ಸ್ಥಾನಗಳನ್ನು ಪಡೆದಿದರು ಸಮುದ್ರದಲ್ಲಿನ ಇಳಿತ, ದ್ವೀಪಕಲ್ಪದ ಈಶಾನ್ಯದಲ್ಲಿ ಮಿಸ್ಟಿಕ್ ನದಿಯ ಉದ್ದಕ್ಕೂ ಅಂತರ ಉಂಟು ಮಾಡಿದಾಗ, ಅವರು ತಕ್ಷಣ ಆ ಸಣ್ಣ ಬೀಚ್‌ನ ಬೇಲಿಯನ್ನು ಒಂದು ಸಣ್ಣ ಕಲ್ಲಿನ ಗೋಡೆಯೊಂದಿಗೆ ಉತ್ತರದಿಕ್ಕಿನಲ್ಲಿನ ವಾಟರ್ಸ್ ಏಡ್ಜ್ ಕೊನೆಯಾಗುವವರೆಗೆ ವಿಸ್ತರಿಸಿದರು. ಗ್ರಿಡ್ಲಿ ಅಥವಾ ಸ್ಟಾರ್ಕ್ ಸುಮಾರು 100 ಅಡಿ (30 ಮೀ) ಎತ್ತರವನ್ನು ಬೇಲಿಯ ಮುಂದೆ ಇಟ್ಟರು ಮತ್ತು  ಬೆಂಕಿಯಿಡುವುದಿಲ್ಲ ಎಂದು ಆದೇಶಿಸಿದರು.",
+     "question": "ಕರ್ನಲ್ ಸ್ಟಾರ್ಕ್ ಪಡೆಗಳು ಎಲ್ಲಿ ನೆಲೆಗೊಂಡಿದ್ದವು?",
+     "options": [
+      "ಉತ್ತರ ತುದಿಯಲ್ಲಿ, ಬೇಲಿಯ ಉದ್ದಕ್ಕೂ",
+      "ನೀರಿನ ಅಂಚಿನಲ್ಲಿರುವ ಕಡಲತೀರದಲ್ಲಿ",
+      "ಪರ್ಯಾಯ ದ್ವೀಪದ ಈಶಾನ್ಯದಲ್ಲಿ",
+      "ಬೇಲಿಯ ಮುಂದೆ"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "ವಸಾಹತುಶಾಹಿಗಳು, ಈ ಚಟುವಟಿಕೆಯನ್ನು ನೋಡಿ, ಬಲವರ್ಧನೆಗೊಳ್ಳುವಂತೆ ಕರೆ ನೀಡಿದ್ದರು. ಫಾರ್ವರ್ಡ್ ಸ್ಥಾನಗಳನ್ನು ಬಲಪಡಿಸುವ ಸೈನಿಕರು ಕರ್ನಲ್ ಜಾನ್ ಸ್ಟಾರ್ಕ್ ಮತ್ತು ಜೇಮ್ಸ್ ರೀಡ್ ಅವರ ಅಡಿಯಲ್ಲಿ 200 ಪುರುಷರ 1 ಮತ್ತು 3ನೇ ನ್ಯೂ ಹ್ಯಾಂಪ್‌ಶೈರ್ ರೆಜಿಮೆಂಟ್‌ಗಳನ್ನು ಒಳಗೊಂಡಿತ್ತು (ಇಬ್ಬರೂ ನಂತರ ಜನರಲ್‌ಗಳಾದರು). ವಸಾಹತುಗಾರರ ಸ್ಥಾನದ ಉತ್ತರ ತುದಿಯಲ್ಲಿರುವ ಬೇಲಿಯ ಉದ್ದಕ್ಕೂ ಸ್ಟಾರ್ಕ್‌ನ ಪುರುಷರು ಸ್ಥಾನಗಳನ್ನು ಪಡೆದಿದರು ಸಮುದ್ರದಲ್ಲಿನ ಇಳಿತ, ದ್ವೀಪಕಲ್ಪದ ಈಶಾನ್ಯದಲ್ಲಿ ಮಿಸ್ಟಿಕ್ ನದಿಯ ಉದ್ದಕ್ಕೂ ಅಂತರ ಉಂಟು ಮಾಡಿದಾಗ, ಅವರು ತಕ್ಷಣ ಆ ಸಣ್ಣ ಬೀಚ್‌ನ ಬೇಲಿಯನ್ನು ಒಂದು ಸಣ್ಣ ಕಲ್ಲಿನ ಗೋಡೆಯೊಂದಿಗೆ ಉತ್ತರದಿಕ್ಕಿನಲ್ಲಿನ ವಾಟರ್ಸ್ ಏಡ್ಜ್ ಕೊನೆಯಾಗುವವರೆಗೆ ವಿಸ್ತರಿಸಿದರು. ಗ್ರಿಡ್ಲಿ ಅಥವಾ ಸ್ಟಾರ್ಕ್ ಸುಮಾರು 100 ಅಡಿ (30 ಮೀ) ಎತ್ತರವನ್ನು ಬೇಲಿಯ ಮುಂದೆ ಇಟ್ಟರು ಮತ್ತು  ಬೆಂಕಿಯಿಡುವುದಿಲ್ಲ ಎಂದು ಆದೇಶಿಸಿದರು.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಸ್ಟಾರ್ಕ್‌ ನ ಪುರುಷರು ತಮ್ಮ ಬೇಲಿಯನ್ನು ಯಾವಾಗ ವಿಸ್ತರಿಸಿದರು?",
+     "options": [
+      "ವಸಾಹತುಗಾರರು ಬಲವರ್ಧನೆಗಾಗಿ ಕರೆ ನೀಡಿದಾಗ",
+      "ಸಾಮಾನ್ಯರು ವಿಂಗಡನೆಯನ್ನು ಅನುಮೋದಿಸಿದ ನಂತರ",
+      "ಕಡಿಮೆ ಉಬ್ಬರವಿಳಿತದ ಸಮಯದಲ್ಲಿ",
+      "ಪಡೆಗಳು ಮುಂದಿನ ಸ್ಥಾನಗಳನ್ನು ಊಹಿಸಿದಾಗ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಪ್ರಾಚೀನ ಚೀನಾವು ವಿಭಿನ್ನ ಸಮಯವನ್ನು ತೋರಿಸುವ ವಿಶಿಷ್ಟ ಸಮಯ ವಿಧಾನವನ್ನು ಹೊಂದಿತ್ತು; ಚೀನಾದ ಪ್ರತಿಯೊಂದು ಹಂತ ಅಥವಾ ಅಧಿಕಾರದಲ್ಲಿದ್ದ ಪ್ರತಿಯೊಂದು ಕುಟುಂಬವು ಒಂದು ವಿಶಿಷ್ಟ ರಾಜವಂಶವಾಗಿತ್ತು. ಪ್ರತಿ ರಾಜವಂಶದ ಮಧ್ಯೆ ವಿಭಜಿತ ಪ್ರಾಂತ್ಯಗಳ ಅಸ್ಥಿರ ಯುಗವಿತ್ತು. ಈ ಸಮಯದಲ್ಲಿ ಹಾನ್ ಮತ್ತು ಜಿನ್ ರಾಜವಂಶದ ನಡುವೆ 60 ವರ್ಷಗಳವರೆಗೆ ಮೂರು ಪ್ರಾಂತ್ಯಗಳ ನಡುವೆಯಿದ್ದ ಅಸ್ಥಿರತೆಯು ಹೆಚ್ಚು ಪ್ರಸಿದ್ಧವಾದುದಾಗಿದೆ. ಈ ಅವಧಿಯಲ್ಲಿ ಅನೇಕ ಸಾಮ್ರಾಟರ ನಡುವೆ ಸಿಂಹಾಸನಕ್ಕಾಗಿ ಭೀಕರ ಯುದ್ಧ ನಡೆಯಿತು. ಪುರಾತನ ಚೀನಾ ಇತಿಹಾಸದಲ್ಲಿ ಮೂರು ಸಾಮ್ರಾಜ್ಯವು ಅತ್ಯಂತ ಕ್ರೂರ ಯುಗದ್ದಾಗಿದ್ದು, ಕ್ಸಿಯಾನ್‌ನಲ್ಲಿನ ವೈಭವಯುತ ಅರಮನೆಯ ಉನ್ನತ ಹುದ್ದೆಯಲ್ಲಿ ಕುಳಿತುಕೊಳ್ಳಲು ಹೊಡೆದಾಡಿ ಸಾವಿರಾರು ಜನರು ಸಾವನ್ನಪ್ಪಿದ್ದಾರೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಚೀನಾದ ಅತ್ಯಂತ ಹಿಂಸಾತ್ಮಕ ಯುಗಗಳಲ್ಲಿ ಒಂದಾಗಿತ್ತು?",
+     "options": [
+      "ಜಿನ್ ರಾಜವಂಶ",
+      "ಕ್ಸಿಯಾನ್ ಯುಗ",
+      "ಹಾನ್ ರಾಜವಂಶ",
+      "ಮೂರು ಸಾಮ್ರಾಜ್ಯಗಳ ಯುಗ"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "ಸೈನ್ಯದ ಇರುವೆ ವಸಾಹತುಗಳು ಮೆರವಣಿಗೆ ಮಾಡುತ್ತವೆ ಮತ್ತು ವಿವಿಧ ಹಂತಗಳಲ್ಲಿ ಗೂಡು ಕೂಡ ಕಟ್ಟುತ್ತವೆ. ಅಲೆಮಾರಿ ಹಂತದಲ್ಲಿ, ಇರುವೆಗಳ ಸೈನ್ಯವು ರಾತ್ರಿಯಲ್ಲಿ ನಡೆದಾಡಿ ಹಗಲಿನ ವೇಳೆಯಲ್ಲಿ ತಮ್ಮ ಪ್ರಯಾಣವನ್ನು ನಿಲ್ಲಿಸುತ್ತವೆ. ಆಹಾರ ಲಭ್ಯತೆ ಕಡಿಮೆಯಾದಾಗ ಕಾಲೊನಿಯು ಸಂಚಾರಿ ಹಂತ ತಲುಪುತ್ತದೆ. ಈ ಹಂತದಲ್ಲಿ, ಪ್ರತಿ ದಿನ ಬದಲಾವಣೆಯಾಗುವ ತಾತ್ಕಾಲಿಕ ಗೂಡುಗಳನ್ನು ಕಾಲೊನಿಯು ಮಾಡುತ್ತದೆ. ಈ ಪ್ರತಿ ಅಲೆಮಾರಿಯ ಪಯಣ ಅಥವಾ ನಡೆದಾಟವು ಅಂದಾಜು 17 ದಿನಗಳವರೆಗೆ ನಡೆಯಿತು.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಇರುವೆಗಳ ಸೈನ್ಯದ ಕೂಟವು ಅಲೆಮಾರಿ ಹಂತವನ್ನು ಪ್ರವೇಶಿಸುವುದರಲ್ಲಿ ನಿಜವೇನು?",
+     "options": [
+      "ಅವುಗಳು ರಾತ್ರಿಯಲ್ಲಿ ಗೂಡು ಕಟ್ಟುತ್ತವೆ",
+      "ಅವುಗಳಿಗೆ ಆಹಾರದ ಪೂರೈಕೆಯು ಕಡಿಮೆಯಾಗಿದೆ",
+      "ಕಟ್ಟಿದ ಗೂಡುಗಳನ್ನು ಅವುಗಳು 17 ದಿನಗಳ ನಂತರ ಬದಲಾಯಿಸುತ್ತವೆ",
+      "ಅವುಗಳು ಹಗಲಿನಲ್ಲಿ ಪ್ರಯಾಣ ಮಾಡುತ್ತವೆ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಸೈನ್ಯದ ಇರುವೆ ವಸಾಹತುಗಳು ಮೆರವಣಿಗೆ ಮಾಡುತ್ತವೆ ಮತ್ತು ವಿವಿಧ ಹಂತಗಳಲ್ಲಿ ಗೂಡು ಕೂಡ ಕಟ್ಟುತ್ತವೆ. ಅಲೆಮಾರಿ ಹಂತದಲ್ಲಿ, ಇರುವೆಗಳ ಸೈನ್ಯವು ರಾತ್ರಿಯಲ್ಲಿ ನಡೆದಾಡಿ ಹಗಲಿನ ವೇಳೆಯಲ್ಲಿ ತಮ್ಮ ಪ್ರಯಾಣವನ್ನು ನಿಲ್ಲಿಸುತ್ತವೆ. ಆಹಾರ ಲಭ್ಯತೆ ಕಡಿಮೆಯಾದಾಗ ಕಾಲೊನಿಯು ಸಂಚಾರಿ ಹಂತ ತಲುಪುತ್ತದೆ. ಈ ಹಂತದಲ್ಲಿ, ಪ್ರತಿ ದಿನ ಬದಲಾವಣೆಯಾಗುವ ತಾತ್ಕಾಲಿಕ ಗೂಡುಗಳನ್ನು ಕಾಲೊನಿಯು ಮಾಡುತ್ತದೆ. ಈ ಪ್ರತಿ ಅಲೆಮಾರಿಯ ಪಯಣ ಅಥವಾ ನಡೆದಾಟವು ಅಂದಾಜು 17 ದಿನಗಳವರೆಗೆ ನಡೆಯಿತು.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಯಾವ ಹೇಳಿಕೆಯು ಅಲೆಮಾರಿ ಹಂತದಲ್ಲಿರುವ ಇರುವೆಗಳ ಸೇನೆಯ ಕೂಟದ ಗೂಡುಕಟ್ಟುವ ಅಭ್ಯಾಸವನ್ನು ನಿಖರವಾಗಿ ಪ್ರತಿಬಿಂಬಿಸುತ್ತದೆ?",
+     "options": [
+      "ಅವುಗಳು ರಾತ್ರಿಯಲ್ಲಿ ಗೂಡುಗಳನ್ನು ನಿರ್ಮಿಸುತ್ತವೆ",
+      "ಅವುಗಳು ಗೂಡು ಕಟ್ಟದೆಯೇ 17 ದಿನಗಳ ಕಾಲ ಪ್ರಯಾಣವನ್ನು ನಡೆಸುತ್ತವೆ",
+      "ಅವುಗಳು ಪ್ರತಿದಿನವೂ ಗೂಡುಗಳನ್ನು ಬದಲಾಯಿಸುತ್ತವೆ",
+      "ಅವುಗಳು ಹಂತದ ಅವಧಿಯವರೆಗೆ ಅದೇ ಗೂಡುಗಳನ್ನು ಬಳಸುತ್ತವೆ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಹಲವರು ಗಮನಿಸಿದಂತೆ ಶರೀರವಿಜ್ಞಾನ ಮತ್ತು ನಡವಳಿಕೆಯಲ್ಲಿ ಕೆಲವು ಲಯಗಳು ಕಂಡುಬರುತ್ತವೆ. ನಿರ್ದಿಷ್ಟವಾಗಿ ಎಂಡೋಜಿನಸ್ ಚಕ್ರಗಳ ಉಪಸ್ಥಿತಿ ಮತ್ತು ಜೈವಿಕ ಗಡಿಯಾರಗಳ ಮೇಲೆ ಇವುಗಳ ಉತ್ಪಾದನೆಯು ನಿಂತಿರುತ್ತದೆ. ಬ್ಯಾಕ್ಟೀರಿಯಾ, ಶಿಲೀಂಧ್ರಗಳು, ಸಸ್ಯಗಳು ಮತ್ತು ಪ್ರಾಣಿಗಳು ಸೇರಿದಂತೆ ಹೆಚ್ಚಿನ ಜೀವಿಗಳಿಗೆ, ಆವರ್ತಕ ಲಯಗಳು ಬಾಹ್ಯ ಆವರ್ತಕ ಸೂಚನೆಗಳಿಗೆ ಪ್ರತಿಕ್ರಿಯೆಯಾಗಿ ಮಾತ್ರವಲ್ಲ, ಅವುಗಳನ್ನು ಸಹ ದಾಖಲಿಸಲಾಗಿದೆ. ಜೈವಿಕ ಗಡಿಯಾರವು ಸ್ವಾವಲಂಬಿ ಆಂದೋಲಕವಾಗಿದೆ. ಯಾವುದೇ ಬಾಹ್ಯ ಪ್ರಾಂಪ್ಟ್ ಇಲ್ಲದಿದ್ದರೂ ಸಹ, ಜೈವಿಕ ಗಡಿಯಾರವು ಮುಕ್ತ ಚಾಲನೆಯಲ್ಲಿರುವ ಚಕ್ರದ ಅವಧಿಗೆ ಮುಂದುವರಿಯುತ್ತದೆ.",
+     "question": "ಬಾಹ್ಯ ಸೂಚನೆಗಳ ಉಪಸ್ಥಿತಿಯ ಹೊರತಾಗಿಯೂ ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಮುಂದುವರಿಯುತ್ತದೆ?",
+     "options": [
+      "ಅಂತರ್ವರ್ಧಕ ಆವರ್ತನಗಳು",
+      "ಆವರ್ತಕ ಲಯಗಳು",
+      "ಜೈವಿಕ ಸಮಯಗಳು",
+      "ಗಮನಿಸಿದ ಲಯಗಳು"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಜನಸಂಖ್ಯೆ ಎಂಬುದು ಒಂದು ನಿರ್ದಿಷ್ಟ ಭೌಗೋಳಿಕ ಕ್ಷೇತ್ರದೊಳಗಿನ   ನಿರ್ದಿಷ್ಟ ಪ್ರಭೇದದ ಜೀವಿಯ  ಸಂಗ್ರಹಣೆ. ಜನಾಂಗದ ಎಲ್ಲ ವ್ಯಕ್ತಿಗಳು ನಿರ್ದಿಷ್ಟ ಫಿನೋಟೈಪಿಕ್ ಗುಣಲಕ್ಷಣಕ್ಕೆ ಸಂಬಂಧಿಸಿದಂತೆ ಒಂದೇ ಆಗಿರುವಾಗ ಅವರನ್ನು ಮೊನೊಮಾರ್ಫಿಕ್ ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ. ವ್ಯಕ್ತಿಗಳು ಒಂದು ನಿರ್ದಿಷ್ಟ ಗುಣಲಕ್ಷಣದ ಹಲವಾರು ರೂಪಾಂತರಗಳನ್ನು ತೋರಿಸಿದಾಗ ಅವು ಬಹುರೂಪಿಗಳಾಗಿರುತ್ತವೆ.",
+     "question": "ನಿರ್ದಿಷ್ಟ ಫಿನೋಟೈಪಿಕ್ ಗುಣಲಕ್ಷಣದ ವ್ಯತ್ಯಾಸಗಳನ್ನು ತೋರಿಸುವ ವ್ಯಕ್ತಿಗಳನ್ನು ಯಾವ ಪದವು ವಿವರಿಸುತ್ತದೆ?",
+     "options": [
+      "ಏಕರೂಪಿ",
+      "ಜೀವಿಗಳು",
+      "ಜಾತಿಗಳು",
+      "ಬಹುರೂಪಿ"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "ಜನಸಂಖ್ಯೆ ಎಂಬುದು ಒಂದು ನಿರ್ದಿಷ್ಟ ಭೌಗೋಳಿಕ ಕ್ಷೇತ್ರದೊಳಗಿನ   ನಿರ್ದಿಷ್ಟ ಪ್ರಭೇದದ ಜೀವಿಯ  ಸಂಗ್ರಹಣೆ. ಜನಾಂಗದ ಎಲ್ಲ ವ್ಯಕ್ತಿಗಳು ನಿರ್ದಿಷ್ಟ ಫಿನೋಟೈಪಿಕ್ ಗುಣಲಕ್ಷಣಕ್ಕೆ ಸಂಬಂಧಿಸಿದಂತೆ ಒಂದೇ ಆಗಿರುವಾಗ ಅವರನ್ನು ಮೊನೊಮಾರ್ಫಿಕ್ ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ. ವ್ಯಕ್ತಿಗಳು ಒಂದು ನಿರ್ದಿಷ್ಟ ಗುಣಲಕ್ಷಣದ ಹಲವಾರು ರೂಪಾಂತರಗಳನ್ನು ತೋರಿಸಿದಾಗ ಅವು ಬಹುರೂಪಿಗಳಾಗಿರುತ್ತವೆ.",
+     "question": "ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ನಿರ್ದಿಷ್ಟ ಪ್ರದೇಶವನ್ನು ಆಕ್ರಮಿಸುವ ಜೀವಿಗಳಿಗೆ ಸರಿಯಾದ ಪದವಾಗಿದೆ?",
+     "options": [
+      "ಏಕರೂಪಿ",
+      "ಜನಸಂಖ್ಯೆ",
+      "ಜಾತಿಗಳು",
+      "ಬಹುರೂಪಿ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಪ್ರಕೃತಿ ಆಧಾರಿತ ಪ್ರವಾಸೋದ್ಯಮವು ಸಸ್ಯ ಮತ್ತು ವನ್ಯಜೀವಿಗಳು ಸೇರಿದಂತೆ ನೈಸರ್ಗಿಕ ದೃಶ್ಯಾವಳಿಗಳನ್ನು ಆನಂದಿಸುವ ಉದ್ದೇಶದಿಂದ ನೈಸರ್ಗಿಕ ಪ್ರದೇಶಗಳಿಗೆ ಭೇಟಿ ನೀಡಲು ಆಸಕ್ತಿ ಹೊಂದಿರುವ ಜನರನ್ನು ಆಕರ್ಷಿಸುತ್ತದೆ. ಆನ್-ಸೈಟ್ ಚಟುವಟಿಕೆಗಳ ಉದಾಹರಣೆಗಳಲ್ಲಿ ಬೇಟೆ, ಮೀನುಗಾರಿಕೆ, ಛಾಯಾಗ್ರಹಣ, ಪಕ್ಷಿ ವೀಕ್ಷಣೆ ಮತ್ತು ಉದ್ಯಾನವನಗಳಿಗೆ ಭೇಟಿ ನೀಡುವುದು ಮತ್ತು ಪರಿಸರ ವ್ಯವಸ್ಥೆಯ ಬಗ್ಗೆ ಮಾಹಿತಿಯನ್ನು ಅಧ್ಯಯನ ಮಾಡುವುದು ಒಳಗೊಂಡಿವೆ. ಬೊರ್ನೆಯೊದಲ್ಲಿನ ಒರಾಂಗುಟಾನ್‍ಗಳ ಭೇಟಿ, ಅವುಗಳ ಛಾಯಾಗ್ರಹಣ ಮತ್ತು ಅವುಗಳ ಬಗ್ಗೆ ಅರಿತುಕೊಳ್ಳುವಿಕೆ ಇದಕ್ಕೆ ಒಂದು ಉದಾಹರಣೆ.",
+     "question": "ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಪ್ರಕೃತಿ ಆಧಾರಿತ ಪ್ರವಾಸೋದ್ಯಮ ಚಟುವಟಿಕೆಗೆ ಉದಾಹರಣೆಯಾಗಿರುವುದಿಲ್ಲ?",
+     "options": [
+      "ಜಲಪಾತದ ಕಡೆಗೆ ಪಾದಯಾತ್ರೆ",
+      "ಕಾಡು ಹೂವು‌ಗಳ ಛಾಯಾಗ್ರಹಣ",
+      "ವಿಜ್ಞಾನ ವಸ್ತುಸಂಗ್ರಹಾಲಯಕ್ಕೆ ಭೇಟಿ ನೀಡುವುದು",
+      "ನೊಣ ಮೀನುಗಾರಿಕೆ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಪ್ರತಿ ದಿನ ಬೆಳಗ್ಗೆ ಜನರು ಈ ಸಣ್ಣ ಪಟ್ಟಣ ದೇಶದಲ್ಲಿ ತಮ್ಮ ಕಾರುಗಳ ಮೂಲಕ ಕೆಲಸದ ಸ್ಥಳಕ್ಕೆ ತೆರಳುತ್ತಾರೆ ಮತ್ತು ಕೆಲಸದ ಸ್ಥಳ ಹತ್ತಿರವೇ ಇರುವ ಜನರ ಸ್ಥಳವನ್ನು ದಾಟಿ ಇವರು ಮುಂದೆ ಹೋಗುತ್ತಾರೆ. ಈ ಚಲನಶೀಲ ಸಾರಿಗೆ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಪ್ರತಿಯೊಬ್ಬರೂ ಹೇಗೋ ಸಂಪರ್ಕಗೊಂಡು, ಸ್ವಂತ ಕಾರುಗಳ ಬಳಕೆಯ ಮೇಲೆ ಆಧಾರಿತವಾಗಿರುವ  ಈ ಸಾರಿಗೆ ವ್ಯವಸ್ಥೆಯನ್ನು ಬೆಂಬಲಿಸುತ್ತಿದ್ದಾರೆ. ಈ ಬೃಹತ್ ಇಂಗಾಲ ಆರ್ಥಿಕತೆ, ಎರಡು  ದಶಲಕ್ಷ  ವರ್ಷಗಳಿಂದ   ಮಾನವನ ವಿಕಾಸಕ್ಕೆ ಆಧಾರ ಕೊಡುತ್ತ ಬರುತ್ತಿರುವ  ಈ ಜೀವಗೋಳವನ್ನು ತನ್ನ ಒಂದು ಸ್ಥಿರ ಸ್ಥಾನದಿಂದ ಅಲುಗಾಡಿಸಿದೆ ಎಂದು ವಿಜ್ಞಾನ  ಈಚೆಗೆ ಸೂಚಿಸಿದೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಸಾರಿಗೆ ವ್ಯವಸ್ಥೆಯ ಆಧಾರವಾಗಿದೆ?",
+     "options": [
+      "ಕೆಲಸದ ಸ್ಥಳಗಳು",
+      "ಖಾಸಗಿ ಕಾರುಗಳು",
+      "ಸ್ಥಿರ ಜೀವಮಂಡಲ",
+      "ಮಾನವ ವಿಕಾಸ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಎಲ್ಲ ಘನದ ಮೂಲಭೂತ ಆಧಾರ ಸ್ತಂಭಗಳು ಎಂದು ಅಣುವನ್ನು ಪರಿಗಣಿಸಲಾಗಿದೆ. ಸರಳೀಕೃತ ಬೋಹರ್‌ನ ಮಾದರಿ ಹೇಳುವಂತೆ, ಅದೊಂದು ಸಂಕೀರ್ಣ ರಚನೆ, ಒಂದು ಕೇಂದ್ರಿಕೃತ ನ್ಯೂಕ್ಲಿಯಸ್‌ನ್ನು ಪರಿಭ್ರಮಿಸುವ ಇಲೆಕ್ಟ್ರಾನುಗಳು, ಹೆಚ್ಚೂಕಮ್ಮಿ ಗ್ರಹಗಳು ಸೂರ್ಯನ ಸುತ್ತ ಪರಿಭ್ರಮಿಸುವಂತೆ ಇರುತ್ತವೆ. - ಚಿತ್ರ 1.1 ನೋಡಿ. ನ್ಯೂಕ್ಲಿಯಸ್ ಎರಡು ಭಾಗಗಳನ್ನೂ ಹೊಂದಿದೆ -  ನ್ಯೂಟ್ರಾನ್‌ಗಳು ಮತ್ತು ಪ್ರೋಟಾನ್‌ಗಳು. ಪ್ರೊಟಾನುಗಳು ಧನಾತ್ಮಕ ಆವೇಶವನ್ನು ಹೊಂದಿದ್ದರೆ  ನ್ಯೂಟ್ರಾನುಗಳು ಯಾವುದೇ ಆವೇಶವನ್ನು ಹೊಂದಿರುವುದಿಲ್ಲ. ಇಲೆಕ್ಟಾನುಗಳು ಋಣಾತ್ಮಕ ಆವೇಶ ಹೊಂದಿರುತ್ತವೆ.",
+     "question": "ನ್ಯೂಕ್ಲಿಯಸ್ ಅನ್ನು ಸುತ್ತುವ ಕಣಗಳು ಯಾವ ರೀತಿಯ ಚಾರ್ಜ್ ಅನ್ನು ಹೊಂದಿವೆ?",
+     "options": [
+      "ಪಾಸಿಟಿವ್ ಚಾರ್ಜ್",
+      "ಯಾವುದೇ ಚಾರ್ಜ್ ಇಲ್ಲ",
+      "ನೆಗೆಟಿವ್ ಚಾರ್ಜ್",
+      "ಪಾಸಿಟಿವ್ ಮತ್ತು ನೆಗೆಟಿವ್ ಚಾರ್ಜ್‌"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಎಲ್ಲ ಘನದ ಮೂಲಭೂತ ಆಧಾರ ಸ್ತಂಭಗಳು ಎಂದು ಅಣುವನ್ನು ಪರಿಗಣಿಸಲಾಗಿದೆ. ಸರಳೀಕೃತ ಬೋಹರ್‌ನ ಮಾದರಿ ಹೇಳುವಂತೆ, ಅದೊಂದು ಸಂಕೀರ್ಣ ರಚನೆ, ಒಂದು ಕೇಂದ್ರಿಕೃತ ನ್ಯೂಕ್ಲಿಯಸ್‌ನ್ನು ಪರಿಭ್ರಮಿಸುವ ಇಲೆಕ್ಟ್ರಾನುಗಳು, ಹೆಚ್ಚೂಕಮ್ಮಿ ಗ್ರಹಗಳು ಸೂರ್ಯನ ಸುತ್ತ ಪರಿಭ್ರಮಿಸುವಂತೆ ಇರುತ್ತವೆ. - ಚಿತ್ರ 1.1 ನೋಡಿ. ನ್ಯೂಕ್ಲಿಯಸ್ ಎರಡು ಭಾಗಗಳನ್ನೂ ಹೊಂದಿದೆ -  ನ್ಯೂಟ್ರಾನ್‌ಗಳು ಮತ್ತು ಪ್ರೋಟಾನ್‌ಗಳು. ಪ್ರೊಟಾನುಗಳು ಧನಾತ್ಮಕ ಆವೇಶವನ್ನು ಹೊಂದಿದ್ದರೆ  ನ್ಯೂಟ್ರಾನುಗಳು ಯಾವುದೇ ಆವೇಶವನ್ನು ಹೊಂದಿರುವುದಿಲ್ಲ. ಇಲೆಕ್ಟಾನುಗಳು ಋಣಾತ್ಮಕ ಆವೇಶ ಹೊಂದಿರುತ್ತವೆ.",
+     "question": "ನ್ಯೂಕ್ಲಿಯಸ್ ಯಾವ ಕಣಗಳಿಂದ ಕೂಡಿದೆ?",
+     "options": [
+      "ಪ್ರೋಟಾನ್‌ಗಳು ಮತ್ತು ನ್ಯೂಟ್ರಾನ್‌ಗಳು",
+      "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ಮತ್ತು ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು",
+      "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಮತ್ತು ಪ್ರೋಟಾನ್‌ಗಳು",
+      "ಪ್ರೋಟಾನ್‌ಗಳು, ನ್ಯೂಟ್ರಾನ್‌ಗಳು ಮತ್ತು ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "ಇಂದು ಬಳಕೆಯಲ್ಲಿರುವ ಸರಿಸುಮಾರು ಎಲ್ಲ ಕಂಪ್ಯೂಟರ್‌ಗಳೂ ದ್ವಿಮಾನ ಸಂಖ್ಯೆಗಳಲ್ಲಿ ಕೋಡ್ ಮಾಡಲಾಗಿರುವ ಮಾಹಿತಿ ವಿಶ್ಲೇಷಣೆ ಮಾಡುವಿಕೆಯ ಮೇಲೆ ಆಧಾರಿತವಾಗಿವೆ. ಜೋಡಿಯುಳ್ಳ ಸಂಖ್ಯೆಯು 2 ಮೌಲ್ಯಗಳಲ್ಲಿ 1ನ್ನು ಮಾತ್ರ ಹೊಂದಬಹುದು, ಅಂದರೆ 0 ಅಥವಾ 1, ಮತ್ತು ಗಣಕಯಂತ್ರ  ಪರಿಭಾಷೆಯನ್ನು ಬಳಸಲು ಈ ಸಂಖ್ಯೆಗಳನ್ನು ಜೋಡಿಯುಳ್ಳ ಅಂಕೆಗಳು - ಅಥವಾ ಚೂರುಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಐದು ಬಿಟ್ ಬೈನರಿ ಸಂಖ್ಯೆಯ ಉದಾಹರಣೆಯಾಗಿದೆ?",
+     "options": [
+      "1010",
+      "12001",
+      "10010",
+      "110101"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಇಂದು ಬಳಕೆಯಲ್ಲಿರುವ ಸರಿಸುಮಾರು ಎಲ್ಲ ಕಂಪ್ಯೂಟರ್‌ಗಳೂ ದ್ವಿಮಾನ ಸಂಖ್ಯೆಗಳಲ್ಲಿ ಕೋಡ್ ಮಾಡಲಾಗಿರುವ ಮಾಹಿತಿ ವಿಶ್ಲೇಷಣೆ ಮಾಡುವಿಕೆಯ ಮೇಲೆ ಆಧಾರಿತವಾಗಿವೆ. ಜೋಡಿಯುಳ್ಳ ಸಂಖ್ಯೆಯು 2 ಮೌಲ್ಯಗಳಲ್ಲಿ 1ನ್ನು ಮಾತ್ರ ಹೊಂದಬಹುದು, ಅಂದರೆ 0 ಅಥವಾ 1, ಮತ್ತು ಗಣಕಯಂತ್ರ  ಪರಿಭಾಷೆಯನ್ನು ಬಳಸಲು ಈ ಸಂಖ್ಯೆಗಳನ್ನು ಜೋಡಿಯುಳ್ಳ ಅಂಕೆಗಳು - ಅಥವಾ ಚೂರುಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+     "question": "ಬೈನರಿ ಅಂಕೆಗಳನ್ನು ಏನೆಂದು ಸಹ ಉಲ್ಲೇಖಿಸಬಹುದು?",
+     "options": [
+      "ಬಿಟ್ಗಳು",
+      "ಮೌಲ್ಯಗಳು",
+      "ಪರಿಭಾಷೆ",
+      "ರೂಪ‌ಗಳು"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "\"ವಿದ್ಯಾರ್ಥಿಯ ಬರವಣಿಗೆ ಕೌಶಲ್ಯವನ್ನು ಸುಧಾರಿಸಲು ಬ್ಲಾಗ್‌ಗಳು ಕೂಡ ಸಹಾಯ ಮಾಡಬಲ್ಲವು. ಪ್ರಾರಂಭದಲ್ಲಿ, ವಿದ್ಯಾರ್ಥಿಗಳು ತಮ್ಮ ಬ್ಲಾಗ್ ಬರವಣಿಗೆಯಲ್ಲಿ ಕಾಗುಣಿತ ಮತ್ತು ವ್ಯಾಕರಣ ದೋಷಗಳನ್ನು ಕಾಣುವುದು ಸರ್ವೇಸಾಮಾನ್ಯ, ಆದರೆ ಓದುಗರ ಉಪಸ್ಥಿತಿ ಮತ್ತು ಅವರು ನೀಡುವ ಪ್ರತಿಕ್ರಿಯೆಗಳಿಂದಾಗಿ ಬರವಣಿಗೆ ಕೌಶಲ್ಯಗಳು ಬದಲಾಗುತ್ತಾ ಸಾಗುತ್ತವೆ. ವಿದ್ಯಾರ್ಥಿಗಳು ಸಾಮಾನ್ಯವಾಗಿ ವಿಮರ್ಶಾತ್ಮಕ ವೀಕ್ಷಕರಾಗಿದ್ದು, ಟೀಕೆಯನ್ನು ದೂರವಿಡುವುದಕ್ಕಾಗಿ ಬರವಣಿಗೆಯನ್ನು ಸುಧಾರಿಸಲು ಬ್ಲಾಗ್ ಬರೆಯಲು ಆರಂಭಿಸಿದ್ದರು. ಬ್ಲಾಗಿಂಗ್ \"\"ವಿದ್ಯಾರ್ಥಿಗಳು ತಮ್ಮ ಸುತ್ತಲಿನ ಪ್ರಪಂಚದ ಬಗ್ಗೆ ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳುವಂತೆ ಮಾಡುತ್ತದೆ.\"\" ಪ್ರೇಕ್ಷಕರ ಆಸಕ್ತಿಗೆ ಅನುಗುಣವಾಗಿ ವಿಷಯವನ್ನು ಪ್ರಸ್ತುತಪಡಿಸುವ ಅಗತ್ಯವು ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ಬುದ್ಧಿವಂತ ಮತ್ತು ಆಸಕ್ತಿದಾಯಕವಾಗಿರಲು ಪ್ರೇರೇಪಿಸುತ್ತದೆ (ಟೊಟೊ, 2004). ಬ್ಲಾಗಿಂಗ್ ಸಹಯೋಗವನ್ನು ಪ್ರೇರೇಪಿಸುವ ಒಂದು ಸಾಧನವಾಗಿದೆ, ಮತ್ತು ಸಾಂಪ್ರದಾಯಿಕ ಶಾಲಾ ಕಲಿಕೆಯನ್ನು ಮೀರಿ ಕಲಿಕೆಯನ್ನು ವಿಸ್ತರಿಸಲು ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ಪ್ರೋತ್ಸಾಹಿಸುತ್ತದೆ. ಬ್ಲಾಗ್‌ಗಳ ಸೂಕ್ತ ಬಳಕೆಯು \"\"ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ಹೆಚ್ಚು ವಿಶ್ಲೇಷಣಾತ್ಮಕ ಮತ್ತು ವಿಮರ್ಶಾತ್ಮಕವಾಗಿಸುತ್ತದೆ; ಇಂಟರ್ನೆಟ್ ವಸ್ತುಗಳಿಗೆ ಸಕ್ರಿಯವಾಗಿ ಪ್ರತಿಕ್ರಿಯಿಸುವ ಮೂಲಕ, ವಿದ್ಯಾರ್ಥಿಗಳು ಇತರರ ಬರಹಗಳ ಸಂದರ್ಭದಲ್ಲಿ ತಮ್ಮ ಸ್ಥಾನವನ್ನು ನಿರ್ಧರಿಸಬಹುದು ಮತ್ತು ನಿರ್ದಿಷ್ಟ ವಿಷಯಗಳ ಬಗ್ಗೆ ತಮ್ಮ ಅಭಿಪ್ರಾಯಗಳನ್ನು ರೂಪಿಸಬಹುದು (ಒರಾವೆಕ್, 2002) .\"",
+     "question": "ವಿದ್ಯಾರ್ಥಿ ಬ್ಲಾಗಿಂಗ್‌ನ ಪ್ರಾಥಮಿಕ ಪ್ರಯೋಜನವಾಗಿ ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದನ್ನು ವಾಕ್ಯವೃಂದದಲ್ಲಿ ಉಲ್ಲೇಖಿಸಲಾಗಿಲ್ಲ?",
+     "options": [
+      "ವ್ಯಾಕರಣಯದಲ್ಲಿ ಮತ್ತು ಬರವಣಿಗೆಯ ಸಾಮರ್ಥ್ಯದಲ್ಲಿ ಸುಧಾರಣೆ",
+      "ಗೆಳೆಯರಿಂದ ಟೀಕೆಗಳು ಕಡಿಮೆಯಾಗುತ್ತವೆ",
+      "ಸುತ್ತಮುತ್ತಲಿನ ಬಗ್ಗೆ ವಿಶಾಲವಾದ ಅರಿವು",
+      "ಮುಂದುವರಿದ ಕಲಿಕೆಗಾಗಿ ಹೆಚ್ಚಿದ ಆಸಕ್ತಿ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "\"ವಿದ್ಯಾರ್ಥಿಯ ಬರವಣಿಗೆ ಕೌಶಲ್ಯವನ್ನು ಸುಧಾರಿಸಲು ಬ್ಲಾಗ್‌ಗಳು ಕೂಡ ಸಹಾಯ ಮಾಡಬಲ್ಲವು. ಪ್ರಾರಂಭದಲ್ಲಿ, ವಿದ್ಯಾರ್ಥಿಗಳು ತಮ್ಮ ಬ್ಲಾಗ್ ಬರವಣಿಗೆಯಲ್ಲಿ ಕಾಗುಣಿತ ಮತ್ತು ವ್ಯಾಕರಣ ದೋಷಗಳನ್ನು ಕಾಣುವುದು ಸರ್ವೇಸಾಮಾನ್ಯ, ಆದರೆ ಓದುಗರ ಉಪಸ್ಥಿತಿ ಮತ್ತು ಅವರು ನೀಡುವ ಪ್ರತಿಕ್ರಿಯೆಗಳಿಂದಾಗಿ ಬರವಣಿಗೆ ಕೌಶಲ್ಯಗಳು ಬದಲಾಗುತ್ತಾ ಸಾಗುತ್ತವೆ. ವಿದ್ಯಾರ್ಥಿಗಳು ಸಾಮಾನ್ಯವಾಗಿ ವಿಮರ್ಶಾತ್ಮಕ ವೀಕ್ಷಕರಾಗಿದ್ದು, ಟೀಕೆಯನ್ನು ದೂರವಿಡುವುದಕ್ಕಾಗಿ ಬರವಣಿಗೆಯನ್ನು ಸುಧಾರಿಸಲು ಬ್ಲಾಗ್ ಬರೆಯಲು ಆರಂಭಿಸಿದ್ದರು. ಬ್ಲಾಗಿಂಗ್ \"\"ವಿದ್ಯಾರ್ಥಿಗಳು ತಮ್ಮ ಸುತ್ತಲಿನ ಪ್ರಪಂಚದ ಬಗ್ಗೆ ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳುವಂತೆ ಮಾಡುತ್ತದೆ.\"\" ಪ್ರೇಕ್ಷಕರ ಆಸಕ್ತಿಗೆ ಅನುಗುಣವಾಗಿ ವಿಷಯವನ್ನು ಪ್ರಸ್ತುತಪಡಿಸುವ ಅಗತ್ಯವು ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ಬುದ್ಧಿವಂತ ಮತ್ತು ಆಸಕ್ತಿದಾಯಕವಾಗಿರಲು ಪ್ರೇರೇಪಿಸುತ್ತದೆ (ಟೊಟೊ, 2004). ಬ್ಲಾಗಿಂಗ್ ಸಹಯೋಗವನ್ನು ಪ್ರೇರೇಪಿಸುವ ಒಂದು ಸಾಧನವಾಗಿದೆ, ಮತ್ತು ಸಾಂಪ್ರದಾಯಿಕ ಶಾಲಾ ಕಲಿಕೆಯನ್ನು ಮೀರಿ ಕಲಿಕೆಯನ್ನು ವಿಸ್ತರಿಸಲು ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ಪ್ರೋತ್ಸಾಹಿಸುತ್ತದೆ. ಬ್ಲಾಗ್‌ಗಳ ಸೂಕ್ತ ಬಳಕೆಯು \"\"ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ಹೆಚ್ಚು ವಿಶ್ಲೇಷಣಾತ್ಮಕ ಮತ್ತು ವಿಮರ್ಶಾತ್ಮಕವಾಗಿಸುತ್ತದೆ; ಇಂಟರ್ನೆಟ್ ವಸ್ತುಗಳಿಗೆ ಸಕ್ರಿಯವಾಗಿ ಪ್ರತಿಕ್ರಿಯಿಸುವ ಮೂಲಕ, ವಿದ್ಯಾರ್ಥಿಗಳು ಇತರರ ಬರಹಗಳ ಸಂದರ್ಭದಲ್ಲಿ ತಮ್ಮ ಸ್ಥಾನವನ್ನು ನಿರ್ಧರಿಸಬಹುದು ಮತ್ತು ನಿರ್ದಿಷ್ಟ ವಿಷಯಗಳ ಬಗ್ಗೆ ತಮ್ಮ ಅಭಿಪ್ರಾಯಗಳನ್ನು ರೂಪಿಸಬಹುದು (ಒರಾವೆಕ್, 2002) .\"",
+     "question": "ಬ್ಲಾಗಿಂಗ್‌ನ ಈ ಕೆಳಗಿನ ಅಂಶಗಳಲ್ಲಿ ಯಾವುದನ್ನು ವಿದ್ಯಾರ್ಥಿಗಳ ಬರವಣಿಗೆಯ ಕೌಶಲ್ಯವನ್ನು ಸುಧಾರಿಸಲು ಪ್ರೇರಕವಾಗಿದೆ ಎಂದು ಉಲ್ಲೇಖಿಸಲಾಗಿದೆ?",
+     "options": [
+      "ಅಂತರ್ಜಾಲದಲ್ಲಿರುವ ವಿಷಯಗಳಿಗೆ ಆಗಾಗ್ಗೆ ಪ್ರತಿಕ್ರಿಯಿಸುವುದು",
+      "ಟೀಕೆಗಳನ್ನು ತಪ್ಪಿಸಲು ಪ್ರಚೋದನೆ",
+      "ಅವರ ಪ್ರೇಕ್ಷಕರ ಆಸಕ್ತಿಯನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳುವುದು",
+      "ಸಹಯೋಗದ ಅವಶ್ಯಕತೆ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಅಸಮಕಾಲಿಕ ಸಂವಹನ ಇತರರಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸಲು  ಮತ್ತು ಪ್ರತಿಫಲಿಸಲು ಸಮಯವನ್ನು ನೀಡುತ್ತದೆ. ಇದು ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ತಮ್ಮದೇ ಆದ ವೇಗದಲ್ಲಿ ಕೆಲಸ ಮಾಡುವ ಸಾಮರ್ಥ್ಯವನ್ನು ನೀಡುತ್ತದೆ ಮತ್ತು ಸೂಚನಾತ್ಮಕ ಮಾಹಿತಿಯ ವೇಗವನ್ನು ನಿಯಂತ್ರಿಸುತ್ತದೆ. ಇದರ ಜೊತೆಗೆ, ಕಡಿಮೆ ಸಮಯ ನಿರ್ಬಂಧತೆಯೊಂದಿಗೆ ಹೊಂದಿಸಿಕೊಳ್ಳಬಹುದಾದ ಕೆಲಸದ ವೇಳೆಯ ಸಾಧ್ಯತೆಯೂ ಇದೆ. (ಬ್ರೆಮರ್, 1998) ಅಂತರಜಾಲ ಮತ್ತು ವರ್ಲ್ಡ್ ವೈಡ್ ವೆಬ್ ನ ಬಳಕೆಯು ಕಲಿಯುವವರಿಗೆ ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಮಾಹಿತಿಯೊಳ ಪ್ರವೇಶಿಸಲಿಕ್ಕೆ ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ. ದಿನದ ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಬೋಧಕರಿಗೆ ವಿದ್ಯಾರ್ಥಿಗಳು ಪ್ರಶ್ನೆಗಳನ್ನೂ ಸಲ್ಲಿಸಬಹುದು ಮತ್ತು ಮುಂದಿನ ಮುಖಾಮುಖಿ ಭೇಟಿಯವರೆಗೆ ಕಾಯುವುದರ ಬದಲಿಗೆ ಸಕಾರಣವಾದ ತ್ವರಿತ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ನಿರೀಕ್ಷಿಸಬಹುದು.",
+     "question": "ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ವಿದ್ಯಾರ್ಥಿಗಳ ಅಸಮಕಾಲಿಕ ಸಂವಹನಕ್ಕೆ ಪ್ರಯೋಜನವಾಗುವುದಿಲ್ಲ? ",
+     "options": [
+      "ಅಂತರ್ಜಾಲವನ್ನು ಸಂಪನ್ಮೂಲದಂತೆ ಬಳಸಿ",
+      "ದಿನದ ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಬೋಧಕರಿಗೆ ಮುಖಾಮುಖಿ ಪ್ರವೇಶಾವಕಾಶ",
+      "ಹೊಂದಿಕೊಳ್ಳುವ ಕೆಲಸದ ಸಮಯ",
+      "ವೇಗದ ನಿಯಂತ್ರಣ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಅಸಮಕಾಲಿಕ ಸಂವಹನ ಇತರರಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸಲು  ಮತ್ತು ಪ್ರತಿಫಲಿಸಲು ಸಮಯವನ್ನು ನೀಡುತ್ತದೆ. ಇದು ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ತಮ್ಮದೇ ಆದ ವೇಗದಲ್ಲಿ ಕೆಲಸ ಮಾಡುವ ಸಾಮರ್ಥ್ಯವನ್ನು ನೀಡುತ್ತದೆ ಮತ್ತು ಸೂಚನಾತ್ಮಕ ಮಾಹಿತಿಯ ವೇಗವನ್ನು ನಿಯಂತ್ರಿಸುತ್ತದೆ. ಇದರ ಜೊತೆಗೆ, ಕಡಿಮೆ ಸಮಯ ನಿರ್ಬಂಧತೆಯೊಂದಿಗೆ ಹೊಂದಿಸಿಕೊಳ್ಳಬಹುದಾದ ಕೆಲಸದ ವೇಳೆಯ ಸಾಧ್ಯತೆಯೂ ಇದೆ. (ಬ್ರೆಮರ್, 1998) ಅಂತರಜಾಲ ಮತ್ತು ವರ್ಲ್ಡ್ ವೈಡ್ ವೆಬ್ ನ ಬಳಕೆಯು ಕಲಿಯುವವರಿಗೆ ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಮಾಹಿತಿಯೊಳ ಪ್ರವೇಶಿಸಲಿಕ್ಕೆ ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ. ದಿನದ ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಬೋಧಕರಿಗೆ ವಿದ್ಯಾರ್ಥಿಗಳು ಪ್ರಶ್ನೆಗಳನ್ನೂ ಸಲ್ಲಿಸಬಹುದು ಮತ್ತು ಮುಂದಿನ ಮುಖಾಮುಖಿ ಭೇಟಿಯವರೆಗೆ ಕಾಯುವುದರ ಬದಲಿಗೆ ಸಕಾರಣವಾದ ತ್ವರಿತ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ನಿರೀಕ್ಷಿಸಬಹುದು.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಕೆಳಗಿನ ಅಸಮಕಾಲಿಕ ಸಂವಹನದ ಯಾವ ಅಂಶಗಳು ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಹೊಂದಿಕೊಳ್ಳುವುದಿಲ್ಲ?",
+     "options": [
+      "ಕಲಿಕೆಯ ವೇಗ",
+      "ಕೆಲಸದ ಸಮಯ",
+      "ಬೋಧನಾ ವಸ್ತು",
+      "ಅಂತರ್ಜಾಲದ ಬಳಕೆ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಸಾಂಪ್ರದಾಯಿಕ ಮಧ್ಯಕಾಲೀನ ಕೋಟೆಯು ಬಹಳ ಹಿಂದಿನಿಂದಲೂ ಕಲ್ಪನೆಗೆ ಪ್ರೇರಣೆ, ಜೌಸ್ಟ್‌ಗಳು, ಬ್ಯಾಂಕ್ವೆಟ್‌ಗಳು ಮತ್ತು ಆರ್ಥುರಿಯನ್ ಅಶ್ವದಳದ ಚಿತ್ರಗಳನ್ನು ಇಲ್ಲಿ ಕಾಣಬಹುದು. ಸಾವಿರಾರು ವರ್ಷಗಳ ಹಿಂದೆ ನಡೆದ ಯುದ್ಧಭೂಮಿಯಲ್ಲಿ ನಿಂತಿದ್ದರೂ, ಹಿಂದೆ ನಡೆದ ಯುದ್ಧಗಳ ಭೀಕರ ಸತ್ಯಾಸತ್ಯತೆಗಳು ಈಗಲೂ ಕಣ್ಣಿಗೆ ಕಟ್ಟಿದಂತಿದೆ, ಆ ಸಮಯದಲ್ಲಿ ಮನಸ್ಸಿನಾಳದಿಂದ ಏಳುತ್ತಿದ್ದಿರಬಹುದಾದ ಭಯವನ್ನು ಈಗಲೂ ಸುಲಭವಾಗಿ ಗ್ರಹಿಸಬಹುದಾಗಿದೆ. ಆದರೆ ನಮ್ಮ ಊಹೆಯು ವಾಸ್ತವಿಕತೆಯ ಮೇಲೆ ಆಧಾರಿತವಾಗಿದೆಯೇ? ಏತಕ್ಕಾಗಿ ಅರಮನೆಗಳನ್ನು ಮೊದಲಿಗೆ ನಿರ್ಮಿಸಲಾಯಿತು? ಅವರು ಅವುಗಳನ್ನು  ಹೇಗೆ ವಿನ್ಯಾಸ ಮಾಡಿದರು ಮತ್ತು ನಿರ್ಮಿಸಿದರು?",
+     "question": "ಮಧ್ಯಕಾಲೀನ ಕೋಟೆಗಳೊಂದಿಗೆ ಯಾರಿಗಾದರೂ ಸಂಬಂಧವಿರುವಂತೆ ಏನನ್ನು ವಾಕ್ಯವೃಂದದಲ್ಲಿ ಉಲ್ಲೇಖಿಸಲಾಗಿಲ್ಲ?",
+     "options": [
+      "ಬಂದೀಖಾನೆಯ ಹೊಂಡಗಳು",
+      "ಈಟಿ ಕಾಳಗಗಳು",
+      "ಅಶ್ವದಳ",
+      "ಸೈನಿಕರು"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "ಸಾಂಪ್ರದಾಯಿಕ ಮಧ್ಯಕಾಲೀನ ಕೋಟೆಯು ಬಹಳ ಹಿಂದಿನಿಂದಲೂ ಕಲ್ಪನೆಗೆ ಪ್ರೇರಣೆ, ಜೌಸ್ಟ್‌ಗಳು, ಬ್ಯಾಂಕ್ವೆಟ್‌ಗಳು ಮತ್ತು ಆರ್ಥುರಿಯನ್ ಅಶ್ವದಳದ ಚಿತ್ರಗಳನ್ನು ಇಲ್ಲಿ ಕಾಣಬಹುದು. ಸಾವಿರಾರು ವರ್ಷಗಳ ಹಿಂದೆ ನಡೆದ ಯುದ್ಧಭೂಮಿಯಲ್ಲಿ ನಿಂತಿದ್ದರೂ, ಹಿಂದೆ ನಡೆದ ಯುದ್ಧಗಳ ಭೀಕರ ಸತ್ಯಾಸತ್ಯತೆಗಳು ಈಗಲೂ ಕಣ್ಣಿಗೆ ಕಟ್ಟಿದಂತಿದೆ, ಆ ಸಮಯದಲ್ಲಿ ಮನಸ್ಸಿನಾಳದಿಂದ ಏಳುತ್ತಿದ್ದಿರಬಹುದಾದ ಭಯವನ್ನು ಈಗಲೂ ಸುಲಭವಾಗಿ ಗ್ರಹಿಸಬಹುದಾಗಿದೆ. ಆದರೆ ನಮ್ಮ ಊಹೆಯು ವಾಸ್ತವಿಕತೆಯ ಮೇಲೆ ಆಧಾರಿತವಾಗಿದೆಯೇ? ಏತಕ್ಕಾಗಿ ಅರಮನೆಗಳನ್ನು ಮೊದಲಿಗೆ ನಿರ್ಮಿಸಲಾಯಿತು? ಅವರು ಅವುಗಳನ್ನು  ಹೇಗೆ ವಿನ್ಯಾಸ ಮಾಡಿದರು ಮತ್ತು ನಿರ್ಮಿಸಿದರು?",
+     "question": "ಕೋಟೆಯ ಅವಶೇಷಗಳ ನಡುವೆ ಕಲ್ಪಿಸಬಹುದಾದ ವಾಸನೆ ಅಥವಾ ಧ್ವನಿ ಎಂದು ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದನ್ನು ವಾಕ್ಯವೃಂದದಲ್ಲಿ ಉಲ್ಲೇಖಿಸಲಾಗಿಲ್ಲ?",
+     "options": [
+      "ಯುದ್ಧಗಳು",
+      "ಭಯ",
+      "ಔತಣಕೂಟಗಳು",
+      "ಗೊರಸುಗಳು"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಆ ಅವಧಿಗೆ ಸೂಕ್ತವೆಂಬಂತೆ, ಕಿರ್ಬಿ ಮಕ್ಸ್ ಲೋ ಅರಮನೆಯು ಒಂದು ನೈಜ ಅರಮನೆಗಿಂತಲೂ ಹೆಚ್ಚು ಕೋಟೆಮನೆಯಂತೆ ಕಾಣುತ್ತದೆ. ಅದರ ಅತಿದೊಡ್ಡ ನುಣುಪಾದ ಕಿಟಕಿಗಳು ಮತ್ತು ತೆಳುವಾದ ಗೋಡೆಯು ಒಂದು ದೃಡವಾದ  ದಾಳಿಯನ್ನು ದೀರ್ಘಾವಧಿಯವರೆಗೂ  ತಡೆಯಲು ಸಾಧ್ಯವಿರಲಿಲ್ಲ. ಲಾರ್ಡ್ ಹೇಸ್ಟಿಂಗ್ಸ್ 1480 ರ ದಶಕದಲ್ಲಿ ಇದರ ನಿರ್ಮಾಣವನ್ನು ಪ್ರಾರಂಭಿಸಿದಾಗ, ದೇಶವು ತುಲನಾತ್ಮಕವಾಗಿ ಶಾಂತಿಯುತವಾಗಿದ್ದು, ಸಣ್ಣ ದರೋಡೆಕೋರರ ವಿರುದ್ಧ ಮಾತ್ರ ರಕ್ಷಣೆ ನೀಡುವ ಅಗತ್ಯವಿತ್ತು.",
+     "question": "ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಕಿರ್ಬಿ ಮಕ್ಸ್ಲೋ ಕ್ಯಾಸಲ್‌ನ ನಿಖರವಾದ ವಿವರಣೆಯಾಗಿದೆ?",
+     "options": [
+      "ಕೋಟೆಯ ದಪ್ಪ ಗೋಡೆಗಳನ್ನು ಲಾರ್ಡ್ ಹೇಸ್ಟಿಂಗ್ಸ್‌ನಿಂದ ವಿನಂತಿಸಲಾಗಿದೆ ",
+      "ನಿರ್ಮಾಣದ ಸಮಯದಲ್ಲಿ ದೇಶದ ಶಾಂತಿಯುತ ಸ್ವಭಾವದಿಂದಾಗಿ ಇದಕ್ಕೆ ಕನಿಷ್ಠ ಕೋಟೆಯ ಅಗತ್ಯವಿತ್ತು ",
+      "ಆ ಸಮಯದ ಅವಧಿಯಲ್ಲಿ ಕೋಟೆಯ ನಿರ್ಮಾಣವು ವಿಶಿಷ್ಟವಾಗಿರಲಿಲ್ಲ",
+      "ದೀರ್ಘವಾದ ಮತ್ತು ನಿರ್ಣಾಯಕ ದಾಳಿಗಳಿಂದ ಉಳಿಸಿಕೊಳ್ಳಲು ಇದನ್ನು ನಿರ್ಮಿಸಲಾಗಿದೆ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಆ ಅವಧಿಗೆ ಸೂಕ್ತವೆಂಬಂತೆ, ಕಿರ್ಬಿ ಮಕ್ಸ್ ಲೋ ಅರಮನೆಯು ಒಂದು ನೈಜ ಅರಮನೆಗಿಂತಲೂ ಹೆಚ್ಚು ಕೋಟೆಮನೆಯಂತೆ ಕಾಣುತ್ತದೆ. ಅದರ ಅತಿದೊಡ್ಡ ನುಣುಪಾದ ಕಿಟಕಿಗಳು ಮತ್ತು ತೆಳುವಾದ ಗೋಡೆಯು ಒಂದು ದೃಡವಾದ  ದಾಳಿಯನ್ನು ದೀರ್ಘಾವಧಿಯವರೆಗೂ  ತಡೆಯಲು ಸಾಧ್ಯವಿರಲಿಲ್ಲ. ಲಾರ್ಡ್ ಹೇಸ್ಟಿಂಗ್ಸ್ 1480 ರ ದಶಕದಲ್ಲಿ ಇದರ ನಿರ್ಮಾಣವನ್ನು ಪ್ರಾರಂಭಿಸಿದಾಗ, ದೇಶವು ತುಲನಾತ್ಮಕವಾಗಿ ಶಾಂತಿಯುತವಾಗಿದ್ದು, ಸಣ್ಣ ದರೋಡೆಕೋರರ ವಿರುದ್ಧ ಮಾತ್ರ ರಕ್ಷಣೆ ನೀಡುವ ಅಗತ್ಯವಿತ್ತು.",
+     "question": "ವಾಕ್ಯವೃಂದದಲ್ಲಿ ವಿವರಿಸಿದ ಸಮಯದ ಅವಧಿಯಲ್ಲಿ ಕಿರ್ಬಿ ಮಕ್ಸ್ಲೋ ಕ್ಯಾಸಲ್‌ಗೆ ಈ ಕೆಳಗಿನ ಯಾವ ನಿರ್ಮಾಣದ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ವಿಲಕ್ಷಣವೆಂದು ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ?",
+     "options": [
+      "ಬೃಹತ್ ಕಿಟಕಿಗಳು",
+      "ದಾಳಿಗಳಿಂದನು ಉಳಿಸಿಕೊಳ್ಳಲು ನಿರ್ಮಿಸಲಾದ ಅಡಿಪಾಯ",
+      "ಕೆಲವು ಕೋಟೆಗಳಿಗಿಂತ ಕಡಿಮೆ ಸಾರವರ್ಧನೆ",
+      "ತೆಳುವಾದ ಗೋಡೆಗಳು"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಕಾಲು ಮೈಲಿಯಿಂದ ಅರ್ಧ ಮೈಲಿಗೆ ಓಟದ ಬದಲಾವಣೆಯಿಂದ, ವೇಗದ ಪ್ರಾಮುಖ್ಯತೆ ಕಡಿಮೆಯಾಗಿ ಸಹಿಷ್ಣುತೆ ಸಂಪೂರ್ಣ ಅನಿವಾರ್ಯ ಆಗುತ್ತದೆ. ಎರಡು ನಿಮಿಷಗಳಲ್ಲಿ ಸೋಲಿಸುವ ವ್ಯಕ್ತಿ ಫರ್ಸ್ಟ್‌ ಕ್ಲಾಸ್ ಹಾಫ್ ಮೈಲರ್‌ ಅನ್ನು ಸಾಕಷ್ಟು ಪ್ರಮಾಣದ ವೇಗದಲ್ಲಿ ಸಾಧಿಸಬಹುದು, ಆದರೆ ಎಲ್ಲ ಅಪಾಯದಲ್ಲೂ ತಾಳಿಕೆಯನ್ನು ರೂಪಿಸಬೇಕಾಗಿದೆ. ಚಳಿಗಾಲದಲ್ಲಿ ಕೊಂಚ ಗುಡ್ಡಗಾಡು ಓಟ,  ಜೊತೆಗೆ ದೇಹದ ಮೇಲ್ಭಾಗದ ಸ್ನಾಯುಗಳಿಗೆ  ಜಿಮ್ ನಲ್ಲಿ ವ್ಯಾಯಾಮ - ಇಷ್ಟು ಸಿದ್ಧತೆ  ಸಾಕು ಓಟದ ಪಂದ್ಯದ ತಯಾರಿಗೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಮುಂಬರುವ ಋತುವಿಗಾಗಿ ತಯಾರಿ ನಡೆಸುತ್ತಿರುವ ಓಟಗಾರನಿಗೆ ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಹೆಚ್ಚು ಪ್ರಯೋಜನಕಾರಿಯಾಗಿದೆ?",
+     "options": [
+      "ಬೇಸಿಗೆಯಲ್ಲಿ ಕ್ರಾಸ್ ಕಂಟ್ರಿ ಓಟವನ್ನು ಅಭ್ಯಾಸ ಮಾಡುವುದು",
+      "ತರಬೇತಿಯ ಸಮಯದಲ್ಲಿ ವೇಗವನ್ನು ಬೆಳೆಸುವತ್ತ ಗಮನ ಹರಿಸುವುದು",
+      "ಮೂರು ನಿಮಿಷದ ಅವಧಿಯನ್ನು ಮುರಿಯುವುದು",
+      "ದೇಹದ ಮೇಲ್ಭಾಗದ ದೃಢತೆಗೆ ಜಿಮ್ ಅನ್ನು ಬಳಸುವುದು"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "ಕಾಲು ಮೈಲಿಯಿಂದ ಅರ್ಧ ಮೈಲಿಗೆ ಓಟದ ಬದಲಾವಣೆಯಿಂದ, ವೇಗದ ಪ್ರಾಮುಖ್ಯತೆ ಕಡಿಮೆಯಾಗಿ ಸಹಿಷ್ಣುತೆ ಸಂಪೂರ್ಣ ಅನಿವಾರ್ಯ ಆಗುತ್ತದೆ. ಎರಡು ನಿಮಿಷಗಳಲ್ಲಿ ಸೋಲಿಸುವ ವ್ಯಕ್ತಿ ಫರ್ಸ್ಟ್‌ ಕ್ಲಾಸ್ ಹಾಫ್ ಮೈಲರ್‌ ಅನ್ನು ಸಾಕಷ್ಟು ಪ್ರಮಾಣದ ವೇಗದಲ್ಲಿ ಸಾಧಿಸಬಹುದು, ಆದರೆ ಎಲ್ಲ ಅಪಾಯದಲ್ಲೂ ತಾಳಿಕೆಯನ್ನು ರೂಪಿಸಬೇಕಾಗಿದೆ. ಚಳಿಗಾಲದಲ್ಲಿ ಕೊಂಚ ಗುಡ್ಡಗಾಡು ಓಟ,  ಜೊತೆಗೆ ದೇಹದ ಮೇಲ್ಭಾಗದ ಸ್ನಾಯುಗಳಿಗೆ  ಜಿಮ್ ನಲ್ಲಿ ವ್ಯಾಯಾಮ - ಇಷ್ಟು ಸಿದ್ಧತೆ  ಸಾಕು ಓಟದ ಪಂದ್ಯದ ತಯಾರಿಗೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಮೊದಲ ದರ್ಜೆಯ ಅರ್ಧ-ಮೈಲಿಯ ಓಟಗಾರನಿಗೆ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಅತ್ಯಂತ ಮಹತ್ವದ್ದಾಗಿದೆ?",
+     "options": [
+      "ಚಳಿಗಾಲದ ತಿಂಗಳುಗಳಲ್ಲಿ ಕ್ರಾಸ್ ಕಂಟ್ರಿ ಓಟವನ್ನು ಅಭ್ಯಾಸ ಮಾಡುವುದು",
+      "ವೇಗದ ಮೇಲೆ ಸಹಿಷ್ಣುತೆಯನ್ನು ಬೆಳೆಸುವುದು",
+      "ಎರಡು ನಿಮಿಷಗಳ ಒಳಗೆ ಓಡುವುದು",
+      "ಸಹಿಷ್ಣುತೆಯ ಮೇಲೆ ವೇಗವನ್ನು ಹೆಚ್ಚಿಸುವುದು"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಸರಿಯಾದ ಪೌಷ್ಠಿಕಾಂಶದ ಅಭ್ಯಾಸಗಳಿಂದ ಮಾತ್ರವೇ ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನಗಳನ್ನು ನೀಡಲು ಸಾಧ್ಯವಿಲ್ಲ, ಆದರೆ ಅವು ಯುವ ಕ್ರೀಡಾಪಟುಗಳ ದೇಹದ ಆರೋಗ್ಯದ ಮೇಲೆ ಗಮನಾರ್ಹವಾಗಿ ಪರಿಣಾಮ ಬೀರುತ್ತವೆ. ಆರೋಗ್ಯಕರ ಶಕ್ತಿಯ ಸಮತೋಲನವನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳುವುದು, ಪರಿಣಾಮಕಾರಿ ಹೈಡ್ರೇಶನ್ ಪದ್ಧತಿಗಳನ್ನು ಅಭ್ಯಾಸ ಮಾಡುವುದು ಮತ್ತು ಪೂರಕ ವ್ಯಾಯಾಮದ ಎಲ್ಲಾ ಅಂಶಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದರಿಂದ ಕ್ರೀಡಾಪಟುಗಳು ತಮ್ಮ ಕಾರ್ಯಕ್ಷಮತೆಯನ್ನು ಸುಧಾರಿಸಲು ಮತ್ತು ಕ್ರೀಡಾ ಆನಂದವನ್ನು ಹೆಚ್ಚಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+     "question": "ಒಬ್ಬ ಕ್ರೀಡಾಪಟುವಿಗೆ, ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದನ್ನು ಕೇವಲ ಪೌಷ್ಟಿಕಾಂಶದ ಅಭ್ಯಾಸಗಳ ಮೂಲಕ ಸಾಧಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ?",
+     "options": [
+      "ಸುಧಾರಿತ ಕಾರ್ಯಕ್ಷಮತೆ",
+      "ಹೆಚ್ಚಿದ ಸಂತೋಷ ",
+      "ಉತ್ತಮ ಪ್ರದರ್ಶನ",
+      "ಸಾಮಾನ್ಯ ಸ್ವಾಸ್ಥ್ಯ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಸರಿಯಾದ ಪೌಷ್ಠಿಕಾಂಶದ ಅಭ್ಯಾಸಗಳಿಂದ ಮಾತ್ರವೇ ಅತ್ಯುತ್ತಮ ಪ್ರದರ್ಶನಗಳನ್ನು ನೀಡಲು ಸಾಧ್ಯವಿಲ್ಲ, ಆದರೆ ಅವು ಯುವ ಕ್ರೀಡಾಪಟುಗಳ ದೇಹದ ಆರೋಗ್ಯದ ಮೇಲೆ ಗಮನಾರ್ಹವಾಗಿ ಪರಿಣಾಮ ಬೀರುತ್ತವೆ. ಆರೋಗ್ಯಕರ ಶಕ್ತಿಯ ಸಮತೋಲನವನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳುವುದು, ಪರಿಣಾಮಕಾರಿ ಹೈಡ್ರೇಶನ್ ಪದ್ಧತಿಗಳನ್ನು ಅಭ್ಯಾಸ ಮಾಡುವುದು ಮತ್ತು ಪೂರಕ ವ್ಯಾಯಾಮದ ಎಲ್ಲಾ ಅಂಶಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದರಿಂದ ಕ್ರೀಡಾಪಟುಗಳು ತಮ್ಮ ಕಾರ್ಯಕ್ಷಮತೆಯನ್ನು ಸುಧಾರಿಸಲು ಮತ್ತು ಕ್ರೀಡಾ ಆನಂದವನ್ನು ಹೆಚ್ಚಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಆಧಾರದ ಮೇಲೆ, ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದನ್ನು ತಮ್ಮ ಕ್ರೀಡೆಯಲ್ಲಿ ಹೆಚ್ಚು ಸಂತೋಷವನ್ನು ಕಂಡುಕೊಳ್ಳುವ ಮಾರ್ಗವಾಗಿ ಯುವ ಕ್ರೀಡಾಪಟುಗಳಿಗೆ ಸೂಚಿಸಲಾಗಿಲ್ಲ?",
+     "options": [
+      "ಸರಿಯಾದ ಪೋಷಣೆಯ ಅಭ್ಯಾಸ",
+      "ಗಣ್ಯರ ಮಟ್ಟದಲ್ಲಿ ನಿರಂತರವಾಗಿ ಪ್ರದರ್ಶನ ನೀಡುವುದು",
+      "ಸರಿಯಾಗಿ ನೀರು ಕುಡಿಯುವುದು",
+      "ಆರೋಗ್ಯಕರ ಶಕ್ತಿಯ ಸಮತೋಲನವನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳುವುದು"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಮಧ್ಯಮ ದೂರದ ಓಟವು ತುಲನಾತ್ಮಕವಾಗಿ ಅಗ್ಗದ ಕ್ರೀಡೆಯಾಗಿದೆ; ಆದಾಗ್ಯೂ, ಭಾಗವಹಿಸಲು ಅಗತ್ಯವಿರುವ ಕೆಲವು ಉಪಕರಣಗಳ ಬಗ್ಗೆ ಈಗಲೂ ಅನೇಕ ತಪ್ಪು ಕಲ್ಪನೆಗಳಿವೆ. ಉತ್ಪನ್ನಗಳನ್ನು ಅಗತ್ಯಕ್ಕೆ ತಕ್ಕಂತೆ ಖರೀದಿಸಬಹುದು, ಆದರೆ ಹೆಚ್ಚಿನವು ಕಾರ್ಯಕ್ಷಮತೆಯ ಮೇಲೆ ಕಡಿಮೆ ಅಥವಾ ಯಾವುದೇ ನೈಜ ಪರಿಣಾಮವನ್ನು ಬೀರುವುದಿಲ್ಲ. ಯಾವುದೇ ಪ್ರಯೋಜನಗಳಿಲ್ಲದಿದ್ದರೂ ಸಹ ಉತ್ಪನ್ನವನ್ನು ಬಳಸಲು ಆದ್ಯತೆ ನೀಡುವುದಾಗಿ ಕ್ರೀಡಾಪಟುಗಳು ಭಾವಿಸಬಹುದು.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಮಧ್ಯಮ ದೂರದ ಓಟಗಾರನು ಹೆಚ್ಚು ದುಬಾರಿಯ ಉಪಕರಣವನ್ನು ಏಕೆ ಖರೀದಿಸುತ್ತಾರೆ?",
+     "options": [
+      "ಇದು ಅವರ ವೈಯಕ್ತಿಕ ಆದ್ಯತೆ",
+      "ಇದು ಸಾಬೀತುಪಡಿಸಿದ ಪ್ರಯೋಜನಗಳನ್ನು ಹೊಂದಿದೆ",
+      "ಇದು ಅವರ ಸಾಮರ್ಥ್ಯದ ಮೇಲೆ ಉತ್ತಮ ಪರಿಣಾಮವನ್ನು ಬೀರುತ್ತದೆ",
+      "ಕಡಿಮೆ ದರದ ಉಪಕರಣಗಳ ಬಗ್ಗೆ ಸುತ್ತಲೂ ತಪ್ಪು ಕಲ್ಪನೆಗಳಿವೆ"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "ಮಧ್ಯಮ ದೂರದ ಓಟವು ತುಲನಾತ್ಮಕವಾಗಿ ಅಗ್ಗದ ಕ್ರೀಡೆಯಾಗಿದೆ; ಆದಾಗ್ಯೂ, ಭಾಗವಹಿಸಲು ಅಗತ್ಯವಿರುವ ಕೆಲವು ಉಪಕರಣಗಳ ಬಗ್ಗೆ ಈಗಲೂ ಅನೇಕ ತಪ್ಪು ಕಲ್ಪನೆಗಳಿವೆ. ಉತ್ಪನ್ನಗಳನ್ನು ಅಗತ್ಯಕ್ಕೆ ತಕ್ಕಂತೆ ಖರೀದಿಸಬಹುದು, ಆದರೆ ಹೆಚ್ಚಿನವು ಕಾರ್ಯಕ್ಷಮತೆಯ ಮೇಲೆ ಕಡಿಮೆ ಅಥವಾ ಯಾವುದೇ ನೈಜ ಪರಿಣಾಮವನ್ನು ಬೀರುವುದಿಲ್ಲ. ಯಾವುದೇ ಪ್ರಯೋಜನಗಳಿಲ್ಲದಿದ್ದರೂ ಸಹ ಉತ್ಪನ್ನವನ್ನು ಬಳಸಲು ಆದ್ಯತೆ ನೀಡುವುದಾಗಿ ಕ್ರೀಡಾಪಟುಗಳು ಭಾವಿಸಬಹುದು.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಮಧ್ಯಮ ದೂರದ ಓಟಕ್ಕೆ ಏನು ಬೇಕು?",
+     "options": [
+      "ಬಹಳಷ್ಟು ಉಪಕರಣಗಳು",
+      "ಸ್ಥಾಪಿತ ಕ್ರೀಡಾಪಟುವಿನ ಹಿನ್ನೆಲೆ",
+      "ಬಹಳ ಕಡಿಮೆ ಉಪಕರಣಗಳು",
+      "ಬಹಳಷ್ಟು ಹಣ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "\"MRI ಎನ್ನುವುದು ನ್ಯೂಕ್ಲಿಯರ್ ಮ್ಯಾಗ್ನೆಟಿಕ್ ರೆಸೋನೆನ್ಸ್ (NMR) ಎಂಬ ಭೌತಶಾಸ್ತ್ರದ ವಿದ್ಯಮಾನವನ್ನು ಆಧರಿಸಿದೆ, ಇದನ್ನು 1930 ರ ದಶಕದಲ್ಲಿ ಫೆಲಿಕ್ಸ್ ಬ್ಲಾಚ್ (ಸ್ಟ್ಯಾನ್ಫೋರ್ಡ್ ವಿಶ್ವವಿದ್ಯಾಲಯದಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತಿದ್ದರು) ಮತ್ತು ಎಡ್ವರ್ಡ್ ಪರ್ಸೆಲ್ (ಹಾರ್ವರ್ಡ್ ವಿಶ್ವವಿದ್ಯಾಲಯದಿಂದ) ಎಂಬುವವರು ಕಂಡುಹಿಡಿದರು. ಈ ಅನುರಣನದಲ್ಲಿ, ಕಾಂತಕ್ಷೇತ್ರ ಮತ್ತು ರೇಡಿಯೊ ತರಂಗಗಳು ಪರಮಾಣುಗಳು ಸಣ್ಣ ರೇಡಿಯೊ ಸಂಕೇತಗಳನ್ನು ಹೊರಸೂಸುತ್ತವೆ. 1970 ರಲ್ಲಿ, ವೈದ್ಯಕೀಯ ವೈದ್ಯ ಮತ್ತು ಸಂಶೋಧನಾ ವಿಜ್ಞಾನಿ ರೇಮಂಡ್ ಡಮಾಡಿಯನ್, ವೈದ್ಯಕೀಯ ರೋಗನಿರ್ಣಯದ ಸಾಧನವಾಗಿ ಮ್ಯಾಗ್ನೆಟಿಕ್ ರೆಸೋನೆನ್ಸ್ ಇಮೇಜಿಂಗ್ ಅನ್ನು ಬಳಸುವ ಆಧಾರವನ್ನು ಕಂಡುಹಿಡಿದರು. ನಾಲ್ಕು ವರ್ಷಗಳ ನಂತರ ಒಂದು ಪೇಟೆಂಟ್ ನೀಡಲಾಯಿತು, ಅದು ಪ್ರಪಂಚದಲ್ಲೇ MRI ಕ್ಷೇತ್ರದಲ್ಲಿ ನೀಡಲಾದ ಮೊದಲನೇ ಪೇಟೆಂಟ್ ಆಗಿತ್ತು. 1977 ರಲ್ಲಿ, ಡಾ. ಡಮಾಡಿಯನ್ ಮೊದಲ \"\"ಸಂಪೂರ್ಣ-ದೇಹ\"\" MRI ಸ್ಕ್ಯಾನರ್ ನಿರ್ಮಾಣವನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದರು, ಅದನ್ನು ಅವರು \"\"Indomitable\"\" ಎಂದು ಕರೆದರು.\"",
+     "question": "ಪರಮಾಣು ಕಾಂತೀಯ ಅನುರಣನವನ್ನು ಕಂಡುಹಿಡಿದವರು ಯಾರು? ",
+     "options": [
+      "ಪರ್ಸೆಲ್",
+      "ದಮಾಡಿಯನ್",
+      "ಬ್ಲೋಚ್ ಮತ್ತು ಪರ್ಸೆಲ್",
+      "ಬ್ಲೋಚ್ ಮತ್ತು ದಮಾಡಿಯನ್"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "\"MRI ಎನ್ನುವುದು ನ್ಯೂಕ್ಲಿಯರ್ ಮ್ಯಾಗ್ನೆಟಿಕ್ ರೆಸೋನೆನ್ಸ್ (NMR) ಎಂಬ ಭೌತಶಾಸ್ತ್ರದ ವಿದ್ಯಮಾನವನ್ನು ಆಧರಿಸಿದೆ, ಇದನ್ನು 1930 ರ ದಶಕದಲ್ಲಿ ಫೆಲಿಕ್ಸ್ ಬ್ಲಾಚ್ (ಸ್ಟ್ಯಾನ್ಫೋರ್ಡ್ ವಿಶ್ವವಿದ್ಯಾಲಯದಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತಿದ್ದರು) ಮತ್ತು ಎಡ್ವರ್ಡ್ ಪರ್ಸೆಲ್ (ಹಾರ್ವರ್ಡ್ ವಿಶ್ವವಿದ್ಯಾಲಯದಿಂದ) ಎಂಬುವವರು ಕಂಡುಹಿಡಿದರು. ಈ ಅನುರಣನದಲ್ಲಿ, ಕಾಂತಕ್ಷೇತ್ರ ಮತ್ತು ರೇಡಿಯೊ ತರಂಗಗಳು ಪರಮಾಣುಗಳು ಸಣ್ಣ ರೇಡಿಯೊ ಸಂಕೇತಗಳನ್ನು ಹೊರಸೂಸುತ್ತವೆ. 1970 ರಲ್ಲಿ, ವೈದ್ಯಕೀಯ ವೈದ್ಯ ಮತ್ತು ಸಂಶೋಧನಾ ವಿಜ್ಞಾನಿ ರೇಮಂಡ್ ಡಮಾಡಿಯನ್, ವೈದ್ಯಕೀಯ ರೋಗನಿರ್ಣಯದ ಸಾಧನವಾಗಿ ಮ್ಯಾಗ್ನೆಟಿಕ್ ರೆಸೋನೆನ್ಸ್ ಇಮೇಜಿಂಗ್ ಅನ್ನು ಬಳಸುವ ಆಧಾರವನ್ನು ಕಂಡುಹಿಡಿದರು. ನಾಲ್ಕು ವರ್ಷಗಳ ನಂತರ ಒಂದು ಪೇಟೆಂಟ್ ನೀಡಲಾಯಿತು, ಅದು ಪ್ರಪಂಚದಲ್ಲೇ MRI ಕ್ಷೇತ್ರದಲ್ಲಿ ನೀಡಲಾದ ಮೊದಲನೇ ಪೇಟೆಂಟ್ ಆಗಿತ್ತು. 1977 ರಲ್ಲಿ, ಡಾ. ಡಮಾಡಿಯನ್ ಮೊದಲ \"\"ಸಂಪೂರ್ಣ-ದೇಹ\"\" MRI ಸ್ಕ್ಯಾನರ್ ನಿರ್ಮಾಣವನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದರು, ಅದನ್ನು ಅವರು \"\"Indomitable\"\" ಎಂದು ಕರೆದರು.\"",
+     "question": "ಯಾವ ವರ್ಷದಲ್ಲಿ ವೈದ್ಯಕೀಯ ಚಿತ್ರಣದ ಅನುರಣನಕ್ಕೆ ಮೊದಲ ಹಕ್ಕುಪತ್ರವನ್ನು ನೀಡಲಾಯಿತು? ",
+     "options": [
+      "1977",
+      "1974",
+      "1930",
+      "1970"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಇತರರ ಮನಸನ್ನು ಓದುವಲ್ಲಿ ಮಾನವರು ತುಂಬಾ ಪ್ರತಿಭಾವಂತ ಜೀವಿಗಳಾಗಿವೆ. ಅಂದರೆ ಇತರೆ ಬುದ್ಧಿಜೀವಿಗಳು ಏನನ್ನು ಗ್ರಹಿಸುತ್ತಾರೆ, ಉದ್ದೇಶಿಸುತ್ತಾರೆ, ನಂಬುತ್ತಾರೆ, ತಿಳಿಯುತ್ತಾರೆ ಅಥವಾ ಆದ್ಯತೆ ನೀಡುತ್ತಾರೆ ಎಂಬುದನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಊಹಿಸಲು ನಮಗೆ ಸಾಧ್ಯವಿದೆ. ಈ ಸಾಮರ್ಥ್ಯಗಳಲ್ಲಿ, ಇತರರ ಉದ್ದೇಶವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು ಬಹಳ ಮುಖ್ಯ. ದೈಹಿಕ ಕ್ರಿಯೆಗಳ ಸಂಭವನೀಯ ಅಸ್ಪಷ್ಟತೆಗಳನ್ನು ಬಗೆಹರಿಸಲು ಇದು ನಮಗೆ ಅವಕಾಶ ಮಾಡಿಕೊಡುತ್ತದೆ. ಉದಾಹರಣೆಗೆ ನೀವು ಯಾರಾದರು  ಒಂದು ಕಾರಿನ ಕಿಟಕಿಯ ಗಾಜನ್ನು ಒಡೆಯುತ್ತಿರುವುದನ್ನು ನೋಡಿದರೆ, ನೀವು  ಅವನು ಅಪರಿಚಿತನೊಬ್ಬನ ಕಾರನ್ನು  ಕದಿಯುತಿದ್ದಾನೆ ಎಂದು ಊಹಿಸುತ್ತೀರಿ. ಅವನು ತನ್ನ ಕಾರಿನ ಕೀಲಿಗಳನ್ನು ಕಳೆದುಕೊಂಡಿದ್ದರೆ ಮತ್ತು ಅದು ಆತನ ಸ್ವಂತ ಕಾರು ಆಗಿದ್ದರೆ, ವಿಭಿನ್ನ ನಿರ್ಧಾರ ತೆಗೆದುಕೊಳ್ಳಬೇಕಾಗುತ್ತದೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಇತರರ ದೈಹಿಕ ಕ್ರಿಯೆಗಳನ್ನು ಅರ್ಥೈಸಿಕೊಳ್ಳಲು ಮನುಷ್ಯರು ಯಾವುದರ ಬಗ್ಗೆ ಬಲವಾದ ತಿಳುವಳಿಕೆಯನ್ನು ಹೊಂದಿರಬೇಕು?",
+     "options": [
+      "ಆಸೆ",
+      "ಉದ್ದೇಶ",
+      "ನಂಬಿಕೆ",
+      "ಗ್ರಹಿಕೆ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಇತರರ ಮನಸನ್ನು ಓದುವಲ್ಲಿ ಮಾನವರು ತುಂಬಾ ಪ್ರತಿಭಾವಂತ ಜೀವಿಗಳಾಗಿವೆ. ಅಂದರೆ ಇತರೆ ಬುದ್ಧಿಜೀವಿಗಳು ಏನನ್ನು ಗ್ರಹಿಸುತ್ತಾರೆ, ಉದ್ದೇಶಿಸುತ್ತಾರೆ, ನಂಬುತ್ತಾರೆ, ತಿಳಿಯುತ್ತಾರೆ ಅಥವಾ ಆದ್ಯತೆ ನೀಡುತ್ತಾರೆ ಎಂಬುದನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಊಹಿಸಲು ನಮಗೆ ಸಾಧ್ಯವಿದೆ. ಈ ಸಾಮರ್ಥ್ಯಗಳಲ್ಲಿ, ಇತರರ ಉದ್ದೇಶವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು ಬಹಳ ಮುಖ್ಯ. ದೈಹಿಕ ಕ್ರಿಯೆಗಳ ಸಂಭವನೀಯ ಅಸ್ಪಷ್ಟತೆಗಳನ್ನು ಬಗೆಹರಿಸಲು ಇದು ನಮಗೆ ಅವಕಾಶ ಮಾಡಿಕೊಡುತ್ತದೆ. ಉದಾಹರಣೆಗೆ ನೀವು ಯಾರಾದರು  ಒಂದು ಕಾರಿನ ಕಿಟಕಿಯ ಗಾಜನ್ನು ಒಡೆಯುತ್ತಿರುವುದನ್ನು ನೋಡಿದರೆ, ನೀವು  ಅವನು ಅಪರಿಚಿತನೊಬ್ಬನ ಕಾರನ್ನು  ಕದಿಯುತಿದ್ದಾನೆ ಎಂದು ಊಹಿಸುತ್ತೀರಿ. ಅವನು ತನ್ನ ಕಾರಿನ ಕೀಲಿಗಳನ್ನು ಕಳೆದುಕೊಂಡಿದ್ದರೆ ಮತ್ತು ಅದು ಆತನ ಸ್ವಂತ ಕಾರು ಆಗಿದ್ದರೆ, ವಿಭಿನ್ನ ನಿರ್ಧಾರ ತೆಗೆದುಕೊಳ್ಳಬೇಕಾಗುತ್ತದೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಉದ್ದೇಶವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದರಿಂದ ಮನುಷ್ಯರಿಗೆ ಏನನ್ನು ಮಾಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ?",
+     "options": [
+      "ದೈಹಿಕ ಕ್ರಿಯೆಗಳ ಹಿಂದಿರುವ ಅನಿಶ್ಚಿತತೆಯನ್ನು ನಿವಾರಿಸಲು",
+      "ಆಸೆಗಳನ್ನು ಊಹಿಸಲು",
+      "ನಿರ್ಣಯಿಸದೆಯೇ ಇತರ ಮನುಷ್ಯರನ್ನು ವೀಕ್ಷಿಸಿ",
+      "ಇತರರ ಮನಸ್ಸನ್ನು ಓದಿ"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "AI ವೈಜ್ಞಾನಿಕ ಕಾದಂಬರಿಯ ಬಲವಾದ ಲಕ್ಷಣಾವೃತ್ತಿ ಹೊಂದಿದ್ದರೂ, AI  ವರ್ತನೆ, ಕಲಿಕೆ ಮತ್ತು ಬುದ್ಧಿವಂತ ರೂಪಾಂತರಕ್ಕೆ ಸಂಬಂಧಿಸಿದೆ ಹಾಗು ಇದು ಯಂತ್ರಶಾಸ್ತ್ರದಲ್ಲಿ ಬಹು ಮುಖ್ಯ ವಿಭಾಗವಾಗಿದೆ, AI ನಲ್ಲಿನ ಸಂಶೋಧನೆಯು ಬುದ್ಧಿವಂತ ನಡವಳಿಕೆಯ ಅಗತ್ಯವಿರುವ ಕಾರ್ಯಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತಗೊಳಿಸಲು ಯಂತ್ರಗಳನ್ನು ತಯಾರಿಸುವುದನ್ನು ಒಳಗೊಂಡಿರುತ್ತದೆ. ನಿಯಂತ್ರಣ, ಯೋಜನೆ ಮತ್ತು ವೇಳಾಪಟ್ಟಿ, ಗ್ರಾಹಕರ ರೋಗನಿರ್ಣಯ ಮತ್ತು ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸುವ ಸಾಮರ್ಥ್ಯ, ಜೊತೆಗೆ ಕೈಬರಹ ಗುರುತಿಸುವಿಕೆ, ಧ್ವನಿ ಮತ್ತು ಮುಖಗಳು ಉದಾಹರಣೆಗಳಲ್ಲಿ ಸೇರಿವೆ. ಅಂತಹ ವಿಷಯಗಳು ಪ್ರತ್ಯೇಕ ವಿಭಾಗಗಳಾಗಿ ಮಾರ್ಪಟ್ಟಿವೆ, ಇದು ನಿಜ ಜೀವನದ ಸಮಸ್ಯೆಗಳಿಗೆ ಪರಿಹಾರಗಳನ್ನು ಕಂಡುಕೊಳ್ಳುವುದರ ಮೇಲೆ ಕೇಂದ್ರೀಕರಿಸುತ್ತದೆ. ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆಯನ್ನು ಹಲವಾರು ಕಂಪ್ಯೂಟರ್‍‍ಗಳು ಮತ್ತು ವೀಡಿಯೋ ಗೇಮ್‌ಗಳ ಸಾಫ್ಟ್‌ವೇರ್ ಅನ್ವಯಗಳಲ್ಲಿ ಬಳಸಿದಂತೆಯೇ ಅರ್ಥಿಕ, ವೈದ್ಯಕೀಯ, ಇಂಜಿನಿಯರಿಂಗ್ ಮತ್ತು ಮಿಲಿಟರಿ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ ಈಚೆಗೆ ಹೆಚ್ಚಾಗಿ ಬಳಸಲಾಗುತ್ತಿದೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಎಐ ಯ ಮುಖ್ಯ ಉದ್ದೇಶದ ನಿಖರವಾದ ಸಾರಾಂಶವಾಗಿದೆ?",
+     "options": [
+      "ಯೋಜನೆ",
+      "ಧ್ವನಿಯ ಗುರುತಿಸುವಿಕೆ ",
+      "ವೇಳಾಪಟ್ಟಿ",
+      "ಕಾರ್ಯವನ್ನು ಯಾಂತ್ರೀಕೃತಗೊಳಿಸು"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "AI ವೈಜ್ಞಾನಿಕ ಕಾದಂಬರಿಯ ಬಲವಾದ ಲಕ್ಷಣಾವೃತ್ತಿ ಹೊಂದಿದ್ದರೂ, AI  ವರ್ತನೆ, ಕಲಿಕೆ ಮತ್ತು ಬುದ್ಧಿವಂತ ರೂಪಾಂತರಕ್ಕೆ ಸಂಬಂಧಿಸಿದೆ ಹಾಗು ಇದು ಯಂತ್ರಶಾಸ್ತ್ರದಲ್ಲಿ ಬಹು ಮುಖ್ಯ ವಿಭಾಗವಾಗಿದೆ, AI ನಲ್ಲಿನ ಸಂಶೋಧನೆಯು ಬುದ್ಧಿವಂತ ನಡವಳಿಕೆಯ ಅಗತ್ಯವಿರುವ ಕಾರ್ಯಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತಗೊಳಿಸಲು ಯಂತ್ರಗಳನ್ನು ತಯಾರಿಸುವುದನ್ನು ಒಳಗೊಂಡಿರುತ್ತದೆ. ನಿಯಂತ್ರಣ, ಯೋಜನೆ ಮತ್ತು ವೇಳಾಪಟ್ಟಿ, ಗ್ರಾಹಕರ ರೋಗನಿರ್ಣಯ ಮತ್ತು ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸುವ ಸಾಮರ್ಥ್ಯ, ಜೊತೆಗೆ ಕೈಬರಹ ಗುರುತಿಸುವಿಕೆ, ಧ್ವನಿ ಮತ್ತು ಮುಖಗಳು ಉದಾಹರಣೆಗಳಲ್ಲಿ ಸೇರಿವೆ. ಅಂತಹ ವಿಷಯಗಳು ಪ್ರತ್ಯೇಕ ವಿಭಾಗಗಳಾಗಿ ಮಾರ್ಪಟ್ಟಿವೆ, ಇದು ನಿಜ ಜೀವನದ ಸಮಸ್ಯೆಗಳಿಗೆ ಪರಿಹಾರಗಳನ್ನು ಕಂಡುಕೊಳ್ಳುವುದರ ಮೇಲೆ ಕೇಂದ್ರೀಕರಿಸುತ್ತದೆ. ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆಯನ್ನು ಹಲವಾರು ಕಂಪ್ಯೂಟರ್‍‍ಗಳು ಮತ್ತು ವೀಡಿಯೋ ಗೇಮ್‌ಗಳ ಸಾಫ್ಟ್‌ವೇರ್ ಅನ್ವಯಗಳಲ್ಲಿ ಬಳಸಿದಂತೆಯೇ ಅರ್ಥಿಕ, ವೈದ್ಯಕೀಯ, ಇಂಜಿನಿಯರಿಂಗ್ ಮತ್ತು ಮಿಲಿಟರಿ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ ಈಚೆಗೆ ಹೆಚ್ಚಾಗಿ ಬಳಸಲಾಗುತ್ತಿದೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಕೆಳಗಿನ ಯಾವುದರೊಂದಿಗೆ AI ಹೆಚ್ಚಾಗಿ ಸಂಬಂಧಿಸಿದೆ?",
+     "options": [
+      "ಗ್ರಾಹಕರ ಸೇವೆ",
+      "ಯೋಜನೆ ಮತ್ತು ವೇಳಾಪಟ್ಟಿ",
+      "ವೈಜ್ಞಾನಿಕ ಕಲ್ಪನೆ",
+      "ಕೈಬರಹದ ಗುರುತಿಸುವಿಕೆ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಅಭಿಗಾಮಿ ಚಿಂತನೆ ವಿಧಾನಗಳು ಸಮಸ್ಯೆ ಪರಿಹಾರ ತಂತ್ರಗಳಾಗಿದ್ದು, ಪರಿಹಾರ ಕಂಡುಕೊಳ್ಳಲು ವಿಭಿನ್ನ ಕಲ್ಪನೆಗಳು ಅಥವಾ ಕ್ಷೇತ್ರಗಳನ್ನು ಸಂಯೋಜಿಸುತ್ತವೆ. ಈ ಮನಸ್ಥಿತಿಯ ಗಮನವು ವೇಗ, ತರ್ಕ ಮತ್ತು ನಿಖರತೆ, ಸತ್ಯಾಂಶಗಳನ್ನು ಗುರುತಿಸುವಿಕೆ, ಲಭ್ಯವಿರುವ ತಂತ್ರಜ್ಞಾನಗಳ ಬಳಕೆ ಹಾಗೂ ಮಾಹಿತಿಯನ್ನು ಸಂಗ್ರಹಿಸುವಿಕೆಯಲ್ಲಿರುತ್ತದೆ. ಈ ಮನಃಸ್ಥಿತಿಯ ಬಹುಮುಖ್ಯ ಅಂಶ: ಕೇವಲ ಒಂದೇ ಸರಿಯಾದ ಉತ್ತರವಿದೆ. ನೀವು ಎರಡೇ ಉತ್ತರ ಯೋಚಿಸಲು ಸಾಧ್ಯವಿದೆ, ಅವೇ  ಸರಿ ಅಥವ  ತಪ್ಪು. ಈ ರೀತಿಯ ಚಿಂತನೆಗೆ ಕೆಲವು ವಿಜ್ಞಾನ ಅಥವಾ ಪ್ರಮಾಣಿತ ಕ್ರಮಗಳು ಸಹಭಾಗಿತ್ವ ಹೊಂದಿರುತ್ತವೆ. ಈ ರೀತಿಯ ಚಿಂತನೆಯ ಜನರು ತಾರ್ಕಿಕ ಚಿಂತನಾ ಕೌಶಲ್ಯವನ್ನು ಹೊಂದಿದ್ದಾರೆ, ಮಾದರಿಗಳನ್ನು ನೆನಪಿಟ್ಟುಕೊಳ್ಳಬಹುದು, ಸಮಸ್ಯೆಗಳನ್ನು ಪರಿಹರಿಸಬಹುದು ಮತ್ತು ವೈಜ್ಞಾನಿಕ ಪರೀಕ್ಷೆಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಬಹುದು.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಒಮ್ಮುಖ ಚಿಂತನೆಯ ಮಾದರಿಗಳನ್ನು ಹೊಂದಿರುವ ವ್ಯಕ್ತಿಯ ಶಕ್ತಿಯಾಗಿದೆ?",
+     "options": [
+      "ಸಮಸ್ಯೆಗೆ ಸರಿಯಾದ ಬಹು ಉತ್ತರಗಳನ್ನು ಗುರುತಿಸುವುದು",
+      "ಸಮಸ್ಯೆಗೆ ಹೊಸ ತಂತ್ರಗಳನ್ನು ಅನ್ವಯಿಸುವುದು",
+      "ಸಮಸ್ಯೆಗಳನ್ನು ಪರಿಹರಿಸಲು ಅಗತ್ಯವಿರುವ ಸಮಯವನ್ನು ತೆಗೆದುಕೊಳ್ಳುವುದು",
+      "ಮಾದರಿಗಳನ್ನು ನೆನಪಿನಲ್ಲಿಟ್ಟುಕೊಳ್ಳಲು"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "ಅಭಿಗಾಮಿ ಚಿಂತನೆ ವಿಧಾನಗಳು ಸಮಸ್ಯೆ ಪರಿಹಾರ ತಂತ್ರಗಳಾಗಿದ್ದು, ಪರಿಹಾರ ಕಂಡುಕೊಳ್ಳಲು ವಿಭಿನ್ನ ಕಲ್ಪನೆಗಳು ಅಥವಾ ಕ್ಷೇತ್ರಗಳನ್ನು ಸಂಯೋಜಿಸುತ್ತವೆ. ಈ ಮನಸ್ಥಿತಿಯ ಗಮನವು ವೇಗ, ತರ್ಕ ಮತ್ತು ನಿಖರತೆ, ಸತ್ಯಾಂಶಗಳನ್ನು ಗುರುತಿಸುವಿಕೆ, ಲಭ್ಯವಿರುವ ತಂತ್ರಜ್ಞಾನಗಳ ಬಳಕೆ ಹಾಗೂ ಮಾಹಿತಿಯನ್ನು ಸಂಗ್ರಹಿಸುವಿಕೆಯಲ್ಲಿರುತ್ತದೆ. ಈ ಮನಃಸ್ಥಿತಿಯ ಬಹುಮುಖ್ಯ ಅಂಶ: ಕೇವಲ ಒಂದೇ ಸರಿಯಾದ ಉತ್ತರವಿದೆ. ನೀವು ಎರಡೇ ಉತ್ತರ ಯೋಚಿಸಲು ಸಾಧ್ಯವಿದೆ, ಅವೇ  ಸರಿ ಅಥವ  ತಪ್ಪು. ಈ ರೀತಿಯ ಚಿಂತನೆಗೆ ಕೆಲವು ವಿಜ್ಞಾನ ಅಥವಾ ಪ್ರಮಾಣಿತ ಕ್ರಮಗಳು ಸಹಭಾಗಿತ್ವ ಹೊಂದಿರುತ್ತವೆ. ಈ ರೀತಿಯ ಚಿಂತನೆಯ ಜನರು ತಾರ್ಕಿಕ ಚಿಂತನಾ ಕೌಶಲ್ಯವನ್ನು ಹೊಂದಿದ್ದಾರೆ, ಮಾದರಿಗಳನ್ನು ನೆನಪಿಟ್ಟುಕೊಳ್ಳಬಹುದು, ಸಮಸ್ಯೆಗಳನ್ನು ಪರಿಹರಿಸಬಹುದು ಮತ್ತು ವೈಜ್ಞಾನಿಕ ಪರೀಕ್ಷೆಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಬಹುದು.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದನ್ನು ಒಮ್ಮುಖ ಚಿಂತನೆಯ ಮನಸ್ಥಿತಿಯ ಗಮನವೆಂದು ಪರಿಗಣಿಸಲಾಗುವುದಿಲ್ಲ?",
+     "options": [
+      "ಕೇವಲ ಒಂದು ಸರಿಯಾದ ಉತ್ತರವಿದೆ ಎಂದು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು",
+      "ಒಬ್ಬರ ಸಮಯವನ್ನು ತೆಗೆದುಕೊಳ್ಳುವುದು",
+      "ಸತ್ಯಾಂಶಗಳನ್ನು ಗುರುತಿಸುವುದು",
+      "ಮಾಹಿತಿಯನ್ನು ಸಂಗ್ರಹಿಸುವುದು"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ವೀಡಿಯೊ  ಚಿತ್ರೀಕರಣವು ಕೆಲವೇ ಕ್ಷಣಗಳಷ್ಟು ಕಾಲ ಮಾತ್ರ ಇರುವ ಸೂಕ್ಷ್ಮ ಭಾವಗಳು ಮತ್ತು ಮುಖದ ಚಲನೆಗಳ ವಿವರಣೆಗಳ ವಿಶ್ಲೇಷಣೆಯನ್ನು  ಕಂಡು ಹಿಡಿಯಲು ನೆರವಾಗಿದೆ. ನಿರ್ದಿಷ್ಟವಾಗಿ, ಸೂಕ್ಷ್ಮ ಅಭಿವ್ಯಕ್ತಿಯನ್ನು ಸರಿಯಾಗಿ ವ್ಯಾಖ್ಯಾನಿಸುವ ಮೂಲಕ ಒಬ್ಬ ವ್ಯಕ್ತಿಯು ಸುಳ್ಳು ಹೇಳುತ್ತಿದ್ದಾನೆಯೇ ಎಂದು ಕಂಡುಕೊಳ್ಳಬಹುದು ಎಂದು ಹೇಳಲಾಗಿದೆ. ಆಲಿವರ್ ಸ್ಯಾಕ್ಸ್ , ತನ್ನ ದ ಪ್ರೆಸಿಡೆಂಟ್ಸ್ ಸ್ಪೀಚ್  ಎಂಬ ವರದಿಯಲ್ಲಿ ಮೆದುಳು ಜಖಂ‍‌ಗೊಂಡು ಭಾಷಣ ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಾಗದ ಜನರು ಹೇಗೆ ಪ್ರಾಮಾಣಿಕತೆಯನ್ನು ನಿಖರವಾಗಿ ಅಳೆಯುತ್ತಾರೆ ಎಂದು ತಿಳಿಯಪಡಿಸುತ್ತಾನೆ. ಮಾನವನ ನಡತೆಗಳನ್ನು ವ್ಯಾಖ್ಯಾನಿಸುವಂಥ ಸಾಮರ್ಥ್ಯ ಸಾಕುನಾಯಿಯಂತಹ ಪ್ರಾಣಿಗಳಲ್ಲೂ ಕಂಡು   ಬರುತ್ತವೆ ಎಂದು ಅವರು ಸೂಚಿಸುತ್ತಾರೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದನ್ನು ಸೂಕ್ಷ್ಮ-ಅಭಿವ್ಯಕ್ತಿ ಎಂದು ಪರಿಗಣಿಸಲಾಗುವುದಿಲ್ಲ?",
+     "options": [
+      "ಮಾತನಾಡುವಾಗ ಬೇರೆ ಕಡೆ ನೋಡುವುದು",
+      "ಹುಬ್ಬನ್ನು ಗಂಟಿಕ್ಕುವುದು",
+      "ಕಣ್ಣನ್ನು ಕ್ಷಿಪ್ರವಾಗಿ ಮಿಟುಕಿಸುವುದು",
+      "ಹೆಬ್ಬೆರಳನ್ನು ಮೇಲೆತ್ತಿ ತೋರಿಸುವುದು"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "ವೀಡಿಯೊ  ಚಿತ್ರೀಕರಣವು ಕೆಲವೇ ಕ್ಷಣಗಳಷ್ಟು ಕಾಲ ಮಾತ್ರ ಇರುವ ಸೂಕ್ಷ್ಮ ಭಾವಗಳು ಮತ್ತು ಮುಖದ ಚಲನೆಗಳ ವಿವರಣೆಗಳ ವಿಶ್ಲೇಷಣೆಯನ್ನು  ಕಂಡು ಹಿಡಿಯಲು ನೆರವಾಗಿದೆ. ನಿರ್ದಿಷ್ಟವಾಗಿ, ಸೂಕ್ಷ್ಮ ಅಭಿವ್ಯಕ್ತಿಯನ್ನು ಸರಿಯಾಗಿ ವ್ಯಾಖ್ಯಾನಿಸುವ ಮೂಲಕ ಒಬ್ಬ ವ್ಯಕ್ತಿಯು ಸುಳ್ಳು ಹೇಳುತ್ತಿದ್ದಾನೆಯೇ ಎಂದು ಕಂಡುಕೊಳ್ಳಬಹುದು ಎಂದು ಹೇಳಲಾಗಿದೆ. ಆಲಿವರ್ ಸ್ಯಾಕ್ಸ್ , ತನ್ನ ದ ಪ್ರೆಸಿಡೆಂಟ್ಸ್ ಸ್ಪೀಚ್  ಎಂಬ ವರದಿಯಲ್ಲಿ ಮೆದುಳು ಜಖಂ‍‌ಗೊಂಡು ಭಾಷಣ ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಾಗದ ಜನರು ಹೇಗೆ ಪ್ರಾಮಾಣಿಕತೆಯನ್ನು ನಿಖರವಾಗಿ ಅಳೆಯುತ್ತಾರೆ ಎಂದು ತಿಳಿಯಪಡಿಸುತ್ತಾನೆ. ಮಾನವನ ನಡತೆಗಳನ್ನು ವ್ಯಾಖ್ಯಾನಿಸುವಂಥ ಸಾಮರ್ಥ್ಯ ಸಾಕುನಾಯಿಯಂತಹ ಪ್ರಾಣಿಗಳಲ್ಲೂ ಕಂಡು   ಬರುತ್ತವೆ ಎಂದು ಅವರು ಸೂಚಿಸುತ್ತಾರೆ.",
+     "question": "ಸೂಕ್ಷ್ಮ-ಅಭಿವ್ಯಕ್ತಿ ವ್ಯಾಖ್ಯಾನದ ಕುರಿತು ಈ ಕೆಳಗಿನ ಯಾವ ಹೇಳಿಕೆಗಳು ನಿಜವಲ್ಲ?",
+     "options": [
+      "ವೀಡಿಯೊ ಧ್ವನಿಮುದ್ರಣಗಳು ಗಮನಾರ್ಹ ಪ್ರಗತಿಗಳಿಗೆ ಕಾರಣವಾಗಿವೆ",
+      "ಸರಿಯಾದ ವ್ಯಾಖ್ಯಾನವು ಸುಳ್ಳನ್ನು ಪತ್ತೆಹಚ್ಚಬಹುದು",
+      "ಭಾಷಣವನ್ನು ಹಾಗೆಯೆ ಮುಖದ ಭಾವನೆಗಳನ್ನು ಅರ್ಥೈಸಲಾಗುತ್ತದೆ",
+      "ಇದು ಪ್ರಾಮಾಣಿಕತೆಯನ್ನು ನಿರ್ಣಯಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಮೇಲೆ ತಿಳಿಸಿದಂತೆ, ಜ್ಞಾನ ಗಳಿಸುವ ಮತ್ತು ಕಲಿಕೆಯ ಸಾಮರ್ಥ್ಯ ಬದಲಾದಂತೆಲ್ಲ ಜ್ಞಾನಾರ್ಜನೆಯ  ಆವೇಗ ಕೂಡ ಬದಲಾಯಿತು. ಮಾಹಿತಿ ಪಡೆಯುವ ವಿಧಾನ ವಿಭಿನ್ನವಾಗಿದೆ. ವೈಯಕ್ತಿಕ ಮರುಪಡೆಯುವಿಕೆಯಿಂದ ಒತ್ತಡವು ಇನ್ನು ಮುಂದೆ ಉಂಟಾಗುವುದಿಲ್ಲ, ಆದರೆ ಪಠ್ಯಗಳನ್ನು ನೆನಪಿಸಿಕೊಳ್ಳುವ ಸಾಮರ್ಥ್ಯವು ಹೆಚ್ಚು ಮುಖ್ಯವಾಗುತ್ತದೆ. ಮೂಲಭೂತವಾಗಿ, ನವೋದಯವು ಶಿಕ್ಷಣದ ವಿಧಾನ ಮತ್ತು ಜ್ಞಾನ ಪ್ರಸಾರದಲ್ಲಿ ಗಮನಾರ್ಹ ಬದಲಾವಣೆಯನ್ನು ಮಾಡಿತು.",
+     "question": "ನವೋದಯದಿಂದಾಗಿ ಈ ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಹೆಚ್ಚು ಪ್ರಾಮುಖ್ಯತೆಯನ್ನು ಪಡೆಯಿತು? ",
+     "options": [
+      "ಪ್ರತಿಯೊಂದನ್ನು ನೆನಪಿಸಿಕೊಳ್ಳಿ",
+      "ಜ್ಞಾನದ ಪರಿಚಲನೆ",
+      "ಪಠ್ಯವನ್ನು ನೆನಪಿಸಿಕೊಳ್ಳಿ",
+      "ಮಾಹಿತಿಯನ್ನು ಪಡೆಯಿರಿ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಮೇಲೆ ತಿಳಿಸಿದಂತೆ, ಜ್ಞಾನ ಗಳಿಸುವ ಮತ್ತು ಕಲಿಕೆಯ ಸಾಮರ್ಥ್ಯ ಬದಲಾದಂತೆಲ್ಲ ಜ್ಞಾನಾರ್ಜನೆಯ  ಆವೇಗ ಕೂಡ ಬದಲಾಯಿತು. ಮಾಹಿತಿ ಪಡೆಯುವ ವಿಧಾನ ವಿಭಿನ್ನವಾಗಿದೆ. ವೈಯಕ್ತಿಕ ಮರುಪಡೆಯುವಿಕೆಯಿಂದ ಒತ್ತಡವು ಇನ್ನು ಮುಂದೆ ಉಂಟಾಗುವುದಿಲ್ಲ, ಆದರೆ ಪಠ್ಯಗಳನ್ನು ನೆನಪಿಸಿಕೊಳ್ಳುವ ಸಾಮರ್ಥ್ಯವು ಹೆಚ್ಚು ಮುಖ್ಯವಾಗುತ್ತದೆ. ಮೂಲಭೂತವಾಗಿ, ನವೋದಯವು ಶಿಕ್ಷಣದ ವಿಧಾನ ಮತ್ತು ಜ್ಞಾನ ಪ್ರಸಾರದಲ್ಲಿ ಗಮನಾರ್ಹ ಬದಲಾವಣೆಯನ್ನು ಮಾಡಿತು.",
+     "question": "ನವೋದಯದ ಪರಿಣಾಮವಾಗಿ, ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದಕ್ಕೆ ಕಡಿಮೆ ಪ್ರಾಶಸ್ತ್ಯವನ್ನು ನೀಡಲಾಗಿದೆ?",
+     "options": [
+      "ಪ್ರತಿಯೊಂದನ್ನು ನೆನಪಿಸಿಕೊಳ್ಳಿ",
+      "ಜ್ಞಾನವನ್ನು ಪಡೆಯಿರಿ",
+      "ಪಠ್ಯವನ್ನು ನೆನಪಿಸಿಕೊಳ್ಳಿ",
+      "ಮಾಹಿತಿಯ ವಿತರಣೆ"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "\"ಅಂತರ್ಜಾಲ, ಸಮೂಹ ಸಂವಹನ ಮತ್ತು ವ್ಯಕ್ತಿಗಳ ನಡುವಿನ ಸಂವಹನ ಇವೆರಡರ ಅಂಶಗಳನ್ನು ಒಟ್ಟುಗೂಡಿಸುತ್ತದೆ. ಇಂಟರ್ನೆಟ್‌ನ ವಿಭಿನ್ನ ಗುಣಲಕ್ಷಣಗಳ ಬಳಕೆ ಮತ್ತು ಆಹ್ಲಾದವನ್ನು ನೀಡುವ ಹೆಚ್ಚುವರಿ ಆಯಾಮಗಳಿಗೆ ಕಾರಣವಾಗುತ್ತವೆ. ಉದಾಹರಣೆಗೆ, \"\"ಕಲಿಕೆ\"\" ಮತ್ತು \"\"ಸಾಮಾಜಿಕೀಕರಣ\"\" ವನ್ನು ಇಂಟರ್ನೆಟ್ ಬಳಕೆಗೆ ಪ್ರಮುಖ ಪ್ರೇರಣೆಗಳಾಗಿ ಸೂಚಿಸಲಾಗಿದೆ (ಜೇಮ್ಸ್ ಎಟ್ ಅಲ್, 1995). ವೆಬ್‌ಸೈಟ್‌ಗಳಿಗೆ ಪ್ರೇಕ್ಷಕರ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ತನಿಖೆ ಮಾಡಿದಾಗ \"\"ವೈಯಕ್ತಿಕ ಒಳಗೊಳ್ಳುವಿಕೆ\"\" ಮತ್ತು \"\"ಮುಂದುವರಿದ ಸಂಬಂಧಗಳು\"\" ಅನ್ನು ಐಗ್ಮೆ ಮತ್ತು ಮೆಕ್‌ಕಾರ್ಡ್ (1998) ಹೊಸ ಪ್ರೇರಣಾ ಅಂಶಗಳಾಗಿ ಗುರುತಿಸಿದ್ದಾರೆ.\"",
+     "question": "ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಸಂಬಂಧಗಳ ಮುಂದುವರಿಕೆಗಾಗಿ ಇಂಟರ್ನೆಟ್ ಅನ್ನು ಬಳಸುವ ಪ್ರೇರಣೆಯನ್ನು ಪ್ರತಿಬಿಂಬಿಸುವುದಿಲ್ಲ?",
+     "options": [
+      "ವ್ಯಾಪಾರದ ಜಾಲ",
+      "ಕುಟುಂಬದೊಂದಿಗೆ ಸಂಪರ್ಕದಲ್ಲಿರುವುದು",
+      "ಪ್ರಯಾಣವನ್ನು ಸಂಶೋಧಿಸುವುದು",
+      "ಹೊಸ ಜನರ ಭೇಟಿ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "\"ಅಂತರ್ಜಾಲ, ಸಮೂಹ ಸಂವಹನ ಮತ್ತು ವ್ಯಕ್ತಿಗಳ ನಡುವಿನ ಸಂವಹನ ಇವೆರಡರ ಅಂಶಗಳನ್ನು ಒಟ್ಟುಗೂಡಿಸುತ್ತದೆ. ಇಂಟರ್ನೆಟ್‌ನ ವಿಭಿನ್ನ ಗುಣಲಕ್ಷಣಗಳ ಬಳಕೆ ಮತ್ತು ಆಹ್ಲಾದವನ್ನು ನೀಡುವ ಹೆಚ್ಚುವರಿ ಆಯಾಮಗಳಿಗೆ ಕಾರಣವಾಗುತ್ತವೆ. ಉದಾಹರಣೆಗೆ, \"\"ಕಲಿಕೆ\"\" ಮತ್ತು \"\"ಸಾಮಾಜಿಕೀಕರಣ\"\" ವನ್ನು ಇಂಟರ್ನೆಟ್ ಬಳಕೆಗೆ ಪ್ರಮುಖ ಪ್ರೇರಣೆಗಳಾಗಿ ಸೂಚಿಸಲಾಗಿದೆ (ಜೇಮ್ಸ್ ಎಟ್ ಅಲ್, 1995). ವೆಬ್‌ಸೈಟ್‌ಗಳಿಗೆ ಪ್ರೇಕ್ಷಕರ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ತನಿಖೆ ಮಾಡಿದಾಗ \"\"ವೈಯಕ್ತಿಕ ಒಳಗೊಳ್ಳುವಿಕೆ\"\" ಮತ್ತು \"\"ಮುಂದುವರಿದ ಸಂಬಂಧಗಳು\"\" ಅನ್ನು ಐಗ್ಮೆ ಮತ್ತು ಮೆಕ್‌ಕಾರ್ಡ್ (1998) ಹೊಸ ಪ್ರೇರಣಾ ಅಂಶಗಳಾಗಿ ಗುರುತಿಸಿದ್ದಾರೆ.\"",
+     "question": "ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ವೈಯಕ್ತಿಕ ಒಳಗೊಳ್ಳುವಿಕೆಗಾಗಿ ಅಂತರ್ಜಾಲವನ್ನು ಬಳಸುವ ಪ್ರೇರಣೆಯನ್ನು ಪ್ರತಿಬಿಂಬಿಸುವುದಿಲ್ಲ?",
+     "options": [
+      "ಪಾಕವಿಧಾನವನ್ನು ಹುಡುಕಲು",
+      "ಆನ್‌ಲೈನ್ ಚರ್ಚಾ ಫಲಕದಲ್ಲಿ ಪ್ರಕಟಿಸುವುದು",
+      "ಆರೋಗ್ಯದ ಉತ್ಪನ್ನಗಳನ್ನು ಸಂಶೋಧಿಸುವುದು",
+      "ಹಣಕಾಸು ನಿರ್ವಹಣೆ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "10 - 11ನೇ ಶತಮಾನ ಮತ್ತು 14ನೇ ಶತಮಾನದ ನಡುವಿನ ಅವಧಿಯಲ್ಲಿ ಗೋಥಿಕ್ ಶೈಲಿಯು ಉತ್ತುಂಗಕ್ಕೇರಿತು. ಆರಂಭದಲ್ಲಿ ಉಡುಗೆಯು, ಪೂರ್ವದಲ್ಲಿರುವ ಬೈಜಂಟೀನ್ ಸಂಪ್ರದಾಯದಿಂದ  ಭಾರಿ ಪ್ರಮಾಣದಲ್ಲಿ ಪ್ರವಾವಿತವಾಗಿತ್ತು. ಆದಾಗ್ಯೂ, ನಿಧಾನಗತಿಯ ಸಂವಹನ ವಿಧಾನಗಳಿಂದಾಗಿ, ಪಶ್ಚಿಮ ಪ್ರಾಂತ್ಯದ ಜೀವನಶೈಲಿಯು 25 ರಿಂದ 30 ವರ್ಷ ಹಿಂದುಳಿಯಬಹುದು. ಮಧ್ಯಯುಗದ ಕೊನೆಯಲ್ಲಿ ಪಶ್ಚಿಮ ಯುರೋಪ್ ಪ್ರಾಂತ್ಯವು ತನ್ನದೇ ಆದ ಶೈಲಿಯನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸಲು ಪ್ರಾರಂಭಿಸಿತು. ಧರ್ಮಯುದ್ಧದ ಪರಿಣಾಮವಾಗಿ, ಜನರು ಬಟ್ಟೆಗಳನ್ನು ಧರಿಸಲು ಗುಂಡಿಗಳನ್ನು ಬಳಸಲು ಪ್ರಾರಂಭಿಸಿದ್ದು ಆ ಕಾಲದ ಅತಿದೊಡ್ಡ ಬೆಳವಣಿಗೆಗಳಲ್ಲೊಂದು.",
+     "question": "ಯಾವಾಗ ಪಶ್ಚಿಮ ಯುರೋಪ್ ಪ್ರಭಾವಗಳ ಮೇಲೆ ಹೆಚ್ಚು ಅವಲಂಭಿಸುವುದನ್ನು ನಿಲ್ಲಿಸಿತು ಮತ್ತು ತನ್ನದೇ ಆದ ಶೈಲಿಯನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸಲು ಪ್ರಾರಂಭಿಸಿತು?",
+     "options": [
+      "ಮಧ್ಯಯುಗದ ಕೊನೆಯಲ್ಲಿ",
+      "ಬೈಜಾಂಟೈನ್ ಯುಗದಲ್ಲಿ",
+      "ಮಧ್ಯಯುಗದ ಸುಮಾರು 25 ವರ್ಷಗಳ ನಂತರ",
+      "11 ನೇ ಶತಮಾನದ ಅವಧಿಯಲ್ಲಿ"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "10 - 11ನೇ ಶತಮಾನ ಮತ್ತು 14ನೇ ಶತಮಾನದ ನಡುವಿನ ಅವಧಿಯಲ್ಲಿ ಗೋಥಿಕ್ ಶೈಲಿಯು ಉತ್ತುಂಗಕ್ಕೇರಿತು. ಆರಂಭದಲ್ಲಿ ಉಡುಗೆಯು, ಪೂರ್ವದಲ್ಲಿರುವ ಬೈಜಂಟೀನ್ ಸಂಪ್ರದಾಯದಿಂದ  ಭಾರಿ ಪ್ರಮಾಣದಲ್ಲಿ ಪ್ರವಾವಿತವಾಗಿತ್ತು. ಆದಾಗ್ಯೂ, ನಿಧಾನಗತಿಯ ಸಂವಹನ ವಿಧಾನಗಳಿಂದಾಗಿ, ಪಶ್ಚಿಮ ಪ್ರಾಂತ್ಯದ ಜೀವನಶೈಲಿಯು 25 ರಿಂದ 30 ವರ್ಷ ಹಿಂದುಳಿಯಬಹುದು. ಮಧ್ಯಯುಗದ ಕೊನೆಯಲ್ಲಿ ಪಶ್ಚಿಮ ಯುರೋಪ್ ಪ್ರಾಂತ್ಯವು ತನ್ನದೇ ಆದ ಶೈಲಿಯನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸಲು ಪ್ರಾರಂಭಿಸಿತು. ಧರ್ಮಯುದ್ಧದ ಪರಿಣಾಮವಾಗಿ, ಜನರು ಬಟ್ಟೆಗಳನ್ನು ಧರಿಸಲು ಗುಂಡಿಗಳನ್ನು ಬಳಸಲು ಪ್ರಾರಂಭಿಸಿದ್ದು ಆ ಕಾಲದ ಅತಿದೊಡ್ಡ ಬೆಳವಣಿಗೆಗಳಲ್ಲೊಂದು.",
+     "question": "ಬಟ್ಟೆಗಳನ್ನು ತೊಡಲು ಗುಂಡಿಗಳನ್ನು ಬಳಸಿದ್ದು ಯಾವುದರ ಪರಿಣಾಮವಾಗಿದೆ? ",
+     "options": [
+      "ಗೋಥಿಕ್ ಅವಧಿ",
+      "ಬೈಜಾಂಟೈನ್ ಯುಗ",
+      "ಕ್ರುಸೇಡ್ಸ್",
+      "ಮಧ್ಯ ಯುಗಗಳು"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ನಾವು ಈಗಲೂ ಪರಿಸರ ಸ್ನೇಹಿ ಜೀವನವನ್ನು ಸಾಗಿಸಲು ಅವಕಾಶವಿದೆ, ಪರಿಸರ ಆಂದೋಲನದಲ್ಲಿ ಭಾಗಿಯಾಗುವುದು ಮತ್ತು ಕಾರ್ಯಕರ್ತರಾಗಿ ಸೇವೆಗೈಯ್ಯುವ ಮೂಲಕ, ಭವಿಷ್ಯದಲ್ಲಿ ಪರಿಸರ ಹಾನಿಯಿಂದ ಎದುರಾಗಬಹುದಾದ ಆಪತ್ತುಗಳನ್ನು ಸ್ವಲ್ಪ ಮಟ್ಟಿಗೆ ತಗ್ಗಿಸಬಹುದು. ಇದು ಬಹಳಷ್ಟು ಪ್ರಕರಣಗಳಲ್ಲಿ  ಕೇವಲ ರೋಗ ಲಕ್ಷಣಗಳಿಗೆ ನೀಡುವ ಚಿಕಿತ್ಸೆಯಂತಿರುತ್ತದೆ. ಅದಾಗ್ಯೂ ನಮಗೆ ಕೇವಲ ತಾತ್ಕಾಲಿಕ ಪರಿಹಾರ ಬೇಡವಾಗಿದ್ದರೆ, ನಾವು ಸಮಸ್ಯೆಯ ಮೂಲ ಹುಡುಕಬೇಕು ಮತ್ತು ಅವುಗಳನ್ನು ನಿಷ್ಕ್ರಿಯ ಗೊಳಿಸಬೇಕು. ಮಾನವನ ವೈಜ್ಞಾನಿಕ ಮತ್ತು ತಂತ್ರಜ್ಞಾನ ಆಧರಿತ ಸುಧಾರಣೆಗಳಿಂದಾಗಿ ವಿಶ್ವವು ಹಲವು ಬದಲಾವಣೆ ಕಂಡಿರುವುದು ಖಚಿತ ಮತ್ತು ಜನಸಂಖ್ಯೆ ಮತ್ತು ಮನುಕುಲದ ಐಷಾರಾಮಿ ಜೀವನ ಶೈಲಿಯಿಂದಾಗಿ ಸಮಸ್ಯೆಗಳು ಹೆಚ್ಚಾಗಿವೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಕೆಳಗಿನ ಯಾವುದನ್ನು ಪರಿಸರದ ಸಮಸ್ಯೆಗಳಿಗೆ ಕಾರ್ಯಸಾಧ್ಯವಾದ ದೀರ್ಘಕಾಲೀನ ಪರಿಹಾರವೆಂದು ಪರಿಗಣಿಸಲಾಗಿದೆ?",
+     "options": [
+      "ದುಬಾರಿ ಬೆಲೆಯ ಜೀವನಶೈಲಿಯ ಆಯ್ಕೆಗಳನ್ನು ಬಹಿಷ್ಕರಿಸುವುದು",
+      "ಕ್ರಿಯಾಶೀಲತೆ",
+      "ಸಮಸ್ಯೆಗಳ ಕಾರಣವನ್ನು ಗುರುತಿಸುವುದು",
+      "ಪರಿಸರ ಆಂದೋಲನದ ಮಿತ್ರನಾಗುವುದು"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ನಾವು ಈಗಲೂ ಪರಿಸರ ಸ್ನೇಹಿ ಜೀವನವನ್ನು ಸಾಗಿಸಲು ಅವಕಾಶವಿದೆ, ಪರಿಸರ ಆಂದೋಲನದಲ್ಲಿ ಭಾಗಿಯಾಗುವುದು ಮತ್ತು ಕಾರ್ಯಕರ್ತರಾಗಿ ಸೇವೆಗೈಯ್ಯುವ ಮೂಲಕ, ಭವಿಷ್ಯದಲ್ಲಿ ಪರಿಸರ ಹಾನಿಯಿಂದ ಎದುರಾಗಬಹುದಾದ ಆಪತ್ತುಗಳನ್ನು ಸ್ವಲ್ಪ ಮಟ್ಟಿಗೆ ತಗ್ಗಿಸಬಹುದು. ಇದು ಬಹಳಷ್ಟು ಪ್ರಕರಣಗಳಲ್ಲಿ  ಕೇವಲ ರೋಗ ಲಕ್ಷಣಗಳಿಗೆ ನೀಡುವ ಚಿಕಿತ್ಸೆಯಂತಿರುತ್ತದೆ. ಅದಾಗ್ಯೂ ನಮಗೆ ಕೇವಲ ತಾತ್ಕಾಲಿಕ ಪರಿಹಾರ ಬೇಡವಾಗಿದ್ದರೆ, ನಾವು ಸಮಸ್ಯೆಯ ಮೂಲ ಹುಡುಕಬೇಕು ಮತ್ತು ಅವುಗಳನ್ನು ನಿಷ್ಕ್ರಿಯ ಗೊಳಿಸಬೇಕು. ಮಾನವನ ವೈಜ್ಞಾನಿಕ ಮತ್ತು ತಂತ್ರಜ್ಞಾನ ಆಧರಿತ ಸುಧಾರಣೆಗಳಿಂದಾಗಿ ವಿಶ್ವವು ಹಲವು ಬದಲಾವಣೆ ಕಂಡಿರುವುದು ಖಚಿತ ಮತ್ತು ಜನಸಂಖ್ಯೆ ಮತ್ತು ಮನುಕುಲದ ಐಷಾರಾಮಿ ಜೀವನ ಶೈಲಿಯಿಂದಾಗಿ ಸಮಸ್ಯೆಗಳು ಹೆಚ್ಚಾಗಿವೆ.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ಕೆಳಗಿನ ಯಾವ ಪರಿಹಾರಗಳನ್ನು ಪರಿಸರದ ಸಮಸ್ಯೆಗಳ ಲಕ್ಷಣಕ್ಕೆ ಚಿಕಿತ್ಸೆಯಾಗಿ ಪರಿಗಣಿಸಲಾಗುವುದಿಲ್ಲ?",
+     "options": [
+      "ಕ್ರಿಯಾಶೀಲತೆಯಲ್ಲಿ ತೊಡಗಿಸಿಕೊಳ್ಳುವುದು",
+      "ಸಮಸ್ಯೆಗಳ ಮೂಲ ಕಾರಣಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುವುದು",
+      "ದುಬಾರಿ ಬೆಲೆಯ ಜೀವನಶೈಲಿಯ ಆಯ್ಕೆಗಳ ಅಭಿಪ್ರಾಯಗಳ ಬಗ್ಗೆ ಧ್ವನಿ ನೀಡುವುದು",
+      "ಹೆಚ್ಚು ಪರಿಸರ ಸ್ನೇಹಿ ರೀತಿಯಲ್ಲಿ ಬದುಕುವುದು"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಎಲ್ಲ ಐರೋಪ್ಯ ರಾಷ್ಟ್ರಗಳ ರಾಷ್ಟ್ರೀಯ ಸಮಗ್ರತೆಯನ್ನು ನಿರ್ವಹಿಸಲು ಐರೋಪ್ಯ ರಾಷ್ಟ್ರಗಳು ಬಯಸಿದ ವ್ಯವಸ್ಥೆಯು ಅಧಿಕಾರದ ಸಮತೋಲನವಾಗಿತ್ತು. ಕಲ್ಪನೆಯೆಂದರೆ, ಎಲ್ಲ ಐರೋಪ್ಯ ದೇಶಗಳೂ ಶಕ್ತಿಯುತವಾಗುವುದರಿಂದ ಒಂದು ದೇಶವನ್ನು ತಡೆಯಲು ಬಯಸುವುದಾಗಿತ್ತು ಮತ್ತು ಹೀಗಾಗಿ, ಸಮತೋಲನವನ್ನು ಸಾಧಿಸಲು ರಾಷ್ಟ್ರೀಯ ಸರ್ಕಾರಗಳು ತಮ್ಮ ಒಕ್ಕೂಟವನ್ನು ಪದೇ ಪದೇ ಬದಲಿಸಿದವು. ಅಧಿಕಾರದ ಸಮತೋಲನವು ಪ್ರಮುಖ ವಿಷಯವಾಗಿದ್ದ ಸ್ಪಾನಿಷ್‌ ಉತ್ತರಾಧಿಕಾರದ ಯುದ್ಧವನ್ನು ಮೊದಲ ಯುದ್ಧವೆಂದು ಗುರುತಿಸಲಾಗಿದೆ. ಇದು ಒಂದು ಪ್ರಮುಖ ಬದಲಾವಣೆಯನ್ನು ಗುರುತಿಸಿತು, ಏಕೆಂದರೆ ಯುರೋಪಿಯನ್ ಶಕ್ತಿಗಳು ಇನ್ನು ಮುಂದೆ ಧಾರ್ಮಿಕ ಯುದ್ಧಗಳ ನೆಪವನ್ನು ನೀಡಲು ಸಾಧ್ಯವಿಲ್ಲ. ಹೀಗಾಗಿ, ಮೂವತ್ತು ವರ್ಷಗಳ ಕಾಲ ನಡೆದ ಯುದ್ಧವು ಕೊನೆಯದಾಗಿ ನಡೆದ ಧಾರ್ಮಿಕ ಯುದ್ಧ ಎಂದು ಹೆಸರಿಸಲ್ಪಟ್ಟ ಯುದ್ಧವಾಗಿದೆ.",
+     "question": "ಯುರೋಪ್‌ನ ಮೊದಲ ಯುದ್ಧವು ಯಾವ ದೇಶದಲ್ಲಿ ನಡೆಯಿತು, ಯಾವುದರ ಕೇಂದ್ರ ವಿಷಯವು ಧಾರ್ಮಿಕ ಸಂದರ್ಭಕ್ಕಿಂತ ಹೆಚ್ಚಾಗಿ ಅಧಿಕಾರದ ಸಮತೋಲನಕ್ಕೆ ಸಂಬಂಧಿಸಿದೆ ಎಂದು ಹೇಳಲಾಗಿದೆ?",
+     "options": [
+      "ಇಂಗ್ಲೆಂಡ್",
+      "ಜರ್ಮನಿ",
+      "ಪೋರ್ಚುಗಲ್",
+      "ಸ್ಪೇನ್"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "ಎಲ್ಲ ಐರೋಪ್ಯ ರಾಷ್ಟ್ರಗಳ ರಾಷ್ಟ್ರೀಯ ಸಮಗ್ರತೆಯನ್ನು ನಿರ್ವಹಿಸಲು ಐರೋಪ್ಯ ರಾಷ್ಟ್ರಗಳು ಬಯಸಿದ ವ್ಯವಸ್ಥೆಯು ಅಧಿಕಾರದ ಸಮತೋಲನವಾಗಿತ್ತು. ಕಲ್ಪನೆಯೆಂದರೆ, ಎಲ್ಲ ಐರೋಪ್ಯ ದೇಶಗಳೂ ಶಕ್ತಿಯುತವಾಗುವುದರಿಂದ ಒಂದು ದೇಶವನ್ನು ತಡೆಯಲು ಬಯಸುವುದಾಗಿತ್ತು ಮತ್ತು ಹೀಗಾಗಿ, ಸಮತೋಲನವನ್ನು ಸಾಧಿಸಲು ರಾಷ್ಟ್ರೀಯ ಸರ್ಕಾರಗಳು ತಮ್ಮ ಒಕ್ಕೂಟವನ್ನು ಪದೇ ಪದೇ ಬದಲಿಸಿದವು. ಅಧಿಕಾರದ ಸಮತೋಲನವು ಪ್ರಮುಖ ವಿಷಯವಾಗಿದ್ದ ಸ್ಪಾನಿಷ್‌ ಉತ್ತರಾಧಿಕಾರದ ಯುದ್ಧವನ್ನು ಮೊದಲ ಯುದ್ಧವೆಂದು ಗುರುತಿಸಲಾಗಿದೆ. ಇದು ಒಂದು ಪ್ರಮುಖ ಬದಲಾವಣೆಯನ್ನು ಗುರುತಿಸಿತು, ಏಕೆಂದರೆ ಯುರೋಪಿಯನ್ ಶಕ್ತಿಗಳು ಇನ್ನು ಮುಂದೆ ಧಾರ್ಮಿಕ ಯುದ್ಧಗಳ ನೆಪವನ್ನು ನೀಡಲು ಸಾಧ್ಯವಿಲ್ಲ. ಹೀಗಾಗಿ, ಮೂವತ್ತು ವರ್ಷಗಳ ಕಾಲ ನಡೆದ ಯುದ್ಧವು ಕೊನೆಯದಾಗಿ ನಡೆದ ಧಾರ್ಮಿಕ ಯುದ್ಧ ಎಂದು ಹೆಸರಿಸಲ್ಪಟ್ಟ ಯುದ್ಧವಾಗಿದೆ.",
+     "question": "ಯಾವ ಯುದ್ಧವನ್ನು ಕೆಲವೊಮ್ಮೆ ಕೊನೆಯ 'ಧಾರ್ಮಿಕ ಯುದ್ಧ' ಎಂದು ವಿವರಿಸಲಾಗುತ್ತದೆ?",
+     "options": [
+      "ಮೂವತ್ತು ವರ್ಷಗಳ ಯುದ್ಧ",
+      "ನೂರು ವರ್ಷಗಳ ಯುದ್ಧ",
+      "ಸ್ಪ್ಯಾನಿಷ್ ಉತ್ತರಾಧಿಕಾರದ ಯುದ್ಧ",
+      "ಸ್ಪ್ಯಾನಿಷ್ ಅಂತರ್ಯುದ್ಧ"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "ಯೂರೊಪಿನ ಇತಿಹಾಸದ ಈ ಸಮಯದಲ್ಲಿ, ಶ್ರೀಮಂತ ಹಾಗೂ ಶಕ್ತಿಶಾಲಿಯಾಗಿದ್ದ ಕ್ಯಾಥೋಲಿಕ್ ಚರ್ಚ್, ತನಿಖೆಗೊಳಪಟ್ಟಿತು. ಸುಮಾರು ಒಂದು ಸಾವಿರ ವರ್ಷಗಳವರೆಗೆ ಕ್ರೈಸ್ತ ಧರ್ಮವು, ಯೂರೋಪಿನ ರಾಜ್ಯಗಳನ್ನು ಅವುಗಳ ಭಾಷೆ, ಸಂಪ್ರದಾಯಗಳ ವೈವಿಧ್ಯತೆಯ ಹೊರತಾಗಿಯೂ ಹಿಡಿದಿಟ್ಟುಕೊಂಡಿತ್ತು. ಅದರ ಸರ್ವವ್ಯಾಪಿ ಶಕ್ತಿ ರಾಜನಿಂದ ಸಾಮಾನ್ಯ ಪ್ರಜೆಯವರೆಗೂ ಹರಡಿತ್ತು. ಕ್ರೈಸ್ತ ಸಿದ್ಧಾಂತಗಳಲ್ಲಿ ಪ್ರಮುಖವಾದ ಒಂದು ಅಂಶ ಏನೆಂದರೆ , ಸಂಪತ್ತನ್ನು ಬಡತನ ನಿವಾರಣೆ ಮತ್ತು ಸಂಕಷ್ಟಕ್ಕೀ ಡಾದವರ ಸಹಾಯಕ್ಕೆ ಬಳಸುವುದಾಗಿದ್ದು, ಚರ್ಚಿನ ಹಣಕಾಸು ಸಂಗ್ರಹಣೆಯ ಉದ್ದೇಶ ಅದೇ ಆಗಿದೆ. ಚರ್ಚಿನ ಕೇಂದ್ರೀಯ ಪ್ರಾಧಿಕಾರವು ಹಲವು ಸಹಸ್ರ ವರ್ಷಗಳಿಂದಲೂ ರೋಮ್ ನಲ್ಲಿಯೇ ಸ್ಥಾಪಿತವಾಗಿದೆ ಹಾಗೂ ಈ  ಅಧಿಕಾರದ ಮತ್ತು ಹಣದ ಕೇಂದ್ರೀಕರಣವು ಈ ಸಿದ್ಧಾಂತವನ್ನು ನಿರ್ವಹಿಸುತ್ತಿದೆಯೇ ಎಂದು ಹಲವಾರು ಪ್ರಶ್ನೆಗಳಿಗೆ ಕಾರಣವಾಗುತ್ತದೆ.",
+     "question": "ಕ್ಯಾಥೋಲಿಕ್ ಚರ್ಚಿನ ಈ ಕೆಳಗಿನ ಯಾವ ಅಂಶವನ್ನು ಸೂಕ್ಷ್ಮವಾಗಿ ಪರಿಶೀಲಿಸಲಾಗಿಲ್ಲ?",
+     "options": [
+      "ಚರ್ಚ್ ಒಳಗೆ ಸಂಪತ್ತಿನ ಹಂಚಿಕೆ ಸೂಕ್ತವಾಗಿದ್ದರೆ",
+      "ಧರ್ಮದ ಮುಖ್ಯ ತತ್ವಗಳನ್ನು ತಿದ್ದುಪಡಿ ಮಾಡಿದರೆ",
+      "ಚರ್ಚ್ ಒಳಗಿರುವ ಶಕ್ತಿಯ ತೀವ್ರತೆ",
+      "ಚರ್ಚ್ ನ ಮುಖ್ಯ ತತ್ವಗಳನ್ನು ಪೂರೈಸುತ್ತಿದ್ದರೆ"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "ಭಯಭೀತರಾದ ಕಿಂಗ್ ಲೂಯಿಸ್ XVI, ರಾಣಿ ಮೇರಿ ಆಂಟೊಯೊನೆಟ್ ಅವರ ಇಬ್ಬರು ಚಿಕ್ಕ ಮಕ್ಕಳು (11 ವರ್ಷದ ಮೇರಿ ಥೆರೆಸ್ ಮತ್ತು ನಾಲ್ಕು ವರ್ಷದ ಲೂಯಿಸ್-ಚಾರ್ಲ್ಸ್) ಮತ್ತು ರಾಜನ ಸಹೋದರಿ ಮೇಡಮ್ ಎಲಿಜಬೆತ್ ಅವರನ್ನು 1789 ರ ಅಕ್ಟೋಬರ್ 6 ರಂದು ಮಾರುಕಟ್ಟೆ ಮಹಿಳೆಯರ ಜನಸಮೂಹದಿಂದ ಪ್ಯಾರಿಸ್‌ಗೆ ವಾಪಸ್ಸು ಕಳುಹಿಸುವಂತೆ ಒತ್ತಾಯಿಸಲಾಯಿತು. ರಾಜ ಮತ್ತು ರಾಣಿಯ ವಿರುದ್ಧ ಬೆದರಿಕೆಗಳನ್ನು ಕೂಗುತ್ತಿರುವ ಸುತ್ತುವರಿದ  ಜನಸ್ತೋಮದ ನಡುವೆ ಗಾಡಿಯಲ್ಲಿ ಅವರು ಪ್ಯಾರಿಸ್ಗೆ ಹಿಂದಿರುಗಿದರು. ರಾಜ ಮತ್ತು ರಾಣಿಯರಿಬ್ಬರು ತಮ್ಮ ರಥದ ಕಿಟಿಕಿಯನ್ನು ಇನ್ನಷ್ಟು ಅಗಲವಾಗಿ ತೆರೆಯಬೇಕು ಎಂದು ಜನಗಳ ಗುಂಪು ಒತ್ತಾಯ ಮಾಡಿತು. ಒಂದು ಹಂತದಲ್ಲಿ ಜನಸಮೂಹದಲ್ಲಿದ್ದ ಓರ್ವ ವ್ಯಕ್ತಿ ಭಯಭೀತರಾದ ರಾಣಿಯ ಎದುರು ವರ್ಸೈಲ್ಸ್‌ನಲ್ಲಿ ಕೊಲ್ಲಲ್ಪಟ್ಟ ರಾಯಲ್ ಗಾರ್ಡ್‌ನ ತಲೆಯನ್ನು ಬೀಸಿ ಎಸೆದರು.",
+     "question": "ವಾಕ್ಯವೃಂದದ ಪ್ರಕಾರ, ವರ್ಸೈಲ್ಸ್‌ನಲ್ಲಿ ಯಾರು ಕೊಲ್ಲಲ್ಪಟ್ಟರು?",
+     "options": [
+      "ಮಾರುಕಟ್ಟೆಯ ಮಹಿಳೆಯರಲ್ಲಿ ಒಬ್ಬರು",
+      "ಕಿಂಗ್ ಲೂಯಿಸ್ XVI",
+      "ದುಷ್ಕರ್ಮಿಗಳ ಸದಸ್ಯ",
+      "ಒಬ್ಬ ಕಾವಲುಗಾರ"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "ಭಯಭೀತರಾದ ಕಿಂಗ್ ಲೂಯಿಸ್ XVI, ರಾಣಿ ಮೇರಿ ಆಂಟೊಯೊನೆಟ್ ಅವರ ಇಬ್ಬರು ಚಿಕ್ಕ ಮಕ್ಕಳು (11 ವರ್ಷದ ಮೇರಿ ಥೆರೆಸ್ ಮತ್ತು ನಾಲ್ಕು ವರ್ಷದ ಲೂಯಿಸ್-ಚಾರ್ಲ್ಸ್) ಮತ್ತು ರಾಜನ ಸಹೋದರಿ ಮೇಡಮ್ ಎಲಿಜಬೆತ್ ಅವರನ್ನು 1789 ರ ಅಕ್ಟೋಬರ್ 6 ರಂದು ಮಾರುಕಟ್ಟೆ ಮಹಿಳೆಯರ ಜನಸಮೂಹದಿಂದ ಪ್ಯಾರಿಸ್‌ಗೆ ವಾಪಸ್ಸು ಕಳುಹಿಸುವಂತೆ ಒತ್ತಾಯಿಸಲಾಯಿತು. ರಾಜ ಮತ್ತು ರಾಣಿಯ ವಿರುದ್ಧ ಬೆದರಿಕೆಗಳನ್ನು ಕೂಗುತ್ತಿರುವ ಸುತ್ತುವರಿದ  ಜನಸ್ತೋಮದ ನಡುವೆ ಗಾಡಿಯಲ್ಲಿ ಅವರು ಪ್ಯಾರಿಸ್ಗೆ ಹಿಂದಿರುಗಿದರು. ರಾಜ ಮತ್ತು ರಾಣಿಯರಿಬ್ಬರು ತಮ್ಮ ರಥದ ಕಿಟಿಕಿಯನ್ನು ಇನ್ನಷ್ಟು ಅಗಲವಾಗಿ ತೆರೆಯಬೇಕು ಎಂದು ಜನಗಳ ಗುಂಪು ಒತ್ತಾಯ ಮಾಡಿತು. ಒಂದು ಹಂತದಲ್ಲಿ ಜನಸಮೂಹದಲ್ಲಿದ್ದ ಓರ್ವ ವ್ಯಕ್ತಿ ಭಯಭೀತರಾದ ರಾಣಿಯ ಎದುರು ವರ್ಸೈಲ್ಸ್‌ನಲ್ಲಿ ಕೊಲ್ಲಲ್ಪಟ್ಟ ರಾಯಲ್ ಗಾರ್ಡ್‌ನ ತಲೆಯನ್ನು ಬೀಸಿ ಎಸೆದರು.",
+     "question": "ಕೆಳಗಿನ ಯಾವುದನ್ನು ದುಷ್ಕರ್ಮಿಗಳು ರಾಜ ಮತ್ತು ರಾಣಿಯ ಮೇಲೆ ಒತ್ತಾಯಿಸಲಿಲ್ಲ?",
+     "options": [
+      "ಅವರ ಗಾಡಿಯ ಕಿಟಕಿಗಳನ್ನು ತೆರೆಯಲು",
+      "ವರ್ಸೈಲ್ಸ್‌ನಿಂದ ಹಠಾತ್ ನಿರ್ಗಮನ ",
+      "ಕಾವಲುಗಾರನ ಶಿರಚ್ಛೇದನದ ವೀಕ್ಷಣೆ",
+      "ಪ್ಯಾರಿಸ್ ಗೆ ಹಿಂತಿರುಗುವ ಪ್ರವಾಸ"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಉದ್ವಿಗ್ನ ಪರಿಸ್ಥಿತಿ ಉಂಟಾಗುತ್ತಿದ್ದಂತೆಯೇ ಜರ್ಮನಿಯ ವಿರುದ್ಧ ನಿಷೇಧವನ್ನು ಬ್ರಿಟನ್ ಆರಂಭಿಸಿತು. ಪ್ರಮುಖ ಮಿಲಿಟರಿ ಮತ್ತು ನಾಗರಿಕ ಸರಬರಾಜುಗಳನ್ನು ಕಡಿತಗೊಳಿಸುವ ಈ ತಂತ್ರವು ಪರಿಣಾಮಕಾರಿಯಾಗಿ ಸಾಬೀತಾಯಿತು, ಆದರೆ ಕಳೆದ ಎರಡು ಶತಮಾನಗಳ ಹಲವಾರು ಅಂತರರಾಷ್ಟ್ರೀಯ ಒಪ್ಪಂದಗಳಿಂದ ಒಟ್ಟುಗೂಡಿಸಿರುವ ಎಲ್ಲರೂ ಒಪ್ಪಿಕೊಂಡಿರುವ ಅಂತರರಾಷ್ಟ್ರೀಯ ಕಾನೂನನ್ನು ಈ ದಿಗ್ಬಂಧನ ಉಲ್ಲಂಘಿಸಿದೆ. ಯಾವುದೇ ಹಡಗುಗಳು ಸಮುದ್ರದ ಸಂಪೂರ್ಣ ಭೂಪ್ರದೇಶಕ್ಕೆ ಪ್ರವೇಶಿಸದಂತೆ ಬ್ರಿಟನ್ ಅಂತರರಾಷ್ಟ್ರೀಯ ಜಲಪ್ರದೇಶದಲ್ಲಿ ಗಣಿಗಾರಿಕೆ ನಡೆಸಿ, ತಟಸ್ಥವಾಗಿ ನಿಲ್ಲುವ ಹಡಗುಗಳಿಗೂ ಅಪಾಯವನ್ನುಂಟುಮಾಡಿತು. ಈ ತಂತ್ರಕ್ಕೆ ಸೀಮಿತ ಪ್ರತಿಕ್ರಿಯೆ ಇದ್ದುದರಿಂದ, ತನ್ನ ಅನಿರ್ಬಂಧಿತ ಜಲಾಂತರ್ಗಾಮಿ ಶಸ್ತ್ರಾಸ್ತ್ರಕ್ಕೆ ಇದೇ ರೀತಿಯ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಜರ್ಮನಿ ನಿರೀಕ್ಷಿಸಿದೆ.",
+     "question": "ಕೆಳಗಿನವುಗಳಲ್ಲಿ ಯಾವುದು ಬ್ರಿಟನ್‌ನ ಅಸಾಂಪ್ರದಾಯಿಕ ನೌಕಾ ಯುದ್ಧದ ಫಲಿತಾಂಶವಲ್ಲ?",
+     "options": [
+      "ಇದೇ ರೀತಿಯ ಯುದ್ಧ ತಂತ್ರಗಳನ್ನು ಬಳಸಿಕೊಳ್ಳುವುದು ಜರ್ಮನಿಯ ಬಯಕೆಯಾಗಿದೆ",
+      "ಪಾಲ್ಗೊಳ್ಳದ ಹಡಗುಗಳನ್ನು ಹಾನಿಗೊಳಿಸಲಾಗಿದೆ",
+      "ಅಂತರರಾಷ್ಟ್ರೀಯ ಕಾನೂನಿಗೆ ಬದಲಾವಣೆಗಳನ್ನು ಮಾಡಲಾಯಿತು",
+      "ಮಹತ್ವದ ಸರಬರಾಜುಗಳು ತಲುಪಲಿಲ್ಲ "
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "ಉದ್ವಿಗ್ನ ಪರಿಸ್ಥಿತಿ ಉಂಟಾಗುತ್ತಿದ್ದಂತೆಯೇ ಜರ್ಮನಿಯ ವಿರುದ್ಧ ನಿಷೇಧವನ್ನು ಬ್ರಿಟನ್ ಆರಂಭಿಸಿತು. ಪ್ರಮುಖ ಮಿಲಿಟರಿ ಮತ್ತು ನಾಗರಿಕ ಸರಬರಾಜುಗಳನ್ನು ಕಡಿತಗೊಳಿಸುವ ಈ ತಂತ್ರವು ಪರಿಣಾಮಕಾರಿಯಾಗಿ ಸಾಬೀತಾಯಿತು, ಆದರೆ ಕಳೆದ ಎರಡು ಶತಮಾನಗಳ ಹಲವಾರು ಅಂತರರಾಷ್ಟ್ರೀಯ ಒಪ್ಪಂದಗಳಿಂದ ಒಟ್ಟುಗೂಡಿಸಿರುವ ಎಲ್ಲರೂ ಒಪ್ಪಿಕೊಂಡಿರುವ ಅಂತರರಾಷ್ಟ್ರೀಯ ಕಾನೂನನ್ನು ಈ ದಿಗ್ಬಂಧನ ಉಲ್ಲಂಘಿಸಿದೆ. ಯಾವುದೇ ಹಡಗುಗಳು ಸಮುದ್ರದ ಸಂಪೂರ್ಣ ಭೂಪ್ರದೇಶಕ್ಕೆ ಪ್ರವೇಶಿಸದಂತೆ ಬ್ರಿಟನ್ ಅಂತರರಾಷ್ಟ್ರೀಯ ಜಲಪ್ರದೇಶದಲ್ಲಿ ಗಣಿಗಾರಿಕೆ ನಡೆಸಿ, ತಟಸ್ಥವಾಗಿ ನಿಲ್ಲುವ ಹಡಗುಗಳಿಗೂ ಅಪಾಯವನ್ನುಂಟುಮಾಡಿತು. ಈ ತಂತ್ರಕ್ಕೆ ಸೀಮಿತ ಪ್ರತಿಕ್ರಿಯೆ ಇದ್ದುದರಿಂದ, ತನ್ನ ಅನಿರ್ಬಂಧಿತ ಜಲಾಂತರ್ಗಾಮಿ ಶಸ್ತ್ರಾಸ್ತ್ರಕ್ಕೆ ಇದೇ ರೀತಿಯ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಜರ್ಮನಿ ನಿರೀಕ್ಷಿಸಿದೆ.",
+     "question": "ಜರ್ಮನಿಯ ವಿರುದ್ಧ ಬ್ರಿಟನ್‌ನ ನೌಕಾ ದಿಗ್ಬಂಧನವನ್ನು ಯಾವ ಹೇಳಿಕೆಯು ನಿಖರವಾಗಿ ವಿವರಿಸುವುದಿಲ್ಲ?",
+     "options": [
+      "ಇದು ಅಂತಾರಾಷ್ಟ್ರೀಯ ಕಾನೂನಿಗೆ ವಿರುದ್ಧವಾಗಿತ್ತು",
+      "ಇದು ಜರ್ಮನಿಯ ಜಲಾಂತರ್ಗಾಮಿ ಯುದ್ಧವನ್ನು ಪ್ರಚೋದಿಸಿತು",
+      "ಜರ್ಮನ್ ಸರಬರಾಜುಗಳ ಹರಿವಿಗೆ ಇದು ಅಡ್ಡಿಪಡಿಸಿತು",
+      "ತಟಸ್ಥ ಹಡಗುಗಳು ಅಪಾಯಕ್ಕೆ ಸಿಲುಕುವುದಿಲ್ಲ ಎಂದು ಇದು ಖಚಿತಪಡಿಸಿತು"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  "arc_en": {
+   "lang": "en",
+   "source": "ARC-Easy",
+   "items": [
+    {
+     "passage": "",
+     "question": "Which statement best explains why photosynthesis is the foundation of most food webs?",
+     "options": [
+      "Sunlight is the source of energy for nearly all ecosystems.",
+      "Most ecosystems are found on land instead of in water.",
+      "Carbon dioxide is more available than other gases.",
+      "The producers in all ecosystems are plants."
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "Which piece of safety equipment is used to keep mold spores from entering the respiratory system?",
+     "options": [
+      "safety goggles",
+      "breathing mask",
+      "rubber gloves",
+      "lead apron"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "Meiosis is a type of cell division in which germ cells divide to produce haploid cells. Where does meiosis occur?",
+     "options": [
+      "brain cells",
+      "bone cells",
+      "muscle cells",
+      "ovary cells"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "Which characteristic describes the texture of a kitten's fur?",
+     "options": [
+      "gray",
+      "warm",
+      "long",
+      "soft"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "Which best describes the structure of an atom?",
+     "options": [
+      "a lightweight core surrounded by neutral particles",
+      "a massive core surrounded by negatively-charged particles",
+      "a network of interacting positive and negative particles",
+      "overlapping layers of neutral, positive, and negative particles"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "To express the distance between the Milky Way galaxy and other galaxies, the most appropriate unit of measurement is the",
+     "options": [
+      "meter.",
+      "kilometer.",
+      "light-year.",
+      "astronomical unit."
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "A student has just completed a laboratory activity. What is the last action that the student should perform before leaving the lab area?",
+     "options": [
+      "wash hands",
+      "turn off all equipment",
+      "put away all glassware",
+      "wash instruments and table tops"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "Students are investigating the effects of different fertilizers on plant growth. Which units would be best to measure the mass of the fertilizer used?",
+     "options": [
+      "meters",
+      "centimeters",
+      "grams",
+      "milligrams"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "Plants use sunlight to make",
+     "options": [
+      "soil.",
+      "minerals.",
+      "food.",
+      "water."
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "Which of these correctly identifies the way materials are transported in a plant?",
+     "options": [
+      "Xylem carries water from the roots to the leaves.",
+      "Phloem carries minerals from the roots to the leaves.",
+      "Xylem carries sugars from the flowers to the stems.",
+      "Phloem carries water from the flowers to the stems."
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "When trees develop leaves in the spring, 10 changes occur on the forest floor. Why does the development of leaves cause changes on the forest floor?",
+     "options": [
+      "Rainfall increases.",
+      "Sunlight is reduced.",
+      "Wind speed increases.",
+      "Animal migration is stopped."
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "The circulatory system and the endocrine system work together in the human body. Which describes one way in which these systems interact?",
+     "options": [
+      "taking in oxygen and transporting it to cells of the body",
+      "releasing hormones and transporting them to cells of the body",
+      "absorbing nutrients from food and transporting them to cells in the body",
+      "collecting waste products from the cells and transporting it out of the body"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "A student throws a ball into the air. While the ball travels up, the speed of the ball decreases. What force causes the ball to slow while traveling up?",
+     "options": [
+      "electricity",
+      "gravity",
+      "magnetism",
+      "tension"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "Which of these will most likely harm a habitat?",
+     "options": [
+      "planting trees",
+      "water pollution",
+      "rainfall",
+      "sunlight"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "All living and nonliving material is composed of",
+     "options": [
+      "air",
+      "elements",
+      "water",
+      "soil"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "Which process best explains how the Grand Canyon became so wide?",
+     "options": [
+      "folding",
+      "erosion",
+      "deposition",
+      "sedimentation"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "As global temperatures increase, certain organisms will be more affected than others. The changes associated with global warming may result in an increase in sea level. Which organisms will be affected most as a result of the change in sea level?",
+     "options": [
+      "birds that eat fish from shallow waters",
+      "fish that live in coral reefs in shallow waters",
+      "mammals that swim in cold, deep ocean waters",
+      "crustaceans at the bottom of deep sea ocean waters"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "A dish of sugar water was left on a window sill. One week later, there were only sugar crystals left in the dish. The water was gone. The best explanation for the appearance of sugar crystals is",
+     "options": [
+      "some of the water was absorbed by the dish.",
+      "the air condensed.",
+      "the light shining on the window sill produced more sugar.",
+      "the water evaporated."
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "Using a softball bat to hit a softball is an example of using which simple machine?",
+     "options": [
+      "pulley",
+      "lever",
+      "inclined plane",
+      "wheel and axle"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "When an igneous intrusion comes into contact with surrounding rock, the surrounding rock will",
+     "options": [
+      "erode.",
+      "foliate.",
+      "precipitate.",
+      "recrystallize."
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "A research scientist writes a paper on the initial regrowth of a forest after a fire has damaged the entire ecosystem. Which title would be best for the paper?",
+     "options": [
+      "Primary Succession",
+      "Stable Communities",
+      "Climax Communities",
+      "Secondary Succession"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "Where do plants get most of the energy they need to live and grow?",
+     "options": [
+      "water",
+      "soil",
+      "air",
+      "sunlight"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "Which is a statement about climate?",
+     "options": [
+      "The average temperature yesterday was 15°C.",
+      "The temperature range today was 10°C to 20°C.",
+      "The high temperature tomorrow will be 14°C.",
+      "The average high temperature in May is 20°C."
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "While on a movie set, a stuntman jumps off the roof of a building. As he falls toward an airbag, what is increasing?",
+     "options": [
+      "gravity",
+      "wind velocity",
+      "kinetic energy",
+      "potential energy"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "Jessica wants to see cells in an oak tree leaf. Which tool is best for Jessica to use to see the cells?",
+     "options": [
+      "binoculars",
+      "microscope",
+      "reading glasses",
+      "magnifying glass"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "Biologists conduct investigations to learn about living organisms. Which method helps reduce bias during an investigation?",
+     "options": [
+      "developing a hypothesis after collecting data in the investigation",
+      "limiting the amount of background research before the investigation",
+      "designing an investigation with repeated trials during the investigation",
+      "obtaining other opinions concerning what should happen during the investigation"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "Which factor is most likely to cause the number of rabbits living in an area to increase?",
+     "options": [
+      "less water",
+      "fewer predators",
+      "lack of shelter",
+      "limited food"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "Seeds that remain inactive until the right conditions of light, water, and soil are present are called ___.",
+     "options": [
+      "pollen",
+      "dormant",
+      "flowers",
+      "recycled"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "What allows a light bulb to give off light?",
+     "options": [
+      "the current flowing through the wire to the light bulb",
+      "the light bulb giving electrical energy to the battery",
+      "the light bulb generating heat energy",
+      "the battery pushing light through the wire"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "What causes sound?",
+     "options": [
+      "sunlight",
+      "vibrations",
+      "x-rays",
+      "pitch"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "Photosynthesis occurs in which of these organisms?",
+     "options": [
+      "Sunflower plant",
+      "Mushroom",
+      "Sunfish",
+      "Luna moth"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "In order for cells to grow at a normal rate, they must",
+     "options": [
+      "take in light.",
+      "be specialized.",
+      "take in nutrients.",
+      "be of similar size."
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "Marshall learned that plants need a substance from the air to make their own food. What does a plant take from the air in the presence of sunlight?",
+     "options": [
+      "carbon dioxide",
+      "hydrogen",
+      "nitrogen",
+      "oxygen"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "Antarctica is a continent at Earth's south pole. Fossils of tropical fern plants were discovered in Antarctica even though these plants do not grow there today. Which conclusion does the fossil evidence best support?",
+     "options": [
+      "Millions of years ago, Antarctica was in a warmer location on Earth.",
+      "Recently, a natural disaster killed all of the fern plants in Antarctica.",
+      "Recently, birds stopped carrying the seeds of fern plants to Antarctica.",
+      "Millions of years ago, Earth's south pole was much colder than it is today."
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "Which two theories of Moon formation propose that much or all of the material comprising the Moon came from Earth?",
+     "options": [
+      "The Fission Theory and The Coaccretion Theory",
+      "The Coaccretion Theory and The Capture Theory",
+      "The Fission Theory and the Giant Impact Theory",
+      "The Capture Theory and the Giant Impact Theory"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "When white, fluffy clouds appear in Massachusetts, the weather that day will MOST LIKELY be",
+     "options": [
+      "fair.",
+      "stormy.",
+      "foggy.",
+      "rainy."
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "Plants and animals are composed of organic compounds. Which of the following are the common elements found in organic compounds?",
+     "options": [
+      "iron, oxygen, nickel, copper.",
+      "sodium, potassium, gold, hydrogen.",
+      "helium, neon, argon, krypton.",
+      "carbon, hydrogen, oxygen, nitrogen."
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "New research uncovers information that proves that the data from an old theory is partially incorrect. What should the scientific community do about the old theory?",
+     "options": [
+      "remove the old theory from historical records",
+      "change the research notes in the original theory",
+      "use the new information to update the old theory",
+      "ban the public from discussing the old theory"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "Which is the greatest benefit of sexual reproduction?",
+     "options": [
+      "capable of reproducing by meiosis",
+      "ability to reproduce without a mate",
+      "ability to produce genetically different offspring",
+      "capable of producing offspring genetically identical to parent"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "The speed at which sound waves travel depends on the",
+     "options": [
+      "distance between the vibration source and the receiver.",
+      "type of material through which the sound travels.",
+      "size of the object making the sound.",
+      "type of device making the sound."
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "Which scientist is credited with discovering the first four moons of Jupiter?",
+     "options": [
+      "Galileo Galilei",
+      "Albert Einstein",
+      "Charles Darwin",
+      "Sir Isaac Newton"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "During science class, a teacher explains that the samples the students are studying are made of two or more minerals. What are the students studying?",
+     "options": [
+      "gases",
+      "rocks",
+      "elements",
+      "molecules"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "When the Northern Hemisphere is tilted away from the Sun causing the rays of light to hit Earth at large angles, which season occurs?",
+     "options": [
+      "winter",
+      "spring",
+      "summer",
+      "fall"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "A scientist found fossils of ocean shells on a mountain top. Based on this find, which statement can be made?",
+     "options": [
+      "The climate was once colder.",
+      "The shells were carried by the wind.",
+      "The mountain was covered by water.",
+      "The shells once lived on dry land."
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "A student sees many plants around a pond. The student can determine which plants are nonvascular by",
+     "options": [
+      "observing if they lack true stems, roots, or leaves",
+      "examining the plants for spores",
+      "counting the number of leaves on each stalk",
+      "noticing if the plants are near rocks"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "Darryl learns that freezing temperatures may help cause weathering. Which statement explains how freezing temperatures most likely cause weathering?",
+     "options": [
+      "by freezing the leaves on trees",
+      "by causing rocks to stick together",
+      "by turning acid rain into acid snow",
+      "by freezing water in the cracks of rocks"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "A bond is formed when an electron is transferred from a sodium atom to a chlorine atom. What happens to the sodium atom during this process?",
+     "options": [
+      "The mass of the atom increases.",
+      "The atom becomes an isotope.",
+      "The atomic number decreases.",
+      "The atom becomes a positive ion."
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "A group of fish was released into a local lake. This species of fish had never lived in the lake before. Scientists want to collect data on how the lake's ecosystem is affected by the new fish. Which method of data collection will give the most accurate results?",
+     "options": [
+      "Measuring oxygen levels in the lake for two months",
+      "Checking the lake water for nutrient levels on one day",
+      "Sampling fish populations in the lake over several years",
+      "Observing the surface of the lake for signs of the new fish after one week"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "On a career day at school, an X-ray technician discusses her daily work with the class. Which equipment would she most likely say she uses on a regular basis to help ensure the safety of patients?",
+     "options": [
+      "earplugs",
+      "rubber gloves",
+      "goggles",
+      "lead aprons"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "In the United States, windmills have been used for farming for hundreds of years. Which simple machine is the most important part of a windmill?",
+     "options": [
+      "lever",
+      "pulley",
+      "inclined plane",
+      "wheel and axle"
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "Which tools are needed to measure the effects of friction on a block of wood?",
+     "options": [
+      "meter stick, spring scale",
+      "balance, stopwatch",
+      "balance, meter stick",
+      "meter stick, stopwatch"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "Planets outside of our solar system have been detected. What suggested the presence of a planet outside of our solar system?",
+     "options": [
+      "radio wave emissions",
+      "a wobble in the rotation of the star",
+      "regular occurring eclipses of its moons",
+      "the discovery of a star as large as our own"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "During which process are pieces of rock material being moved over Earth's surface by water and wind?",
+     "options": [
+      "conduction",
+      "deposition",
+      "erosion",
+      "revolution"
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "The Apollo 11 mission was able to retrieve samples of the Moon's surface because it was the first mission to have astronauts",
+     "options": [
+      "land on the Moon",
+      "orbit a planet",
+      "return to Earth",
+      "walk in space"
+     ],
+     "answer": 0
+    },
+    {
+     "passage": "",
+     "question": "A student mixes a teaspoon of sugar in a large glass of water. What happens to the sugar when it is mixed with the water?",
+     "options": [
+      "It boils.",
+      "It melts.",
+      "It dissolves.",
+      "It evaporates."
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "Particle accelerators, such as the Large Hadron Collider in Europe, accelerate subatomic particles to great speeds. These particles move in opposite directions at nearly the speed of light and collide into one another to simulate conditions that were present as the universe formed. Which property of matter in the initial moments of the universe are these accelerators designed to simulate?",
+     "options": [
+      "low density",
+      "high energy",
+      "massive nuclei",
+      "circular movement"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "A doorbell circuit converts electrical energy into mechanical energy. The mechanical energy is in the form of vibrations that ultimately produce",
+     "options": [
+      "chemical energy.",
+      "thermal energy.",
+      "radiant energy.",
+      "sound energy."
+     ],
+     "answer": 3
+    },
+    {
+     "passage": "",
+     "question": "Which factor determines if two individuals are members of the same species?",
+     "options": [
+      "They live in the same habitat and niche.",
+      "They forage and eat the same type of food.",
+      "They mate and produce fertile offspring.",
+      "They are similar in appearance and color."
+     ],
+     "answer": 2
+    },
+    {
+     "passage": "",
+     "question": "Which of the following planets is always closer to the Sun than it is to Earth?",
+     "options": [
+      "Jupiter",
+      "Mercury",
+      "Saturn",
+      "Uranus"
+     ],
+     "answer": 1
+    },
+    {
+     "passage": "",
+     "question": "Cells need nutrients for energy. Which system is responsible for breaking down food to provide cellular energy?",
+     "options": [
+      "digestive",
+      "excretory",
+      "circulatory",
+      "respiratory"
+     ],
+     "answer": 0
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,21 @@
+{
+  "dir": "D:/InferSmart-models",
+  "files": {
+    "Qwen3.5-0.8B-Q4_K_M.gguf": {
+      "family": "Qwen3.5-0.8B",
+      "quant": "Q4_K_M",
+      "size": 532517120,
+      "sha256": "bd258782e35f7f458f8aced1adc053e6e92e89bc735ba3be89d38a06121dc517",
+      "source": "https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF",
+      "licence": "Apache-2.0"
+    },
+    "Qwen3.5-0.8B-Q5_K_M.gguf": {
+      "family": "Qwen3.5-0.8B",
+      "quant": "Q5_K_M",
+      "size": 590057728,
+      "sha256": "c3ef5827b322c4be08a3a26ce424460d8b37daf593356c2cc1f4e40a7ab0581b",
+      "source": "https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF",
+      "licence": "Apache-2.0"
+    }
+  }
+}
