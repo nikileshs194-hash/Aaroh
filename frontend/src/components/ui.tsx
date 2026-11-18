@@ -201,6 +201,21 @@ export function LangSwitcher({ compact = false }: { compact?: boolean }) {
 
 export function PinPad({ value, onChange, onSubmit, length = 4, label }: { value: string; onChange: (v: string) => void; onSubmit: () => void; length?: number; label: string }) {
   const press = (d: string) => value.length < 8 && onChange(value + d);
+  // Laptop keyboards: number keys, Backspace and Enter work anywhere on the page (except text fields).
+  const latest = useRef({ value, onChange, onSubmit });
+  latest.current = { value, onChange, onSubmit };
+  useEffect(() => {
+    const k = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "INPUT" && !(e.target as HTMLElement).dataset.pin || tag === "TEXTAREA" || tag === "SELECT") return;
+      const { value: v, onChange: ch, onSubmit: sub } = latest.current;
+      if (/^[0-9]$/.test(e.key)) { e.preventDefault(); if (v.length < 8) ch(v + e.key); }
+      else if (e.key === "Backspace") { e.preventDefault(); ch(v.slice(0, -1)); }
+      else if (e.key === "Enter") { e.preventDefault(); sub(); }
+    };
+    window.addEventListener("keydown", k);
+    return () => window.removeEventListener("keydown", k);
+  }, []);
   return (
     <div className="mx-auto w-full max-w-[280px]">
       <div className="mb-4 flex justify-center gap-3" aria-label={label} aria-live="polite">
@@ -208,8 +223,7 @@ export function PinPad({ value, onChange, onSubmit, length = 4, label }: { value
           <span key={i} className={cx("h-4 w-4 rounded-full border-2", i < value.length ? "bg-accent border-accent" : "border-line")} />
         ))}
       </div>
-      <input className="sr-only" aria-label={label} inputMode="numeric" autoFocus value={value}
-        onChange={(e) => onChange(e.target.value.replace(/\D/g, "").slice(0, 8))} onKeyDown={(e) => e.key === "Enter" && onSubmit()} />
+      <input className="sr-only" aria-label={label} inputMode="numeric" data-pin="1" value={value} readOnly />
       <div className="grid grid-cols-3 gap-2.5">
         {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((d) => (
           <button key={d} type="button" className="btn-secondary h-14 text-xl tnum" onClick={() => press(d)}>{d}</button>

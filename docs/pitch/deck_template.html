@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InferSmart pitch</title>
+<style>
+  /* Same tokens as the product (dossier C4). Fonts fall back to the system if Inter is not installed. */
+  :root { --bg:#F7F8FA; --surface:#fff; --ink:#0B1B33; --text:#0E1726; --muted:#475467; --line:#E3E7ED; --accent:#0F766E; --soft:#E6F4F2; --teacher:#4338CA; --warn:#B45309; --ok:#15803D; --danger:#B91C1C; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #0B1220; font-family: Inter, "Noto Sans Kannada", "Noto Sans Devanagari", system-ui, sans-serif; color: var(--text); }
+  .deck { height: 100%; display: flex; align-items: center; justify-content: center; }
+  .slide { display: none; width: min(100vw, 177.78vh); height: min(56.25vw, 100vh); background: var(--bg); position: relative; overflow: hidden; padding: 5.2% 6%; }
+  .slide.on { display: flex; flex-direction: column; }
+  .slide.dark { background: #0B1220; color: #E6EAF2; }
+  .slide.dark h1, .slide.dark h2 { color: #fff; }
+  h1 { font-size: 3.4vw; line-height: 1.1; margin: 0; color: var(--ink); letter-spacing: -0.02em; }
+  h2 { font-size: 2.5vw; margin: 0 0 1.6vw; color: var(--ink); letter-spacing: -0.015em; }
+  p, li { font-size: 1.45vw; line-height: 1.5; }
+  .kicker { font-size: 1vw; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1vw; }
+  .muted { color: var(--muted); }
+  .grid { display: grid; gap: 1.4vw; }
+  .g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 1vw; padding: 1.5vw 1.7vw; }
+  .dark .card { background: #111A2C; border-color: #24314A; }
+  .big { font-size: 4.6vw; font-weight: 800; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
+  .huge { font-size: 11vw; font-weight: 800; color: var(--accent); line-height: 1; }
+  .label { font-size: .95vw; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .src { position: absolute; bottom: 2.2%; left: 6%; right: 6%; font-size: .8vw; color: var(--muted); }
+  .num { position: absolute; bottom: 2.2%; right: 3%; font-size: .9vw; color: var(--muted); }
+  .logo { display: inline-flex; align-items: center; gap: .8vw; font-weight: 800; font-size: 2vw; color: var(--ink); }
+  .logo b { color: var(--accent); }
+  .pill { display: inline-block; padding: .3vw 1vw; border-radius: 99px; background: var(--soft); color: var(--accent); font-weight: 700; font-size: 1.05vw; margin: 0 .4vw .4vw 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 1.2vw; }
+  td, th { border-bottom: 1px solid var(--line); padding: .55vw .6vw; text-align: left; }
+  th { color: var(--muted); font-size: .95vw; text-transform: uppercase; letter-spacing: .06em; }
+  .flow { display: flex; gap: 1vw; align-items: stretch; }
+  .flow .card { flex: 1; }
+  .arrow { align-self: center; font-size: 2vw; color: var(--accent); }
+  .hint { position: fixed; bottom: 8px; right: 12px; color: #667085; font: 12px system-ui; }
+  @media print { .slide { display: flex !important; page-break-after: always; width: 100vw; height: 56.25vw; } .hint { display: none; } body { background: #fff; } }
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 1 Title -->
+<section class="slide on dark">
+  <div class="logo" style="color:#fff"><svg width="54" height="54" viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="7" fill="none" stroke="#2DD4BF" stroke-width="2.6"/><circle cx="16" cy="16" r="3.6" fill="#2DD4BF"/></svg>Infer<b style="color:#2DD4BF">Smart</b></div>
+  <div style="margin-top:auto">
+    <h1 style="font-size:4.4vw;max-width:80%">Old PC, no internet, no expert: private AI for the whole class.</h1>
+    <p style="color:#A3AEC2;margin-top:2vw">InferSmart turns the computer a school already owns into a private AI assistant for every student, and tunes itself so it stays fast.</p>
+    <p style="color:#A3AEC2">[Your name] · [Team] · [College]</p>
+  </div>
+</section>
+
+<!-- 2 Story -->
+<section class="slide">
+  <div class="kicker">The story</div>
+  <h1>Meet Lakshmi.</h1>
+  <div class="grid g3" style="margin-top:3vw">
+    <div class="card"><div class="label">Her school</div><p>Kannada-medium government high school near Mysuru. A few old lab PCs. Internet that drops.</p></div>
+    <div class="card"><div class="label">Her job this year</div><p>AI and computational thinking are now part of the curriculum. Lesson plans every week, by hand, late at night.</p></div>
+    <div class="card"><div class="label">Her worry</div><p>Cloud AI stops when the signal drops, and she is unsure whether typing student details into apps is allowed.</p></div>
+  </div>
+  <p class="muted" style="margin-top:auto">Composite persona built from published research (Shiksha copilot, JanAI, CENTA, NUEPA). Not a real person.</p>
+  <div class="num">2</div>
+</section>
+
+<!-- 3 Problem in numbers -->
+<section class="slide">
+  <div class="kicker">The problem in numbers</div>
+  <div class="grid g4" style="margin-top:1vw">
+    <div class="card"><div class="big">64.7%</div><p>of schools have computers; about 58% of them work</p></div>
+    <div class="card"><div class="big">63.5%</div><p>have internet; only 58.6% of government schools</p></div>
+    <div class="card"><div class="big">&gt;50%</div><p>of AI-using government teachers entered a student's name, marks or photo</p></div>
+    <div class="card"><div class="big">19.1%</div><p>of school hours spent actually teaching: no time to become IT staff</p></div>
+  </div>
+  <p style="margin-top:2.4vw">AI and computational thinking are part of the curriculum for Classes 3 to 8 from 2026-27. Karnataka and Kerala are already buying or building local, offline AI for schools.</p>
+  <div class="src">Sources: Ministry of Education UDISE+ 2024-25 press release; JanAI survey of 797 teachers (Head Held High Foundation); NUEPA five-state study; CBSE (IANS). Survey figures as reported in the press.</div>
+  <div class="num">3</div>
+</section>
+
+<!-- 4 Why current options fail -->
+<section class="slide">
+  <div class="kicker">Why current options fail</div>
+  <div class="grid g3">
+    <div class="card"><h2 style="font-size:1.9vw">Cloud AI</h2><p>Needs internet that a third of schools lack. Children's data leaves the premises. Cost grows with every question.</p></div>
+    <div class="card"><h2 style="font-size:1.9vw">Local AI today</h2><p>Needs an expert to pick the right model and settings for each old PC. Defaults are tuned for one user.</p></div>
+    <div class="card"><h2 style="font-size:1.9vw">Nothing plans for a class</h2><p>Works for one student, crawls when twenty join. Nobody can say how many students a PC can serve, or whether Kannada answers are any good.</p></div>
+  </div>
+  <div class="num">4</div>
+</section>
+
+<!-- 5 Users -->
+<section class="slide">
+  <div class="kicker">Who it is for</div>
+  <div class="grid g4">
+    <div class="card"><div class="label">Teacher · end user</div><h2 style="font-size:1.7vw;margin-top:.6vw">Lakshmi</h2><p>Lesson plans, quizzes and explanations in Kannada, on her phone, ready to print.</p></div>
+    <div class="card"><div class="label">Lab in-charge · set-up</div><h2 style="font-size:1.7vw;margin-top:.6vw">Ravi</h2><p>"Tell me in one line: will it handle my class or not?"</p></div>
+    <div class="card"><div class="label">Student</div><h2 style="font-size:1.7vw;margin-top:.6vw">Ananya</h2><p>Scans a QR code, asks in Kannada, no login, answer starts fast.</p></div>
+    <div class="card"><div class="label">Headmaster · customer</div><h2 style="font-size:1.7vw;margin-top:.6vw">Mr Prakash</h2><p>A one-page summary and a printed privacy report he can file.</p></div>
+  </div>
+  <p class="muted" style="margin-top:2vw">Payer at scale: state Samagra Shiksha ICT programmes, CSR funders, AI-PC programmes such as Karnataka's KEO. [Add your survey result here: "We surveyed N teachers..."]</p>
+  <div class="num">5</div>
+</section>
+
+<!-- 6 Solution and positioning -->
+<section class="slide">
+  <div class="kicker">The solution</div>
+  <div class="flow">
+    <div class="card"><div class="label">1 · Check</div><p>Hardware Passport in plain words</p></div><div class="arrow">→</div>
+    <div class="card"><div class="label">2 · Goal</div><p>Class size, languages, speed or quality</p></div><div class="arrow">→</div>
+    <div class="card"><div class="label">3 · Test</div><p>Speed, memory, quality per language, class capacity</p></div><div class="arrow">→</div>
+    <div class="card"><div class="label">4 · Launch</div><p>QR code for the whole class, works offline</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:2.2vw">
+    <div class="card"><div class="label">What no other tool combines</div>
+      <p><span class="pill">"Serves about N students"</span><span class="pill">Quality guard per language</span><span class="pill">Switches under classroom load</span><span class="pill">Privacy proof</span><span class="pill">Built for non-technical staff</span></p></div>
+    <div class="card"><div class="label">Where we fit</div><p>Developer tools (llama-bench, VectorPrime, Ollama, LM Studio) tune or run one model for one user. Cloud copilots need internet. InferSmart is ongoing serving for a whole class, set up by a teacher. Models from India and the world are our supply chain, not our rivals.</p></div>
+  </div>
+  <div class="num">6</div>
+</section>
+
+<!-- 7 How it works -->
+<section class="slide">
+  <div class="kicker">How it works</div>
+  <div class="grid g3">
+    <div class="card"><div class="label">Architecture</div><p>Phones and lab PCs → school Wi-Fi → <b>control centre</b> (Python, FastAPI) → <b>engine A</b> quality model, <b>engine B</b> fast model (llama.cpp, CPU). One SQLite file. Nothing needs the internet.</p></div>
+    <div class="card"><div class="label">Quality guard + capacity</div><p>Each setting is checked against its 8-bit reference on Belebele (EN/HI/KN) and ARC-Easy questions, and must stay above a floor in every chosen language. Then 1 to 12 virtual students: N = most students with ≥ 5 tokens/s and first word ≤ 3 s.</p></div>
+    <div class="card"><div class="label">Three-mode controller</div><p>Every 2 s: observe users, queue, first word, speed, memory. Limits broken for 20 s → <b>quality → fast → protect</b>. Calm for 60 s → back. Every decision written in plain words.</p></div>
+  </div>
+  <div class="card" style="margin-top:1.6vw"><div class="label">What measuring taught us on this laptop</div><p>{{INSIGHT}}</p></div>
+  <div class="num">7</div>
+</section>
+
+<!-- 8 Live demo -->
+<section class="slide dark">
+  <div class="kicker" style="color:#2DD4BF">Live demo</div>
+  <h1 style="font-size:4vw">Check → test → "serves N" → phone in Kannada → lesson plan → a class joins → Wi-Fi off.</h1>
+  <p style="color:#A3AEC2;margin-top:auto">Backup: saved full test run in the app · 90-second recording on the desktop and USB.</p>
+  <div class="num">8</div>
+</section>
+
+<!-- 9 Results -->
+<section class="slide">
+  <div class="kicker">Results, measured on this laptop ({{DATE}})</div>
+  <div class="grid g4">
+    <div class="card"><div class="label">Serves at once</div><div class="big">{{N}}</div><p>students comfortably, simulated up to {{UPTO}}</p></div>
+    <div class="card"><div class="label">Recommended</div><div class="big" style="font-size:2.3vw">{{REC}}</div><p>{{REC_NUMS}}</p></div>
+    <div class="card"><div class="label">Outside connections</div><div class="big">{{PRIV}}</div><p>during use; deliberate test connection caught: {{SELFTEST}}</p></div>
+    <div class="card"><div class="label">Crash recovery</div><div class="big">{{RECOV}}</div><p>engine back by itself</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:1.4vw">
+    <div class="card"><div class="label">Answer quality (multiple choice, {{QN}} questions per language)</div><table>{{QUALITY_ROWS}}</table></div>
+    <div class="card"><div class="label">Speed and safety</div><p>{{SPEEDGAIN}}</p><p>Safety red-team: {{REDTEAM}}</p><p class="muted">Setup time and SUS score: [add from your usability test]</p></div>
+  </div>
+  <div class="src">Hardware: {{HW}}. Every number on this slide comes from docs/evidence (runs on this laptop). Capacity is a simulation, checked with real tabs and phones.</div>
+  <div class="num">9</div>
+</section>
+
+<!-- 10 Impact and model -->
+<section class="slide">
+  <div class="kicker">Impact and business model</div>
+  <div class="grid g2">
+    <div class="card"><div class="label">Theory of change</div><p>Existing PC + InferSmart (free) → automatic setup → private offline AI for teachers and students → lesson plans in local languages, no data leaving school, AI curriculum delivered without internet → fairer access to AI for government and rural schools.</p><p class="muted">Aligned with SDG 4 and 10, NEP 2020, the 2026-27 AI curriculum, DPDP data minimisation, and Karnataka's KEO AI-PC programme.</p></div>
+    <div class="card"><div class="label">Sustainability</div><p><b>Free open-source core</b> for schools. Income from paid deployment and teacher training for state and CSR programmes, annual support, and pre-installation with low-cost AI-PC makers.</p><p><b>Zero marginal cost:</b> an extra question costs the electricity of a PC that is already on. No cloud bills.</p></div>
+  </div>
+  <div class="num">10</div>
+</section>
+
+<!-- 11 Roadmap -->
+<section class="slide">
+  <div class="kicker">Roadmap</div>
+  <table>
+    <tr><th>Stage</th><th>Scope</th><th>What is added</th></tr>
+    <tr><td><b>Now</b></td><td>Working prototype on one laptop</td><td>Everything in this demo</td></tr>
+    <tr><td><b>Pilot · 3 months</b></td><td>Our college lab and 3 to 5 nearby schools</td><td>Real usage data, teacher feedback, Kannada review workflow</td></tr>
+    <tr><td><b>District · 6–12 months</b></td><td>20 to 50 schools with a district partner</td><td>Fleet view for officials, installer, Kannada training video</td></tr>
+    <tr><td><b>State · 12 months +</b></td><td>State ICT programme or AI-PC preload</td><td>Arm and RISC-V builds, shared settings database, India's own models, textbook-grounded answers, voice</td></tr>
+    <tr><td><b>Beyond schools</b></td><td>Rural libraries, clinic front desks, cooperatives</td><td>Same engine, new templates; no diagnosis or high-risk advice</td></tr>
+  </table>
+  <div class="num">11</div>
+</section>
+
+<!-- 12 Close -->
+<section class="slide dark">
+  <div class="logo" style="color:#fff">Infer<b style="color:#2DD4BF">Smart</b></div>
+  <h1 style="font-size:4.6vw;margin-top:auto">Old PC, no internet, no expert:<br>private AI for every student.</h1>
+  <p style="color:#A3AEC2">Thank you. Questions?</p>
+  <p style="color:#A3AEC2;font-size:1.1vw;margin-top:2vw">Honest limits: small models are for explanations and drafts, not deep reasoning · Kannada quality is measured and still improving · capacity is simulated · privacy features support compliance, not legal certification.</p>
+</section>
+
+</div>
+<div class="hint">← → to move · F for full screen</div>
+<script>
+  const s = [...document.querySelectorAll(".slide")]; let i = 0;
+  const show = (n) => { i = Math.max(0, Math.min(s.length - 1, n)); s.forEach((x, k) => x.classList.toggle("on", k === i)); location.hash = i + 1; };
+  addEventListener("keydown", (e) => {
+    if (["ArrowRight", "PageDown", " "].includes(e.key)) show(i + 1);
+    if (["ArrowLeft", "PageUp"].includes(e.key)) show(i - 1);
+    if (e.key === "f" || e.key === "F") document.documentElement.requestFullscreen?.();
+  });
+  addEventListener("click", (e) => show(i + (e.clientX > innerWidth / 3 ? 1 : -1)));
+  show((parseInt(location.hash.slice(1)) || 1) - 1);
+</script>
+</body>
+</html>

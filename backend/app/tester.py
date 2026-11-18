@@ -342,19 +342,18 @@ class TestRunner:
         if only:
             grid = [g for g in grid if g.key() in only] or grid
         done_rows = {r["key"]: db.jload(r["data"]) for r in db.query("SELECT key,data FROM test_result WHERE run_id=?", (run_id,))}
-        files_for_quality = []
-        for g in grid:
-            m = models_lib.find(g.model_file)
-            if m and m["file"] not in [x["file"] for x in files_for_quality]:
-                files_for_quality.append(m)
-            ref = models_lib.reference_for(m, models) if m else None
-            if ref and ref["est_mem_gb"] + 1.0 <= hw["mem_budget_gb"] and ref["file"] not in [x["file"] for x in files_for_quality]:
-                files_for_quality.append(ref)
+        files_for_quality = _quality_files(grid, models, hw)
         total_units = len(grid) + len(files_for_quality) + 1
         self.state = {"status": "running", "run_id": run_id, "phase": "speed", "index": 0, "total": len(grid),
                       "units_done": 0, "units_total": total_units, "settings": [], "preview": "",
                       "started": time.time(), "eta_s": None, "quick": quick, "goal": goal, "languages": langs}
         log_event("test", f"Test started: {len(grid)} settings on this computer ({'quick' if quick else 'full'} test).")
+        # Fair test: the serving engines would compete for the processor and memory, so pause them.
+        was_serving = [n for n in ("A", "B") if engines[n].status in ("ready", "starting")]
+        for n in was_serving:
+            await engines[n].stop()
+        if was_serving:
+            log_event("info", "Student chat is paused while the test runs, so the measurements are fair.")
         if hw.get("on_battery"):
             log_event("info", "The laptop is on battery. Plug it in for fair, faster results.")
         try:
@@ -390,7 +389,9 @@ class TestRunner:
             if self.stop_flag.is_set():
                 raise asyncio.CancelledError
 
-            # ---------------- quality
+            # ---------------- quality (re-list files: a reference may have finished downloading meanwhile)
+            files_for_quality = _quality_files(grid, models_lib.list_models(hw["mem_budget_gb"]), hw)
+            self._pub(units_total=len(grid) + len(files_for_quality) + 1)
             quality: dict[str, dict] = {}
             for j, m in enumerate(files_for_quality):
                 self._pub(phase="quality", current=f"{m['name']} · {m['quality_label']}", current_detail="checking answers",
@@ -430,16 +431,46 @@ class TestRunner:
             else:
                 log_event("test", "Test finished, but no setting met the comfort limits on this computer.")
             self._pub(status="done", phase="done", run_id=run_id, eta_s=0)
+            await _resume_serving(was_serving)
         except asyncio.CancelledError:
             await engines["T"].stop()
             db.execute("UPDATE test_run SET status='stopped' WHERE id=?", (run_id,))
             log_event("test", "Test paused. Press Continue to resume where it stopped.")
             self._pub(status="stopped")
+            await _resume_serving(was_serving)
         except Exception as ex:  # never leave a raw error on screen
             await engines["T"].stop()
             db.execute("UPDATE test_run SET status='error' WHERE id=?", (run_id,))
             log_event("error", f"The test stopped because of a problem: {ex}")
             self._pub(status="error", error=str(ex))
+            await _resume_serving(was_serving)
+
+
+async def _resume_serving(was_serving: list[str]) -> None:
+    """Restart the last good setting after a test (the admin can apply the new one from the result)."""
+    if not was_serving:
+        return
+    from .engines import load_active
+    a, b, _ = load_active()
+    if a:
+        try:
+            await start_engines(a, b)
+            log_event("info", "Student chat is back on with the saved setting.")
+        except Exception as ex:
+            log_event("error", f"Could not restart the AI engine after the test: {ex}")
+
+
+def _quality_files(grid: list, models: list[dict], hw: dict) -> list[dict]:
+    """Every model file in the grid plus its 8-bit reference, if that fits in memory."""
+    out: list[dict] = []
+    for g in grid:
+        m = next((x for x in models if x["file"] == g.model_file), None)
+        if m and m["file"] not in [x["file"] for x in out]:
+            out.append(m)
+        ref = models_lib.reference_for(m, models) if m else None
+        if ref and ref["est_mem_gb"] + 1.0 <= hw["mem_budget_gb"] and ref["file"] not in [x["file"] for x in out]:
+            out.append(ref)
+    return out
 
 
 def _by_lang(sets: dict) -> dict:

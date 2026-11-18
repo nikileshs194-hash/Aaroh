@@ -358,7 +358,13 @@ function Launch() {
   const [done, setDone] = useState<any>(null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
-  useEffect(() => { api("/api/public").then((p) => setSchool(p.school_name === "Your School Name" ? "" : p.school_name)); }, []);
+  const [already, setAlready] = useState(false);
+  useEffect(() => { api("/api/public").then((p) => { setSchool(p.school_name === "Your School Name" ? "" : p.school_name); setAlready(!!p.pin_set && !!p.setup_done); }); }, []);
+  const applyOnly = async () => {
+    setBusy(true); setErr("");
+    try { await api("/api/apply", { body: {} }); setDone({ share: await api("/api/share"), teacher_code: null }); }
+    catch (e: any) { setErr(e.message); } finally { setBusy(false); }
+  };
   const finish = async () => {
     setErr("");
     if (!/^\d{4,8}$/.test(pin)) { setErr(t("setup.choosePin")); return; }
@@ -371,7 +377,14 @@ function Launch() {
   };
   return (
     <Frame step={4}>
-      {!done ? (
+      {!done && already ? (
+        <Card>
+          <h1 className="text-2xl font-bold">{t("setup.useThis")}</h1>
+          <p className="mt-2 text-muted">InferSmart is already set up. This applies the new recommended setting; the admin PIN and teacher code stay the same.</p>
+          {err && <Notice tone="danger" className="mt-4">{err}</Notice>}
+          <Button size="lg" className="mt-6" loading={busy} icon={<Play size={18} />} onClick={applyOnly}>{busy ? t("setup.starting") : t("setup.useThis")}</Button>
+        </Card>
+      ) : !done ? (
         <Card>
           <h1 className="text-2xl font-bold">{t("setup.startInferSmart")}</h1>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">

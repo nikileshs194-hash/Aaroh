@@ -35,6 +35,8 @@ class Router:
         self.client = httpx.AsyncClient(timeout=httpx.Timeout(900, connect=5), limits=httpx.Limits(max_connections=64))
         self.last_student_activity = 0.0
         self.tokens_total = 0
+        # in-flight requests, so the controller sees slowness while answers are still being written
+        self.inflight: dict[int, dict] = {}
 
     # ---------------------------------------------------------------- helpers
     def _sem(self, name: str) -> asyncio.Semaphore:
@@ -49,8 +51,11 @@ class Router:
         return self.cstate.mode
 
     def users_now(self, window: float = 60) -> int:
+        """Devices that asked in the last minute or are still waiting for / reading an answer."""
         t = time.time()
-        return sum(1 for v in self.devices.values() if t - v <= window)
+        recent = {d for d, v in self.devices.items() if t - v <= window}
+        recent |= {d for d, n in self.busy_dev.items() if n > 0 and d != "batch"}
+        return len(recent)
 
     def avg_answer_s(self) -> float:
         t = time.time()
@@ -102,6 +107,8 @@ class Router:
         sem = self._sem(name)
         self.busy_dev[device] += 1
         t_req = time.perf_counter()
+        fl = {"t0": time.time(), "first": None, "tokens": 0, "kind": kind}
+        self.inflight[rid] = fl
         try:
             if sem.locked():
                 self.waiting.append(rid)
@@ -129,6 +136,10 @@ class Router:
                    "model": engines[name].config.model_file if engines[name].config else None}
             try:
                 async for ev in stream_chat(engines[name], messages, max_tokens, 0.6, self.client, cancel):
+                    if ev["type"] == "token":
+                        if fl["first"] is None:
+                            fl["first"] = time.time()
+                        fl["tokens"] += 1
                     if ev["type"] == "done":
                         waited = time.perf_counter() - t_req
                         ttft = round(waited - ev["total"] + ev["ttft"], 3)  # includes time spent in our queue
@@ -148,15 +159,25 @@ class Router:
                 sem.release()
         finally:
             self.busy_dev[device] -= 1
+            self.inflight.pop(rid, None)
 
     # ---------------------------------------------------------------- loops
     def observe(self) -> Obs:
         t = time.time()
         rec = [r for r in self.recent if t - r[0] <= 30 and r[4] != "batch"]
+        ttfts = [r[1] for r in rec]
+        tpss = [r[2] for r in rec]
+        for f in list(self.inflight.values()):
+            if f["kind"] == "batch":
+                continue
+            if f["first"] is None:
+                ttfts.append(t - f["t0"])               # still waiting: counts as at least this long
+            elif t - f["first"] > 2 and f["tokens"] > 3:
+                tpss.append(f["tokens"] / (t - f["first"]))  # live writing speed of answers in progress
         vm = psutil.virtual_memory()
         return Obs(t=t, active=self.active, queued=len(self.waiting), users=self.users_now(),
-                   ttft_p95=stats.percentile([r[1] for r in rec], 95) if rec else None,
-                   tps_med=stats.median([r[2] for r in rec]) if rec else None,
+                   ttft_p95=stats.percentile(ttfts, 95) if ttfts else None,
+                   tps_med=stats.median(tpss) if tpss else None,
                    free_mem_gb=vm.available / 1073741824)
 
     async def control_loop(self) -> None:

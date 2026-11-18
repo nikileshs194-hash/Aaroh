@@ -60,7 +60,7 @@ export default function Dashboard() {
   return (
     <div className="rise space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-2xl font-bold">Live dashboard</h1>
+        <h1 className="text-2xl font-bold">{t("nav.dashboard")}</h1>
         <span className={cx("badge px-3 py-1 text-sm", MODE_TONE[mode])}>
           {mode === "quality" ? <ShieldCheck size={14} /> : <Zap size={14} />}{t(`admin.mode_${mode}`)}
         </span>
