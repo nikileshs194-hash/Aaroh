@@ -13,3 +13,7 @@ __pycache__/
 *.pyc
 .pytest_cache/
 docs/evidence/DEMO_ACCESS.md
+
+# Textbooks are copyrighted; keep them and their index on this computer only
+NCERT textbooks/
+data/rag/
