@@ -305,3 +305,12 @@ def test_questions_about_the_chat_skip_textbooks():
         assert main._about_chat(q), q
     for q in ("What is photosynthesis?", "Explain Newton's second law.", "What is the capital of Karnataka?"):
         assert not main._about_chat(q), q
+
+
+def test_keyword_terms_and_bm25():
+    from app import textbooks as T
+    assert T.terms("State Ohm’s law.") == ["ohm", "law"]
+    assert T.terms("What causes tides in the sea?") == ["cause", "tide", "sea"]
+    assert T.terms("hello, thank you so much") == []
+    b = T.BM25(["Ohm's law relates current and voltage.", "Plants make food by photosynthesis.", "The Rowlatt Act of 1919."])
+    assert int(b.scores("What is Ohm's law?").argmax()) == 0 and int(b.scores("Rowlatt Act").argmax()) == 2

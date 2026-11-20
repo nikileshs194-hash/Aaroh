@@ -149,6 +149,55 @@ class Embedder:
 
 
 # ------------------------------------------------------------------ index (built once, per book, resumable)
+# ------------------------------------------------------------------ keyword search (BM25)
+_STOP = set("""a an the of to in on for and or is are was were be been being it its this that these those as at by with
+from into about what which who whom why how when where do does did can could should would will shall may might must
+i me my you your we our they their he she his her them us there here than then so not no yes also very just only
+explain describe define give tell write show list name simple simply example examples one two three please
+state mean means meaning called happen happens use used difference between some many much more most
+hello hi hey thanks thank joke jokes poem story song best good bad okay ok sure today now""".split())
+_WORD = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
+
+
+def terms(text: str) -> list[str]:
+    text = text.lower().replace("’", "'").replace("‘", "'")
+    out = []
+    for w in _WORD.findall(text):
+        w = w[:-2] if w.endswith("'s") else w          # Ohm's -> ohm
+        if len(w) > 1 and w not in _STOP:
+            out.append(w[:-1] if len(w) > 4 and w.endswith("s") and not w.endswith("ss") else w)  # tides -> tide
+    return out
+
+
+class BM25:
+    """Classic keyword ranking (BM25) over all paragraphs: finds exact textbook terms such as "Ohm's law" or
+    "photolysis", which meaning-based search can blur. Built in memory in a few seconds from the same paragraphs."""
+    K1, B = 1.4, 0.75
+
+    def __init__(self, texts: list[str]) -> None:
+        from collections import Counter, defaultdict
+        post: dict[str, list] = defaultdict(list)
+        lens = np.zeros(len(texts), np.float32)
+        for i, t in enumerate(texts):
+            c = Counter(terms(t))
+            lens[i] = sum(c.values())
+            for w, f in c.items():
+                post[w].append((i, f))
+        self.n, self.avg = len(texts), float(lens.mean() or 1.0)
+        self.norm = self.K1 * (1 - self.B + self.B * lens / self.avg)
+        self.post = {w: (np.array([d for d, _ in v], np.int32), np.array([f for _, f in v], np.float32)) for w, v in post.items()}
+
+    def scores(self, query: str) -> np.ndarray:
+        out = np.zeros(self.n, np.float32)
+        for w in set(terms(query)):
+            if w not in self.post:
+                continue
+            docs, tf = self.post[w]
+            idf = np.log(1 + (self.n - len(docs) + 0.5) / (len(docs) + 0.5))
+            out[docs] += idf * tf * (self.K1 + 1) / (tf + self.norm[docs])
+        return out
+
+
 class Library:
     def __init__(self) -> None:
         self.lock = threading.Lock()
@@ -157,6 +206,8 @@ class Library:
         self.rows: list[dict] = []
         self.state: dict = {"status": "idle"}
         self.thread: threading.Thread | None = None
+        self.bm25: BM25 | None = None
+        self.hybrid = True   # keyword + meaning search; False = meaning only (for comparisons)
 
     def _embedder(self) -> Embedder:
         if self.emb is None:
@@ -218,6 +269,7 @@ class Library:
         with self.lock:
             self.vectors = np.vstack(vecs).astype(np.float32) if vecs else None
             self.rows = rows
+            self.bm25 = BM25([r["text"] for r in rows]) if rows else None
 
     def load(self) -> bool:
         if self.vectors is not None:
@@ -229,23 +281,48 @@ class Library:
 
     def search(self, query: str, k: int = 3, min_score: float = MIN_SCORE) -> list[dict]:
         """Best-matching textbook paragraphs for a question; [] if nothing is close enough.
-        Measured on this index: textbook questions score about 0.86-0.90, small talk 0.80-0.85."""
+
+        Hybrid search: meaning-based (E5 vectors) and keyword (BM25) rankings are combined with reciprocal-rank
+        fusion. The meaning score still decides whether the question is about the syllabus at all (measured: textbook
+        questions 0.86-0.90, small talk 0.80-0.85), so small talk never pulls in textbook pages."""
         if len(query.split()) < 3 or not self.load():
             return []
         q = self._embedder().encode(["query: " + query.strip()[:500]])[0]
         with self.lock:
-            scores = self.vectors @ q
-            top = np.argsort(-scores)[: k * 3]
+            vec = self.vectors @ q
+            kw = self.bm25.scores(query) if (self.hybrid and self.bm25 is not None) else None
+            if float(vec.max()) < min_score:
+                # Short questions with exact textbook terms ("State Ohm's law", "What is the Rowlatt Act?") score low on
+                # meaning. Let them through only when a paragraph contains every important word of the question
+                # (at least two) and is still fairly close in meaning, so small talk stays out.
+                qt = set(terms(query))
+                if kw is None or len(qt) < 2:
+                    return []
+                best = [int(i) for i in np.argsort(-kw)[:5] if kw[i] > 0]
+                if not any(qt <= set(terms(self.rows[i]["text"])) and vec[i] >= min_score - 0.04 for i in best):
+                    return []
+            if self.hybrid and self.bm25 is not None:
+                by_vec = np.argsort(-vec)[:60]
+                by_kw = np.argsort(-kw)[:60]
+                fused: dict[int, float] = {}
+                for rank, i in enumerate(by_vec):
+                    fused[int(i)] = fused.get(int(i), 0.0) + 1.0 / (60 + rank)
+                for rank, i in enumerate(by_kw):
+                    if kw[i] <= 0:
+                        break
+                    fused[int(i)] = fused.get(int(i), 0.0) + 1.0 / (60 + rank)
+                # keep only paragraphs that are also reasonably close in meaning
+                order = [i for i, _ in sorted(fused.items(), key=lambda x: -x[1]) if vec[i] >= min_score - 0.04]
+            else:
+                order = [int(i) for i in np.argsort(-vec)[: k * 3] if vec[i] >= min_score]
             out, seen = [], set()
-            for i in top:
-                if scores[i] < min_score:
-                    break
-                r = self.rows[int(i)]
+            for i in order:
+                r = self.rows[i]
                 key = (r["file"], r["page"])
                 if key in seen:
                     continue
                 seen.add(key)
-                out.append({**r, "score": round(float(scores[i]), 3)})
+                out.append({**r, "score": round(float(vec[i]), 3)})
                 if len(out) >= k:
                     break
         return out
