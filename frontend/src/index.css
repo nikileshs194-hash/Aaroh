@@ -146,6 +146,6 @@ h1, h2, h3 { @apply text-ink; letter-spacing: -0.015em; }
 
 /* Welcome screen: friendly display font (Fraunces, SIL OFL, bundled) */
 .font-display { font-family: "Fraunces", Georgia, "Times New Roman", serif; font-optical-sizing: auto; letter-spacing: -0.01em; }
-.composer { @apply rounded-2xl border border-line bg-surface shadow-sm transition-shadow focus-within:border-accent/60 focus-within:shadow-md; }
+.composer { @apply relative rounded-2xl border border-line bg-surface shadow-sm transition-shadow focus-within:border-accent/60 focus-within:shadow-md; }
 .composer textarea { @apply w-full resize-none bg-transparent px-4 pt-3.5 pb-1 text-base text-text outline-none placeholder:text-muted; }
 .chip-suggest { @apply inline-flex min-h-[40px] items-center gap-2 rounded-full border border-line bg-surface px-3.5 text-sm text-text transition-colors hover:border-accent/50 hover:bg-accent-soft/50; }

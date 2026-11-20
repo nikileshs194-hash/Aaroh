@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Languages, Loader2, Mic, Square } from "lucide-react";
+import { Check, Languages, Loader2, Mic, X } from "lucide-react";
 import { usePrefs } from "../prefs";
-import { cx, toast } from "./ui";
+import { toast } from "./ui";
 
 /** Voice input: records on this device, sends 16 kHz WAV to the school computer, gets text back.
  *  Speech is converted offline on the school computer (English: Parakeet, Kannada: IndicConformer); nothing is stored. */
@@ -41,19 +41,61 @@ export function VoiceButton({ lang, disabled, onText }: { lang: string; disabled
   const [state, setState] = useState<"idle" | "rec" | "work">("idle");
   const [secs, setSecs] = useState(0);
   const [ok, setOk] = useState<Record<string, boolean> | null>(null);
-  const r = useRef<{ ctx?: AudioContext; stream?: MediaStream; node?: ScriptProcessorNode; chunks: Float32Array[]; timer?: number; t0: number }>({ chunks: [], t0: 0 });
+  const canvas = useRef<HTMLCanvasElement>(null);
+  const r = useRef<{ ctx?: AudioContext; stream?: MediaStream; node?: ScriptProcessorNode; analyser?: AnalyserNode;
+    chunks: Float32Array[]; timer?: number; raf?: number; t0: number; levels: number[] }>({ chunks: [], t0: 0, levels: [] });
 
   useEffect(() => { fetch("/api/stt").then((x) => x.json()).then((d) => setOk(d.available)).catch(() => setOk({})); }, []);
   useEffect(() => () => cleanup(), []);
+  // Live waveform: one bar per ~60 ms of sound level, scrolling from right to left.
+  useEffect(() => {
+    if (state !== "rec") return;
+    let last = 0;
+    const draw = (now: number) => {
+      const s = r.current, cv = canvas.current;
+      if (!s.analyser || !cv) return;
+      if (now - last > 60) {
+        last = now;
+        const buf = new Uint8Array(s.analyser.fftSize);
+        s.analyser.getByteTimeDomainData(buf);
+        let sum = 0;
+        for (const v of buf) sum += ((v - 128) / 128) ** 2;
+        s.levels.push(Math.min(1, Math.sqrt(sum / buf.length) * 4));
+        if (s.levels.length > 400) s.levels.shift();
+      }
+      const dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+      if (cv.width !== w * dpr) { cv.width = w * dpr; cv.height = h * dpr; }
+      const g = cv.getContext("2d")!;
+      g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      g.clearRect(0, 0, w, h);
+      g.fillStyle = getComputedStyle(cv).color;
+      const bar = 3, gap = 3, n = Math.floor(w / (bar + gap));
+      const lv = s.levels.slice(-n);
+      for (let k = 0; k < n; k++) {
+        const v = lv[k - (n - lv.length)] ?? 0;
+        const bh = Math.max(3, v * (h - 4));
+        const x = k * (bar + gap);
+        g.globalAlpha = k < n - lv.length ? 0.25 : 1;
+        g.beginPath();
+        g.roundRect ? g.roundRect(x, (h - bh) / 2, bar, bh, 1.5) : g.rect(x, (h - bh) / 2, bar, bh);
+        g.fill();
+      }
+      s.raf = requestAnimationFrame(draw);
+    };
+    r.current.raf = requestAnimationFrame(draw);
+    return () => { if (r.current.raf) cancelAnimationFrame(r.current.raf); };
+  }, [state]);
+
   if (!ok || !ok[lang]) return null;
 
   function cleanup() {
     const s = r.current;
     if (s.timer) window.clearInterval(s.timer);
+    if (s.raf) cancelAnimationFrame(s.raf);
     s.node?.disconnect();
     s.stream?.getTracks().forEach((tr) => tr.stop());
     s.ctx?.close().catch(() => {});
-    r.current = { chunks: [], t0: 0 };
+    r.current = { chunks: [], t0: 0, levels: [] };
   }
 
   async function start() {
@@ -62,16 +104,18 @@ export function VoiceButton({ lang, disabled, onText }: { lang: string; disabled
       const stream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true } });
       const ctx = new AudioContext();
       const src = ctx.createMediaStreamSource(stream);
+      const analyser = ctx.createAnalyser();
+      analyser.fftSize = 1024;
       const node = ctx.createScriptProcessor(4096, 1, 1);
       const chunks: Float32Array[] = [];
       node.onaudioprocess = (e) => chunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));
-      src.connect(node); node.connect(ctx.destination);
-      r.current = { ctx, stream, node, chunks, t0: Date.now() };
+      src.connect(analyser); src.connect(node); node.connect(ctx.destination);
+      r.current = { ctx, stream, node, analyser, chunks, t0: Date.now(), levels: [] };
       setSecs(0); setState("rec");
       r.current.timer = window.setInterval(() => {
-        const s = Math.floor((Date.now() - r.current.t0) / 1000);
-        setSecs(s);
-        if (s >= MAX_S) stop();
+        const sec = Math.floor((Date.now() - r.current.t0) / 1000);
+        setSecs(sec);
+        if (sec >= MAX_S) finish();
       }, 250);
     } catch {
       toast(t("voice.denied"));
@@ -79,7 +123,9 @@ export function VoiceButton({ lang, disabled, onText }: { lang: string; disabled
     }
   }
 
-  async function stop() {
+  function cancel() { cleanup(); setState("idle"); }
+
+  async function finish() {
     const s = r.current;
     if (!s.ctx) return;
     const rate = s.ctx.sampleRate, chunks = s.chunks;
@@ -95,13 +141,37 @@ export function VoiceButton({ lang, disabled, onText }: { lang: string; disabled
     } finally { setState("idle"); }
   }
 
-  const rec = state === "rec", work = state === "work";
+  const mmss = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
   return (
-    <button type="button" disabled={disabled || work} onClick={() => (rec ? stop() : start())}
-      aria-label={rec ? t("voice.stop") : t("voice.start")} title={rec ? t("voice.stop") : t("voice.start")}
-      className={cx("h-12 shrink-0 px-0 tnum", rec ? "btn-danger w-auto min-w-12 px-3" : "btn-secondary w-12")}>
-      {work ? <Loader2 size={20} className="animate-spin" /> : rec ? <span className="inline-flex items-center gap-1.5"><Square size={16} />{secs}s</span> : <Mic size={20} />}
-    </button>
+    <>
+      <button type="button" disabled={disabled || state !== "idle"} onClick={start}
+        aria-label={t("voice.start")} title={t("voice.start")} className="btn-ghost h-11 w-11 shrink-0 rounded-xl px-0">
+        <Mic size={20} />
+      </button>
+      {state !== "idle" && (
+        // Covers the question box while recording: live sound waves, timer, cancel and done.
+        <div className="absolute inset-0 z-10 flex items-center gap-3 rounded-2xl bg-surface px-3" role="status" aria-live="polite">
+          {state === "rec" ? (
+            <>
+              <button type="button" onClick={cancel} aria-label={t("voice.cancel")} title={t("voice.cancel")}
+                className="btn-ghost h-10 w-10 shrink-0 rounded-full px-0 text-muted"><X size={20} /></button>
+              <span className="relative flex h-2.5 w-2.5 shrink-0" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+              </span>
+              <canvas ref={canvas} className="h-10 min-w-0 flex-1 text-accent" aria-label={t("voice.listening")} />
+              <span className="w-10 shrink-0 text-right text-sm tnum text-muted">{mmss}</span>
+              <button type="button" onClick={finish} aria-label={t("voice.stop")} title={t("voice.stop")}
+                className="btn-primary h-10 w-10 shrink-0 rounded-full px-0"><Check size={20} /></button>
+            </>
+          ) : (
+            <span className="flex flex-1 items-center justify-center gap-2 text-sm text-muted">
+              <Loader2 size={18} className="animate-spin text-accent" />{t("voice.working")}
+            </span>
+          )}
+        </div>
+      )}
+    </>
   );
 }
 
@@ -113,7 +183,7 @@ export function QLangToggle() {
   const next = qLang === "kn" ? "en" : "kn";
   return (
     <button type="button" onClick={() => setQLang(next)} title={t("chat.qLang")} aria-label={`${t("chat.qLang")}: ${qLang === "kn" ? "ಕನ್ನಡ" : "English"}`}
-      className="btn-secondary h-12 shrink-0 gap-1.5 px-2.5 text-sm font-semibold sm:px-3">
+      className="btn-ghost h-11 shrink-0 gap-1.5 rounded-xl px-2.5 text-sm font-semibold sm:px-3">
       <Languages size={17} className="hidden text-accent sm:block" />
       <span lang={qLang}>{qLang === "kn" ? "ಕನ್ನಡ" : "EN"}</span>
     </button>

@@ -170,6 +170,7 @@ const en = {
     models: "Model library",
   },
   voice: {
+    cancel: "Cancel recording", listening: "Listening", working: "Turning your voice into text…",
     start: "Speak your question", stop: "Stop and turn into text",
     noMic: "Voice works on the school computer. On a phone it needs a secure (https) address, so please type instead.",
     denied: "Microphone not allowed. Allow the microphone in the browser and try again.",
