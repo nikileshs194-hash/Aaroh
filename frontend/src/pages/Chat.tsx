@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { ArrowUp, Copy, Flag, Lightbulb, MonitorPlay, MoreVertical, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, Hourglass } from "lucide-react";
+import { ArrowUp, Copy, Flag, Lightbulb, MonitorPlay, MoreVertical, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, Hourglass, RotateCcw } from "lucide-react";
 import { api, deviceId, live, safeGet, safeSet, stream, type StreamEvent } from "../api";
 import { Chip, cx, LangSwitcher, Logo, Markdown, Notice, RunningBadge, toast, Dialog } from "../components/ui";
 import { langName } from "../i18n";
@@ -23,9 +23,9 @@ export function useChatEngine(opts: { kind?: "student" | "present" } = {}) {
 
   useEffect(() => { if (opts.kind !== "present") safeSet(ls, KEY, JSON.stringify(msgs.slice(-40))); }, [msgs]);
 
-  async function ask(text: string, followup?: "simpler" | "example") {
+  async function ask(text: string, followup?: "simpler" | "example", base?: Msg[]) {
     if (busy) return;
-    const history = [...msgs, ...(followup ? [] : [{ role: "user" as const, content: text }])];
+    const history = [...(base ?? msgs), ...(followup ? [] : [{ role: "user" as const, content: text }])];
     setMsgs([...history, { role: "assistant", content: "", lang }]);
     setBusy(true); setQueue(null); setOffline(false); setNotice(null);
     abort.current = new AbortController();
@@ -50,7 +50,12 @@ export function useChatEngine(opts: { kind?: "student" | "present" } = {}) {
   }
   const stop = () => abort.current?.abort();
   const clear = () => { setMsgs([]); safeSet(ls, KEY, null); };
-  return { msgs, ask, stop, clear, busy, queue, offline, notice, setMsgs };
+  const retry = () => {
+    let i = msgs.length - 1;
+    while (i >= 0 && msgs[i].role !== "user") i--;
+    if (i >= 0) ask(msgs[i].content, undefined, msgs.slice(0, i));
+  };
+  return { msgs, ask, retry, stop, clear, busy, queue, offline, notice, setMsgs };
 }
 
 export default function Chat() {
@@ -127,8 +132,11 @@ export default function Chat() {
                   <div lang={m.lang} className={cx("card px-4 py-3", m.blocked && "border-warn/40 bg-warn/5", m.error && "border-danger/40")}>
                     {m.content ? <Markdown text={m.content} className={cx(c.busy && i === c.msgs.length - 1 && "caret")} />
                       : c.busy && i === c.msgs.length - 1 ? <span className="caret text-muted" aria-label={t("app.loading")} />
-                      : m.error ? <span className="text-danger">{t("app.engineStarting")}</span> : null}
+                      : m.error ? <span className="text-danger">{t("app.cantReach")}</span> : null}
                   </div>
+                  {m.error && !c.busy && i === c.msgs.length - 1 && (
+                    <button className="btn-ghost mt-1.5 min-h-[40px] px-2.5 text-sm" onClick={() => c.retry()}><RotateCcw size={15} />{t("app.tryAgain")}</button>
+                  )}
                   {!c.busy || i < c.msgs.length - 1 ? (
                     m.content && !m.blocked && !m.error && (
                       <div className="mt-1.5 flex flex-wrap items-center gap-1">

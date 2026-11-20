@@ -14,6 +14,8 @@ const en = {
     print: "Print / save as PDF", showDetails: "Show technical details", hideDetails: "Hide technical details",
     offlineClient: "Your device is not connected to the school Wi-Fi. Connect to {{wifi}} and try again.",
     engineStarting: "The AI engine is starting. Please try again in about 20 seconds.",
+    cantReach: "Could not reach InferSmart. Check that it is running on the school computer and that you are on the school Wi-Fi.",
+    tryAgain: "Try again",
     sample: "sample data",
     resetRecommended: "Reset to recommended",
     simulated: "Simulated",
