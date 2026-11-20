@@ -167,3 +167,8 @@ h1, h2, h3 { @apply text-ink; letter-spacing: -0.015em; }
 @keyframes think-in { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 .reduce-motion .thinking-mark i, .reduce-motion .thinking-text { animation: none; color: rgb(var(--muted)); }
 @media (prefers-reduced-motion: reduce) { .thinking-mark i, .thinking-text { animation: none; color: rgb(var(--muted)); } }
+
+.thinking-steps { display: flex; flex-direction: column; gap: 6px; padding: 2px 0; }
+.thinking-steps li { display: flex; align-items: center; gap: 10px; font-size: .92rem; animation: think-in .35s ease-out; }
+.thinking-steps li.is-done { color: rgb(var(--muted)); }
+.thinking-steps li .thinking-mark, .thinking-steps li svg { width: 26px; justify-content: center; flex-shrink: 0; }

@@ -1,17 +1,22 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Check } from "lucide-react";
 
-/** Shown the moment a question is sent, until the first word of the answer arrives.
- *  Friendly words change every ~1.6 s in a random order; real steps from the server ("textbooks", "found")
- *  are shown when they actually happen. */
+/** Shown while waiting for the first word of an answer, as a growing list of steps:
+ *    ✓ Thinking
+ *    ✓ Recalling what I know
+ *    • Putting it together…   (current step, shimmering)
+ *  Nothing appears if the answer starts within ~0.3 s. Real server steps are mapped to neutral words, and the
+ *  remaining words come in a random order, so it is different every time. */
+const FIRST = "Reading your question";          // always the second step, right after "Thinking"
 const WORDS = [
-  "Thinking", "Reading your question", "Pondering", "Connecting the dots", "Checking the facts",
-  "Working it out", "Gathering ideas", "Recalling what I know", "Deliberating", "Putting it together",
-  "Organising my thoughts", "Choosing the right words", "Weighing it up", "Making it simple",
+  "Recalling what I know", "Gathering ideas", "Connecting the dots", "Checking the facts",
+  "Working it out", "Weighing it up", "Putting it together", "Organising my thoughts", "Choosing the right words",
+  "Making it simple", "Deliberating",
 ];
-const STAGE: Record<string, string> = {
-  textbooks: "Looking through your textbooks",
-  found: "Found something useful in your textbooks",
-};
+const STAGE: Record<string, string> = { textbooks: "Reading your question", found: "Gathering ideas" };
+const STEP_MS = 1700;
+const SHOW_AFTER_MS = 300;
+const VISIBLE = 4;
 
 function shuffled(): string[] {
   const a = [...WORDS];
@@ -19,34 +24,46 @@ function shuffled(): string[] {
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
   }
-  const t = a.indexOf("Thinking");           // always open with a plain "Thinking"
-  if (t > 0) [a[0], a[t]] = [a[t], a[0]];
   return a;
 }
 
 export function Thinking({ stage }: { stage?: string }) {
-  const order = useMemo(shuffled, []);
-  const [i, setI] = useState(0);
-  const [shownStage, setShownStage] = useState<string | null>(null);
+  const pool = useMemo(shuffled, []);
+  const next = useRef(0);
+  const [steps, setSteps] = useState<string[]>(["Thinking"]);
+  const [visible, setVisible] = useState(false);
+
+  const push = (word: string) => setSteps((s) => (s.includes(word) ? s : [...s, word]));
 
   useEffect(() => {
-    const id = window.setInterval(() => setI((n) => n + 1), 1600);
-    return () => window.clearInterval(id);
+    const show = window.setTimeout(() => setVisible(true), SHOW_AFTER_MS);
+    const id = window.setInterval(() => {
+      setSteps((s) => {
+        if (!s.includes(FIRST)) return [...s, FIRST];
+        let w = pool[next.current % pool.length];
+        for (let tries = 0; s.includes(w) && tries < pool.length; tries++) { next.current++; w = pool[next.current % pool.length]; }
+        next.current++;
+        return s.includes(w) ? s : [...s, w];
+      });
+    }, STEP_MS);
+    return () => { window.clearTimeout(show); window.clearInterval(id); };
   }, []);
-  // A real step is shown for a moment when it happens, then the friendly words continue.
-  useEffect(() => {
-    if (stage && STAGE[stage]) {
-      setShownStage(STAGE[stage]);
-      const id = window.setTimeout(() => setShownStage(null), 1800);
-      return () => window.clearTimeout(id);
-    }
-  }, [stage]);
+  useEffect(() => { if (stage && STAGE[stage]) push(STAGE[stage]); }, [stage]);
 
-  const text = shownStage || order[i % order.length];
+  if (!visible) return <span className="sr-only">Thinking</span>;
+  const shown = steps.slice(-VISIBLE);
   return (
-    <div className="flex items-center gap-2.5 py-0.5" role="status" aria-live="polite">
-      <span className="thinking-mark" aria-hidden="true"><i /><i /><i /></span>
-      <span key={text} className="thinking-text">{text}…</span>
-    </div>
+    <ol className="thinking-steps" role="status" aria-live="polite">
+      {shown.map((w, i) => {
+        const current = i === shown.length - 1;
+        return (
+          <li key={w} className={current ? "is-current" : "is-done"}>
+            {current ? <span className="thinking-mark" aria-hidden="true"><i /><i /><i /></span>
+              : <Check size={14} className="text-accent" aria-hidden="true" />}
+            <span className={current ? "thinking-text" : ""}>{w}{current ? "…" : ""}</span>
+          </li>
+        );
+      })}
+    </ol>
   );
 }
