@@ -100,7 +100,7 @@ Small models suit explanations and drafts, not deep reasoning. Kannada quality i
 
 ## Voice input (English and Kannada, offline)
 
-Students tap 🎤, speak, tap again; the words appear in the question box so they can fix them before sending. The speech is turned into text on this computer by two free models (English: NVIDIA Parakeet, Kannada: AI4Bharat IndicConformer) and is never stored. Install or repair the models with:
+Students pick the question language with the small EN / ಕನ್ನಡ switch next to the microphone (the screen stays in English), tap 🎤, speak, tap again; the words appear in the question box so they can fix them before sending. The speech is turned into text on this computer by two free models (English: NVIDIA Parakeet, Kannada: AI4Bharat IndicConformer) and is never stored. Install or repair the models with:
 
     .venv\Scripts\python scripts\download_speech.py
 

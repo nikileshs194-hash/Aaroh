@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowUp, Copy, Flag, Lightbulb, MonitorPlay, MoreVertical, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, Hourglass, RotateCcw } from "lucide-react";
 import { api, deviceId, live, safeGet, safeSet, stream, type StreamEvent } from "../api";
-import { Chip, cx, LangSwitcher, Logo, Markdown, Notice, RunningBadge, toast, Dialog } from "../components/ui";
-import { VoiceButton } from "../components/VoiceButton";
+import { Chip, cx, Logo, Markdown, Notice, RunningBadge, toast, Dialog } from "../components/ui";
+import { QLangToggle, VoiceButton } from "../components/VoiceButton";
 import { langName } from "../i18n";
 import { usePrefs } from "../prefs";
 
@@ -14,7 +14,7 @@ const ls = typeof localStorage !== "undefined" ? localStorage : undefined;
 const loadMsgs = (): Msg[] => { try { return JSON.parse(safeGet(ls, KEY) || "[]"); } catch { return []; } };
 
 export function useChatEngine(opts: { kind?: "student" | "present" } = {}) {
-  const { lang } = usePrefs();
+  const { qLang: lang } = usePrefs();
   const [msgs, setMsgs] = useState<Msg[]>(opts.kind === "present" ? [] : loadMsgs());
   const [busy, setBusy] = useState(false);
   const [queue, setQueue] = useState<{ position: number; eta_s: number } | null>(null);
@@ -61,7 +61,7 @@ export function useChatEngine(opts: { kind?: "student" | "present" } = {}) {
 
 export default function Chat() {
   const { t } = useTranslation();
-  const { lang, theme, setTheme, size, setSize } = usePrefs();
+  const { qLang: lang, theme, setTheme, size, setSize } = usePrefs();
   const c = useChatEngine();
   const [text, setText] = useState("");
   const [info, setInfo] = useState<any>(null);
@@ -99,7 +99,6 @@ export default function Chat() {
             <button className="btn-ghost min-h-[44px] px-2.5" aria-label="Menu" onClick={() => setMenu(true)}><MoreVertical size={20} /></button>
           </div>
         </div>
-        <div className="mx-auto max-w-3xl px-4 pb-2.5"><LangSwitcher compact /></div>
       </header>
 
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-40 pt-4">
@@ -173,8 +172,9 @@ export default function Chat() {
             <textarea id="q" ref={input} rows={1} value={text} lang={lang} disabled={info?.exam_mode}
               onChange={(e) => setText(e.target.value)}
               onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
-              placeholder={t("chat.placeholder")}
+              placeholder={lang === "kn" ? t("chat.placeholderKn") : t("chat.placeholder")}
               className="input max-h-36 min-h-[48px] flex-1 resize-none py-3" />
+            <QLangToggle />
             <VoiceButton lang={lang} disabled={c.busy || !!info?.exam_mode}
               onText={(v) => { setText((p) => (p.trim() ? p.trim() + " " : "") + v); input.current?.focus(); }} />
             {c.busy ? (

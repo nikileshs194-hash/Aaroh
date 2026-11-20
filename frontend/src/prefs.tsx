@@ -7,6 +7,8 @@ type Prefs = {
   theme: Theme; setTheme: (t: Theme) => void;
   size: number; setSize: (n: number) => void;
   lang: string; setLang: (l: string) => void;
+  /** Language of the question and the answer (typing, voice, AI reply). The screen language does not change. */
+  qLang: "en" | "kn"; setQLang: (l: "en" | "kn") => void;
 };
 const Ctx = createContext<Prefs | null>(null);
 const ls = typeof localStorage !== "undefined" ? localStorage : undefined;
@@ -15,6 +17,7 @@ export function PrefsProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeS] = useState<Theme>((safeGet(ls, "is_theme") as Theme) || "light");
   const [size, setSizeS] = useState<number>(Number(safeGet(ls, "is_size")) || 100);
   const [lang, setLangS] = useState<string>(i18n.language || "en");
+  const [qLang, setQLangS] = useState<"en" | "kn">(safeGet(ls, "is_qlang") === "kn" ? "kn" : "en");
 
   useEffect(() => { document.documentElement.dataset.theme = theme; }, [theme]);
   useEffect(() => { document.documentElement.style.setProperty("--root-size", `${16 * size / 100}px`); }, [size]);
@@ -30,6 +33,7 @@ export function PrefsProvider({ children }: { children: ReactNode }) {
     setTheme: (t) => { setThemeS(t); safeSet(ls, "is_theme", t); },
     setSize: (n) => { setSizeS(n); safeSet(ls, "is_size", String(n)); },
     setLang: (l) => { setLangS(l); i18n.changeLanguage(l); safeSet(ls, "is_lang", l); },
+    qLang, setQLang: (l) => { setQLangS(l); safeSet(ls, "is_qlang", l); },
   };
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

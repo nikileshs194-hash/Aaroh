@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Loader2, Mic, Square } from "lucide-react";
+import { Languages, Loader2, Mic, Square } from "lucide-react";
+import { usePrefs } from "../prefs";
 import { cx, toast } from "./ui";
 
 /** Voice input: records on this device, sends 16 kHz WAV to the school computer, gets text back.
@@ -100,6 +101,21 @@ export function VoiceButton({ lang, disabled, onText }: { lang: string; disabled
       aria-label={rec ? t("voice.stop") : t("voice.start")} title={rec ? t("voice.stop") : t("voice.start")}
       className={cx("h-12 shrink-0 px-0 tnum", rec ? "btn-danger w-auto min-w-12 px-3" : "btn-secondary w-12")}>
       {work ? <Loader2 size={20} className="animate-spin" /> : rec ? <span className="inline-flex items-center gap-1.5"><Square size={16} />{secs}s</span> : <Mic size={20} />}
+    </button>
+  );
+}
+
+/** Small switch next to the microphone: the language you type or speak in, and the answer comes back in it.
+ *  It does not change the language of the screen. */
+export function QLangToggle() {
+  const { t } = useTranslation();
+  const { qLang, setQLang } = usePrefs();
+  const next = qLang === "kn" ? "en" : "kn";
+  return (
+    <button type="button" onClick={() => setQLang(next)} title={t("chat.qLang")} aria-label={`${t("chat.qLang")}: ${qLang === "kn" ? "ಕನ್ನಡ" : "English"}`}
+      className="btn-secondary h-12 shrink-0 gap-1.5 px-3 text-sm font-semibold">
+      <Languages size={17} className="text-accent" />
+      <span lang={qLang}>{qLang === "kn" ? "ಕನ್ನಡ" : "EN"}</span>
     </button>
   );
 }

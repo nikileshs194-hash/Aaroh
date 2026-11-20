@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowUp, X, MessageSquarePlus } from "lucide-react";
 import { useChatEngine } from "./Chat";
-import { LangSwitcher, Logo, Markdown } from "../components/ui";
+import { Logo, Markdown } from "../components/ui";
+import { QLangToggle } from "../components/VoiceButton";
 
 /** Projector mode: very large type on a dark background; question box hidden until the teacher taps. */
 export default function Present() {
@@ -25,7 +26,7 @@ export default function Present() {
       <div className="flex items-center justify-between">
         <Logo size={34} />
         <div className="flex items-center gap-3">
-          <LangSwitcher />
+          <QLangToggle />
           <Link to="/chat" className="btn-ghost" aria-label={t("app.close")}><X size={26} /></Link>
         </div>
       </div>
