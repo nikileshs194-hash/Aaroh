@@ -71,7 +71,7 @@ export default function Dashboard() {
       )}
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Stat big label={t("admin.usersNow")} value={pt?.users ?? 0} hint={<span className="inline-flex items-center gap-1"><Users size={14} />{pt?.active ?? 0} answering · {pt?.queued ?? 0} waiting</span>} />
+        <Stat big label={t("admin.usersNow")} value={pt?.users ?? 0} hint={<span className="inline-flex items-center gap-1"><Users size={14} />asked in the last 60 s · {pt?.active ?? 0} answering · {pt?.queued ?? 0} waiting</span>} />
         <Stat big label={t("admin.firstWord")} value={pt?.ttft_p95 != null ? fmt.n1(pt.ttft_p95) : "–"} unit="s"
           tone={pt?.ttft_p95 == null ? undefined : pt.ttft_p95 <= maxT ? "ok" : "danger"} hint={`slow case, last 30 s · limit ${maxT} s`} />
         <Stat big label={t("admin.speed")} value={pt?.tps_med != null ? fmt.n1(pt.tps_med) : "–"} unit="tok/s"
