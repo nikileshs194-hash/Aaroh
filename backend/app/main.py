@@ -157,10 +157,12 @@ async def chat(request: Request, body: dict = Body(...), x_auth: str | None = He
     device = f"student-{student['id']}" if student else "admin"
     kind = "teacher" if role == "admin" and not student else "student"
     msgs = _trim_history(body.get("messages", []))
-    if not msgs or msgs[-1]["role"] != "user":
+    followup = body.get("followup") in ("simpler", "example")
+    # "Simpler" and "Give an example" act on the last answer, so the history ends with that answer, not a question.
+    if not msgs or (msgs[-1]["role"] != "user" and not followup) or not any(m["role"] == "user" for m in msgs):
         raise HTTPException(400, "No question")
-    question = msgs[-1]["content"]
-    if body.get("followup") in ("simpler", "example"):
+    question = next(m["content"] for m in reversed(msgs) if m["role"] == "user")
+    if followup:
         msgs.append({"role": "user", "content": templates.followup_prompt(body["followup"], lang)})
 
     async def gen():
