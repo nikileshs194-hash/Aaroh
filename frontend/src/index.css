@@ -152,3 +152,18 @@ h1, h2, h3 { @apply text-ink; letter-spacing: -0.015em; }
 
 /* Wordmark in dark themes: lift the dark green so it stays readable */
 [data-theme="dark"] .brand-logo, [data-theme="contrast"] .brand-logo { filter: brightness(2.1) saturate(0.85); }
+
+/* "Thinking" indicator: three soft pulsing dots + shimmering, changing words */
+.thinking-mark { display: inline-flex; gap: 4px; align-items: center; }
+.thinking-mark i { width: 7px; height: 7px; border-radius: 9999px; background: rgb(var(--accent)); opacity: .25;
+  animation: think-pulse 1.2s ease-in-out infinite; }
+.thinking-mark i:nth-child(2) { animation-delay: .15s; }
+.thinking-mark i:nth-child(3) { animation-delay: .3s; }
+@keyframes think-pulse { 0%, 100% { opacity: .2; transform: translateY(0) scale(.85); } 40% { opacity: .9; transform: translateY(-3px) scale(1); } }
+.thinking-text { font-size: .95rem; font-weight: 500; color: transparent; animation: think-in .35s ease-out, think-shine 2.2s linear infinite;
+  background: linear-gradient(90deg, rgb(var(--muted)) 0%, rgb(var(--muted)) 35%, rgb(var(--accent)) 50%, rgb(var(--muted)) 65%, rgb(var(--muted)) 100%);
+  background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; }
+@keyframes think-shine { from { background-position: 100% 0; } to { background-position: -150% 0; } }
+@keyframes think-in { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+.reduce-motion .thinking-mark i, .reduce-motion .thinking-text { animation: none; color: rgb(var(--muted)); }
+@media (prefers-reduced-motion: reduce) { .thinking-mark i, .thinking-text { animation: none; color: rgb(var(--muted)); } }

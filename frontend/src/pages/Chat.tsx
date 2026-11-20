@@ -9,6 +9,7 @@ import { pickSuggestions } from "../suggestions";
 import { Chip, cx, Logo, Markdown, Notice, toast, Dialog } from "../components/ui";
 import { QLangToggle, VoiceButton } from "../components/VoiceButton";
 import { DotField } from "../components/DotField";
+import { Thinking } from "../components/Thinking";
 import { langName } from "../i18n";
 import { usePrefs } from "../prefs";
 
@@ -37,6 +38,7 @@ export function useChatEngine(opts: { kind?: "student" | "present" } = {}) {
       if (e.type === "token") { acc += e.text; setQueue(null); update({ content: acc }); }
       else if (e.type === "queue") setQueue({ position: e.position, eta_s: e.eta_s });
       else if (e.type === "start") setQueue(null);
+      else if (e.type === "status") update({ status: e.stage });
       else if (e.type === "blocked") update({ content: e.text, blocked: true });
       else if (e.type === "notice") setNotice(e.text);
       else if (e.type === "done") update({ stats: { ttft: e.ttft, tps: e.tps } });
@@ -196,7 +198,7 @@ function ChatPage() {
                   )}
                   <div lang={m.lang} className={cx("card px-4 py-3", m.blocked && "border-warn/40 bg-warn/5", m.error && "border-danger/40")}>
                     {m.content ? <Markdown text={m.content} className={cx(c.busy && i === c.msgs.length - 1 && "caret")} />
-                      : c.busy && i === c.msgs.length - 1 ? <span className="caret text-muted" aria-label={t("app.loading")} />
+                      : c.busy && i === c.msgs.length - 1 ? <Thinking stage={m.status} />
                       : m.error ? <span className="text-danger">{t("app.cantReach")}</span> : null}
                   </div>
                   {m.error && !c.busy && i === c.msgs.length - 1 && (

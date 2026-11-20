@@ -199,6 +199,7 @@ async def chat(request: Request, body: dict = Body(...), x_auth: str | None = He
         # so the earlier conversation is not re-read. Short follow-ups ("where does it happen?") are searched together
         # with the previous question.
         if not body.get("followup") and db.get_setting("textbooks_on") is not False and not _about_chat(question):
+            yield {"type": "status", "stage": "textbooks"}   # real progress for the "thinking" indicator
             users_q = [m["content"] for m in msgs if m["role"] == "user"]
             query = question if len(question.split()) >= 8 or len(users_q) < 2 else users_q[-2] + " " + question
             try:
@@ -208,6 +209,8 @@ async def chat(request: Request, body: dict = Body(...), x_auth: str | None = He
                 hits = []
             if hits:
                 convo[-1] = {"role": "user", "content": convo[-1]["content"] + "\n\n" + textbooks.context_block(hits, lang)}
+                yield {"type": "status", "stage": "found"}
+        yield {"type": "status", "stage": "writing"}
         cancel = asyncio.Event()
         try:
             async for ev in router.chat([system] + convo, device, kind, int(body.get("max_tokens", 600)), cancel, lang=lang):
