@@ -18,7 +18,7 @@ Everything that could be built and measured on this laptop without you is done. 
 - [ ] Double-click `scripts\start.bat`. The setup is already finished and the admin PIN is in `docs\evidence\DEMO_ACCESS.md`. **Change the PIN** in Admin → Settings → Codes.
 - [ ] Admin → Share: scan the QR code with your phone **on the same Wi-Fi**, ask a question in Kannada. (Module M9/M12 test.)
 - [ ] Open three browser tabs on `/chat` and ask at the same time. Does "serves about N" feel right? (Capacity manual check.)
-- [ ] Turn **Wi-Fi off**, ask a question, make one lesson plan, then Admin → Privacy → Run offline check. It should say "worked with the internet disconnected". (Offline test.)
+- [x] (Done 20 Nov 2026) Turn **Wi-Fi off**, ask a question, make one lesson plan, then Admin → Privacy → Run offline check. It should say "worked with the internet disconnected". (Offline test.)
 - [ ] Restart the laptop with "Start InferSmart when this computer is switched on" turned on in Settings, then open `http://localhost:8080`. (Reboot recovery test.)
 
 ## People you need (these make the biggest difference to judges)
