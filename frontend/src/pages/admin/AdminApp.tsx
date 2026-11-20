@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, NavLink, Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import { BarChart3, FileText, Gauge, Lock, MessageSquare, QrCode, Settings, ShieldCheck, Users } from "lucide-react";
+import { BarChart3, Gauge, Lock, MessageSquare, QrCode, Settings, Users } from "lucide-react";
 import { api, auth } from "../../api";
 import { Card, cx, Logo, Notice, PinPad, RunningBadge, Skeleton } from "../../components/ui";
 import { useAdminTheme } from "../../prefs";
@@ -9,8 +9,6 @@ import { useAdminTheme } from "../../prefs";
 const Dashboard = lazy(() => import("./Dashboard"));
 const Results = lazy(() => import("./Results"));
 const P = () => import("./Pages");
-const Privacy = lazy(() => P().then((m) => ({ default: m.Privacy })));
-const Summary = lazy(() => P().then((m) => ({ default: m.Summary })));
 const SettingsPage = lazy(() => P().then((m) => ({ default: m.SettingsPage })));
 const Share = lazy(() => P().then((m) => ({ default: m.Share })));
 const Students = lazy(() => P().then((m) => ({ default: m.Students })));
@@ -45,8 +43,6 @@ function Shell({ children }: { children: ReactNode }) {
   const items = [
     { to: "/admin", end: true, icon: <Gauge size={19} />, label: t("nav.dashboard"), phone: true },
     { to: "/admin/results", icon: <BarChart3 size={19} />, label: t("nav.results"), phone: true },
-    { to: "/admin/privacy", icon: <ShieldCheck size={19} />, label: t("nav.privacy"), phone: true },
-    { to: "/admin/summary", icon: <FileText size={19} />, label: t("nav.summary") },
     { to: "/admin/students", icon: <Users size={19} />, label: t("nav.students"), phone: true },
     { to: "/admin/share", icon: <QrCode size={19} />, label: t("nav.share") },
     { to: "/admin/settings", icon: <Settings size={19} />, label: t("nav.settings"), phone: true },
@@ -71,7 +67,6 @@ function Shell({ children }: { children: ReactNode }) {
           <Logo size={24} />
           <div className="flex items-center gap-2">
             <RunningBadge />
-            <Link to="/admin/summary" className="btn-ghost min-h-[40px] px-2" aria-label={t("nav.summary")}><FileText size={19} /></Link>
             <Link to="/admin/share" className="btn-ghost min-h-[40px] px-2" aria-label={t("nav.share")}><QrCode size={19} /></Link>
             <button className="btn-ghost min-h-[40px] px-2" aria-label={t("nav.logout")} onClick={() => { auth.clear(); nav("/chat"); }}><Lock size={19} /></button>
           </div>
@@ -106,8 +101,6 @@ export default function AdminApp() {
         <Routes>
           <Route index element={<Dashboard />} />
           <Route path="results" element={<Results />} />
-          <Route path="privacy" element={<Privacy />} />
-          <Route path="summary" element={<Summary />} />
           <Route path="settings" element={<SettingsPage />} />
           <Route path="share" element={<Share />} />
           <Route path="students" element={<Students />} />

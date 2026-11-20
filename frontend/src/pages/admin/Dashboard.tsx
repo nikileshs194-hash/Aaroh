@@ -149,7 +149,6 @@ export default function Dashboard() {
           <div className="mt-3 flex items-center gap-2 text-sm">
             <ShieldCheck size={16} className="text-ok" />
             <span>Outside connections: <b className="tnum">{privacy?.outside_count ?? 0}</b></span>
-            <Link to="/admin/privacy" className="ml-auto text-accent">{t("nav.privacy")} →</Link>
           </div>
           <Button variant="secondary" className="mt-3 w-full" icon={<RotateCw size={16} />} onClick={() => api("/api/engines/restart", { body: {} }).then(loadSlow)}>{t("admin.restart")}</Button>
         </Card>
