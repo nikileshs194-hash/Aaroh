@@ -5,7 +5,7 @@ import { ArrowUp, Copy, Flag, Lightbulb, LogOut, MessageSquare, MonitorPlay, Mor
 import { api, deviceId, live, stream, type StreamEvent } from "../api";
 import { deleteAllChats, deleteChat, getChat, groupByDay, listChats, newId, saveChat, type ConvMeta, type Msg } from "../chatStore";
 import { StudentGate, useStudent } from "../components/StudentGate";
-import { Chip, cx, Logo, Markdown, Notice, RunningBadge, toast, Dialog } from "../components/ui";
+import { Chip, cx, Logo, Markdown, Notice, toast, Dialog } from "../components/ui";
 import { QLangToggle, VoiceButton } from "../components/VoiceButton";
 import { langName } from "../i18n";
 import { usePrefs } from "../prefs";
@@ -134,7 +134,6 @@ function ChatPage() {
           </div>
           <div className="flex items-center gap-1.5">
             {mode !== "quality" && <span className="badge bg-warn/10 text-warn inline-flex"><Hourglass size={12} />{t("chat.fastMode")}</span>}
-            <RunningBadge className="hidden sm:inline-flex" />
             <button className="btn-ghost min-h-[44px] px-2.5" aria-label="Menu" onClick={() => setMenu(true)}><MoreVertical size={20} /></button>
           </div>
         </div>

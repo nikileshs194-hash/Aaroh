@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link, NavLink, Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { BarChart3, Gauge, Lock, MessageSquare, QrCode, Settings, Users } from "lucide-react";
 import { api, auth } from "../../api";
-import { Card, cx, Logo, Notice, PinPad, RunningBadge, Skeleton } from "../../components/ui";
+import { Card, cx, Logo, Notice, PinPad, Skeleton } from "../../components/ui";
 import { useAdminTheme } from "../../prefs";
 
 const Dashboard = lazy(() => import("./Dashboard"));
@@ -66,7 +66,6 @@ function Shell({ children }: { children: ReactNode }) {
         <header className="no-print sticky top-0 z-20 flex items-center justify-between border-b border-line bg-surface/95 px-4 py-2.5 backdrop-blur lg:hidden">
           <Logo size={24} />
           <div className="flex items-center gap-2">
-            <RunningBadge />
             <Link to="/admin/share" className="btn-ghost min-h-[40px] px-2" aria-label={t("nav.share")}><QrCode size={19} /></Link>
             <button className="btn-ghost min-h-[40px] px-2" aria-label={t("nav.logout")} onClick={() => { auth.clear(); nav("/chat"); }}><Lock size={19} /></button>
           </div>
