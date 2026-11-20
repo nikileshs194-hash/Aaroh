@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { ArrowUp, Copy, Flag, Lightbulb, LogOut, MessageSquare, MonitorPlay, MoreVertical, PanelLeft, Plus, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, Hourglass, RotateCcw, X } from "lucide-react";
+import { ArrowUp, Copy, Flag, Lightbulb, LogOut, MessageSquare, MonitorPlay, MoreVertical, PanelLeft, Plus, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, RotateCcw, X } from "lucide-react";
 import { api, deviceId, live, stream, type StreamEvent } from "../api";
 import { deleteAllChats, deleteChat, getChat, groupByDay, listChats, newId, saveChat, type ConvMeta, type Msg } from "../chatStore";
 import { StudentGate, useStudent } from "../components/StudentGate";
@@ -133,7 +133,6 @@ function ChatPage() {
             <button className="btn-ghost min-h-[44px] px-2.5 lg:hidden" aria-label={t("chat.newChat")} onClick={newChat}><Plus size={20} /></button>
           </div>
           <div className="flex items-center gap-1.5">
-            {mode !== "quality" && <span className="badge bg-warn/10 text-warn inline-flex"><Hourglass size={12} />{t("chat.fastMode")}</span>}
             <button className="btn-ghost min-h-[44px] px-2.5" aria-label="Menu" onClick={() => setMenu(true)}><MoreVertical size={20} /></button>
           </div>
         </div>
