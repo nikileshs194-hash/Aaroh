@@ -119,6 +119,20 @@ h1, h2, h3 { @apply text-ink; letter-spacing: -0.015em; }
 .prose-plan li { @apply my-0.5; }
 .prose-plan table { @apply my-2 w-full text-sm border-collapse; }
 .prose-plan td, .prose-plan th { @apply border border-line px-2 py-1 text-left align-top; }
+.prose-plan h1, .prose-plan h2 { @apply text-lg font-semibold mt-4 mb-1 text-ink; }
+.prose-plan h4, .prose-plan h5, .prose-plan h6 { @apply font-semibold mt-3 mb-1 text-ink; }
+.prose-plan > :first-child { @apply mt-0; }
+.prose-plan strong { @apply font-semibold text-ink; }
+.prose-plan ul ul, .prose-plan ol ul { list-style: circle; @apply my-0.5; }
+.prose-plan code { @apply rounded bg-sunken px-1 py-0.5 font-mono text-[0.9em]; }
+.prose-plan pre { @apply my-2 overflow-x-auto rounded-ctl bg-sunken p-3 text-sm; }
+.prose-plan pre code { @apply bg-transparent p-0; }
+.prose-plan blockquote { @apply my-2 border-l-4 border-line pl-3 text-muted; }
+.prose-plan hr { @apply my-3 border-line; }
+.prose-plan .md-table { @apply my-2 overflow-x-auto; }
+.prose-plan th { @apply bg-sunken font-semibold; }
+.prose-plan .katex-display { @apply my-3 overflow-x-auto overflow-y-hidden py-1; }
+.prose-plan .katex { font-size: 1.08em; }
 
 /* ---- Print: clean submission layout (F12) ---- */
 @media print {

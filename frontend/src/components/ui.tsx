@@ -262,37 +262,8 @@ export function PrivacyPill() {
   return <span className="badge bg-ok/10 text-ok"><ShieldCheck size={13} aria-hidden="true" /> 0</span>;
 }
 
-/* ---------- Tiny, safe formatter for model answers (no HTML injection) */
-function inline(s: string, key: number): ReactNode {
-  const parts = s.split(/(\*\*[^*]+\*\*)/g);
-  return <span key={key}>{parts.map((p, i) => p.startsWith("**") && p.endsWith("**") ? <strong key={i}>{p.slice(2, -2)}</strong> : p.replace(/\*([^*]+)\*/g, "$1"))}</span>;
-}
-export function Markdown({ text, className = "" }: { text: string; className?: string }) {
-  const lines = text.replace(/\r/g, "").split("\n");
-  const out: ReactNode[] = [];
-  let list: { ordered: boolean; items: string[] } | null = null;
-  const flush = () => {
-    if (!list) return;
-    const L = list.ordered ? "ol" : "ul";
-    out.push(<L key={out.length}>{list.items.map((it, i) => <li key={i}>{inline(it, i)}</li>)}</L>);
-    list = null;
-  };
-  lines.forEach((raw) => {
-    const line = raw.trimEnd();
-    const h = line.match(/^#{1,6}\s+(.*)/);
-    const ul = line.match(/^\s*[-*•]\s+(.*)/);
-    const ol = line.match(/^\s*\d+[.)]\s+(.*)/);
-    if (h) { flush(); out.push(<h3 key={out.length}>{inline(h[1].replace(/\*\*/g, ""), 0)}</h3>); }
-    else if (ul) { if (!list || list.ordered) { flush(); list = { ordered: false, items: [] }; } list.items.push(ul[1]); }
-    else if (ol) { if (!list || !list.ordered) { flush(); list = { ordered: true, items: [] }; } list.items.push(ol[1]); }
-    else if (!line.trim()) { flush(); }
-    else if (/^\*\*[^*]+\*\*:?$/.test(line.trim())) { flush(); out.push(<h3 key={out.length}>{line.trim().replace(/\*\*/g, "").replace(/:$/, "")}</h3>); }
-    else if (/^[-|:\s]+$/.test(line)) { /* table rule */ }
-    else { flush(); out.push(<p key={out.length}>{inline(line.replace(/^\|/, "").replace(/\|$/, "").replace(/\|/g, " · "), 0)}</p>); }
-  });
-  flush();
-  return <div className={cx("prose-plan", className)}>{out}</div>;
-}
+/* ---------- Model answers: Markdown + maths (KaTeX), no raw HTML */
+export { Markdown } from "./Markdown";
 
 export function useCountUp(target: number | null | undefined, ms = 700) {
   const [v, setV] = useState(0);
