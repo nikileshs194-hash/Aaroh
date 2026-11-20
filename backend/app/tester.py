@@ -688,7 +688,7 @@ def kannada_engine_config(run: dict, chosen: dict, b, fast, hw: dict, ctx: int, 
     if hw["mem_budget_gb"] - used - best["peak_mem_gb"] < 1.0:
         return None, {}
     c = best["config"]
-    return EngineConfig(c["model_file"], c["model_path"], c["threads"], ctx, c["batch"], max(2, slots // 2), "Kannada model"), best
+    return EngineConfig(c["model_file"], c["model_path"], c["threads"], ctx, c["batch"], max(2, slots // 4), "Kannada model"), best
 
 
 async def start_engines(a: EngineConfig, b: EngineConfig | None, k: EngineConfig | None | str = "saved") -> None:

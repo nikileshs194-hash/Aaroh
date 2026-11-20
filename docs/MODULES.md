@@ -20,5 +20,11 @@ Legend: **Done** = built and checked on this laptop · **Needs you** = needs a p
 | **M13** Packaging | `scripts\setup.bat` (checks Python/Node, installs, builds, fetches engine and models, runs tests), `start.bat`, `stop.bat`, `run-tests.bat`, readme with troubleshooting | Ran on this laptop | Done. Clean install on a second computer: **needs you** |
 | **M14** Testing, evidence, pitch | 23 automatic logic tests; `scripts\acceptance.py` (speed before/after, offline, privacy, 30-prompt red-team, recovery); `scripts\make_evidence.py` fills `docs\evidence\RESULTS.md` and `docs\pitch\deck.html`; demo script; Q&A | Results in `docs\evidence` | Done. Survey, interviews, usability tests, SUS, video: **needs you** |
 
+## Added after the dossier (20 Nov 2026)
+
+| Feature | What was built | How it was checked | Status |
+|---|---|---|---|
+| **Voice input** (English + Kannada, offline) | 🎤 button in the student chat; speech is converted on the school computer, never stored. English: NVIDIA Parakeet TDT 0.6B v2 (int8, sherpa-onnx, CC-BY-4.0). Kannada: AI4Bharat IndicConformer 600M (int8 ONNX, MIT) with a numpy port of its audio features. `scripts\download_speech.py`, `scripts	est_speech.py` | 10 real clips per language (`docs\evidence\SPEECH.md`): English 2.8% word errors, Kannada 3.4%, about 1.3 to 2 s per clip | Done. Live microphone try and phone use: **needs you** (phones need an https address for the microphone) |
+
 ## Not built (Future in the dossier, mention only)
-F28 ask-my-textbook, F29 voice, F30 fleet view and shared results. F27 smart search (Optuna) was left out: with about 9 settings the full grid is already fast enough, and a fixed grid is easier to explain.
+F28 ask-my-textbook, F30 fleet view and shared results. F27 smart search (Optuna) was left out: with about 9 settings the full grid is already fast enough, and a fixed grid is easier to explain.

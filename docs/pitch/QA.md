@@ -56,8 +56,11 @@ The core is free for schools. Income comes from deployment, training and support
 **Why would a state choose this over its own system?**
 Karnataka and Kerala are already buying or building local AI. Aaroh is the open, hardware-independent layer that tunes any such PC for a whole class, and it can run their models.
 
+**Can students speak instead of type?**
+Yes, in English and Kannada, fully offline. Two free open models run on the school computer: NVIDIA Parakeet for English and AI4Bharat's IndicConformer for Kannada. Measured on this laptop with 10 real recordings each: about 3 words in 100 wrong in both languages, about 1.5 seconds per sentence. The text appears in the box first so the student can correct it. *Show: tap the microphone, speak in Kannada.*
+
 **What would you build next?**
-Textbook-grounded answers, a teacher studio for lesson plans and quizzes (we built one and set it aside to keep this prototype student-focused), voice input in English and Kannada, a fleet view for officials, and a shared settings database so new schools skip testing.
+Textbook-grounded answers, a teacher studio for lesson plans and quizzes (we built one and set it aside to keep this prototype student-focused), a fleet view for officials, and a shared settings database so new schools skip testing.
 
 **Did you write the code?**
 "I designed the product, research and system, and built it with an AI coding assistant. I can explain every part and run it live."

@@ -97,3 +97,12 @@ Aaroh's code is MIT. llama.cpp is MIT. Qwen3.5 models are Apache 2.0 (from the o
 ## 10. Honest limits
 
 Small models suit explanations and drafts, not deep reasoning. Kannada quality is measured and shown, and answers carry a "please check" label. Capacity comes from simulated students. Privacy features support compliance and are not legal certification.
+
+## Voice input (English and Kannada, offline)
+
+Students tap 🎤, speak, tap again; the words appear in the question box so they can fix them before sending. The speech is turned into text on this computer by two free models (English: NVIDIA Parakeet, Kannada: AI4Bharat IndicConformer) and is never stored. Install or repair the models with:
+
+    .venv\Scripts\python scripts\download_speech.py
+
+Phones: browsers only allow the microphone on secure (https) pages, so on phones that open Aaroh by its `http://192.168...` address the 🎤 button explains this and students type instead. On the school computer itself (`http://localhost:8080`) voice works.
+

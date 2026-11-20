@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowUp, Copy, Flag, Lightbulb, MonitorPlay, MoreVertical, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, Hourglass, RotateCcw } from "lucide-react";
 import { api, deviceId, live, safeGet, safeSet, stream, type StreamEvent } from "../api";
 import { Chip, cx, LangSwitcher, Logo, Markdown, Notice, RunningBadge, toast, Dialog } from "../components/ui";
+import { VoiceButton } from "../components/VoiceButton";
 import { langName } from "../i18n";
 import { usePrefs } from "../prefs";
 
@@ -174,6 +175,8 @@ export default function Chat() {
               onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
               placeholder={t("chat.placeholder")}
               className="input max-h-36 min-h-[48px] flex-1 resize-none py-3" />
+            <VoiceButton lang={lang} disabled={c.busy || !!info?.exam_mode}
+              onText={(v) => { setText((p) => (p.trim() ? p.trim() + " " : "") + v); input.current?.focus(); }} />
             {c.busy ? (
               <button type="submit" className="btn-secondary h-12 w-12 px-0" aria-label={t("chat.stop")}><Square size={18} /></button>
             ) : (

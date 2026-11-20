@@ -21,6 +21,8 @@ Everything that could be built and measured on this laptop without you is done. 
 - [x] (Done 20 Nov 2026) Turn **Wi-Fi off**, ask a question, then Admin → Privacy → Run offline check. It should say "worked with the internet disconnected". (Offline test.)
 - [ ] Restart the laptop with "Start Aaroh when this computer is switched on" turned on in Settings, then open `http://localhost:8080`. (Reboot recovery test.)
 
+- [ ] **Try voice**: open `http://localhost:8080`, tap 🎤, say a question in English, tap again; switch to ಕನ್ನಡ and try in Kannada. Allow the microphone when Chrome asks. Tell me any words it gets wrong.
+
 ## People you need (these make the biggest difference to judges)
 
 - [ ] **Native-speaker review**: give a Kannada teacher the file `frontend\src\i18n\kn.ts` (or let them click through the app in Kannada) and ask them to check 10 Kannada answers. Note corrections; I can apply them in minutes.

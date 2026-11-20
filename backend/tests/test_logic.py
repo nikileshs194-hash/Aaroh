@@ -212,7 +212,7 @@ def test_kannada_model_picked_when_clearly_better_and_fits():
     big = _kn("Qwen3.5-4B-Q4_K_M.gguf", 6.4, 5.4, 82)
     run = {"data": {"languages": ["en", "kn"]}, "results": [main, big]}
     k, pick = tester.kannada_engine_config(run, main, None, None, {"mem_budget_gb": 12}, 3072, 8)
-    assert k.model_file == "Qwen3.5-4B-Q4_K_M.gguf" and k.parallel == 4 and pick is big
+    assert k.model_file == "Qwen3.5-4B-Q4_K_M.gguf" and k.parallel == 2 and pick is big
     # does not fit in memory next to the main model -> Kannada stays on the main model
     k, _ = tester.kannada_engine_config(run, main, None, None, {"mem_budget_gb": 7.5}, 3072, 8)
     assert k is None

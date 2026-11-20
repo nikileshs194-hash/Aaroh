@@ -162,6 +162,12 @@ const en = {
     shareTitle: "Share with the class",
     models: "Model library",
   },
+  voice: {
+    start: "Speak your question", stop: "Stop and turn into text",
+    noMic: "Voice works on the school computer. On a phone it needs a secure (https) address, so please type instead.",
+    denied: "Microphone not allowed. Allow the microphone in the browser and try again.",
+    empty: "I could not hear words. Speak a little closer to the microphone and try again.",
+  },
 };
 export default en;
 export type Dict = typeof en;

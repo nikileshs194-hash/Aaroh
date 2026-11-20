@@ -16,7 +16,7 @@ from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query, Reques
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import auth, db, hardware, models_lib, privacy, safety, templates, tester
+from . import auth, db, hardware, models_lib, privacy, safety, speech, templates, tester
 from .config import APP_PORT, APP_VERSION, ENGINE_EXE, ENGINE_RELEASE, FRONTEND_DIST, ROOT
 from .engines import EngineConfig, engines, load_active, save_active
 from .events import bus, log_event, recent_events
@@ -26,6 +26,16 @@ ADMIN = [Depends(auth.require_admin)]
 
 
 # ------------------------------------------------------------------ lifecycle
+async def preload_speech() -> None:
+    await asyncio.sleep(20)  # let the AI engines start first
+    try:
+        done = await asyncio.to_thread(speech.preload)
+        if done:
+            log_event("info", "Voice input ready: " + ", ".join("English" if l == "en" else "Kannada" for l in done) + ".")
+    except Exception as ex:
+        log_event("error", f"Voice input could not be prepared: {ex}")
+
+
 async def autostart() -> None:
     """After a reboot or power cut, start with the last good setting (F21)."""
     if not (db.get_setting("setup_done") and db.get_setting("autostart")):
@@ -47,7 +57,7 @@ async def lifespan(app: FastAPI):
     engines.start_watchdog()
     tasks = [asyncio.create_task(router.control_loop()), asyncio.create_task(router.metrics_loop()),
              asyncio.create_task(privacy.watcher.loop()),
-             asyncio.create_task(autostart())]
+             asyncio.create_task(autostart()), asyncio.create_task(preload_speech())]
     log_event("info", f"Control centre started (version {APP_VERSION}).")
     yield
     for t in tasks:
@@ -170,6 +180,26 @@ async def chat(request: Request, body: dict = Body(...), x_auth: str | None = He
         finally:
             cancel.set()
     return sse(gen())
+
+
+@app.get("/api/stt", tags=["chat"])
+def stt_status():
+    """Which voice-input languages are installed on this computer."""
+    return {"available": speech.available(), "models": speech.MODEL_INFO, "max_seconds": speech.MAX_SECONDS}
+
+
+@app.post("/api/stt", tags=["chat"])
+async def stt(request: Request, lang: str = Query("en")):
+    """Voice to text, offline. Body: 16 kHz mono 16-bit WAV. The audio is processed in memory and never stored."""
+    data = await request.body()
+    if len(data) > 2_500_000:
+        raise HTTPException(413, f"Please speak for less than {speech.MAX_SECONDS} seconds.")
+    try:
+        return await asyncio.to_thread(speech.transcribe, lang, data)
+    except FileNotFoundError as ex:
+        raise HTTPException(503, str(ex))
+    except ValueError as ex:
+        raise HTTPException(400, str(ex))
 
 
 @app.post("/api/report", tags=["chat"])
