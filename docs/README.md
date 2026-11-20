@@ -106,3 +106,7 @@ Students pick the question language with the small EN / ಕನ್ನಡ switch n
 
 Phones: browsers only allow the microphone on secure (https) pages, so on phones that open Aaroh by its `http://192.168...` address the 🎤 button explains this and students type instead. On the school computer itself (`http://localhost:8080`) voice works.
 
+## Student accounts
+
+Students open Aaroh and choose **Create account** (a username and password; no phone number, email or Aadhaar), then **Log in**. Each student sees only their own chats. Accounts and chats are stored only in this computer's database (`data\infersmart.db`), with passwords stored as secure hashes. Forgotten password: Admin → **Students** → **Reset password** gives a temporary code. After the class has signed up, switch off "Students can create their own accounts" on the same page.
+

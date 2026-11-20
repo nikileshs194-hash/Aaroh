@@ -23,6 +23,8 @@ Everything that could be built and measured on this laptop without you is done. 
 
 - [ ] **Try voice**: open `http://localhost:8080`, tap 🎤, say a question in English, tap again; then tap the EN switch next to the microphone so it shows ಕನ್ನಡ and try in Kannada. Allow the microphone when Chrome asks. Tell me any words it gets wrong.
 
+- [ ] **Accounts**: create two student accounts (for example on the laptop and on your phone), ask a question in each, log out and in again, and check each sees only their own chats. Then look at Admin → Students.
+
 ## People you need (these make the biggest difference to judges)
 
 - [ ] **Native-speaker review**: give a Kannada teacher the file `frontend\src\i18n\kn.ts` (or let them click through the app in Kannada) and ask them to check 10 Kannada answers. Note corrections; I can apply them in minutes.

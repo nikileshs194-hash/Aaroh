@@ -1,4 +1,5 @@
-"""Single-file SQLite database (D7). No question or answer text from students is ever stored."""
+"""Single-file SQLite database (D7) on this school computer. Student chats are stored here per student account
+(see users.py) and never leave this computer."""
 import json
 import sqlite3
 import threading

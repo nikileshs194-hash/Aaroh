@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { CheckCircle2, Download, FileCheck2, Play, Printer, Radar, RefreshCw, ShieldCheck, WifiOff, XCircle } from "lucide-react";
+import { CheckCircle2, Download, FileCheck2, KeyRound, Play, Printer, Radar, RefreshCw, ShieldCheck, Trash2, WifiOff, XCircle } from "lucide-react";
 import { api, auth, fmt } from "../../api";
 import { Button, Card, Chip, cx, LangSwitcher, Markdown, Notice, Select, Skeleton, Stat, toast, Toggle, useCountUp } from "../../components/ui";
 import { langName } from "../../i18n";
@@ -40,8 +40,8 @@ export function Privacy() {
         </Card>
         <Card>
           <div className="label">{t("admin.chatsStored")}</div>
-          <div className="mt-2 text-lg font-semibold text-ok">{t("admin.none")}</div>
-          <p className="mt-1 text-sm text-muted">{t("admin.onlyNumbers")}. Students' chats live only in their own browser and can be cleared with one tap.</p>
+          <div className="mt-2 text-lg font-semibold text-ok">{t("admin.onThisPc")}</div>
+          <p className="mt-1 text-sm text-muted">Each student's chats are saved in this computer's own database under their account (password protected, passwords stored only as hashes). Students can delete their chats at any time; nothing is sent online.</p>
         </Card>
         <Card>
           <div className="label">{t("admin.selftest")}</div>
@@ -72,7 +72,7 @@ export function SummaryView({ s }: { s: any }) {
         <Row label={t("admin.servesAtOnce")} value={s.capacity_n != null ? t("setup.students", { n: s.capacity_n }) : "–"} how={`simulated classroom test, up to ${s.tested_up_to ?? "–"} students, on ${fmt.date(s.test_date)}${s.simulated ? " (classroom PC simulator)" : ""}`} />
         <Row label={t("admin.worksOffline")} value={s.works_offline ? t("app.yes") : t("admin.notYet")} tone={s.works_offline ? "ok" : "warn"} how={s.last_offline_check ? `offline check passed at ${fmt.dateTime(s.last_offline_check.ts)}` : "run the offline check on the Privacy page"} />
         <Row label={t("admin.dataLeaving")} value={s.outside_connections === 0 ? t("admin.none") : s.outside_connections} tone={s.outside_connections === 0 ? "ok" : "warn"} how={`outside connections counted every second since ${fmt.dateTime(s.watching_since)}`} />
-        <Row label={t("admin.chatsStored")} value={t("admin.none")} tone="ok" how="only speed numbers are logged; no question or answer text is saved on this computer" />
+        <Row label={t("admin.chatsStored")} value={t("admin.onThisPc")} tone="ok" how={`${s.students ?? 0} student accounts, ${s.chats ?? 0} chats, saved only in this computer's database; nothing goes online`} />
         <Row label="Answers given" value={s.answers_this_week ?? 0} how="answers written by the AI in the last 7 days (counted, never stored as text)" />
         <Row label="Running model" value={<span className="text-xl">{s.model || "–"}</span>} how={s.kannada_model ? `chosen automatically from measurements on this computer; Kannada questions go to ${s.kannada_model}` : "chosen automatically from measurements on this computer"} />
       </div>
@@ -205,6 +205,51 @@ export function SettingsPage() {
           </div>
         </details>
       </Section>
+    </div>
+  );
+}
+
+/* ---------------- Students: accounts stored on this computer */
+export function Students() {
+  const { t } = useTranslation();
+  const [d, setD] = useState<any>(null);
+  const [temp, setTemp] = useState<{ user: string; pw: string } | null>(null);
+  const load = () => api("/api/admin/students").then(setD);
+  useEffect(() => { load(); }, []);
+  if (!d) return <Skeleton lines={6} />;
+  return (
+    <div className="rise space-y-5">
+      <div>
+        <h1 className="text-2xl font-bold">{t("nav.students")}</h1>
+        <p className="text-muted">{d.students.length} accounts. Accounts and chats are stored only on this computer.</p>
+      </div>
+      <Card>
+        <Toggle id="signup" checked={!!d.signup_open} onChange={async (v) => { await api("/api/settings", { method: "PUT", body: { signup_open: v } }); load(); }}
+          label="Students can create their own accounts" hint="Switch off after the class has signed up, so nobody else can create accounts." />
+      </Card>
+      {temp && <Notice tone="ok">Temporary password for <b>{temp.user}</b>: <b className="font-mono text-lg">{temp.pw}</b>. Tell the student; they can log in with it now.</Notice>}
+      <Card className="overflow-x-auto p-0 sm:p-0">
+        <table className="w-full min-w-[560px] text-sm">
+          <thead className="border-b border-line bg-sunken text-left text-xs uppercase tracking-wide text-muted">
+            <tr>{["Name", "Username", "Chats", "Last login", ""].map((h) => <th key={h} className="px-4 py-2.5 font-semibold">{h}</th>)}</tr>
+          </thead>
+          <tbody>
+            {d.students.length === 0 && <tr><td colSpan={5} className="px-4 py-6 text-center text-muted">No accounts yet. Students create them on the chat page.</td></tr>}
+            {d.students.map((u: any) => (
+              <tr key={u.id} className="border-b border-line last:border-0">
+                <td className="px-4 py-2.5 font-semibold text-ink">{u.name}</td>
+                <td className="px-4 py-2.5 font-mono">{u.username}</td>
+                <td className="px-4 py-2.5 tnum">{u.chats}</td>
+                <td className="px-4 py-2.5 text-muted">{u.last_login ? fmt.dateTime(u.last_login) : "–"}</td>
+                <td className="px-4 py-2.5 text-right whitespace-nowrap">
+                  <button className="btn-ghost min-h-[36px] px-2 text-sm" onClick={async () => { const r = await api(`/api/admin/students/${u.id}/reset`, { body: {} }); setTemp({ user: u.username, pw: r.temporary_password }); }}><KeyRound size={15} />Reset password</button>
+                  <button className="btn-ghost min-h-[36px] px-2 text-sm text-danger" onClick={async () => { if (window.confirm(`Delete ${u.username} and all their chats? This cannot be undone.`)) { await api(`/api/admin/students/${u.id}`, { method: "DELETE" }); toast("Deleted"); load(); } }}><Trash2 size={15} />Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Card>
     </div>
   );
 }

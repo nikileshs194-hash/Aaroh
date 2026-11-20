@@ -225,3 +225,47 @@ def test_kannada_model_picked_when_clearly_better_and_fits():
     k, _ = tester.kannada_engine_config({"data": {"languages": ["en"]}, "results": [main, big]}, main, None, None,
                                         {"mem_budget_gb": 12}, 3072, 8)
     assert k is None
+
+
+# ---------------- student accounts: each student sees only their own chats
+def test_students_are_separate():
+    import pytest
+    from fastapi import HTTPException
+    from app import users, db
+    users.init()
+    ta, a = users.signup("usera", "pass1234", "User A")
+    tb, b = users.signup("userb", "pass5678", "User B")
+    assert users.student_of(ta)["username"] == "usera" and users.student_of(tb)["username"] == "userb"
+    users.save_chat(a["id"], "chatA1", [{"role": "user", "content": "A's question"}, {"role": "assistant", "content": "x"}])
+    users.save_chat(b["id"], "chatB1", [{"role": "user", "content": "B's question"}])
+    assert [c["title"] for c in users.list_chats(a["id"])] == ["A's question"]
+    assert [c["title"] for c in users.list_chats(b["id"])] == ["B's question"]
+    with pytest.raises(HTTPException):
+        users.get_chat(b["id"], "chatA1")              # B cannot open A's chat
+    with pytest.raises(HTTPException):
+        users.signup("usera", "other99", None)         # username taken
+    with pytest.raises(HTTPException):
+        users.login("usera", "wrong", "t")             # wrong password
+    tok, _ = users.login("USERA", "pass1234", "t")     # usernames are not case-sensitive
+    assert users.student_of(tok)["id"] == a["id"]
+    users.logout(tok)
+    assert users.student_of(tok) is None
+    row = db.one("SELECT pw_hash FROM student WHERE username='usera'")
+    assert "pass1234" not in row["pw_hash"]            # never stored as text
+    assert not db.one("SELECT * FROM student_session WHERE token_hash=?", (ta,))  # only hashes of tokens stored
+    users.delete_student(a["id"])
+    assert users.list_chats(a["id"]) == [] and users.student_of(ta) is None
+
+
+def test_student_lockout_after_wrong_tries():
+    import pytest
+    from fastapi import HTTPException
+    from app import users
+    users.init()
+    users.signup("userc", "goodpass", None)
+    for _ in range(users.MAX_TRIES):
+        with pytest.raises(HTTPException):
+            users.login("userc", "bad", "1.2.3.4")
+    with pytest.raises(HTTPException) as ex:
+        users.login("userc", "goodpass", "1.2.3.4")    # locked even with the right password
+    assert ex.value.status_code == 429

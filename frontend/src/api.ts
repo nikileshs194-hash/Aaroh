@@ -19,6 +19,15 @@ export const auth = {
   clear() { safeSet(ls, TOKEN_KEY, null); safeSet(ls, ROLE_KEY, null); },
 };
 
+/** Student login (separate from the admin PIN). The session token is kept in this browser; the account and chats
+ *  are stored only on the school computer. */
+const USER_KEY = "aaroh_user_token";
+export const studentAuth = {
+  token: () => safeGet(ls, USER_KEY),
+  set(token: string) { safeSet(ls, USER_KEY, token); },
+  clear() { safeSet(ls, USER_KEY, null); },
+};
+
 export function deviceId(): string {
   let id = safeGet(ls, "is_device");
   if (!id) {
@@ -38,6 +47,8 @@ function headers(json = true): Record<string, string> {
   if (json) h["Content-Type"] = "application/json";
   const t = auth.token();
   if (t) h["X-Auth"] = t;
+  const u = studentAuth.token();
+  if (u) h["X-User"] = u;
   return h;
 }
 

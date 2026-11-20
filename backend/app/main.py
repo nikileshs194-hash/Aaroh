@@ -16,7 +16,7 @@ from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query, Reques
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import auth, db, hardware, models_lib, privacy, safety, speech, templates, tester
+from . import auth, db, hardware, models_lib, privacy, safety, speech, templates, tester, users
 from .config import APP_PORT, APP_VERSION, ENGINE_EXE, ENGINE_RELEASE, FRONTEND_DIST, ROOT
 from .engines import EngineConfig, engines, load_active, save_active
 from .events import bus, log_event, recent_events
@@ -53,6 +53,7 @@ async def autostart() -> None:
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     db.conn()
+    users.init()
     bus.loop = asyncio.get_running_loop()
     engines.start_watchdog()
     tasks = [asyncio.create_task(router.control_loop()), asyncio.create_task(router.metrics_loop()),
@@ -149,9 +150,12 @@ def _trim_history(messages: list[dict]) -> list[dict]:
 @app.post("/api/chat", tags=["chat"])
 async def chat(request: Request, body: dict = Body(...), x_auth: str | None = Header(default=None)):
     lang = body.get("language", "en")
-    device = str(body.get("device_id") or (request.client.host if request.client else "anon"))[:64]
     role = auth.role_of(x_auth)
-    kind = "teacher" if role in ("teacher", "admin") else "student"
+    student = users.student_of(request.headers.get("x-user"))
+    if role != "admin" and not student:
+        raise HTTPException(401, "Please log in.")
+    device = f"student-{student['id']}" if student else "admin"
+    kind = "teacher" if role == "admin" and not student else "student"
     msgs = _trim_history(body.get("messages", []))
     if not msgs or msgs[-1]["role"] != "user":
         raise HTTPException(400, "No question")
@@ -180,6 +184,96 @@ async def chat(request: Request, body: dict = Body(...), x_auth: str | None = He
         finally:
             cancel.set()
     return sse(gen())
+
+
+# ------------------------------------------------------------------ student accounts (stored only on this computer)
+STUDENT = [Depends(users.require_student)]
+
+
+@app.post("/api/users/signup", tags=["students"])
+def user_signup(body: dict = Body(...)):
+    if db.get_setting("signup_open") is False:
+        raise HTTPException(403, "New accounts are switched off. Ask the lab in-charge.")
+    tok, u = users.signup(body.get("username", ""), body.get("password", ""), body.get("name"))
+    log_event("info", f"New student account created: {u['username']}.")
+    return {"token": tok, "user": u}
+
+
+@app.post("/api/users/login", tags=["students"])
+def user_login(request: Request, body: dict = Body(...)):
+    tok, u = users.login(body.get("username", ""), body.get("password", ""), request.client.host if request.client else "?")
+    return {"token": tok, "user": u}
+
+
+@app.post("/api/users/logout", tags=["students"])
+def user_logout(x_user: str | None = Header(default=None)):
+    users.logout(x_user)
+    return {"ok": True}
+
+
+@app.get("/api/users/me", tags=["students"])
+def user_me(request: Request, u: dict = Depends(users.require_student)):
+    return u
+
+
+@app.post("/api/users/password", tags=["students"])
+def user_password(body: dict = Body(...), u: dict = Depends(users.require_student)):
+    users.change_password(u["id"], body.get("old", ""), body.get("new", ""))
+    return {"ok": True}
+
+
+@app.delete("/api/users/me", tags=["students"])
+def user_delete(body: dict = Body(default={}), u: dict = Depends(users.require_student)):
+    tok, _ = users.login(u["username"], body.get("password", ""), "delete")  # confirm with the password
+    users.delete_student(u["id"])
+    log_event("info", f"A student deleted their account and chats ({u['username']}).")
+    return {"ok": True}
+
+
+@app.get("/api/chats", tags=["students"])
+def chats_list(u: dict = Depends(users.require_student)):
+    return users.list_chats(u["id"])
+
+
+@app.get("/api/chats/{cid}", tags=["students"])
+def chats_get(cid: str, u: dict = Depends(users.require_student)):
+    return users.get_chat(u["id"], cid)
+
+
+@app.put("/api/chats/{cid}", tags=["students"])
+def chats_put(cid: str, body: dict = Body(...), u: dict = Depends(users.require_student)):
+    return users.save_chat(u["id"], cid, body.get("msgs") or [], touch=bool(body.get("touch", True)))
+
+
+@app.delete("/api/chats/{cid}", tags=["students"])
+def chats_delete(cid: str, u: dict = Depends(users.require_student)):
+    users.delete_chat(u["id"], cid)
+    return {"ok": True}
+
+
+@app.delete("/api/chats", tags=["students"])
+def chats_delete_all(u: dict = Depends(users.require_student)):
+    users.delete_chat(u["id"])
+    return {"ok": True}
+
+
+@app.get("/api/admin/students", tags=["admin"], dependencies=ADMIN)
+def admin_students():
+    return {"students": users.admin_list(), "signup_open": db.get_setting("signup_open") is not False}
+
+
+@app.post("/api/admin/students/{sid}/reset", tags=["admin"], dependencies=ADMIN)
+def admin_student_reset(sid: int):
+    temp = users.admin_reset_password(sid)
+    log_event("info", "The admin reset a student's password.")
+    return {"temporary_password": temp}
+
+
+@app.delete("/api/admin/students/{sid}", tags=["admin"], dependencies=ADMIN)
+def admin_student_delete(sid: int):
+    users.delete_student(sid)
+    log_event("info", "The admin deleted a student account and its chats.")
+    return {"ok": True}
 
 
 @app.get("/api/stt", tags=["chat"])
@@ -621,7 +715,8 @@ def summary():
         "school_name": db.get_setting("school_name"), "capacity_n": cap.get("n"), "tested_up_to": cap.get("tested_up_to"),
         "simulated": (data.get("hardware") or {}).get("simulated"), "works_offline": bool(last_check),
         "last_offline_check": last_check, "outside_connections": privacy.watcher.outside_count,
-        "watching_since": privacy.watcher.started, "chats_stored": False,
+        "watching_since": privacy.watcher.started, "chats_stored": "this computer only",
+        "students": db.one("SELECT COUNT(*) AS n FROM student")["n"], "chats": db.one("SELECT COUNT(*) AS n FROM conversation")["n"],
         "answers_this_week": answers, "languages": langs, "model": q.get("label"),
         "kannada_model": active.get("kannada_label"),
         "test_date": data.get("finished"), "hardware": data.get("hardware"),
@@ -640,7 +735,7 @@ def get_settings():
 
 EDITABLE = {"min_tps", "max_ttft", "quality_margin", "quality_floor", "quality_n", "theme", "text_size", "ui_language",
             "autostart", "lock_mode", "exam_mode", "school_name", "blocked_topics", "slots", "ctx_per_slot",
-            "wifi_name", "languages", "goal"}
+            "wifi_name", "languages", "goal", "signup_open"}
 
 
 @app.put("/api/settings", tags=["admin"], dependencies=ADMIN)

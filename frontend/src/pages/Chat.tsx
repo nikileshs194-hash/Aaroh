@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { ArrowUp, Copy, Flag, Lightbulb, MessageSquare, MonitorPlay, MoreVertical, PanelLeft, Plus, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, Hourglass, RotateCcw, X } from "lucide-react";
+import { ArrowUp, Copy, Flag, Lightbulb, LogOut, MessageSquare, MonitorPlay, MoreVertical, PanelLeft, Plus, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, Hourglass, RotateCcw, X } from "lucide-react";
 import { api, deviceId, live, stream, type StreamEvent } from "../api";
-import { deleteAllChats, deleteChat, getChat, groupByDay, listChats, newId, saveChat, type Conv, type Msg } from "../chatStore";
+import { deleteAllChats, deleteChat, getChat, groupByDay, listChats, newId, saveChat, type ConvMeta, type Msg } from "../chatStore";
+import { StudentGate, useStudent } from "../components/StudentGate";
 import { Chip, cx, Logo, Markdown, Notice, RunningBadge, toast, Dialog } from "../components/ui";
 import { QLangToggle, VoiceButton } from "../components/VoiceButton";
 import { langName } from "../i18n";
@@ -55,11 +56,18 @@ export function useChatEngine(opts: { kind?: "student" | "present" } = {}) {
 }
 
 export default function Chat() {
+  return <StudentGate><ChatPage /></StudentGate>;
+}
+
+function ChatPage() {
   const { t } = useTranslation();
+  const { user, logout } = useStudent();
   const { qLang: lang, theme, setTheme, size, setSize } = usePrefs();
   const c = useChatEngine();
   const [convId, setConvId] = useState(newId);
-  const [chats, setChats] = useState<Conv[]>(() => listChats());
+  const [chats, setChats] = useState<ConvMeta[]>([]);
+  const refresh = () => listChats().then(setChats).catch(() => {});
+  useEffect(() => { refresh(); }, []);
   const [drawer, setDrawer] = useState(false);
   const [text, setText] = useState("");
   const [info, setInfo] = useState<any>(null);
@@ -73,23 +81,25 @@ export default function Chat() {
     return live((topic, data) => { if (topic === "mode") setMode(data.mode); });
   }, []);
   useEffect(() => { end.current?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [c.msgs, c.queue]);
-  // Save to this browser only: when a message is added and when an answer finishes.
+  // Saved under this student's account on the school computer: when a message is added and when an answer finishes.
   const justOpened = useRef(false);  // opening an old chat must not move it to the top of the list
   useEffect(() => {
     if (justOpened.current) { justOpened.current = false; return; }
-    if (c.msgs.length) setChats(saveChat(convId, c.msgs));
+    if (c.msgs.length) saveChat(convId, c.msgs).then(refresh).catch(() => {});
   }, [convId, c.msgs.length, c.busy]);
 
-  const leaveCurrent = () => { if (c.msgs.length) saveChat(convId, c.msgs); c.clear(); };  // keeps a half-written answer
-  const newChat = () => { leaveCurrent(); setChats(listChats()); setConvId(newId()); setText(""); setDrawer(false); input.current?.focus(); };
-  const openChat = (id: string) => {
+  const leaveCurrent = async () => { if (c.msgs.length) await saveChat(convId, c.msgs).catch(() => {}); c.clear(); };  // keeps a half-written answer
+  const newChat = async () => { await leaveCurrent(); refresh(); setConvId(newId()); setText(""); setDrawer(false); input.current?.focus(); };
+  const openChat = async (id: string) => {
     if (id === convId && c.msgs.length) { setDrawer(false); return; }
-    const conv = getChat(id);
-    if (!conv) return;
-    leaveCurrent(); justOpened.current = true;
-    c.setMsgs(conv.msgs); setConvId(id); setChats(listChats()); setText(""); setDrawer(false);
+    try {
+      const conv = await getChat(id);
+      await leaveCurrent(); justOpened.current = true;
+      c.setMsgs(conv.msgs); setConvId(id); refresh(); setText(""); setDrawer(false);
+    } catch { toast(t("app.cantReach")); }
   };
-  const removeChat = (id: string) => { setChats(deleteChat(id)); if (id === convId) newChat(); };
+  const removeChat = async (id: string) => { await deleteChat(id).catch(() => {}); if (id === convId) { c.clear(); setConvId(newId()); } refresh(); };
+  const doLogout = async () => { await leaveCurrent(); setMenu(false); logout(); };
 
   const send = (q?: string) => {
     const v = (q ?? text).trim();
@@ -104,13 +114,13 @@ export default function Chat() {
   return (
     <div className="flex h-[100dvh] bg-bg">
       <aside className="hidden w-72 shrink-0 border-r border-line bg-surface lg:flex lg:flex-col no-print">
-        <Sidebar chats={chats} current={c.msgs.length ? convId : null} onNew={newChat} onOpen={openChat} onDelete={removeChat} />
+        <Sidebar chats={chats} current={c.msgs.length ? convId : null} onNew={newChat} onOpen={openChat} onDelete={removeChat} user={user.name} onLogout={doLogout} />
       </aside>
       {drawer && (
         <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true">
           <div className="absolute inset-0 bg-ink/40" onClick={() => setDrawer(false)} />
           <aside className="absolute inset-y-0 left-0 flex w-[82%] max-w-xs flex-col bg-surface shadow-xl">
-            <Sidebar chats={chats} current={c.msgs.length ? convId : null} onNew={newChat} onOpen={openChat} onDelete={removeChat} onClose={() => setDrawer(false)} />
+            <Sidebar chats={chats} current={c.msgs.length ? convId : null} onNew={newChat} onOpen={openChat} onDelete={removeChat} user={user.name} onLogout={doLogout} onClose={() => setDrawer(false)} />
           </aside>
         </div>
       )}
@@ -233,10 +243,8 @@ export default function Chat() {
           </div>
           <div className="flex flex-col gap-2 border-t border-line pt-4">
             <Link to="/present" className="btn-secondary justify-start"><MonitorPlay size={18} />{t("chat.present")}</Link>
-            <button className="btn-secondary justify-start" onClick={() => { if (window.confirm(t("chat.deleteAllAsk"))) { setChats(deleteAllChats()); newChat(); setMenu(false); toast(t("chat.cleared")); } }}><Trash2 size={18} />{t("chat.deleteAll")}</button>
-            <div className="flex gap-2 pt-1 text-sm">
-              <Link to="/admin" className="btn-ghost flex-1">{t("nav.admin")}</Link>
-            </div>
+            <button className="btn-secondary justify-start" onClick={async () => { if (window.confirm(t("chat.deleteAllAsk"))) { await deleteAllChats().catch(() => {}); c.clear(); setConvId(newId()); refresh(); setMenu(false); toast(t("chat.cleared")); } }}><Trash2 size={18} />{t("chat.deleteAll")}</button>
+            <button className="btn-secondary justify-start" onClick={doLogout}><LogOut size={18} />{t("login.logout")} ({user.username})</button>
           </div>
         </div>
       </Dialog>
@@ -244,8 +252,9 @@ export default function Chat() {
   );
 }
 
-function Sidebar({ chats, current, onNew, onOpen, onDelete, onClose }: {
-  chats: Conv[]; current: string | null; onNew: () => void; onOpen: (id: string) => void; onDelete: (id: string) => void; onClose?: () => void;
+function Sidebar({ chats, current, onNew, onOpen, onDelete, onClose, user, onLogout }: {
+  chats: ConvMeta[]; current: string | null; onNew: () => void; onOpen: (id: string) => void; onDelete: (id: string) => void; onClose?: () => void;
+  user: string; onLogout: () => void;
 }) {
   const { t } = useTranslation();
   return (
@@ -282,7 +291,14 @@ function Sidebar({ chats, current, onNew, onOpen, onDelete, onClose }: {
           </div>
         ))}
       </nav>
-      <p className="border-t border-line px-4 py-3 text-xs text-muted">{t("chat.localOnly")}</p>
+      <div className="border-t border-line px-3 py-3">
+        <div className="flex items-center gap-2">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-soft text-sm font-bold text-accent">{user.slice(0, 1).toUpperCase()}</span>
+          <span className="min-w-0 flex-1 truncate text-sm font-semibold text-ink">{user}</span>
+          <button className="btn-ghost min-h-[36px] px-2 text-sm" onClick={onLogout} title={t("login.logout")} aria-label={t("login.logout")}><LogOut size={16} /></button>
+        </div>
+        <p className="mt-2 text-xs text-muted">{t("chat.localOnly")}</p>
+      </div>
     </>
   );
 }

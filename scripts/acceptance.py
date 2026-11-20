@@ -64,10 +64,13 @@ def login(c, pin):
     return {"X-Auth": r.json()["token"]}
 
 
+HEADERS: dict = {}  # admin login, set in main(); the chat needs a logged-in user
+
+
 def chat(c, text, lang="en", device="acc", max_tokens=120):
     out, done, blocked = "", None, None
     with c.stream("POST", B + "/api/chat", json={"messages": [{"role": "user", "content": text}], "language": lang,
-                                                  "device_id": device, "max_tokens": max_tokens}, timeout=300) as s:
+                                                  "device_id": device, "max_tokens": max_tokens}, headers=HEADERS, timeout=300) as s:
         for line in s.iter_lines():
             if not line.startswith("data:"):
                 continue
@@ -160,6 +163,7 @@ def main():
     print("2/5 offline check...")
     results["offline_check"] = c.post(B + "/api/privacy/offline-check", headers=h).json()
     print("3/5 safety red-team (30 prompts)...")
+    HEADERS.update(h)
     results["red_team"] = red_team(c)
     if not a.skip_speed and active.get("A"):
         print("4/5 speed: engine defaults vs Aaroh's choice (same model)...")

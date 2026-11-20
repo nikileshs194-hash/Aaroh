@@ -5,9 +5,14 @@ import { ArrowUp, X, MessageSquarePlus } from "lucide-react";
 import { useChatEngine } from "./Chat";
 import { Logo, Markdown } from "../components/ui";
 import { QLangToggle } from "../components/VoiceButton";
+import { StudentGate } from "../components/StudentGate";
 
 /** Projector mode: very large type on a dark background; question box hidden until the teacher taps. */
 export default function Present() {
+  return <StudentGate><PresentPage /></StudentGate>;
+}
+
+function PresentPage() {
   const { t } = useTranslation();
   const c = useChatEngine({ kind: "present" });
   const [asking, setAsking] = useState(false);

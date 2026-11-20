@@ -18,7 +18,7 @@ export default function PrivacyReport() {
           <div className="mt-5 grid grid-cols-3 gap-3">
             <Box label="Outside connections (this session)" value={String(r.watcher.outside_count)} />
             <Box label="Outside connections (all time)" value={String(r.outside_total_all_time)} />
-            <Box label="Chats stored on this computer" value="None" />
+            <Box label="Where chats are stored" value="This computer only" />
           </div>
           <p className="mt-3 text-sm">Watched every second since {fmt.dateTime(r.watcher.watching_since)}. The watcher reads the operating system's own list of network connections opened by Aaroh's programs and counts any that go outside this computer or the school's private network. It counts connections, not bytes. Watcher self-tests that caught a deliberate outside connection: {r.watcher.selftest_caught}.</p>
           <h2 className="mt-6 text-lg font-bold">What is stored on this computer</h2>
@@ -38,7 +38,7 @@ export default function PrivacyReport() {
           </>}
           <h2 className="mt-4 text-lg font-bold">Software versions</h2>
           <p>{Object.entries(r.versions).map(([k, v]) => `${k} ${v}`).join(" · ")}</p>
-          <p className="mt-6 border-t border-[#ccc] pt-2 text-sm text-[#475467]">{r.note} Students have no accounts or logins.</p>
+          <p className="mt-6 border-t border-[#ccc] pt-2 text-sm text-[#475467]">{r.note}</p>
           <div className="mt-10 grid grid-cols-2 gap-10 text-sm"><div className="border-t border-[#999] pt-1">Lab in-charge</div><div className="border-t border-[#999] pt-1">Head of institution</div></div>
         </div>
       )}

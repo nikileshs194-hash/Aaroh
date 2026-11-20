@@ -36,7 +36,7 @@ The controller observes every 2 seconds, decides with waiting periods (20 s to s
 Students only see a chat with school-appropriate instructions, a blocked-topics filter, a "report this answer" button, a per-device rate limit, and an exam switch that turns student chat off. Red-team result on this laptop: 20/20 unsafe prompts handled, 10/10 normal questions answered (self-harm messages get a caring reply with Tele-MANAS 14416, not a cold refusal).
 
 **Is it legal under the DPDP rules?**
-It is built for data minimisation: no student accounts, no chats stored on the server, nothing sent outside the school. That supports compliance; it is not a legal certificate, and we say so.
+It is built for data minimisation: students choose a username (no phone, email or Aadhaar), passwords are stored only as secure hashes, each student's chats stay on the school computer under their own account and can be deleted by them at any time, voice is never recorded to disk, and nothing is sent outside the school. That supports compliance; it is not a legal certificate, and we say so.
 
 **How is the privacy counter trustworthy?**
 Every second it reads the operating system's own connection list for our programs. Press "Test the watcher": it deliberately opens one outside connection and shows it was caught. We count connections, not bytes, because a reliable per-program byte count is not available everywhere.
