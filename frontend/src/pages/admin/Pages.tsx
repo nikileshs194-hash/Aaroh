@@ -1,8 +1,8 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { CheckCircle2, Download, FileCheck2, KeyRound, Play, Printer, Radar, RefreshCw, ShieldCheck, Star, WifiOff, XCircle } from "lucide-react";
-import { api, auth, fmt, stream } from "../../api";
+import { CheckCircle2, Download, FileCheck2, Play, Printer, Radar, RefreshCw, ShieldCheck, WifiOff, XCircle } from "lucide-react";
+import { api, auth, fmt } from "../../api";
 import { Button, Card, Chip, cx, LangSwitcher, Markdown, Notice, Select, Skeleton, Stat, toast, Toggle, useCountUp } from "../../components/ui";
 import { langName } from "../../i18n";
 import { usePrefs } from "../../prefs";
@@ -73,15 +73,14 @@ export function SummaryView({ s }: { s: any }) {
         <Row label={t("admin.worksOffline")} value={s.works_offline ? t("app.yes") : t("admin.notYet")} tone={s.works_offline ? "ok" : "warn"} how={s.last_offline_check ? `offline check passed at ${fmt.dateTime(s.last_offline_check.ts)}` : "run the offline check on the Privacy page"} />
         <Row label={t("admin.dataLeaving")} value={s.outside_connections === 0 ? t("admin.none") : s.outside_connections} tone={s.outside_connections === 0 ? "ok" : "warn"} how={`outside connections counted every second since ${fmt.dateTime(s.watching_since)}`} />
         <Row label={t("admin.chatsStored")} value={t("admin.none")} tone="ok" how="only speed numbers are logged; no question or answer text is saved on this computer" />
-        <Row label={t("admin.plansPrepared")} value={s.plans_this_week} how={`saved in the Teacher Studio library; ${s.answers_this_week} answers given this week`} />
         <Row label="Running model" value={<span className="text-xl">{s.model || "–"}</span>} how="chosen automatically from measurements on this computer" />
       </div>
       <div className="card mt-3 p-4">
         <div className="label">{t("admin.languagesTested")}</div>
         <p className="mt-2 text-text">
-          {langs.length ? langs.map(([l, v]: any, i) => <span key={l}>{i > 0 && ", "}<b>{langName(l)}</b> ({v.label}, {fmt.n0(v.acc)}% on {v.n} questions{v.review ? ", teacher review on" : ""})</span>) : "–"}.
+          {langs.length ? langs.map(([l, v]: any, i) => <span key={l}>{i > 0 && ", "}<b>{langName(l)}</b> ({v.label}, {fmt.n0(v.acc)}% on {v.n} questions{v.review ? ", \"please check\" label on" : ""})</span>) : "–"}.
         </p>
-        <p className="mt-2 text-xs text-muted">Multiple-choice accuracy on public test sets. Small samples: indicators, not proof. AI can make mistakes; teachers review material before use.</p>
+        <p className="mt-2 text-xs text-muted">Multiple-choice accuracy on public test sets. Small samples: indicators, not proof. AI can make mistakes; check important answers.</p>
       </div>
     </div>
   );
@@ -107,19 +106,13 @@ export function Summary() {
 export function Share() {
   const { t } = useTranslation();
   const [s, setS] = useState<any>(null);
-  const [code, setCode] = useState<string | null>(null);
   useEffect(() => { api("/api/share").then(setS); }, []);
   if (!s) return <Skeleton lines={6} />;
   return (
     <div className="rise space-y-5">
       <h1 className="text-2xl font-bold">{t("admin.shareTitle")}</h1>
-      <ShareCard share={s} teacherCode={code} />
+      <ShareCard share={s} />
       {s.addresses.length > 1 && <Notice>Other addresses on this computer: {s.addresses.slice(1).map((a: any) => `${a.ip} (${a.interface})`).join(", ")}</Notice>}
-      <Card>
-        <div className="label">{t("setup.teacherCode")}</div>
-        <p className="mt-1 text-sm text-muted">The code is stored only as a secure hash, so it cannot be shown again. Make a new one if teachers have forgotten it.</p>
-        <Button className="mt-3" variant="secondary" icon={<KeyRound size={16} />} onClick={async () => { const r = await api("/api/settings/teacher-code", { body: {} }); setCode(r.code); }}>{t("admin.newCode")}</Button>
-      </Card>
     </div>
   );
 }
@@ -132,7 +125,6 @@ export function SettingsPage() {
   const [hw, setHw] = useState<any>(null);
   const [models, setModels] = useState<any>(null);
   const [pin, setPin] = useState("");
-  const [code, setCode] = useState<string | null>(null);
   const [blocked, setBlocked] = useState("");
   useEffect(() => {
     api("/api/settings").then((x) => { setS(x); setBlocked((x.blocked_topics || []).join("\n")); });
@@ -159,7 +151,7 @@ export function SettingsPage() {
         <button className="btn-ghost -ml-3 text-sm" onClick={() => reset(["min_tps", "max_ttft", "quality_margin", "quality_floor"])}>{t("app.resetRecommended")}</button>
       </Section>
       <Section title={t("admin.classroom")}>
-        <Toggle id="exam" checked={!!s.exam_mode} onChange={(v) => put({ exam_mode: v })} label={t("admin.examMode")} hint="Students see a polite message instead of the chat. Teachers can still use Teacher Studio." />
+        <Toggle id="exam" checked={!!s.exam_mode} onChange={(v) => put({ exam_mode: v })} label={t("admin.examMode")} hint="Students see a polite message instead of the chat." />
         <label className="mt-2 block"><span className="mb-1 block text-sm font-medium text-muted">{t("admin.blocked")}</span>
           <textarea className="input min-h-[90px] py-2" value={blocked} onChange={(e) => setBlocked(e.target.value)} onBlur={() => put({ blocked_topics: blocked.split("\n").map((x) => x.trim()).filter(Boolean) })} /></label>
         <label className="mt-3 block"><span className="mb-1 block text-sm font-medium text-muted">{t("admin.wifiName")}</span>
@@ -173,9 +165,7 @@ export function SettingsPage() {
           <label className="block"><span className="mb-1 block text-sm font-medium text-muted">{t("admin.newPin")}</span>
             <input className="input w-40 font-mono" type="password" inputMode="numeric" value={pin} onChange={(e) => setPin(e.target.value.replace(/\D/g, "").slice(0, 8))} /></label>
           <Button variant="secondary" disabled={pin.length < 4} onClick={async () => { await api("/api/settings/pin", { body: { pin } }); setPin(""); toast(t("admin.saved")); }}>{t("admin.changePin")}</Button>
-          <Button variant="secondary" icon={<KeyRound size={16} />} onClick={async () => setCode((await api("/api/settings/teacher-code", { body: {} })).code)}>{t("admin.newCode")}</Button>
         </div>
-        {code && <Notice className="mt-3">{t("setup.teacherCodeBody", { code })}</Notice>}
       </Section>
       <Section title={t("admin.startup")}>
         <Toggle id="as" checked={!!s.autostart} onChange={(v) => put({ autostart: v })} label={t("admin.autostart")} />
@@ -247,82 +237,3 @@ function SimForm({ hw, onChange }: { hw: any; onChange: (h: any) => void }) {
   );
 }
 
-/* ---------------- Teacher ratings (quality guard step 5) */
-export function Ratings() {
-  const { t } = useTranslation();
-  const [prompts, setPrompts] = useState<any[]>([]);
-  const [sum, setSum] = useState<any>(null);
-  const [idx, setIdx] = useState(0);
-  const [out, setOut] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [sc, setSc] = useState({ correctness: 0, clarity: 0, suitability: 0 });
-  const [rater, setRater] = useState(auth.teacherName());
-  const [model, setModel] = useState("");
-  useEffect(() => { api("/api/ratings/prompts").then(setPrompts); api("/api/ratings/summary").then(setSum); }, []);
-  const p = prompts[idx];
-  const gen = async () => {
-    setOut(""); setBusy(true); setSc({ correctness: 0, clarity: 0, suitability: 0 });
-    let acc = "";
-    await stream("/api/studio/generate", { template: p.template, fields: p.fields }, (e) => {
-      if (e.type === "token") { acc += e.text; setOut(acc); }
-      if (e.type === "start") setModel(e.model || "");
-    });
-    setBusy(false);
-  };
-  const save = async () => {
-    await api("/api/ratings", { body: { ...sc, prompt_id: p.id, model, rater } });
-    toast(t("admin.saved"));
-    setSum(await api("/api/ratings/summary"));
-    setIdx((i) => (i + 1) % prompts.length); setOut("");
-  };
-  const Stars = ({ k }: { k: keyof typeof sc }) => (
-    <div className="flex items-center justify-between gap-3 py-1.5">
-      <span>{t(`admin.${k}`)}</span>
-      <div className="flex gap-1" role="radiogroup" aria-label={t(`admin.${k}`)}>
-        {[1, 2, 3, 4, 5].map((n) => (
-          <button key={n} role="radio" aria-checked={sc[k] === n} aria-label={`${n}`} onClick={() => setSc({ ...sc, [k]: n })}
-            className={cx("flex h-10 w-10 items-center justify-center rounded-ctl border", sc[k] >= n ? "border-warn bg-warn/10 text-warn" : "border-line text-muted")}>
-            <Star size={18} fill={sc[k] >= n ? "currentColor" : "none"} />
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-  return (
-    <div className="rise space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold">{t("admin.ratingsTitle")}</h1>
-        <p className="text-muted">{t("admin.ratingsBody")}</p>
-      </div>
-      {sum && sum.count > 0 && (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <Stat label="Ratings" value={sum.count} hint={t("admin.ratingsSummary", { count: sum.count, raters: sum.raters })} />
-          <Stat label={t("admin.correctness")} value={sum.correctness} unit="/5" />
-          <Stat label={t("admin.clarity")} value={sum.clarity} unit="/5" />
-          <Stat label={t("admin.suitability")} value={sum.suitability} unit="/5" />
-        </div>
-      )}
-      {p && (
-        <Card>
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div className="label">{idx + 1} / {prompts.length}</div>
-            <div className="flex gap-2">
-              <Button variant="ghost" onClick={() => { setIdx((i) => (i + prompts.length - 1) % prompts.length); setOut(""); }}>←</Button>
-              <Button variant="ghost" onClick={() => { setIdx((i) => (i + 1) % prompts.length); setOut(""); }}>→</Button>
-            </div>
-          </div>
-          <h2 className="mt-1 text-lg font-semibold">{p.title} · {langName(p.fields.language)}</h2>
-          {!out && <Button className="mt-3" loading={busy} onClick={gen}>{t("admin.generate")}</Button>}
-          {out && <div lang={p.fields.language} className="mt-3 max-h-96 overflow-y-auto rounded-ctl border border-line p-3"><Markdown text={out} className={busy ? "caret" : ""} /></div>}
-          {out && !busy && (
-            <div className="mt-4 border-t border-line pt-3">
-              <Stars k="correctness" /><Stars k="clarity" /><Stars k="suitability" />
-              <label className="mt-2 block"><span className="mb-1 block text-sm text-muted">{t("admin.rater")}</span><input className="input" value={rater} onChange={(e) => setRater(e.target.value)} /></label>
-              <Button className="mt-3" disabled={!sc.correctness || !sc.clarity || !sc.suitability || !rater.trim()} onClick={save}>{t("admin.submit")}</Button>
-            </div>
-          )}
-        </Card>
-      )}
-    </div>
-  );
-}

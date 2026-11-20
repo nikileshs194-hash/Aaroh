@@ -16,15 +16,13 @@ from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query, Reques
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import auth, db, hardware, models_lib, privacy, safety, studio, templates, tester
+from . import auth, db, hardware, models_lib, privacy, safety, templates, tester
 from .config import APP_PORT, APP_VERSION, ENGINE_EXE, ENGINE_RELEASE, FRONTEND_DIST, ROOT
 from .engines import EngineConfig, engines, load_active, save_active
 from .events import bus, log_event, recent_events
 from .router import classsim, router
-from urllib.parse import unquote
 
 ADMIN = [Depends(auth.require_admin)]
-TEACHER = [Depends(auth.require_teacher)]
 
 
 # ------------------------------------------------------------------ lifecycle
@@ -48,7 +46,7 @@ async def lifespan(app: FastAPI):
     bus.loop = asyncio.get_running_loop()
     engines.start_watchdog()
     tasks = [asyncio.create_task(router.control_loop()), asyncio.create_task(router.metrics_loop()),
-             asyncio.create_task(privacy.watcher.loop()), asyncio.create_task(studio.batch.loop()),
+             asyncio.create_task(privacy.watcher.loop()),
              asyncio.create_task(autostart())]
     log_event("info", f"Control centre started (version {APP_VERSION}).")
     yield
@@ -95,7 +93,7 @@ def public_info(request: Request):
 @app.post("/api/login", tags=["public"])
 def login(request: Request, body: dict = Body(...)):
     role = body.get("role")
-    if role not in ("admin", "teacher"):
+    if role != "admin":
         raise HTTPException(400, "Unknown role")
     tok = auth.login(role, str(body.get("secret", "")), request.client.host if request.client else "?")
     return {"token": tok, "role": role}
@@ -117,7 +115,7 @@ async def live(token: str | None = Query(default=None)):
                     yield {"topic": "ping", "data": {}}
                     continue
                 m = json.loads(msg)
-                if admin or m["topic"] in ("mode", "engine", "batch"):
+                if admin or m["topic"] in ("mode", "engine"):
                     yield m
         finally:
             bus.unsubscribe(q)
@@ -273,7 +271,6 @@ async def setup_finish(body: dict = Body(...)):
         raise HTTPException(400, "Choose an admin PIN first.")
     if body.get("school_name"):
         db.set_setting("school_name", body["school_name"])
-    code = auth.new_teacher_code()
     run = tester.latest_run()
     if run and not (engines["A"].status == "ready"):
         await tester.apply_selection(run, body.get("use", "recommended"))
@@ -281,7 +278,7 @@ async def setup_finish(body: dict = Body(...)):
     db.set_setting("setup_step", "done")
     log_event("setup", "Setup finished. InferSmart is ready for the class.")
     token = auth.login("admin", str(body["pin"]), "setup") if body.get("pin") else None
-    return {"teacher_code": code, "token": token, "share": share_info()}
+    return {"token": token, "share": share_info()}
 
 
 # ------------------------------------------------------------------ tests and results
@@ -567,7 +564,6 @@ def summary():
     cap = data.get("capacity") or {}
     q = (data.get("selection") or {}).get("recommended") or {}
     week = time.time() - 7 * 86400
-    plans = db.one("SELECT COUNT(*) AS n FROM library_item WHERE created>?", (week,))["n"]
     answers = db.one("SELECT COUNT(*) AS n FROM perf_log WHERE ts>?", (week,))["n"]
     last_check = db.one("SELECT * FROM offline_check WHERE passed=1 ORDER BY id DESC LIMIT 1")
     langs = {}
@@ -579,7 +575,7 @@ def summary():
         "school_name": db.get_setting("school_name"), "capacity_n": cap.get("n"), "tested_up_to": cap.get("tested_up_to"),
         "simulated": (data.get("hardware") or {}).get("simulated"), "works_offline": bool(last_check),
         "last_offline_check": last_check, "outside_connections": privacy.watcher.outside_count,
-        "watching_since": privacy.watcher.started, "chats_stored": False, "plans_this_week": plans,
+        "watching_since": privacy.watcher.started, "chats_stored": False,
         "answers_this_week": answers, "languages": langs, "model": q.get("label"),
         "test_date": data.get("finished"), "hardware": data.get("hardware"),
     }
@@ -589,7 +585,7 @@ def summary():
 @app.get("/api/settings", tags=["admin"], dependencies=ADMIN)
 def get_settings():
     s = db.all_settings()
-    for k in ("admin_pin_hash", "teacher_code_hash"):
+    for k in ("admin_pin_hash", "teacher_code_hash"):  # old databases may still hold a teacher code hash
         s.pop(k, None)
     s["autostart_on_login"] = startup_file().exists()
     return s
@@ -597,7 +593,7 @@ def get_settings():
 
 EDITABLE = {"min_tps", "max_ttft", "quality_margin", "quality_floor", "quality_n", "theme", "text_size", "ui_language",
             "autostart", "lock_mode", "exam_mode", "school_name", "blocked_topics", "slots", "ctx_per_slot",
-            "batch_pause_when_busy", "wifi_name", "languages", "goal"}
+            "wifi_name", "languages", "goal"}
 
 
 @app.put("/api/settings", tags=["admin"], dependencies=ADMIN)
@@ -627,14 +623,6 @@ def change_pin(body: dict = Body(...)):
     return {"ok": True}
 
 
-@app.post("/api/settings/teacher-code", tags=["admin"], dependencies=ADMIN)
-def change_teacher_code(body: dict = Body(default={})):
-    if body.get("code"):
-        auth.set_teacher_code(str(body["code"]))
-        return {"code": str(body["code"])}
-    return {"code": auth.new_teacher_code()}
-
-
 def startup_file() -> Path:
     return Path(os.environ.get("APPDATA", "")) / "Microsoft" / "Windows" / "Start Menu" / "Programs" / "Startup" / "InferSmart.vbs"
 
@@ -660,7 +648,7 @@ def backup(token: str | None = Query(default=None)):
     out = {"settings": {k: v for k, v in db.all_settings().items()},
            "runs": db.query("SELECT * FROM test_run"), "results": db.query("SELECT * FROM test_result"),
            "capacity": db.query("SELECT * FROM capacity_result"), "quality": db.query("SELECT * FROM quality_result"),
-           "library": db.query("SELECT * FROM library_item"), "events": db.query("SELECT * FROM event_log ORDER BY id DESC LIMIT 2000")}
+           "events": db.query("SELECT * FROM event_log ORDER BY id DESC LIMIT 2000")}
     return JSONResponse(out, headers={"Content-Disposition": "attachment; filename=infersmart_backup.json"})
 
 
@@ -693,178 +681,6 @@ def share_info() -> dict:
 @app.get("/api/share", tags=["public"])
 def share():
     return share_info()
-
-
-# ------------------------------------------------------------------ teacher studio
-@app.get("/api/templates", tags=["teacher"])
-def get_templates():
-    return templates.catalogue()
-
-
-@app.post("/api/studio/generate", tags=["teacher"], dependencies=TEACHER)
-async def studio_generate(request: Request, body: dict = Body(...), x_auth: str | None = Header(default=None)):
-    tpl, fields = body.get("template"), body.get("fields", {})
-    if tpl not in templates.TEMPLATES:
-        raise HTTPException(400, "Unknown template")
-    text_to_check = " ".join(str(v) for v in fields.values())
-    msgs, max_tokens = studio.messages_for(tpl, fields)
-    device = "teacher-" + (x_auth or "local")[:12]
-
-    async def gen():
-        cat = safety.check(text_to_check)
-        if cat:
-            yield {"type": "blocked", "category": cat, "text": safety.refusal(cat, fields.get("language", "en"))}
-            return
-        yield {"type": "meta", "title": templates.title_for(tpl, fields)}
-        cancel = asyncio.Event()
-        try:
-            async for ev in router.chat(msgs, device, "teacher", max_tokens, cancel):
-                if await request.is_disconnected():
-                    cancel.set()
-                yield ev
-        finally:
-            cancel.set()
-    return sse(gen())
-
-
-@app.post("/api/studio/revise", tags=["teacher"], dependencies=TEACHER)
-async def studio_revise(request: Request, body: dict = Body(...), x_auth: str | None = Header(default=None)):
-    """'Simpler' on a whole plan or one section."""
-    lang = body.get("language", "en")
-    text = str(body.get("text", ""))[:6000]
-    how = {"simpler": "Rewrite this more simply for the same class, keeping the same headings.",
-           "shorter": "Make this shorter, keeping the same headings and key points."}.get(body.get("kind"), "Improve this.")
-    msgs = [{"role": "system", "content": safety.SYSTEM_PROMPT + " " + safety.language_instruction(lang)},
-            {"role": "user", "content": f"{how}\n\n{text}"}]
-    device = "teacher-" + (x_auth or "local")[:12]
-    return sse(router.chat(msgs, device, "teacher", 900))
-
-
-@app.get("/api/library", tags=["teacher"], dependencies=TEACHER)
-def library(scope: str = "mine", x_teacher: str | None = Header(default=None)):
-    if scope == "school":
-        return studio.list_items(shared_only=True)
-    if scope == "all":
-        return studio.list_items()
-    return studio.list_items(author=unquote(x_teacher) if x_teacher else "Teacher")
-
-
-@app.post("/api/library", tags=["teacher"], dependencies=TEACHER)
-def library_save(body: dict = Body(...), x_teacher: str | None = Header(default=None)):
-    iid = studio.save_item(body.get("template", "lesson_plan"), body.get("fields", {}), str(body.get("body", "")),
-                           unquote(x_teacher) if x_teacher else "Teacher", body.get("title"))
-    return studio.get_item(iid)
-
-
-@app.get("/api/library/{iid}", tags=["teacher"])
-def library_get(iid: int, request: Request, x_auth: str | None = Header(default=None), token: str | None = None):
-    item = studio.get_item(iid)
-    if not item:
-        raise HTTPException(404, "Not found")
-    if not item["shared"]:
-        auth.require_teacher(request, x_auth or token)
-    return item
-
-
-@app.patch("/api/library/{iid}", tags=["teacher"], dependencies=TEACHER)
-def library_update(iid: int, body: dict = Body(...)):
-    studio.update_item(iid, body=body.get("body"), title=body.get("title"), reviewed=body.get("reviewed"), shared=body.get("shared"))
-    return studio.get_item(iid)
-
-
-@app.delete("/api/library/{iid}", tags=["teacher"], dependencies=TEACHER)
-def library_delete(iid: int):
-    studio.delete_item(iid)
-    return {"ok": True}
-
-
-@app.post("/api/batch", tags=["teacher"], dependencies=TEACHER)
-def batch_add(body: dict = Body(...), x_teacher: str | None = Header(default=None)):
-    """'Prepare all lessons in this chapter': N lesson plans (+ optional quiz) queued for when the PC is free."""
-    fields = body.get("fields", {})
-    n = max(1, min(10, int(body.get("lessons", 3))))
-    author = unquote(x_teacher) if x_teacher else "Teacher"
-    ids = []
-    for i in range(n):
-        f = {**fields, "part": f"lesson {i + 1} of {n}"}
-        ids.append(studio.enqueue(templates.title_for("lesson_plan", f), {"template": "lesson_plan", "fields": f, "author": author}))
-    if body.get("quiz"):
-        f = {**fields, "count": "10"}
-        ids.append(studio.enqueue(templates.title_for("quiz", f), {"template": "quiz", "fields": f, "author": author}))
-    return {"queued": ids}
-
-
-@app.get("/api/batch", tags=["teacher"], dependencies=TEACHER)
-def batch_list(x_teacher: str | None = Header(default=None)):
-    jobs = studio.list_jobs()
-    return {"jobs": jobs, "paused": studio.batch.paused, "running": studio.batch.current,
-            "waiting_for_quiet": (not studio.batch.can_run()) and not studio.batch.paused,
-            "avg_answer_s": router.avg_answer_s(), "pause_when_busy": bool(db.get_setting("batch_pause_when_busy"))}
-
-
-@app.post("/api/batch/pause", tags=["teacher"], dependencies=TEACHER)
-def batch_pause(body: dict = Body(...)):
-    studio.batch.paused = bool(body.get("paused"))
-    if "pause_when_busy" in body:
-        db.set_setting("batch_pause_when_busy", bool(body["pause_when_busy"]))
-    return {"paused": studio.batch.paused}
-
-
-@app.delete("/api/batch/{jid}", tags=["teacher"], dependencies=TEACHER)
-def batch_delete(jid: int):
-    db.execute("DELETE FROM batch_job WHERE id=? AND status!='running'", (jid,))
-    return {"ok": True}
-
-
-# ------------------------------------------------------------------ teacher ratings (quality guard step 5)
-RATING_PROMPTS = [
-    ("lp_photosynthesis", "lesson_plan", {"class": "7", "subject": "Science", "chapter": "Photosynthesis", "duration": "40", "language": "en"}),
-    ("lp_electricity", "lesson_plan", {"class": "10", "subject": "Science", "chapter": "Electricity", "duration": "40", "language": "en"}),
-    ("lp_kn_water", "lesson_plan", {"class": "8", "subject": "Science", "chapter": "Our environment", "duration": "40", "language": "kn"}),
-    ("lp_hi_money", "lesson_plan", {"class": "10", "subject": "Social Science", "chapter": "Money and credit", "duration": "40", "language": "hi"}),
-    ("ex_fractions", "explain", {"class": "6", "subject": "Mathematics", "topic": "Fractions", "language": "en"}),
-    ("ex_gravity", "explain", {"class": "9", "subject": "Science", "topic": "Gravitation", "language": "en"}),
-    ("ex_kn_light", "explain", {"class": "8", "subject": "Science", "topic": "Light", "language": "kn"}),
-    ("ex_hi_democracy", "explain", {"class": "9", "subject": "Social Science", "topic": "Democracy", "language": "hi"}),
-    ("ex_ai", "explain", {"class": "8", "subject": "Computer Science / AI", "topic": "What is AI?", "language": "en"}),
-    ("ex_kn_ai", "explain", {"class": "8", "subject": "Computer Science / AI", "topic": "What is AI?", "language": "kn"}),
-    ("qz_motion", "quiz", {"class": "9", "subject": "Science", "chapter": "Motion", "count": "5", "language": "en"}),
-    ("qz_triangles", "quiz", {"class": "10", "subject": "Mathematics", "chapter": "Triangles", "count": "5", "language": "en"}),
-    ("qz_kn_matter", "quiz", {"class": "9", "subject": "Science", "chapter": "Matter in our surroundings", "count": "5", "language": "kn"}),
-    ("qz_hi_resources", "quiz", {"class": "10", "subject": "Social Science", "chapter": "Resources and development", "count": "5", "language": "hi"}),
-    ("ws_tenses", "worksheet", {"class": "7", "subject": "English", "chapter": "Tenses", "count": "5", "language": "en"}),
-    ("ws_acids", "worksheet", {"class": "10", "subject": "Science", "chapter": "Acids, bases and salts", "count": "5", "language": "en"}),
-    ("ex_monsoon", "explain", {"class": "7", "subject": "Social Science", "topic": "Monsoon in India", "language": "en"}),
-    ("ex_hi_water", "explain", {"class": "6", "subject": "Science", "topic": "Water cycle", "language": "hi"}),
-    ("ex_internet", "explain", {"class": "8", "subject": "Computer Science / AI", "topic": "Internet safety", "language": "en"}),
-    ("lp_algebra", "lesson_plan", {"class": "8", "subject": "Mathematics", "chapter": "Linear equations", "duration": "40", "language": "en"}),
-]
-
-
-@app.get("/api/ratings/prompts", tags=["admin"])
-def rating_prompts():
-    return [{"id": i, "template": t, "fields": f, "title": templates.title_for(t, f)} for i, t, f in RATING_PROMPTS]
-
-
-@app.post("/api/ratings", tags=["admin"])
-def add_rating(body: dict = Body(...)):
-    vals = [int(body.get(k, 0)) for k in ("correctness", "clarity", "suitability")]
-    if not all(1 <= v <= 5 for v in vals):
-        raise HTTPException(400, "Scores are 1 to 5.")
-    db.execute("INSERT INTO rating(ts,model,prompt_id,correctness,clarity,suitability,rater) VALUES(?,?,?,?,?,?,?)",
-               (time.time(), str(body.get("model", ""))[:100], str(body.get("prompt_id", ""))[:40], *vals, str(body.get("rater", ""))[:40]))
-    return {"ok": True}
-
-
-@app.get("/api/ratings/summary", tags=["admin"])
-def rating_summary():
-    rows = db.query("SELECT * FROM rating")
-    if not rows:
-        return {"count": 0}
-    avg = lambda k: round(sum(r[k] for r in rows) / len(rows), 2)
-    return {"count": len(rows), "raters": len({r["rater"] for r in rows}), "correctness": avg("correctness"),
-            "clarity": avg("clarity"), "suitability": avg("suitability"),
-            "per_prompt": db.query("SELECT prompt_id, COUNT(*) n, AVG(correctness) c, AVG(clarity) cl, AVG(suitability) s FROM rating GROUP BY prompt_id")}
 
 
 # ------------------------------------------------------------------ web interface

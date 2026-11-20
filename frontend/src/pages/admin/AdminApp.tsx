@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, NavLink, Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import { BarChart3, FileText, Gauge, Lock, MessageSquare, QrCode, Settings, ShieldCheck, Star } from "lucide-react";
+import { BarChart3, FileText, Gauge, Lock, MessageSquare, QrCode, Settings, ShieldCheck } from "lucide-react";
 import { api, auth } from "../../api";
 import { Card, cx, Logo, Notice, PinPad, RunningBadge, Skeleton } from "../../components/ui";
 import { useAdminTheme } from "../../prefs";
@@ -13,7 +13,6 @@ const Privacy = lazy(() => P().then((m) => ({ default: m.Privacy })));
 const Summary = lazy(() => P().then((m) => ({ default: m.Summary })));
 const SettingsPage = lazy(() => P().then((m) => ({ default: m.SettingsPage })));
 const Share = lazy(() => P().then((m) => ({ default: m.Share })));
-const Ratings = lazy(() => P().then((m) => ({ default: m.Ratings })));
 
 function Gate({ onOk }: { onOk: () => void }) {
   const { t } = useTranslation();
@@ -48,7 +47,6 @@ function Shell({ children }: { children: ReactNode }) {
     { to: "/admin/privacy", icon: <ShieldCheck size={19} />, label: t("nav.privacy"), phone: true },
     { to: "/admin/summary", icon: <FileText size={19} />, label: t("nav.summary") },
     { to: "/admin/share", icon: <QrCode size={19} />, label: t("nav.share") },
-    { to: "/admin/ratings", icon: <Star size={19} />, label: t("nav.quality") },
     { to: "/admin/settings", icon: <Settings size={19} />, label: t("nav.settings"), phone: true },
   ];
   return (
@@ -110,7 +108,6 @@ export default function AdminApp() {
           <Route path="summary" element={<Summary />} />
           <Route path="settings" element={<SettingsPage />} />
           <Route path="share" element={<Share />} />
-          <Route path="ratings" element={<Ratings />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />
         </Routes>
       </Suspense>

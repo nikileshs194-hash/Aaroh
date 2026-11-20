@@ -6,12 +6,10 @@ import Chat from "./pages/Chat";
 
 const Setup = lazy(() => import("./pages/setup/Setup"));
 const Present = lazy(() => import("./pages/Present"));
-const TeacherApp = lazy(() => import("./pages/teacher/TeacherApp"));
 const AdminApp = lazy(() => import("./pages/admin/AdminApp"));
 const Poster = lazy(() => import("./pages/print/Poster"));
 const PrivacyReport = lazy(() => import("./pages/print/PrivacyReport"));
 const SummaryPrint = lazy(() => import("./pages/print/SummaryPrint"));
-const ItemPrint = lazy(() => import("./pages/print/ItemPrint"));
 
 function Loading() {
   return (
@@ -41,12 +39,10 @@ export default function App() {
           <Route path="/setup/*" element={<Setup />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/present" element={<Present />} />
-          <Route path="/teacher/*" element={<TeacherApp />} />
           <Route path="/admin/*" element={<AdminApp />} />
           <Route path="/print/poster" element={<Poster />} />
           <Route path="/print/privacy" element={<PrivacyReport />} />
           <Route path="/print/summary" element={<SummaryPrint />} />
-          <Route path="/print/item/:id" element={<ItemPrint />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>

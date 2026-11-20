@@ -200,7 +200,7 @@ def write_md(r):
         L += ["", "Verify by opening several phones or tabs at once (manual check).", ""]
     oc = r["offline_check"]
     L += ["## Offline", "", f"- Offline check: {'PASSED' if oc['passed'] else 'FAILED'}; internet present during check: {oc['internet']}. {oc['detail']}",
-          "- For the full test: turn Wi-Fi off, chat for 5 minutes and make one lesson plan (manual).", ""]
+          "- For the full test: turn Wi-Fi off, chat for 5 minutes (manual).", ""]
     ps = r["privacy_selftest"]
     L += ["## Privacy", "", f"- Outside connections during normal use: **{r['privacy_after']['outside_count']}**",
           f"- Deliberate outside connection caught by the watcher: {'YES' if ps['caught'] else 'NO (no network to try)'} ({ps['target']})", ""]

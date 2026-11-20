@@ -1,4 +1,4 @@
-"""Admin PIN and teacher code (F20). Classroom-grade protection, not bank-grade, and we say so."""
+"""Admin PIN (F20). Classroom-grade protection, not bank-grade, and we say so."""
 from __future__ import annotations
 
 import hashlib
@@ -41,18 +41,6 @@ def set_pin(pin: str) -> None:
     db.set_setting("admin_pin_hash", _hash(pin))
 
 
-def new_teacher_code() -> str:
-    code = f"{secrets.randbelow(9000) + 1000}"
-    db.set_setting("teacher_code_hash", _hash(code))
-    return code
-
-
-def set_teacher_code(code: str) -> None:
-    if not (code.isdigit() and 4 <= len(code) <= 8):
-        raise HTTPException(400, "The teacher code must be 4 to 8 digits.")
-    db.set_setting("teacher_code_hash", _hash(code))
-
-
 def _locked(key: str) -> int:
     f = _fails.get(key)
     if f and len(f) >= MAX_TRIES and time.time() - f[-1] < LOCK_SECONDS:
@@ -65,13 +53,12 @@ def login(role: str, secret: str, client: str) -> str:
     wait = _locked(key)
     if wait:
         raise HTTPException(429, f"Too many wrong tries. Please wait about {max(1, wait // 60)} minutes.")
-    stored = db.get_setting("admin_pin_hash" if role == "admin" else "teacher_code_hash")
-    ok = _check(secret, stored) or (role == "teacher" and _check(secret, db.get_setting("admin_pin_hash")))
+    ok = role == "admin" and _check(secret, db.get_setting("admin_pin_hash"))
     if not ok:
         _fails.setdefault(key, []).append(time.time())
         _fails[key] = _fails[key][-MAX_TRIES:]
         left = MAX_TRIES - len(_fails[key])
-        raise HTTPException(401, "That code is not right." + (f" {left} tries left." if left > 0 else ""))
+        raise HTTPException(401, "That PIN is not right." + (f" {left} tries left." if left > 0 else ""))
     _fails.pop(key, None)
     tok = secrets.token_urlsafe(24)
     _tokens[tok] = (role, time.time() + TOKEN_TTL)
@@ -102,9 +89,3 @@ def require_admin(request: Request, x_auth: str | None = Header(default=None)) -
     if role_of(x_auth) != "admin":
         raise HTTPException(401, "Enter the admin PIN.")
 
-
-def require_teacher(request: Request, x_auth: str | None = Header(default=None)) -> None:
-    if not pin_is_set() and is_local(request):
-        return
-    if role_of(x_auth) not in ("teacher", "admin"):
-        raise HTTPException(401, "Enter the teacher code.")

@@ -202,7 +202,6 @@ export default function Chat() {
             <Link to="/present" className="btn-secondary justify-start"><MonitorPlay size={18} />{t("chat.present")}</Link>
             <button className="btn-secondary justify-start" onClick={() => { c.clear(); setMenu(false); toast(t("chat.cleared")); }}><Trash2 size={18} />{t("chat.clear")}</button>
             <div className="flex gap-2 pt-1 text-sm">
-              <Link to="/teacher" className="btn-ghost flex-1">{t("nav.studio")}</Link>
               <Link to="/admin" className="btn-ghost flex-1">{t("nav.admin")}</Link>
             </div>
           </div>

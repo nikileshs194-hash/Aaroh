@@ -27,7 +27,7 @@ Verify by opening several phones or tabs at once (manual check).
 ## Offline
 
 - Offline check: PASSED; internet present during check: True. Chat worked. The internet was connected during this check; turn Wi-Fi off for a full offline check.
-- For the full test: turn Wi-Fi off, chat for 5 minutes and make one lesson plan (manual).
+- For the full test: turn Wi-Fi off, chat for 5 minutes (manual).
 
 ## Privacy
 

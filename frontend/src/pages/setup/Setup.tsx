@@ -323,7 +323,7 @@ function Result() {
 }
 
 /* ---------------- Screen 6: Launch and share */
-export function ShareCard({ share, teacherCode }: { share: any; teacherCode?: string | null }) {
+export function ShareCard({ share }: { share: any }) {
   const { t } = useTranslation();
   return (
     <Card className="p-0 sm:p-0 overflow-hidden">
@@ -339,13 +339,6 @@ export function ShareCard({ share, teacherCode }: { share: any; teacherCode?: st
           </div>
         </div>
       </div>
-      {teacherCode && (
-        <div className="border-t border-line bg-teacher-soft/60 px-6 py-4">
-          <div className="label text-teacher">{t("setup.teacherCode")}</div>
-          <p className="mt-1 text-text">{t("setup.teacherCodeBody", { code: teacherCode })}</p>
-          <div className="mt-2 font-mono text-3xl font-bold tracking-[0.3em] text-teacher tnum">{teacherCode}</div>
-        </div>
-      )}
     </Card>
   );
 }
@@ -362,7 +355,7 @@ function Launch() {
   useEffect(() => { api("/api/public").then((p) => { setSchool(p.school_name === "Your School Name" ? "" : p.school_name); setAlready(!!p.pin_set && !!p.setup_done); }); }, []);
   const applyOnly = async () => {
     setBusy(true); setErr("");
-    try { await api("/api/apply", { body: {} }); setDone({ share: await api("/api/share"), teacher_code: null }); }
+    try { await api("/api/apply", { body: {} }); setDone({ share: await api("/api/share") }); }
     catch (e: any) { setErr(e.message); } finally { setBusy(false); }
   };
   const finish = async () => {
@@ -380,7 +373,7 @@ function Launch() {
       {!done && already ? (
         <Card>
           <h1 className="text-2xl font-bold">{t("setup.useThis")}</h1>
-          <p className="mt-2 text-muted">InferSmart is already set up. This applies the new recommended setting; the admin PIN and teacher code stay the same.</p>
+          <p className="mt-2 text-muted">InferSmart is already set up. This applies the new recommended setting; the admin PIN stays the same.</p>
           {err && <Notice tone="danger" className="mt-4">{err}</Notice>}
           <Button size="lg" className="mt-6" loading={busy} icon={<Play size={18} />} onClick={applyOnly}>{busy ? t("setup.starting") : t("setup.useThis")}</Button>
         </Card>
@@ -403,7 +396,7 @@ function Launch() {
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ok/15 text-ok"><Check size={22} /></span>
             <div><h1 className="text-2xl font-bold">{t("setup.launchTitle")}</h1><RunningBadge /></div>
           </div>
-          <ShareCard share={done.share} teacherCode={done.teacher_code} />
+          <ShareCard share={done.share} />
           <div className="mt-6 flex flex-wrap gap-3">
             <Button icon={<LayoutDashboard size={18} />} onClick={() => nav("/admin")}>{t("setup.openDashboard")}</Button>
             <Button variant="secondary" icon={<MessageSquare size={18} />} onClick={() => nav("/chat")}>{t("setup.tryChat")}</Button>

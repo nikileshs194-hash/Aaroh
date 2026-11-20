@@ -9,7 +9,7 @@ llama.cpp is the engine, like a car engine. On top of it we built what a school 
 They run a model with default settings for one user. They do not test each machine, predict how many students it can serve, check Kannada quality or switch models under load, and they are built for developers.
 
 **What about VectorPrime or similar tuners?**
-Command-line tools that pick a setting once. We share the idea of automatic tuning and go further: capacity for a whole class, quality per language, continuous adaptation and a teacher interface. We name them on our comparison slide.
+Command-line tools that pick a setting once. We share the idea of automatic tuning and go further: capacity for a whole class, quality per language, continuous adaptation and a simple admin interface for the school. We name them on our comparison slide.
 
 **Why not cloud AI?**
 More than a third of schools have no internet, cloud use sends children's data off the premises, and costs grow with use. Where internet exists, schools can still use both.
@@ -57,7 +57,7 @@ The core is free for schools. Income comes from deployment, training and support
 Karnataka and Kerala are already buying or building local AI. InferSmart is the open, hardware-independent layer that tunes any such PC for a whole class, and it can run their models.
 
 **What would you build next?**
-Textbook-grounded answers, voice in Kannada and Hindi, a fleet view for officials, and a shared settings database so new schools skip testing.
+Textbook-grounded answers, a teacher studio for lesson plans and quizzes (we built one and set it aside to keep this prototype student-focused), voice in Kannada and Hindi, a fleet view for officials, and a shared settings database so new schools skip testing.
 
 **Did you write the code?**
 "I designed the product, research and system, and built it with an AI coding assistant. I can explain every part and run it live."

@@ -39,7 +39,6 @@ The first time it starts, **Windows Firewall may ask whether Python can use "Pri
 | Space | Who | How to open |
 |---|---|---|
 | **Student chat** | Everyone | `http://<this-PC>:8080/` (QR code). No login. Chats stay on the student's own device. |
-| **Teacher Studio** | Teachers | `/teacher`. Enter the teacher code shown at the end of setup (Admin → Share makes a new one). |
 | **Admin console** | Lab in-charge | `/admin`. Enter the admin PIN chosen during setup. |
 
 Projector mode: `/present` (very large type on a dark background).
@@ -76,7 +75,7 @@ Projector mode: `/present` (very large type on a dark background).
 | "The AI engine is starting" for a long time | Admin → Dashboard → Restart. If it repeats, Admin → Settings → Re-test. Engine logs: `data\logs\engine_A.log`. |
 | Test says a model "needs more memory" | Close other programs, or use the lighter model. The Model library in Settings shows what fits. |
 | Numbers look different each run ("noisy") | Plug in the laptop, choose "Best performance" power mode, close other apps, run the full test. |
-| Forgot the admin PIN | Stop InferSmart, delete the `admin_pin_hash` row with any SQLite tool, or delete `data\infersmart.db` (this also deletes test results and teacher plans), then run setup again. |
+| Forgot the admin PIN | Stop InferSmart, delete the `admin_pin_hash` row with any SQLite tool, or delete `data\infersmart.db` (this also deletes test results), then run setup again. |
 | Setup failed at "Building the interface" | Check Node.js is installed; run `scripts\setup.bat` again (it resumes). |
 
 ## 8. Folder structure

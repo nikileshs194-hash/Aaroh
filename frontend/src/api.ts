@@ -2,7 +2,6 @@
 
 const TOKEN_KEY = "is_token";
 const ROLE_KEY = "is_role";
-const NAME_KEY = "is_teacher_name";
 
 export function safeGet(store: Storage | undefined, k: string): string | null {
   try { return store ? store.getItem(k) : null; } catch { return null; }
@@ -18,8 +17,6 @@ export const auth = {
   role: () => safeGet(ls, ROLE_KEY),
   set(token: string, role: string) { safeSet(ls, TOKEN_KEY, token); safeSet(ls, ROLE_KEY, role); },
   clear() { safeSet(ls, TOKEN_KEY, null); safeSet(ls, ROLE_KEY, null); },
-  teacherName: () => safeGet(ls, NAME_KEY) || "",
-  setTeacherName: (n: string) => safeSet(ls, NAME_KEY, n),
 };
 
 export function deviceId(): string {
@@ -41,8 +38,6 @@ function headers(json = true): Record<string, string> {
   if (json) h["Content-Type"] = "application/json";
   const t = auth.token();
   if (t) h["X-Auth"] = t;
-  const n = auth.teacherName();
-  if (n) h["X-Teacher"] = encodeURIComponent(n).slice(0, 60);
   return h;
 }
 

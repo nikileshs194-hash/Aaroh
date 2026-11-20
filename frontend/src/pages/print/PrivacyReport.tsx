@@ -38,7 +38,7 @@ export default function PrivacyReport() {
           </>}
           <h2 className="mt-4 text-lg font-bold">Software versions</h2>
           <p>{Object.entries(r.versions).map(([k, v]) => `${k} ${v}`).join(" · ")}</p>
-          <p className="mt-6 border-t border-[#ccc] pt-2 text-sm text-[#475467]">{r.note} Students have no accounts or logins. Teachers' templates never ask for student names.</p>
+          <p className="mt-6 border-t border-[#ccc] pt-2 text-sm text-[#475467]">{r.note} Students have no accounts or logins.</p>
           <div className="mt-10 grid grid-cols-2 gap-10 text-sm"><div className="border-t border-[#999] pt-1">Lab in-charge</div><div className="border-t border-[#999] pt-1">Head of institution</div></div>
         </div>
       )}
