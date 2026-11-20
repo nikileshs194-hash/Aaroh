@@ -449,8 +449,11 @@ async def engine_custom(body: dict = Body(...)):
         await e.start(cfg)
     except Exception as ex:
         raise HTTPException(500, str(ex))
-    save_active(cfg, b, {k: v for k, v in meta.items() if k not in ("A", "B", "saved_at")})
-    log_event("info", f"Engine restarted by the admin with {cfg.threads} threads on {cfg.model_file}.")
+    if body.get("save"):
+        # Only when asked: a one-off experiment must not replace the tested setting that comes back after a restart.
+        save_active(cfg, b, {k: v for k, v in meta.items() if k not in ("A", "B", "saved_at")})
+    log_event("info", f"Engine restarted by the admin with {cfg.threads} threads on {cfg.model_file}"
+                      f"{' (saved)' if body.get('save') else ' (temporary; Restart returns to the saved setting)'}.")
     return e.info()
 
 
