@@ -172,7 +172,6 @@ function ChatPage() {
         {c.msgs.length === 0 && (
           <section className="rise flex min-h-[calc(100dvh-9rem)] flex-col items-center justify-center pb-10">
             <div className="flex items-center gap-3 text-center">
-              <Logo size={40} withName={false} />
               <h1 className="font-display text-3xl font-normal text-ink sm:text-[2.6rem] sm:leading-tight">{hello}</h1>
             </div>
             <div className="mt-7 w-full max-w-2xl">{composer(true)}</div>

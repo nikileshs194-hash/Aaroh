@@ -1,3 +1,4 @@
+import wordmark from "../assets/aaroh-wordmark.png";
 import { useEffect, useRef, useState, type ReactNode, type ButtonHTMLAttributes } from "react";
 import { useTranslation } from "react-i18next";
 import { AlertTriangle, Check, CheckCircle2, Cpu, Info, Loader2, ShieldCheck, X, XCircle, Delete } from "lucide-react";
@@ -8,15 +9,11 @@ export function cx(...c: (string | false | null | undefined)[]) { return c.filte
 
 /* ---------- Brand mark: a rounded chip outline with a dot ("intelligence inside the box you already have") */
 export function Logo({ size = 28, withName = true, className = "" }: { size?: number; withName?: boolean; className?: string }) {
+  // The AAROH wordmark (the school's own design, background removed). Height follows the old icon size.
+  if (!withName) return null;
   return (
-    <span className={cx("inline-flex items-center gap-2", className)}>
-      <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" className="text-accent shrink-0">
-        <rect x="5" y="5" width="22" height="22" rx="7" fill="none" stroke="currentColor" strokeWidth="2.6" />
-        <circle cx="16" cy="16" r="3.6" fill="currentColor" />
-        <path d="M11 1.5v3M16 1.5v3M21 1.5v3M11 27.5v3M16 27.5v3M21 27.5v3M1.5 11h3M1.5 16h3M1.5 21h3M27.5 11h3M27.5 16h3M27.5 21h3"
-          stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-      {withName && <span className="font-bold tracking-tight text-ink" style={{ fontSize: size * 0.68 }}>Aa<span className="text-accent">roh</span></span>}
+    <span className={cx("inline-flex items-center", className)}>
+      <img src={wordmark} alt="Aaroh" draggable={false} className="brand-logo block w-auto select-none" style={{ height: Math.round(size * 0.95) }} />
     </span>
   );
 }
