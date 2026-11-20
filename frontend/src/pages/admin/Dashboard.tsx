@@ -16,13 +16,11 @@ export default function Dashboard() {
   const [eng, setEng] = useState<any>(null);
   const [settings, setSettings] = useState<any>(null);
   const [why, setWhy] = useState<string>("");
-  const [privacy, setPrivacy] = useState<any>(null);
   const [perf, setPerf] = useState<any[]>([]);
   const lastPush = useRef(0);
 
   const loadSlow = () => {
     api("/api/engines").then(setEng).catch(() => {});
-    api("/api/privacy").then(setPrivacy).catch(() => {});
     api("/api/perf?minutes=5").then(setPerf).catch(() => {});
   };
   useEffect(() => {
@@ -145,11 +143,8 @@ export default function Dashboard() {
           </Card>
         ))}
         <Card>
-          <div className="label">Privacy and engine</div>
-          <div className="mt-3 flex items-center gap-2 text-sm">
-            <ShieldCheck size={16} className="text-ok" />
-            <span>Outside connections: <b className="tnum">{privacy?.outside_count ?? 0}</b></span>
-          </div>
+          <div className="label">AI engines</div>
+          <p className="mt-2 text-sm text-muted">Restart both AI engines if answers stop coming or after changing advanced settings (about 30 s).</p>
           <Button variant="secondary" className="mt-3 w-full" icon={<RotateCw size={16} />} onClick={() => api("/api/engines/restart", { body: {} }).then(loadSlow)}>{t("admin.restart")}</Button>
         </Card>
       </div>
