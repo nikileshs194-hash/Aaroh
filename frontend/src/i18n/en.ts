@@ -79,6 +79,11 @@ const en = {
     openDashboard: "Open dashboard", tryChat: "Try the student chat",
   },
   chat: {
+    newChat: "New chat", history: "Your chats", noChats: "No chats yet. Ask your first question.",
+    today: "Today", yesterday: "Yesterday", week: "Previous 7 days", earlier: "Earlier",
+    deleteChat: "Delete chat", deleteAll: "Delete all chats on this device",
+    deleteAllAsk: "Delete all chats saved in this browser? This cannot be undone.",
+    localOnly: "Chats are saved only in this browser on this device, never on the school computer.",
     title: "Ask a question", placeholder: "Type your question", placeholderKn: "Type or speak your question in Kannada", qLang: "Language of your question and the answer", send: "Send", stop: "Stop",
     suggestions: "Try one of these",
     s1: "What is photosynthesis? Explain simply.", s2: "Why do we have seasons?", s3: "Give me 3 practice questions on fractions.", s4: "What is artificial intelligence?",

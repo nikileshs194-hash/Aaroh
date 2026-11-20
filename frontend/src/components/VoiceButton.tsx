@@ -113,8 +113,8 @@ export function QLangToggle() {
   const next = qLang === "kn" ? "en" : "kn";
   return (
     <button type="button" onClick={() => setQLang(next)} title={t("chat.qLang")} aria-label={`${t("chat.qLang")}: ${qLang === "kn" ? "ಕನ್ನಡ" : "English"}`}
-      className="btn-secondary h-12 shrink-0 gap-1.5 px-3 text-sm font-semibold">
-      <Languages size={17} className="text-accent" />
+      className="btn-secondary h-12 shrink-0 gap-1.5 px-2.5 text-sm font-semibold sm:px-3">
+      <Languages size={17} className="hidden text-accent sm:block" />
       <span lang={qLang}>{qLang === "kn" ? "ಕನ್ನಡ" : "EN"}</span>
     </button>
   );

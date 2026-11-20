@@ -1,28 +1,23 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { ArrowUp, Copy, Flag, Lightbulb, MonitorPlay, MoreVertical, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, Hourglass, RotateCcw } from "lucide-react";
-import { api, deviceId, live, safeGet, safeSet, stream, type StreamEvent } from "../api";
+import { ArrowUp, Copy, Flag, Lightbulb, MessageSquare, MonitorPlay, MoreVertical, PanelLeft, Plus, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, Hourglass, RotateCcw, X } from "lucide-react";
+import { api, deviceId, live, stream, type StreamEvent } from "../api";
+import { deleteAllChats, deleteChat, getChat, groupByDay, listChats, newId, saveChat, type Conv, type Msg } from "../chatStore";
 import { Chip, cx, Logo, Markdown, Notice, RunningBadge, toast, Dialog } from "../components/ui";
 import { QLangToggle, VoiceButton } from "../components/VoiceButton";
 import { langName } from "../i18n";
 import { usePrefs } from "../prefs";
 
-type Msg = { role: "user" | "assistant"; content: string; lang?: string; blocked?: boolean; stats?: { ttft: number; tps: number }; error?: boolean };
-const KEY = "is_chat";
-const ls = typeof localStorage !== "undefined" ? localStorage : undefined;
-const loadMsgs = (): Msg[] => { try { return JSON.parse(safeGet(ls, KEY) || "[]"); } catch { return []; } };
 
 export function useChatEngine(opts: { kind?: "student" | "present" } = {}) {
   const { qLang: lang } = usePrefs();
-  const [msgs, setMsgs] = useState<Msg[]>(opts.kind === "present" ? [] : loadMsgs());
+  const [msgs, setMsgs] = useState<Msg[]>([]);  // every visit starts with a new, empty chat
   const [busy, setBusy] = useState(false);
   const [queue, setQueue] = useState<{ position: number; eta_s: number } | null>(null);
   const [offline, setOffline] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const abort = useRef<AbortController | null>(null);
-
-  useEffect(() => { if (opts.kind !== "present") safeSet(ls, KEY, JSON.stringify(msgs.slice(-40))); }, [msgs]);
 
   async function ask(text: string, followup?: "simpler" | "example", base?: Msg[]) {
     if (busy) return;
@@ -50,7 +45,7 @@ export function useChatEngine(opts: { kind?: "student" | "present" } = {}) {
     setBusy(false); setQueue(null);
   }
   const stop = () => abort.current?.abort();
-  const clear = () => { setMsgs([]); safeSet(ls, KEY, null); };
+  const clear = () => { abort.current?.abort(); setMsgs([]); };
   const retry = () => {
     let i = msgs.length - 1;
     while (i >= 0 && msgs[i].role !== "user") i--;
@@ -63,6 +58,9 @@ export default function Chat() {
   const { t } = useTranslation();
   const { qLang: lang, theme, setTheme, size, setSize } = usePrefs();
   const c = useChatEngine();
+  const [convId, setConvId] = useState(newId);
+  const [chats, setChats] = useState<Conv[]>(() => listChats());
+  const [drawer, setDrawer] = useState(false);
   const [text, setText] = useState("");
   const [info, setInfo] = useState<any>(null);
   const [mode, setMode] = useState("quality");
@@ -75,6 +73,23 @@ export default function Chat() {
     return live((topic, data) => { if (topic === "mode") setMode(data.mode); });
   }, []);
   useEffect(() => { end.current?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [c.msgs, c.queue]);
+  // Save to this browser only: when a message is added and when an answer finishes.
+  const justOpened = useRef(false);  // opening an old chat must not move it to the top of the list
+  useEffect(() => {
+    if (justOpened.current) { justOpened.current = false; return; }
+    if (c.msgs.length) setChats(saveChat(convId, c.msgs));
+  }, [convId, c.msgs.length, c.busy]);
+
+  const leaveCurrent = () => { if (c.msgs.length) saveChat(convId, c.msgs); c.clear(); };  // keeps a half-written answer
+  const newChat = () => { leaveCurrent(); setChats(listChats()); setConvId(newId()); setText(""); setDrawer(false); input.current?.focus(); };
+  const openChat = (id: string) => {
+    if (id === convId && c.msgs.length) { setDrawer(false); return; }
+    const conv = getChat(id);
+    if (!conv) return;
+    leaveCurrent(); justOpened.current = true;
+    c.setMsgs(conv.msgs); setConvId(id); setChats(listChats()); setText(""); setDrawer(false);
+  };
+  const removeChat = (id: string) => { setChats(deleteChat(id)); if (id === convId) newChat(); };
 
   const send = (q?: string) => {
     const v = (q ?? text).trim();
@@ -87,11 +102,25 @@ export default function Chat() {
   const last = c.msgs[c.msgs.length - 1];
 
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-bg">
-      <header className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur">
+    <div className="flex h-[100dvh] bg-bg">
+      <aside className="hidden w-72 shrink-0 border-r border-line bg-surface lg:flex lg:flex-col no-print">
+        <Sidebar chats={chats} current={c.msgs.length ? convId : null} onNew={newChat} onOpen={openChat} onDelete={removeChat} />
+      </aside>
+      {drawer && (
+        <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true">
+          <div className="absolute inset-0 bg-ink/40" onClick={() => setDrawer(false)} />
+          <aside className="absolute inset-y-0 left-0 flex w-[82%] max-w-xs flex-col bg-surface shadow-xl">
+            <Sidebar chats={chats} current={c.msgs.length ? convId : null} onNew={newChat} onOpen={openChat} onDelete={removeChat} onClose={() => setDrawer(false)} />
+          </aside>
+        </div>
+      )}
+      <div className="flex min-w-0 flex-1 flex-col">
+      <header className="z-20 border-b border-line bg-surface/95 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-4 py-2.5">
-          <div className="flex items-center gap-2 min-w-0">
-            <Logo size={26} />
+          <div className="flex items-center gap-1 min-w-0">
+            <button className="btn-ghost min-h-[44px] px-2.5 lg:hidden" aria-label={t("chat.history")} onClick={() => setDrawer(true)}><PanelLeft size={20} /></button>
+            <span className="lg:hidden"><Logo size={26} /></span>
+            <button className="btn-ghost min-h-[44px] px-2.5 lg:hidden" aria-label={t("chat.newChat")} onClick={newChat}><Plus size={20} /></button>
           </div>
           <div className="flex items-center gap-1.5">
             {mode !== "quality" && <span className="badge bg-warn/10 text-warn inline-flex"><Hourglass size={12} />{t("chat.fastMode")}</span>}
@@ -101,7 +130,7 @@ export default function Chat() {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-40 pt-4">
+      <main className="flex-1 overflow-y-auto"><div className="mx-auto w-full max-w-3xl px-4 pb-8 pt-4">
         {info?.exam_mode && <Notice tone="warn" className="mb-4">{t("chat.examOff")}</Notice>}
         {c.msgs.length === 0 && (
           <section className="rise pt-6">
@@ -163,9 +192,9 @@ export default function Chat() {
         {c.offline && <div className="mt-4"><Notice tone="danger"><span className="inline-flex items-center gap-2"><WifiOff size={16} />{t("app.offlineClient", { wifi: info?.wifi_name || "school Wi-Fi" })}</span></Notice></div>}
         {c.notice && <div className="mt-4"><Notice tone="warn">{c.notice}</Notice></div>}
         <div ref={end} />
-      </main>
+      </div></main>
 
-      <footer className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-surface/95 backdrop-blur no-print">
+      <footer className="z-20 border-t border-line bg-surface/95 backdrop-blur no-print">
         <div className="mx-auto max-w-3xl px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]">
           <form className="flex items-end gap-2" onSubmit={(e) => { e.preventDefault(); c.busy ? c.stop() : send(); }}>
             <label htmlFor="q" className="sr-only">{t("chat.placeholder")}</label>
@@ -186,6 +215,7 @@ export default function Chat() {
           <p className="mt-2 text-center text-xs text-muted">{t("app.aiMistakes")}</p>
         </div>
       </footer>
+      </div>
 
       <Dialog open={menu} onClose={() => setMenu(false)} title={t("app.theme")}>
         <div className="space-y-5">
@@ -203,7 +233,7 @@ export default function Chat() {
           </div>
           <div className="flex flex-col gap-2 border-t border-line pt-4">
             <Link to="/present" className="btn-secondary justify-start"><MonitorPlay size={18} />{t("chat.present")}</Link>
-            <button className="btn-secondary justify-start" onClick={() => { c.clear(); setMenu(false); toast(t("chat.cleared")); }}><Trash2 size={18} />{t("chat.clear")}</button>
+            <button className="btn-secondary justify-start" onClick={() => { if (window.confirm(t("chat.deleteAllAsk"))) { setChats(deleteAllChats()); newChat(); setMenu(false); toast(t("chat.cleared")); } }}><Trash2 size={18} />{t("chat.deleteAll")}</button>
             <div className="flex gap-2 pt-1 text-sm">
               <Link to="/admin" className="btn-ghost flex-1">{t("nav.admin")}</Link>
             </div>
@@ -211,5 +241,48 @@ export default function Chat() {
         </div>
       </Dialog>
     </div>
+  );
+}
+
+function Sidebar({ chats, current, onNew, onOpen, onDelete, onClose }: {
+  chats: Conv[]; current: string | null; onNew: () => void; onOpen: (id: string) => void; onDelete: (id: string) => void; onClose?: () => void;
+}) {
+  const { t } = useTranslation();
+  return (
+    <>
+      <div className="flex items-center justify-between px-4 pt-4 pb-3">
+        <Logo size={26} />
+        {onClose && <button className="btn-ghost min-h-[40px] px-2" aria-label={t("app.close")} onClick={onClose}><X size={20} /></button>}
+      </div>
+      <div className="px-3">
+        <button className="btn-primary w-full justify-start" onClick={onNew}><Plus size={18} />{t("chat.newChat")}</button>
+      </div>
+      <nav className="mt-4 flex-1 overflow-y-auto px-3 pb-3" aria-label={t("chat.history")}>
+        {chats.length === 0 && <p className="px-2 text-sm text-muted">{t("chat.noChats")}</p>}
+        {groupByDay(chats).map((g) => (
+          <div key={g.label} className="mb-4">
+            <div className="label px-2 pb-1.5">{t(`chat.${g.label}`)}</div>
+            <ul className="space-y-0.5">
+              {g.items.map((conv) => (
+                <li key={conv.id} className="group relative">
+                  <button onClick={() => onOpen(conv.id)} title={conv.title}
+                    className={cx("flex min-h-[40px] w-full items-center gap-2 rounded-ctl py-2 pl-2.5 pr-9 text-left text-sm transition-colors",
+                      conv.id === current ? "bg-accent-soft font-semibold text-ink" : "text-text hover:bg-sunken")}>
+                    <MessageSquare size={15} className="shrink-0 text-muted" />
+                    <span className="truncate">{conv.title}</span>
+                  </button>
+                  <button onClick={() => onDelete(conv.id)} aria-label={`${t("chat.deleteChat")}: ${conv.title}`} title={t("chat.deleteChat")}
+                    className={cx("absolute right-1 top-1/2 -translate-y-1/2 rounded p-1.5 text-muted hover:bg-sunken hover:text-danger",
+                      conv.id === current ? "opacity-100" : "opacity-0 focus:opacity-100 group-hover:opacity-100")}>
+                    <Trash2 size={15} />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+      <p className="border-t border-line px-4 py-3 text-xs text-muted">{t("chat.localOnly")}</p>
+    </>
   );
 }
