@@ -4,6 +4,8 @@ import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
+import "@fontsource/fraunces/latin-400.css";
+import "@fontsource/fraunces/latin-500.css";
 import "@fontsource/noto-sans-kannada/kannada-400.css";
 import "@fontsource/noto-sans-kannada/kannada-600.css";
 import "@fontsource/noto-sans-devanagari/devanagari-400.css";

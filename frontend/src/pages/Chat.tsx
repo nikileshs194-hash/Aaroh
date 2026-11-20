@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { ArrowUp, Copy, Flag, Lightbulb, LogOut, MessageSquare, MonitorPlay, MoreVertical, PanelLeft, Plus, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, RotateCcw, X } from "lucide-react";
+import { ArrowUp, Calculator, Copy, Cpu, Leaf, Flag, Lightbulb, LogOut, MessageSquare, MonitorPlay, MoreVertical, PanelLeft, Plus, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, RotateCcw, X } from "lucide-react";
 import { api, deviceId, live, stream, type StreamEvent } from "../api";
 import { deleteAllChats, deleteChat, getChat, groupByDay, listChats, newId, saveChat, type ConvMeta, type Msg } from "../chatStore";
 import { StudentGate, useStudent } from "../components/StudentGate";
@@ -109,7 +109,35 @@ function ChatPage() {
     c.ask(v);
     input.current?.focus();
   };
-  const suggestions = [t("chat.s1"), t("chat.s2"), t("chat.s3"), t("chat.s4")];
+  const suggestions = [
+    { icon: Leaf, label: "Explain photosynthesis", q: t("chat.s1") },
+    { icon: Sun, label: "Why do we have seasons?", q: t("chat.s2") },
+    { icon: Calculator, label: "Practice fractions", q: t("chat.s3") },
+    { icon: Cpu, label: "What is AI?", q: t("chat.s4") },
+  ];
+  // The question box: big and centred on a new chat, at the bottom once the conversation starts.
+  const composer = (big: boolean) => (
+    <form className="composer" onSubmit={(e) => { e.preventDefault(); c.busy ? c.stop() : send(); }}>
+      <label htmlFor="q" className="sr-only">{t("chat.placeholder")}</label>
+      <textarea id="q" ref={input} rows={big ? 2 : 1} value={text} lang={lang} disabled={info?.exam_mode} autoFocus={big}
+        onChange={(e) => setText(e.target.value)}
+        onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
+        placeholder={lang === "kn" ? t("chat.placeholderKn") : "How can I help you today?"}
+        className={big ? "min-h-[64px] max-h-48" : "min-h-[44px] max-h-36"} />
+      <div className="flex items-center justify-between gap-2 px-2 pb-2">
+        <QLangToggle />
+        <div className="flex items-center gap-2">
+          <VoiceButton lang={lang} disabled={c.busy || !!info?.exam_mode}
+            onText={(v) => { setText((p) => (p.trim() ? p.trim() + " " : "") + v); input.current?.focus(); }} />
+          {c.busy ? (
+            <button type="submit" className="btn-secondary h-11 w-11 rounded-xl px-0" aria-label={t("chat.stop")}><Square size={17} /></button>
+          ) : (
+            <button type="submit" className="btn-primary h-11 w-11 rounded-xl px-0" aria-label={t("chat.send")} disabled={!text.trim()}><ArrowUp size={21} /></button>
+          )}
+        </div>
+      </div>
+    </form>
+  );
   const last = c.msgs[c.msgs.length - 1];
 
   return (
@@ -142,18 +170,20 @@ function ChatPage() {
       <main className="flex-1 overflow-y-auto"><div className="mx-auto w-full max-w-3xl px-4 pb-8 pt-4">
         {info?.exam_mode && <Notice tone="warn" className="mb-4">{t("chat.examOff")}</Notice>}
         {c.msgs.length === 0 && (
-          <section className="rise pt-6">
-            <h1 className="text-2xl font-bold sm:text-3xl">{hello.title}</h1>
-            <p className="mt-1 text-lg text-muted">{hello.line}</p>
-            <h2 className="label mt-8 mb-3">{t("chat.suggestions")}</h2>
-            <div className="grid gap-2.5 sm:grid-cols-2">
+          <section className="rise flex min-h-[calc(100dvh-9rem)] flex-col items-center justify-center pb-10">
+            <div className="flex items-center gap-3 text-center">
+              <Logo size={40} withName={false} />
+              <h1 className="font-display text-3xl font-normal text-ink sm:text-[2.6rem] sm:leading-tight">{hello}</h1>
+            </div>
+            <div className="mt-7 w-full max-w-2xl">{composer(true)}</div>
+            <div className="mt-4 flex max-w-2xl flex-wrap justify-center gap-2">
               {suggestions.map((s, i) => (
-                <button key={i} onClick={() => send(s)} className="card flex items-start gap-3 p-4 text-left transition-colors hover:border-accent/50 hover:bg-accent-soft/40 min-h-[64px]">
-                  <Sparkles size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
-                  <span>{s}</span>
+                <button key={i} className="chip-suggest" onClick={() => send(s.q)}>
+                  <s.icon size={16} className="text-accent" aria-hidden="true" />{s.label}
                 </button>
               ))}
             </div>
+            <p className="mt-6 text-xs text-muted">{t("app.aiMistakes")}</p>
           </section>
         )}
 
@@ -203,27 +233,14 @@ function ChatPage() {
         <div ref={end} />
       </div></main>
 
-      <footer className="z-20 border-t border-line bg-surface/95 backdrop-blur no-print">
-        <div className="mx-auto max-w-3xl px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]">
-          <form className="flex items-end gap-2" onSubmit={(e) => { e.preventDefault(); c.busy ? c.stop() : send(); }}>
-            <label htmlFor="q" className="sr-only">{t("chat.placeholder")}</label>
-            <textarea id="q" ref={input} rows={1} value={text} lang={lang} disabled={info?.exam_mode}
-              onChange={(e) => setText(e.target.value)}
-              onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
-              placeholder={lang === "kn" ? t("chat.placeholderKn") : t("chat.placeholder")}
-              className="input max-h-36 min-h-[48px] flex-1 resize-none py-3" />
-            <QLangToggle />
-            <VoiceButton lang={lang} disabled={c.busy || !!info?.exam_mode}
-              onText={(v) => { setText((p) => (p.trim() ? p.trim() + " " : "") + v); input.current?.focus(); }} />
-            {c.busy ? (
-              <button type="submit" className="btn-secondary h-12 w-12 px-0" aria-label={t("chat.stop")}><Square size={18} /></button>
-            ) : (
-              <button type="submit" className="btn-primary h-12 w-12 px-0" aria-label={t("chat.send")} disabled={!text.trim()}><ArrowUp size={22} /></button>
-            )}
-          </form>
-          <p className="mt-2 text-center text-xs text-muted">{t("app.aiMistakes")}</p>
-        </div>
-      </footer>
+      {c.msgs.length > 0 && (
+        <footer className="z-20 bg-bg/95 backdrop-blur no-print">
+          <div className="mx-auto max-w-3xl px-4 pt-2 pb-[max(10px,env(safe-area-inset-bottom))]">
+            {composer(false)}
+            <p className="mt-1.5 text-center text-xs text-muted">{t("app.aiMistakes")}</p>
+          </div>
+        </footer>
+      )}
       </div>
 
       <Dialog open={menu} onClose={() => setMenu(false)} title={t("app.theme")}>
@@ -302,23 +319,19 @@ function Sidebar({ chats, current, onNew, onOpen, onDelete, onClose, user, onLog
   );
 }
 
-/* Friendly, changing welcome like "Good evening, Sukhi" + "What would you like to learn today?" */
-const LINES = [
-  "What would you like to learn today?",
-  "How can I help you today?",
-  "What's on your mind? Ask me anything.",
-  "Ready to learn something new?",
-  "Stuck on a topic? Let's work it out together.",
-  "Which subject shall we explore today?",
-  "Got a doubt? I'm here to help.",
-  "What are you curious about today?",
-  "Let's make studying easier. What do you need?",
-  "Homework, revision or a new idea? Just ask.",
+/* Friendly welcome with the student's name; a different one for every new chat. */
+const GREETINGS = [
+  (n: string) => `Hey ${n}, how's it going?`,
+  (n: string) => `Hi ${n}! What's on your mind?`,
+  (n: string) => `Welcome back, ${n}`,
+  (n: string) => `Hello ${n}, ready to learn something new?`,
+  (n: string) => `Good to see you, ${n}`,
+  (n: string) => `${n}, how are things?`,
+  (n: string) => `Hey ${n}, what shall we explore today?`,
+  (n: string) => `Hi ${n}, let's figure it out together`,
 ];
-function greeting(name: string): { title: string; line: string } {
+function greeting(name: string): string {
   const first = (name || "").trim().split(/\s+/)[0] || "there";
   const nice = first.charAt(0).toUpperCase() + first.slice(1);
-  const h = new Date().getHours();
-  const part = h < 5 ? "Hello" : h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
-  return { title: `${part}, ${nice}`, line: LINES[Math.floor(Math.random() * LINES.length)] };
+  return GREETINGS[Math.floor(Math.random() * GREETINGS.length)](nice);
 }
