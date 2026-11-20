@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowUp, Copy, Flag, Lightbulb, LogOut, MessageSquare, MonitorPlay, MoreVertical, PanelLeft, Plus, Sparkles, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, RotateCcw, X } from "lucide-react";
@@ -65,6 +65,7 @@ function ChatPage() {
   const { qLang: lang, theme, setTheme, size, setSize } = usePrefs();
   const c = useChatEngine();
   const [convId, setConvId] = useState(newId);
+  const hello = useMemo(() => greeting(user.name), [convId, user.name]);  // a fresh friendly line for every new chat
   const [chats, setChats] = useState<ConvMeta[]>([]);
   const refresh = () => listChats().then(setChats).catch(() => {});
   useEffect(() => { refresh(); }, []);
@@ -142,8 +143,8 @@ function ChatPage() {
         {info?.exam_mode && <Notice tone="warn" className="mb-4">{t("chat.examOff")}</Notice>}
         {c.msgs.length === 0 && (
           <section className="rise pt-6">
-            <h1 className="text-2xl font-bold sm:text-3xl">{t("chat.title")}</h1>
-            <p className="mt-1 text-muted">{t("chat.privateNote")}</p>
+            <h1 className="text-2xl font-bold sm:text-3xl">{hello.title}</h1>
+            <p className="mt-1 text-lg text-muted">{hello.line}</p>
             <h2 className="label mt-8 mb-3">{t("chat.suggestions")}</h2>
             <div className="grid gap-2.5 sm:grid-cols-2">
               {suggestions.map((s, i) => (
@@ -299,4 +300,25 @@ function Sidebar({ chats, current, onNew, onOpen, onDelete, onClose, user, onLog
       </div>
     </>
   );
+}
+
+/* Friendly, changing welcome like "Good evening, Sukhi" + "What would you like to learn today?" */
+const LINES = [
+  "What would you like to learn today?",
+  "How can I help you today?",
+  "What's on your mind? Ask me anything.",
+  "Ready to learn something new?",
+  "Stuck on a topic? Let's work it out together.",
+  "Which subject shall we explore today?",
+  "Got a doubt? I'm here to help.",
+  "What are you curious about today?",
+  "Let's make studying easier. What do you need?",
+  "Homework, revision or a new idea? Just ask.",
+];
+function greeting(name: string): { title: string; line: string } {
+  const first = (name || "").trim().split(/\s+/)[0] || "there";
+  const nice = first.charAt(0).toUpperCase() + first.slice(1);
+  const h = new Date().getHours();
+  const part = h < 5 ? "Hello" : h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
+  return { title: `${part}, ${nice}`, line: LINES[Math.floor(Math.random() * LINES.length)] };
 }
