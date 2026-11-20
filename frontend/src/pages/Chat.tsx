@@ -8,6 +8,7 @@ import { StudentGate, useStudent } from "../components/StudentGate";
 import { pickSuggestions } from "../suggestions";
 import { Chip, cx, Logo, Markdown, Notice, toast, Dialog } from "../components/ui";
 import { QLangToggle, VoiceButton } from "../components/VoiceButton";
+import { DotField } from "../components/DotField";
 import { langName } from "../i18n";
 import { usePrefs } from "../prefs";
 
@@ -149,8 +150,9 @@ function ChatPage() {
           </aside>
         </div>
       )}
-      <div className="flex min-w-0 flex-1 flex-col">
-      <header className="z-20 border-b border-line bg-surface/95 backdrop-blur">
+      <div className="relative flex min-w-0 flex-1 flex-col">
+      <DotField />
+      <header className="relative z-20 border-b border-line bg-surface/95 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-4 py-2.5">
           <div className="flex items-center gap-1 min-w-0">
             <button className="btn-ghost min-h-[44px] px-2.5 lg:hidden" aria-label={t("chat.history")} onClick={() => setDrawer(true)}><PanelLeft size={20} /></button>
@@ -163,7 +165,7 @@ function ChatPage() {
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto"><div className="mx-auto w-full max-w-3xl px-4 pb-8 pt-4">
+      <main className="relative z-10 flex-1 overflow-y-auto"><div className="mx-auto w-full max-w-3xl px-4 pb-8 pt-4">
         {info?.exam_mode && <Notice tone="warn" className="mb-4">{t("chat.examOff")}</Notice>}
         {c.msgs.length === 0 && (
           <section className="rise flex min-h-[calc(100dvh-9rem)] flex-col items-center justify-center pb-10">
@@ -229,7 +231,7 @@ function ChatPage() {
       </div></main>
 
       {c.msgs.length > 0 && (
-        <footer className="z-20 bg-bg/95 backdrop-blur no-print">
+        <footer className="relative z-20 bg-bg/90 backdrop-blur-sm no-print">
           <div className="mx-auto max-w-3xl px-4 pt-2 pb-[max(10px,env(safe-area-inset-bottom))]">
             {composer(false)}
             <p className="mt-1.5 text-center text-xs text-muted">{t("app.aiMistakes")}</p>
