@@ -67,6 +67,31 @@ def max_params_b(budget_gb: float) -> float:
     return max(0.0, round((budget_gb - 1.0) / 0.7, 1))
 
 
+_BW: float | None = None
+
+
+def memory_bandwidth_gbs() -> float | None:
+    """Rough memory speed (GB/s) from copying a 256 MB block a few times; measured once per start.
+    CPU answer writing is usually limited by memory speed, so this explains why one PC writes faster than another."""
+    global _BW
+    if _BW is None:
+        try:
+            import numpy as np
+            a = np.ones(32 * 1024 * 1024, dtype=np.float64)  # 256 MB
+            b = np.empty_like(a)
+            best = 0.0
+            for _ in range(4):
+                t = time.perf_counter()
+                np.copyto(b, a)
+                dt = time.perf_counter() - t
+                best = max(best, 2 * a.nbytes / dt / 1e9)   # read + write
+            del a, b
+            _BW = round(best, 1)
+        except Exception:
+            _BW = None
+    return _BW
+
+
 def scan() -> dict:
     cpu = _cpu_info()
     vm = psutil.virtual_memory()
@@ -108,6 +133,7 @@ def scan() -> dict:
     # memory limit, and a processor-speed limit so the promise stays usable on a CPU
     p["max_params_b"] = min(max_params_b(p["mem_budget_gb"]), {"entry": 2.0, "standard": 4.0, "strong": 8.0}[p["class"]])
     p["passport_id"] = passport_id(real)
+    p["mem_bandwidth_gbs"] = memory_bandwidth_gbs()
     p["scanned_at"] = time.time()
     return p
 

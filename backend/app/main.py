@@ -775,7 +775,7 @@ def get_settings():
 
 EDITABLE = {"min_tps", "max_ttft", "quality_margin", "quality_floor", "quality_n", "theme", "text_size", "ui_language",
             "autostart", "lock_mode", "exam_mode", "school_name", "blocked_topics", "slots", "ctx_per_slot",
-            "wifi_name", "languages", "goal", "signup_open", "textbooks_on"}
+            "wifi_name", "languages", "goal", "signup_open", "textbooks_on", "kv_cache"}
 
 
 @app.put("/api/settings", tags=["admin"], dependencies=ADMIN)

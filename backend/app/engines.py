@@ -15,6 +15,14 @@ from .config import ENGINE_EXE, ENGINE_PORTS, LOG_DIR
 from .events import bus, log_event
 
 
+def _kv_mode() -> str:
+    """'q8_0' (default, measured: same speed and accuracy, less memory) or 'f16' (llama.cpp default)."""
+    try:
+        return "f16" if db.get_setting("kv_cache") == "f16" else "q8_0"
+    except Exception:
+        return "q8_0"
+
+
 @dataclass
 class EngineConfig:
     model_file: str
@@ -89,6 +97,11 @@ class Engine:
             args += ["-t", str(cfg.threads), "-tb", str(tb)]
         if cfg.batch > 0:
             args += ["-b", str(cfg.batch), "-ub", str(min(cfg.batch, 512))]
+        # From the CPU-inference paper (arXiv:2407.07304): keep the attention memory (KV cache) in 8-bit, which saves
+        # memory without losing accuracy; flash attention is needed for that and was also measured faster here.
+        # Engine-default runs (threads 0, the before-vs-after comparison) keep llama.cpp's own defaults.
+        if cfg.threads > 0 and _kv_mode() == "q8_0":
+            args += ["-fa", "on", "-ctk", "q8_0", "-ctv", "q8_0"]
         logf = open(LOG_DIR / f"engine_{self.name}.log", "ab")
         logf.write(f"\n==== {time.ctime()} start {' '.join(args)}\n".encode())
         logf.flush()

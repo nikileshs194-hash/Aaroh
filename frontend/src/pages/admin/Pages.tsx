@@ -200,6 +200,9 @@ export function SettingsPage() {
         <details>
           <summary className="cursor-pointer text-sm font-medium text-accent">{t("app.showDetails")}</summary>
           <div className="mt-3 space-y-2">
+            <Toggle id="kv" checked={s.kv_cache !== "f16"} onChange={(v) => put({ kv_cache: v ? "q8_0" : "f16" })}
+              label="Save memory: 8-bit attention memory + flash attention"
+              hint="From the CPU-inference research (arXiv:2407.07304). Measured here: same speed and accuracy, less memory. Applies after Restart." />
             <Num k="slots" label="Parallel answers per engine (slots)" step={1} min={1} />
             <Num k="ctx_per_slot" label="Context length per slot (tokens)" step={512} min={512} />
             <p className="text-xs text-muted">Changes apply the next time the engine starts. <Link className="text-accent" to="/admin">Restart from the dashboard.</Link></p>

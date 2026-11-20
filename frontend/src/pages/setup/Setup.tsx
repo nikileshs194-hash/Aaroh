@@ -69,7 +69,7 @@ export function PassportCard({ hw, compact = false }: { hw: any; compact?: boole
       <div className="grid grid-cols-2 gap-px bg-line sm:grid-cols-4">
         {[
           { icon: <Cpu size={18} />, k: hw.cpu, v: `${t("setup.cores", { n: hw.cores })} · ${t("setup.threads", { n: hw.threads })}` },
-          { icon: <MemoryStick size={18} />, k: t("setup.memory", { n: hw.mem_total_gb }), v: `${hw.mem_free_gb} GB free now` },
+          { icon: <MemoryStick size={18} />, k: t("setup.memory", { n: hw.mem_total_gb }), v: `${hw.mem_free_gb} GB free now${hw.mem_bandwidth_gbs ? ` · memory speed (1 core) ${hw.mem_bandwidth_gbs} GB/s` : ""}` },
           { icon: <HardDrive size={18} />, k: t("setup.diskFree", { n: hw.disk_free_gb }), v: hw.os },
           { icon: <Zap size={18} />, k: t("setup.fastMaths"), v: hw.avx512 ? "AVX-512" : hw.avx2 ? "AVX2" : hw.neon ? "NEON" : "basic" },
         ].map((x, i) => (
