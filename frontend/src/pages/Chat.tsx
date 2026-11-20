@@ -153,7 +153,7 @@ function ChatPage() {
       <div className="relative flex min-w-0 flex-1 flex-col">
       <DotField />
       <header className="relative z-20 border-b border-line bg-surface/95 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between gap-2 px-4 py-2.5">
+        <div className="flex items-center justify-between gap-2 px-3 py-2.5 sm:px-4">
           <div className="flex items-center gap-1 min-w-0">
             <button className="btn-ghost min-h-[44px] px-2.5 lg:hidden" aria-label={t("chat.history")} onClick={() => setDrawer(true)}><PanelLeft size={20} /></button>
             <span className="lg:hidden"><Logo size={26} /></span>
