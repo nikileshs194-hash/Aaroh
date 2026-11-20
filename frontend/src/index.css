@@ -172,3 +172,37 @@ h1, h2, h3 { @apply text-ink; letter-spacing: -0.015em; }
 .thinking-steps li { display: flex; align-items: center; gap: 10px; font-size: .92rem; animation: think-in .35s ease-out; }
 .thinking-steps li.is-done { color: rgb(var(--muted)); }
 .thinking-steps li .thinking-mark, .thinking-steps li svg { width: 26px; justify-content: center; flex-shrink: 0; }
+
+/* ---------- Opening animation (AAROH wordmark), about 7 s ---------- */
+.splash { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center;
+  background: rgb(var(--bg)); transition: opacity .6s ease; }
+.splash.is-leaving { opacity: 0; }
+.splash-stage { position: relative; width: min(72vw, 620px); aspect-ratio: 944 / 208; }
+.splash-logo { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; user-select: none;
+  animation: splash-in 1s cubic-bezier(.2,.7,.2,1) 1.1s forwards; }
+@keyframes splash-in { 0% { opacity: 0; filter: blur(14px); transform: scale(1.08); }
+  60% { opacity: .85; filter: blur(3px); } 100% { opacity: 1; filter: blur(0); transform: scale(1); } }
+.splash-glint { position: absolute; inset: 0; pointer-events: none; -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  background: linear-gradient(105deg, transparent 0%, transparent 38%, rgba(255,255,255,.85) 48%, rgba(190,245,235,.6) 52%, transparent 62%, transparent 100%);
+  background-size: 300% 100%; background-position: 130% 0; opacity: 0;
+  animation: splash-glint 1.4s ease-in-out 2.4s forwards; }
+@keyframes splash-glint { 0% { opacity: 1; background-position: 130% 0; } 90% { opacity: 1; } 100% { opacity: 0; background-position: -60% 0; } }
+.splash-streak { position: absolute; left: -6%; width: 112%; top: 4%; height: 112%; overflow: visible; pointer-events: none;
+  stroke-dasharray: 320 2200; stroke-dashoffset: 320; opacity: 0; filter: drop-shadow(0 0 5px rgba(47,163,145,.75)) drop-shadow(0 0 12px rgba(127,220,203,.6));
+  animation: splash-streak 1.3s cubic-bezier(.45,.05,.3,1) 3.9s forwards; }
+@keyframes splash-streak { 0% { opacity: 0; stroke-dashoffset: 320; } 12% { opacity: 1; } 85% { opacity: 1; }
+  100% { opacity: 0; stroke-dashoffset: -1500; } }
+.splash-spark { position: absolute; right: -3%; top: 54%; width: 34px; height: 34px; border-radius: 9999px; opacity: 0;
+  background: radial-gradient(circle, #fff 0%, #bff3ea 25%, rgba(47,163,145,.55) 45%, transparent 70%); box-shadow: 0 0 18px rgba(127,220,203,.8);
+  animation: splash-spark .8s ease-out 4.95s forwards; }
+@keyframes splash-spark { 0% { opacity: 0; transform: scale(.3); } 35% { opacity: 1; transform: scale(1.6); } 100% { opacity: 0; transform: scale(.6); } }
+.splash-shadow { position: absolute; left: 12%; right: 12%; bottom: -34%; height: 10px; border-radius: 9999px; opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(15,40,40,.22), transparent 70%); filter: blur(3px);
+  animation: splash-shadow 1s ease-out 1.5s forwards; }
+@keyframes splash-shadow { to { opacity: 1; } }
+[data-theme="dark"] .splash-logo, [data-theme="contrast"] .splash-logo { filter: brightness(2.1) saturate(.85); }
+@media (prefers-reduced-motion: reduce) {
+  .splash-logo { animation: splash-fade .5s ease forwards; } .splash-glint, .splash-streak, .splash-spark { display: none; }
+}
+@keyframes splash-fade { to { opacity: 1; } }

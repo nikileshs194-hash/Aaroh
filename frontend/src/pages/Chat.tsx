@@ -10,6 +10,7 @@ import { Chip, cx, Logo, Markdown, Notice, toast, Dialog } from "../components/u
 import { QLangToggle, VoiceButton } from "../components/VoiceButton";
 import { DotField } from "../components/DotField";
 import { Thinking } from "../components/Thinking";
+import { Splash } from "../components/Splash";
 import { langName } from "../i18n";
 import { usePrefs } from "../prefs";
 
@@ -60,7 +61,7 @@ export function useChatEngine(opts: { kind?: "student" | "present" } = {}) {
 }
 
 export default function Chat() {
-  return <StudentGate><ChatPage /></StudentGate>;
+  return <><Splash /><StudentGate><ChatPage /></StudentGate></>;
 }
 
 function ChatPage() {
