@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { ArrowUp, Calculator, Copy, Cpu, Leaf, Flag, Lightbulb, LogOut, MessageSquare, MonitorPlay, MoreVertical, PanelLeft, Plus, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, RotateCcw, X } from "lucide-react";
+import { ArrowUp, Copy, Flag, Lightbulb, LogOut, MessageSquare, MonitorPlay, MoreVertical, PanelLeft, Plus, Square, Trash2, Type, Moon, Sun, Contrast, WifiOff, RotateCcw, X } from "lucide-react";
 import { api, deviceId, live, stream, type StreamEvent } from "../api";
 import { deleteAllChats, deleteChat, getChat, groupByDay, listChats, newId, saveChat, type ConvMeta, type Msg } from "../chatStore";
 import { StudentGate, useStudent } from "../components/StudentGate";
+import { pickSuggestions } from "../suggestions";
 import { Chip, cx, Logo, Markdown, Notice, toast, Dialog } from "../components/ui";
 import { QLangToggle, VoiceButton } from "../components/VoiceButton";
 import { langName } from "../i18n";
@@ -109,12 +110,7 @@ function ChatPage() {
     c.ask(v);
     input.current?.focus();
   };
-  const suggestions = [
-    { icon: Leaf, label: "Explain photosynthesis", q: t("chat.s1") },
-    { icon: Sun, label: "Why do we have seasons?", q: t("chat.s2") },
-    { icon: Calculator, label: "Practice fractions", q: t("chat.s3") },
-    { icon: Cpu, label: "What is AI?", q: t("chat.s4") },
-  ];
+  const suggestions = useMemo(() => pickSuggestions(lang), [convId, lang]);  // a fresh, varied set for every new chat
   // The question box: big and centred on a new chat, at the bottom once the conversation starts.
   const composer = (big: boolean) => (
     <form className="composer" onSubmit={(e) => { e.preventDefault(); c.busy ? c.stop() : send(); }}>
