@@ -15,16 +15,16 @@ Command-line tools that pick a setting once. We share the idea of automatic tuni
 More than a third of schools have no internet, cloud use sends children's data off the premises, and costs grow with use. Where internet exists, schools can still use both.
 
 **Small models make mistakes.**
-Yes. We measure quality, reject settings that lower it, label every answer "AI can make mistakes", put a "please check" label on Kannada and Hindi until a teacher reviews, and position it for explanations and drafts, not exams.
+Yes. We measure quality, reject settings that lower it, label every answer "AI can make mistakes", put a "please check" label on Kannada until a teacher reviews, and position it for explanations and drafts, not exams.
 
 **How good is Kannada?**
-Weaker than English, and we show the measured score: on a Kannada reading test (Belebele, 40 questions) the 2B model scored 65%, the 4B 82% and the 0.8B 28%, so the 0.8B was rejected automatically. In free writing the 2B's Kannada is noticeably weaker than its test score suggests, so for Kannada-heavy classes choose the "best quality" goal, which picks the 4B; it writes at about half the speed (6.4 vs 13.8 tokens/s), so the PC serves fewer students at once. That is exactly why the quality guard exists. Teachers review Kannada output; better Indian-language models drop in as they are released.
+Weaker than English, and we show it. On a Kannada reading test (Belebele, 40 questions) the 2B model scored 65% and the 4B 82.5%, so Aaroh sends Kannada questions to the 4B model automatically while English stays on the faster 2B (Kannada answers start in about 1.5 to 2 s and write at about 6 tokens a second). Simple facts come out right; science explanations can still contain mistakes, which is why every Kannada answer carries a "please check with your teacher" label. Better Kannada models drop in as they are released, and Aaroh measures them the same way.
 
 **How did you measure "serves N students"?**
 Virtual students ask realistic classroom questions, read, pause 10 to 30 seconds, and ask again, in steps of 1, 2, 4, 6, 8, 10 and 12. N is the largest group where the typical writing speed stays at least 5 tokens a second and the slow-case (95th percentile) first word stays within 3 seconds. It is labelled a simulation, and we checked it with real tabs and phones.
 
 **What did you discover by measuring?**
-On this laptop, *reading* the question is fastest with all 16 logical threads (compute is the limit), while *writing* the answer is fastest on the 12 physical cores; pushing writing onto all 16 threads was about 20% slower in llama.cpp's own benchmark (11 vs 14 tokens/s for the 2B model). Giving prompt reading more threads made it 45% faster for the 4B model. InferSmart sets the two separately; a default setup uses one number for both. *Show: Results table, "half the cores" vs "all cores".*
+On this laptop, *reading* the question is fastest with all 16 logical threads (compute is the limit), while *writing* the answer is fastest on the 12 physical cores; pushing writing onto all 16 threads was about 20% slower in llama.cpp's own benchmark (11 vs 14 tokens/s for the 2B model). Giving prompt reading more threads made it 45% faster for the 4B model. Aaroh sets the two separately; a default setup uses one number for both. *Show: Results table, "half the cores" vs "all cores".*
 
 **Where is the AI or ML?**
 The product runs and evaluates language models; selection is a multi-objective optimisation over measured data (speed, quality, memory, first word, weighted by the school's goal); the controller is an autonomous feedback loop; the roadmap adds learning the best setting from many schools' results.
@@ -42,10 +42,10 @@ It is built for data minimisation: no student accounts, no chats stored on the s
 Every second it reads the operating system's own connection list for our programs. Press "Test the watcher": it deliberately opens one outside connection and shows it was caught. We count connections, not bytes, because a reliable per-program byte count is not available everywhere.
 
 **What if the PC is very old?**
-The Hardware Passport says honestly what it can do, and the classroom PC simulator lets us test a 4-core, 8 GB machine on this laptop (results are labelled "Simulated"). A 4 GB PC can still run a tiny model for a few users; if it cannot, InferSmart says so instead of failing in class.
+The Hardware Passport says honestly what it can do, and the classroom PC simulator lets us test a 4-core, 8 GB machine on this laptop (results are labelled "Simulated"). A 4 GB PC can still run a tiny model for a few users; if it cannot, Aaroh says so instead of failing in class.
 
 **Power cuts?**
-The engine watchdog restarts a crashed engine by itself (measured: back in 5 s), and with "start when switched on" InferSmart comes back with the last good setting after a reboot.
+The engine watchdog restarts a crashed engine by itself (measured: back in 5 s), and with "start when switched on" Aaroh comes back with the last good setting after a reboot.
 
 **Can it scale to a lab of 40?**
 One PC serves as many as its capacity allows; beyond that, add a second PC. The capacity planner tells you exactly when that is needed.
@@ -54,10 +54,10 @@ One PC serves as many as its capacity allows; beyond that, add a second PC. The 
 The core is free for schools. Income comes from deployment, training and support for state programmes, CSR funders and low-cost AI-PC makers.
 
 **Why would a state choose this over its own system?**
-Karnataka and Kerala are already buying or building local AI. InferSmart is the open, hardware-independent layer that tunes any such PC for a whole class, and it can run their models.
+Karnataka and Kerala are already buying or building local AI. Aaroh is the open, hardware-independent layer that tunes any such PC for a whole class, and it can run their models.
 
 **What would you build next?**
-Textbook-grounded answers, a teacher studio for lesson plans and quizzes (we built one and set it aside to keep this prototype student-focused), voice in Kannada and Hindi, a fleet view for officials, and a shared settings database so new schools skip testing.
+Textbook-grounded answers, a teacher studio for lesson plans and quizzes (we built one and set it aside to keep this prototype student-focused), voice input in English and Kannada, a fleet view for officials, and a shared settings database so new schools skip testing.
 
 **Did you write the code?**
 "I designed the product, research and system, and built it with an AI coding assistant. I can explain every part and run it live."

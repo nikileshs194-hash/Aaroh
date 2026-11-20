@@ -1,4 +1,4 @@
-' Starts InferSmart in the background when Windows starts (added by Settings > Start-up).
+' Starts Aaroh in the background when Windows starts (added by Settings > Start-up).
 Set fso = CreateObject("Scripting.FileSystemObject")
 root = fso.GetParentFolderName(fso.GetParentFolderName(WScript.ScriptFullName))
 Set sh = CreateObject("WScript.Shell")

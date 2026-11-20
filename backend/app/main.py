@@ -1,4 +1,4 @@
-"""InferSmart control centre (M2): every service in D6, the live-update channel and the web interface."""
+"""Aaroh control centre (M2): every service in D6, the live-update channel and the web interface."""
 from __future__ import annotations
 
 import asyncio
@@ -35,7 +35,7 @@ async def autostart() -> None:
         return
     try:
         await tester.start_engines(a, b)
-        log_event("restart", "InferSmart started by itself with the last good setting.")
+        log_event("restart", "Aaroh started by itself with the last good setting.")
     except Exception as ex:
         log_event("error", f"Could not start the AI engine automatically: {ex}. Open Settings and press Re-test.")
 
@@ -55,8 +55,8 @@ async def lifespan(app: FastAPI):
     await engines.stop_all()
 
 
-app = FastAPI(title="InferSmart control centre", version=APP_VERSION, lifespan=lifespan,
-              description="Services used by the InferSmart interface. Available only on the school network.")
+app = FastAPI(title="Aaroh control centre", version=APP_VERSION, lifespan=lifespan,
+              description="Services used by the Aaroh interface. Available only on the school network.")
 
 
 def sse(gen):
@@ -163,7 +163,7 @@ async def chat(request: Request, body: dict = Body(...), x_auth: str | None = He
         system = {"role": "system", "content": safety.SYSTEM_PROMPT + " " + safety.language_instruction(lang)}
         cancel = asyncio.Event()
         try:
-            async for ev in router.chat([system] + msgs, device, kind, int(body.get("max_tokens", 600)), cancel):
+            async for ev in router.chat([system] + msgs, device, kind, int(body.get("max_tokens", 600)), cancel, lang=lang):
                 if await request.is_disconnected():
                     cancel.set()
                 yield ev
@@ -185,7 +185,7 @@ def report_answer(body: dict = Body(...)):
 @app.get("/v1/models", tags=["chat"])
 def v1_models():
     data = [{"id": e.config.model_file, "object": "model", "owned_by": "local"} for e in engines.engines.values()
-            if e.status == "ready" and e.config and e.name in ("A", "B")]
+            if e.status == "ready" and e.config and e.name in ("A", "B", "K")]
     return {"object": "list", "data": data}
 
 
@@ -276,7 +276,7 @@ async def setup_finish(body: dict = Body(...)):
         await tester.apply_selection(run, body.get("use", "recommended"))
     db.set_setting("setup_done", True)
     db.set_setting("setup_step", "done")
-    log_event("setup", "Setup finished. InferSmart is ready for the class.")
+    log_event("setup", "Setup finished. Aaroh is ready for the class.")
     token = auth.login("admin", str(body["pin"]), "setup") if body.get("pin") else None
     return {"token": token, "share": share_info()}
 
@@ -359,10 +359,20 @@ def reselect(body: dict = Body(...)):
     run = tester.latest_run()
     if not run:
         raise HTTPException(404, "Run the test first.")
-    goal = body.get("goal", "balanced")
+    goal = body.get("goal") or run["data"].get("goal") or "balanced"
     hw = run["data"].get("hardware") or hardware.scan()
-    sel = selection.select(run["results"], hw["mem_budget_gb"], goal, float(db.get_setting("min_tps")),
-                           run["data"].get("languages", ["en"]))
+    langs = body.get("languages") or run["data"].get("languages", ["en"])
+    if body.get("languages"):
+        # Re-judge quality for the chosen languages from the saved scores (no re-test).
+        for r in run["results"]:
+            r["quality"] = {k: v for k, v in (r.get("quality") or {}).items() if k in langs}
+        tester.apply_quality(run["results"], run["data"].get("quality") or {}, models_lib.list_models(hw["mem_budget_gb"]),
+                             langs, float(db.get_setting("quality_margin")), float(db.get_setting("quality_floor")))
+        for r in run["results"]:
+            db.execute("UPDATE test_result SET data=? WHERE run_id=? AND key=?", (json.dumps(r), run["id"], r["key"]))
+        run["data"]["languages"] = langs
+        db.set_setting("languages", langs)
+    sel = selection.select(run["results"], hw["mem_budget_gb"], goal, float(db.get_setting("min_tps")), langs)
     run["data"]["selection"] = tester._sel_brief(sel)
     run["data"]["goal"] = goal
     db.execute("UPDATE test_run SET data=?, goal=? WHERE id=?", (json.dumps(run["data"]), goal, run["id"]))
@@ -465,7 +475,7 @@ async def engine_restart():
 
 @app.post("/api/engines/stop", tags=["admin"], dependencies=ADMIN)
 async def engine_stop():
-    for n in ("A", "B"):
+    for n in ("A", "B", "K"):
         await engines[n].stop()
     log_event("info", "AI engines stopped by the admin.")
     return engines.info()
@@ -567,7 +577,13 @@ def summary():
     answers = db.one("SELECT COUNT(*) AS n FROM perf_log WHERE ts>?", (week,))["n"]
     last_check = db.one("SELECT * FROM offline_check WHERE passed=1 ORDER BY id DESC LIMIT 1")
     langs = {}
+    chosen_langs = db.get_setting("languages") or ["en", "kn"]
+    active = db.get_setting("active_config") or {}
     for lang, v in (q.get("quality") or {}).items():
+        if lang not in chosen_langs:
+            continue
+        if lang == "kn" and active.get("kannada_acc") is not None:
+            v = {**v, "acc": active["kannada_acc"]}  # Kannada is answered by the Kannada model
         acc = v.get("acc") or 0
         langs[lang] = {"acc": acc, "n": v.get("n"), "label": "good" if acc >= 70 else "fair" if acc >= 50 else "weak",
                        "review": lang != "en"}
@@ -577,6 +593,7 @@ def summary():
         "last_offline_check": last_check, "outside_connections": privacy.watcher.outside_count,
         "watching_since": privacy.watcher.started, "chats_stored": False,
         "answers_this_week": answers, "languages": langs, "model": q.get("label"),
+        "kannada_model": active.get("kannada_label"),
         "test_date": data.get("finished"), "hardware": data.get("hardware"),
     }
 
@@ -633,10 +650,10 @@ def autostart_login(body: dict = Body(...)):
     if body.get("enabled"):
         script = ROOT / "scripts" / "start-hidden.vbs"
         f.write_text(f'CreateObject("WScript.Shell").Run """{script}""", 0, False\r\n')
-        log_event("info", "InferSmart will start when this computer is switched on.")
+        log_event("info", "Aaroh will start when this computer is switched on.")
     elif f.exists():
         f.unlink()
-        log_event("info", "InferSmart will no longer start by itself when the computer is switched on.")
+        log_event("info", "Aaroh will no longer start by itself when the computer is switched on.")
     return {"enabled": f.exists()}
 
 
@@ -698,4 +715,4 @@ if FRONTEND_DIST.exists():
 else:
     @app.get("/", include_in_schema=False)
     def no_ui():
-        return JSONResponse({"message": "InferSmart control centre is running. The interface has not been built yet; run scripts/setup.bat."})
+        return JSONResponse({"message": "Aaroh control centre is running. The interface has not been built yet; run scripts/setup.bat."})

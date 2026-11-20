@@ -8,14 +8,13 @@ export default function Poster() {
   const [s, setS] = useState<any>(null);
   useEffect(() => { api("/api/share").then(setS); }, []);
   return (
-    <PrintFrame ready={!!s} title="InferSmart lab poster">
+    <PrintFrame ready={!!s} title="Aaroh lab poster">
       {s && (
         <div className="flex min-h-[250mm] flex-col items-center text-center">
           <Logo size={56} />
           <p className="mt-2 text-lg text-[#475467]">{s.school_name}</p>
-          <h1 className="mt-10 text-5xl font-bold leading-tight text-[#0B1B33]">Ask InferSmart</h1>
+          <h1 className="mt-10 text-5xl font-bold leading-tight text-[#0B1B33]">Ask Aaroh</h1>
           <p className="mt-3 text-3xl" lang="kn">ಪ್ರಶ್ನೆ ಕೇಳಿ</p>
-          <p className="mt-1 text-3xl" lang="hi">सवाल पूछें</p>
           <div className="mt-10"><QR text={s.url} size={300} className="border-4 border-[#0F766E] p-3" /></div>
           <ol className="mt-10 space-y-3 text-left text-xl">
             <li><b>1.</b> Connect to the Wi-Fi: <b>{s.wifi_name}</b></li>

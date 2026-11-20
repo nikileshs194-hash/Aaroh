@@ -26,7 +26,7 @@ export function Privacy() {
         <div className="label">{t("admin.privacyTitle")}</div>
         <div className={cx("mt-3 text-7xl font-bold tnum", n === 0 ? "text-ok" : "text-danger")}>{n}</div>
         <p className="mt-2 text-muted">{t("admin.watchedSince", { t: fmt.time(p.watching_since) })}</p>
-        <p className="mx-auto mt-3 max-w-xl text-sm text-muted">{t("admin.howWeKnow")}: every second InferSmart reads the operating system's own list of network connections for its programs (the control centre and the AI engines) and counts any that go outside this computer or the school's private network. We count connections, not bytes.</p>
+        <p className="mx-auto mt-3 max-w-xl text-sm text-muted">{t("admin.howWeKnow")}: every second Aaroh reads the operating system's own list of network connections for its programs (the control centre and the AI engines) and counts any that go outside this computer or the school's private network. We count connections, not bytes.</p>
       </Card>
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
@@ -73,7 +73,8 @@ export function SummaryView({ s }: { s: any }) {
         <Row label={t("admin.worksOffline")} value={s.works_offline ? t("app.yes") : t("admin.notYet")} tone={s.works_offline ? "ok" : "warn"} how={s.last_offline_check ? `offline check passed at ${fmt.dateTime(s.last_offline_check.ts)}` : "run the offline check on the Privacy page"} />
         <Row label={t("admin.dataLeaving")} value={s.outside_connections === 0 ? t("admin.none") : s.outside_connections} tone={s.outside_connections === 0 ? "ok" : "warn"} how={`outside connections counted every second since ${fmt.dateTime(s.watching_since)}`} />
         <Row label={t("admin.chatsStored")} value={t("admin.none")} tone="ok" how="only speed numbers are logged; no question or answer text is saved on this computer" />
-        <Row label="Running model" value={<span className="text-xl">{s.model || "–"}</span>} how="chosen automatically from measurements on this computer" />
+        <Row label="Answers given" value={s.answers_this_week ?? 0} how="answers written by the AI in the last 7 days (counted, never stored as text)" />
+        <Row label="Running model" value={<span className="text-xl">{s.model || "–"}</span>} how={s.kannada_model ? `chosen automatically from measurements on this computer; Kannada questions go to ${s.kannada_model}` : "chosen automatically from measurements on this computer"} />
       </div>
       <div className="card mt-3 p-4">
         <div className="label">{t("admin.languagesTested")}</div>
@@ -94,7 +95,7 @@ export function Summary() {
   return (
     <div className="rise space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div><h1 className="text-2xl font-bold">{t("admin.summaryTitle")}</h1><p className="text-muted">{s.school_name} · week of {fmt.date(Date.now() / 1000 - 6 * 86400)}</p></div>
+        <div><h1 className="text-2xl font-bold">{t("admin.summaryTitle")}</h1><p className="text-muted">{s.school_name ? `${s.school_name} · ` : ""}last 7 days</p></div>
         <Link to="/print/summary" target="_blank" className="btn-primary"><Printer size={18} />{t("app.print")}</Link>
       </div>
       <SummaryView s={s} />
@@ -122,13 +123,11 @@ export function SettingsPage() {
   const { t } = useTranslation();
   const prefs = usePrefs();
   const [s, setS] = useState<any>(null);
-  const [hw, setHw] = useState<any>(null);
   const [models, setModels] = useState<any>(null);
   const [pin, setPin] = useState("");
   const [blocked, setBlocked] = useState("");
   useEffect(() => {
     api("/api/settings").then((x) => { setS(x); setBlocked((x.blocked_topics || []).join("\n")); });
-    api("/api/hardware").then(setHw);
     api("/api/models").then(setModels);
   }, []);
   if (!s) return <Skeleton lines={10} />;
@@ -143,7 +142,7 @@ export function SettingsPage() {
     <div className="rise space-y-5">
       <h1 className="text-2xl font-bold">{t("admin.settingsTitle")}</h1>
       <Section title={t("admin.comfort")}>
-        <p className="text-sm text-muted">These decide "serves N students" and when InferSmart switches to the fast model.</p>
+        <p className="text-sm text-muted">These decide "serves N students" and when Aaroh switches to the fast model.</p>
         <Num k="min_tps" label={t("admin.minTps")} />
         <Num k="max_ttft" label={t("admin.maxTtft")} />
         <Num k="quality_margin" label={t("admin.qualityMargin")} />
@@ -169,7 +168,7 @@ export function SettingsPage() {
       </Section>
       <Section title={t("admin.startup")}>
         <Toggle id="as" checked={!!s.autostart} onChange={(v) => put({ autostart: v })} label={t("admin.autostart")} />
-        <Toggle id="asl" checked={!!s.autostart_on_login} onChange={async (v) => { const r = await api("/api/settings/autostart-login", { body: { enabled: v } }); setS({ ...s, autostart_on_login: r.enabled }); }} label={t("admin.autostartLogin")} hint="Adds InferSmart to this Windows user's start-up folder." />
+        <Toggle id="asl" checked={!!s.autostart_on_login} onChange={async (v) => { const r = await api("/api/settings/autostart-login", { body: { enabled: v } }); setS({ ...s, autostart_on_login: r.enabled }); }} label={t("admin.autostartLogin")} hint="Adds Aaroh to this Windows user's start-up folder." />
         <div className="mt-2 flex flex-wrap gap-2">
           <Button variant="secondary" icon={<Play size={16} />} onClick={async () => { await api("/api/apply", { body: {} }); toast(t("admin.saved")); }}>{t("setup.useThis")}</Button>
           <Link to="/setup/goal" className="btn-secondary"><RefreshCw size={16} />{t("admin.retest")}</Link>
@@ -182,10 +181,6 @@ export function SettingsPage() {
           <div><div className="label mb-2">{t("app.theme")}</div><div className="flex gap-2">{(["light", "dark", "contrast"] as const).map((th) => <Chip key={th} role="radio" selected={prefs.theme === th} onClick={() => prefs.setTheme(th)}>{t(`app.${th}`)}</Chip>)}</div></div>
           <div><div className="label mb-2">{t("app.textSize")}</div><div className="flex gap-2">{[100, 125, 150].map((n) => <Chip key={n} role="radio" selected={prefs.size === n} onClick={() => prefs.setSize(n)}>{n}%</Chip>)}</div></div>
         </div>
-      </Section>
-      <Section title={t("admin.simulator")}>
-        <p className="text-sm text-muted">{t("admin.simHint")}</p>
-        {hw && <SimForm hw={hw} onChange={setHw} />}
       </Section>
       <Section title={t("admin.models")}>
         {models ? (
@@ -200,12 +195,8 @@ export function SettingsPage() {
           </div>
         ) : <Skeleton lines={4} />}
       </Section>
-      <Section title={t("admin.lockMode")}>
-        <p className="text-sm text-muted">Automatic is recommended. Locking keeps one mode even when the class is busy.</p>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {[null, "quality", "fast", "protect"].map((m) => <Chip key={String(m)} role="radio" selected={(s.lock_mode ?? null) === m} onClick={async () => { await api("/api/mode/lock", { body: { mode: m } }); setS({ ...s, lock_mode: m }); }}>{m ?? t("admin.auto")}</Chip>)}
-        </div>
-        <details className="mt-4">
+      <Section title="Advanced">
+        <details>
           <summary className="cursor-pointer text-sm font-medium text-accent">{t("app.showDetails")}</summary>
           <div className="mt-3 space-y-2">
             <Num k="slots" label="Parallel answers per engine (slots)" step={1} min={1} />
@@ -217,23 +208,3 @@ export function SettingsPage() {
     </div>
   );
 }
-
-function SimForm({ hw, onChange }: { hw: any; onChange: (h: any) => void }) {
-  const real = hw.real || hw;
-  const [on, setOn] = useState(!!hw.simulated);
-  const [cores, setCores] = useState(String(hw.simulated ? hw.cores : 4));
-  const [mem, setMem] = useState(String(hw.simulated ? hw.mem_total_gb : 8));
-  const apply = async (enabled: boolean) => { setOn(enabled); onChange(await api("/api/hardware/simulator", { body: { enabled, cores: Number(cores), mem_gb: Number(mem) } })); };
-  return (
-    <div>
-      <Toggle id="sim" checked={on} onChange={apply} label="Imitate an older school PC" hint={`Real: ${real.cores} cores, ${real.mem_total_gb} GB`} />
-      <div className="grid grid-cols-2 gap-3">
-        <Select id="simc" label="Cores" value={cores} onChange={setCores} options={["2", "4", "6", "8"].map((v) => ({ value: v, label: v }))} />
-        <Select id="simm" label="Memory (GB)" value={mem} onChange={setMem} options={["4", "6", "8", "12"].map((v) => ({ value: v, label: v }))} />
-      </div>
-      {on && <Button className="mt-3" variant="secondary" onClick={() => apply(true)}>Apply limits</Button>}
-      {on && <Notice tone="warn" className="mt-3">Simulator on. Re-run the test to see results for this imitated PC; they will be labelled "Simulated".</Notice>}
-    </div>
-  );
-}
-

@@ -1,10 +1,10 @@
 @echo off
 setlocal
-title InferSmart setup
+title Aaroh setup
 cd /d "%~dp0.."
 echo.
-echo  ==== InferSmart setup ====
-echo  This installs everything InferSmart needs. It uses the internet once; after that InferSmart works offline.
+echo  ==== Aaroh setup ====
+echo  This installs everything Aaroh needs. It uses the internet once; after that Aaroh works offline.
 echo.
 
 where python >nul 2>nul || (echo  [!] Python 3.11 or 3.12 is not installed. Get it free from python.org and tick "Add Python to PATH". & pause & exit /b 1)
@@ -35,9 +35,9 @@ echo  [5/5] Running the automatic checks...
 .venv\Scripts\python -m pytest -q backend\tests || goto :fail
 
 echo.
-echo  Setup finished. Double-click scripts\start.bat to open InferSmart.
+echo  Setup finished. Double-click scripts\start.bat to open Aaroh.
 echo  The first time, Windows may ask whether Python can use "Private networks": press Allow,
-echo  so phones on the school Wi-Fi can open InferSmart.
+echo  so phones on the school Wi-Fi can open Aaroh.
 echo.
 pause
 exit /b 0

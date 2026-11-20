@@ -62,11 +62,14 @@ class Router:
         recs = [r for r in self.recent if t - r[0] < 300 and r[5]]
         return stats.median([r[5] for r in recs]) or 12.0
 
-    def pick_engine(self, kind: str) -> tuple[str | None, int | None]:
+    def pick_engine(self, kind: str, lang: str | None = None) -> tuple[str | None, int | None]:
         """Returns (engine name, max-token cap for this mode)."""
         a_ok = engines["A"].status == "ready"
         b_ok = engines["B"].status == "ready"
         m = self.cstate.mode
+        if lang == "kn" and engines["K"].status == "ready":
+            # Kannada goes to the model that measured best in Kannada; busy modes only shorten answers.
+            return "K", (None if m == "quality" else 300 if m == "fast" else 200 if kind == "student" else 400)
         if m == "quality":
             return ("A" if a_ok else "B" if b_ok else None), None
         if m == "fast":
@@ -90,14 +93,14 @@ class Router:
 
     # ---------------------------------------------------------------- chat
     async def chat(self, messages: list[dict], device: str, kind: str = "student", max_tokens: int = 600,
-                   cancel: asyncio.Event | None = None) -> AsyncIterator[dict]:
+                   cancel: asyncio.Event | None = None, lang: str | None = None) -> AsyncIterator[dict]:
         self.devices[device] = time.time()
         if kind == "student":
             self.last_student_activity = time.time()
         if self.rate_limited(device, kind):
             yield {"type": "error", "code": "rate", "message": "Please wait for your current answer to finish, then ask again."}
             return
-        name, cap = self.pick_engine(kind)
+        name, cap = self.pick_engine(kind, lang)
         if name is None:
             yield {"type": "error", "code": "engine", "message": "The AI engine is starting. Please try again in about 20 seconds."}
             return
@@ -107,7 +110,7 @@ class Router:
         sem = self._sem(name)
         self.busy_dev[device] += 1
         t_req = time.perf_counter()
-        fl = {"t0": time.time(), "first": None, "tokens": 0, "kind": kind}
+        fl = {"t0": time.time(), "first": None, "tokens": 0, "kind": kind, "engine": name}
         self.inflight[rid] = fl
         try:
             if sem.locked():
@@ -135,7 +138,7 @@ class Router:
             yield {"type": "start", "engine": name, "mode": self.cstate.mode,
                    "model": engines[name].config.model_file if engines[name].config else None}
             try:
-                async for ev in stream_chat(engines[name], messages, max_tokens, 0.6, self.client, cancel):
+                async for ev in stream_chat(engines[name], messages, max_tokens, 0.3 if lang == "kn" else 0.6, self.client, cancel):
                     if ev["type"] == "token":
                         if fl["first"] is None:
                             fl["first"] = time.time()
@@ -162,13 +165,15 @@ class Router:
             self.inflight.pop(rid, None)
 
     # ---------------------------------------------------------------- loops
-    def observe(self) -> Obs:
+    def observe(self, main_only: bool = False) -> Obs:
+        """main_only: leave out the Kannada model, which is slower by design (a bigger model for better Kannada);
+        its normal pace must not make the controller think the computer is overloaded."""
         t = time.time()
-        rec = [r for r in self.recent if t - r[0] <= 30 and r[4] != "batch"]
+        rec = [r for r in self.recent if t - r[0] <= 30 and r[4] != "batch" and not (main_only and r[3] == "K")]
         ttfts = [r[1] for r in rec]
         tpss = [r[2] for r in rec]
         for f in list(self.inflight.values()):
-            if f["kind"] == "batch":
+            if f["kind"] == "batch" or (main_only and f.get("engine") == "K"):
                 continue
             if f["first"] is None:
                 ttfts.append(t - f["t0"])               # still waiting: counts as at least this long
@@ -184,7 +189,7 @@ class Router:
         while True:
             await asyncio.sleep(2)
             try:
-                o = self.observe()
+                o = self.observe(main_only=True)
                 active_cfg = db.get_setting("active_config") or {}
                 new, why = decide(self.cstate, o, float(db.get_setting("max_ttft")), float(db.get_setting("min_tps")),
                                   active_cfg.get("capacity_n"), db.get_setting("lock_mode"),

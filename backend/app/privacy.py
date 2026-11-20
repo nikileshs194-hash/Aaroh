@@ -1,6 +1,6 @@
 """Network watcher and offline proof (D5.6, M11).
 
-Every second, list the network connections opened by InferSmart's own programs and count any whose
+Every second, list the network connections opened by Aaroh's own programs and count any whose
 remote address is outside the school's private network. The claim is "zero outside connections",
 not "zero bytes"."""
 from __future__ import annotations
@@ -175,7 +175,7 @@ def report() -> dict:
             "Student names, accounts or logins (there are none)",
             "Anything sent to the internet (outside connections are counted and should be zero)",
         ],
-        "versions": {"InferSmart": APP_VERSION, "llama.cpp engine": ENGINE_RELEASE},
+        "versions": {"Aaroh": APP_VERSION, "llama.cpp engine": ENGINE_RELEASE},
         "store_chats_setting": bool(db.get_setting("store_chats")),
         "note": "This report supports the school's own privacy compliance. It is not a legal certification.",
     }

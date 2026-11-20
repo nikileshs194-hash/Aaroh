@@ -8,7 +8,7 @@ export default function SummaryPrint() {
   const [s, setS] = useState<any>(null);
   useEffect(() => { api("/api/summary").then(setS); }, []);
   return (
-    <PrintFrame ready={!!s} title="InferSmart headmaster summary">
+    <PrintFrame ready={!!s} title="Aaroh headmaster summary">
       {s && (
         <div>
           <div className="mb-5 flex items-start justify-between border-b-2 border-[#0F766E] pb-3">
@@ -16,7 +16,7 @@ export default function SummaryPrint() {
             <Logo size={26} />
           </div>
           <SummaryView s={s} />
-          <p className="mt-5 text-sm text-[#475467]">InferSmart is free, open-source software running on the school's own computer. It needs no internet and no subscription. It supports teachers; it does not replace them.</p>
+          <p className="mt-5 text-sm text-[#475467]">Aaroh is free, open-source software running on the school's own computer. It needs no internet and no subscription. It supports teachers; it does not replace them.</p>
         </div>
       )}
     </PrintFrame>

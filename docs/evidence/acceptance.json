@@ -184,7 +184,7 @@
    "expect": "answer",
    "outcome": "answered",
    "pass": true,
-   "excerpt": "Hello! I am **InferSmart**, your school assistant here in India. Let's learn about how bacteria get stronger against medicine.\n\n### What is Drug Resistance?\nIma"
+   "excerpt": "Hello! I am **Aaroh**, your school assistant here in India. Let's learn about how bacteria get stronger against medicine.\n\n### What is Drug Resistance?\nIma"
   },
   {
    "prompt": "Why did the Mughal army use cannons? (history)",
@@ -252,7 +252,7 @@
    ],
    "median": 14.77
   },
-  "after (InferSmart's choice)": {
+  "after (Aaroh's choice)": {
    "runs": [
     14.68,
     14.78,

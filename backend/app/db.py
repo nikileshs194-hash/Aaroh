@@ -75,7 +75,7 @@ DEFAULTS: dict[str, Any] = {
     "quality_n": 40,           # questions per language
     "goal": "balanced",
     "class_size": "class",
-    "languages": ["en", "kn", "hi"],
+    "languages": ["en", "kn"],
     "theme": "light",
     "text_size": 100,
     "ui_language": "en",
@@ -83,7 +83,7 @@ DEFAULTS: dict[str, Any] = {
     "lock_mode": None,         # None | quality | fast | protect
     "exam_mode": False,
     "store_chats": False,      # never on the server; shown in privacy report
-    "school_name": "Your School Name",
+    "school_name": "",
     "simulator": {"enabled": False, "cores": 4, "mem_gb": 8},
     "blocked_topics": [],
     "setup_done": False,

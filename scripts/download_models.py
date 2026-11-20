@@ -1,4 +1,4 @@
-"""Download InferSmart's model files (GGUF) from official Hugging Face pages.
+"""Download Aaroh's model files (GGUF) from official Hugging Face pages.
 
 Resumable. Verifies each file's SHA-256 against the value Hugging Face publishes
 and records it in models/MODELS.json so the app can warn if a file changes.

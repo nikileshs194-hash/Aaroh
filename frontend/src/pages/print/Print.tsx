@@ -8,7 +8,7 @@ export function PrintFrame({ children, ready = true, title }: { children: ReactN
     const prev = document.documentElement.dataset.theme;
     document.documentElement.dataset.theme = "light";
     document.title = title;
-    return () => { document.documentElement.dataset.theme = prev; document.title = "InferSmart"; };
+    return () => { document.documentElement.dataset.theme = prev; document.title = "Aaroh"; };
   }, []);
   return (
     <div className="min-h-[100dvh] bg-sunken print:bg-white">

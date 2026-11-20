@@ -193,9 +193,9 @@ class TestRunner:
         self.state = {"status": "running", "run_id": run_id, "phase": "capacity", "index": 1, "total": 1,
                       "units_done": 0, "units_total": 1, "settings": [], "started": time.time(), "cap_steps": [],
                       "eta_s": mode["cap_step_s"] * len(CAP_STEPS)}
-        was_serving = [n for n in ("A", "B") if engines[n].status in ("ready", "starting") or engines[n].wanted]
+        was_serving = [n for n in ("A", "B", "K") if engines[n].status in ("ready", "starting") or engines[n].wanted]
         self.measuring = True
-        for n in ("A", "B"):
+        for n in ("A", "B", "K"):
             await engines[n].stop()
         log_event("test", "Checking classroom capacity again (student chat paused for about 15 minutes).")
         try:
@@ -392,9 +392,9 @@ class TestRunner:
                       "started": time.time(), "eta_s": None, "quick": quick, "goal": goal, "languages": langs}
         log_event("test", f"Test started: {len(grid)} settings on this computer ({'quick' if quick else 'full'} test).")
         # Fair test: the serving engines would compete for the processor and memory, so pause them.
-        was_serving = [n for n in ("A", "B") if engines[n].status in ("ready", "starting") or engines[n].wanted]
+        was_serving = [n for n in ("A", "B", "K") if engines[n].status in ("ready", "starting") or engines[n].wanted]
         self.measuring = True
-        for n in ("A", "B"):
+        for n in ("A", "B", "K"):
             await engines[n].stop()
         if was_serving:
             log_event("info", "Student chat is paused while the test runs, so the measurements are fair.")
@@ -661,20 +661,48 @@ async def apply_selection(run: dict, use: str = "recommended") -> dict:
         if free_after >= 1.0:
             # Both engines share the processor; the fast one gets all cores too (they rarely both run hard).
             b = EngineConfig(f["model_file"], f["model_path"], f["threads"], ctx, f["batch"], slots, "fast model")
-    await start_engines(a, b)
+    k, kn_pick = kannada_engine_config(run, chosen, b, fast, hw, ctx, slots)
+    await start_engines(a, b, k)
     save_active(a, b, {"run_id": run["id"], "capacity_n": cap.get("n"), "label": chosen.get("label"),
-                       "fast_label": fast.get("label") if b and fast else None})
-    return {"A": asdict(a), "B": asdict(b) if b else None}
+                       "fast_label": fast.get("label") if b and fast else None,
+                       "K": asdict(k) if k else None, "kannada_label": kn_pick.get("label") if k else None,
+                       "kannada_acc": ((kn_pick.get("quality") or {}).get("kn") or {}).get("acc") if k else None})
+    return {"A": asdict(a), "B": asdict(b) if b else None, "K": asdict(k) if k else None}
 
 
-async def start_engines(a: EngineConfig, b: EngineConfig | None) -> None:
+def kannada_engine_config(run: dict, chosen: dict, b, fast, hw: dict, ctx: int, slots: int):
+    """Kannada questions go to the setting with the best measured Kannada accuracy, if it is a different
+    model, still writes fast enough for one student, and fits in memory next to the main model."""
+    if "kn" not in (run["data"].get("languages") or []):
+        return None, {}
+    min_tps = float(db.get_setting("min_tps"))
+    cands = [r for r in run["results"] if not r.get("error") and (r.get("quality") or {}).get("kn")
+             and r.get("tps", 0) >= min_tps and models_lib.parse(r["model_file"])["quant"] != "Q8_0"]
+    if not cands:
+        return None, {}
+    best = max(cands, key=lambda r: (round(r["quality"]["kn"]["acc"]), r["tps"]))
+    main_kn = ((chosen.get("quality") or {}).get("kn") or {}).get("acc") or 0
+    if best["model_file"] == chosen["model_file"] or best["quality"]["kn"]["acc"] < main_kn + 5:
+        return None, {}
+    used = chosen["peak_mem_gb"] + (fast["peak_mem_gb"] if b and fast else 0)
+    if hw["mem_budget_gb"] - used - best["peak_mem_gb"] < 1.0:
+        return None, {}
+    c = best["config"]
+    return EngineConfig(c["model_file"], c["model_path"], c["threads"], ctx, c["batch"], max(2, slots // 2), "Kannada model"), best
+
+
+async def start_engines(a: EngineConfig, b: EngineConfig | None, k: EngineConfig | None | str = "saved") -> None:
     if runner.measuring:
         raise RuntimeError("A test is measuring this computer right now; student chat comes back when it finishes.")
-    for name, cfg in (("A", a), ("B", b)):
+    if k == "saved":
+        saved = (db.get_setting("active_config") or {}).get("K")
+        k = EngineConfig(**saved) if saved else None
+    for name, cfg in (("A", a), ("B", b), ("K", k)):
         e = engines[name]
         if cfg is None:
             await e.stop()
             continue
         e.affinity = hardware.cpu_affinity_for(cfg.threads)
         await e.start(cfg)
-    log_event("info", f"InferSmart started: quality model {a.model_file}" + (f", fast model {b.model_file}." if b else "."))
+    log_event("info", f"Aaroh started: main model {a.model_file}" + (f", fast model {b.model_file}" if b else "")
+              + (f", Kannada model {k.model_file}." if k else "."))

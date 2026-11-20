@@ -1,28 +1,28 @@
 # Measured results (19 Nov 2026)
 
 Computer: 13th Gen Intel Core i5-1340P, 12 cores / 16 threads, 15.6 GB, Windows 11
-Test: full (3 repeats, median), took 173 minutes. Goal: balanced. Languages: English, Kannada, Hindi.
+Test: full (3 repeats, median), took 173 minutes. Goal: balanced. Languages: English, Kannada.
 
 ## Headline
 
 - **This computer can serve about 6 students comfortably** (simulated, tested up to 10; limits ≥ 5.0 tokens/s typical, ≤ 3.0 s slow-case first word).
-- Recommended: **Qwen3.5 2B · light** (all cores, smaller context). Best balance of speed and quality: it kept answer quality within 3 points of the best version in English and Kannada and Hindi, writes about 14 tokens a second, and leaves 10.8 GB memory free.
+- Recommended: **Qwen3.5 2B · light** (all cores, smaller context). Best balance of speed and quality: it kept answer quality within 3 points of the best version in English and Kannada, writes about 14 tokens a second, and leaves 10.8 GB memory free.
 - Fast model for busy periods: none (already_fastest)
-- What measuring taught us: Writing with 12 threads gave 13.8 tokens/s versus 12.6 with 6 (+9%). Going from the 2B to the 4B model changed Indian-language accuracy (Kannada 65% → 82%, Hindi 52% → 82%) but cut writing speed from 13.8 to 6.4 tokens/s: the trade-off the goal setting decides.
+- What measuring taught us: Writing with 12 threads gave 13.8 tokens/s versus 12.6 with 6 (+9%). Going from the 2B to the 4B model changed Indian-language accuracy (Kannada 65% → 82%) but cut writing speed from 13.8 to 6.4 tokens/s: the trade-off the goal setting decides.
 
 ## All settings
 
 | setting | detail | threads | writing tokens/s | first word s | memory GB | noisy | EN | KN | HI | passed | note |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Qwen3.5 2B · light | half the cores | 6 | 12.6 | 0.27 | 2.32 |  | 91 | 65 | 52 | True |  |
-| Qwen3.5 2B · light | all cores | 12 | 13.8 | 0.28 | 2.34 |  | 91 | 65 | 52 | True |  |
-| Qwen3.5 2B · light | all cores, bigger batch | 12 | 13.8 | 0.28 | 2.35 |  | 91 | 65 | 52 | True |  |
-| Qwen3.5 2B · light | all cores, smaller context | 12 | 13.8 | 0.27 | 2.34 |  | 91 | 65 | 52 | True |  |
-| Qwen3.5 2B · balanced | all cores | 12 | 12.6 | 0.31 | 2.01 |  | 90 | 58 | 55 | False | answer quality dropped too much |
-| Qwen3.5 2B · reference | all cores (reference) | 12 | 10.7 | 0.30 | 2.54 |  | 94 | 62 | 55 | True |  |
-| Qwen3.5 4B · light | all cores | 12 | 6.4 | 0.48 | 5.37 |  | 95 | 82 | 82 | True |  |
-| Qwen3.5 4B · balanced | all cores | 12 | 5.9 | 0.57 | 4.48 |  | 100 | 80 | 82 | True |  |
-| Qwen3.5 0.8B · light | all cores (fast candidate) | 12 | 24.3 | 0.23 | 1.32 |  | 71 | 28 | 50 | False | answer quality dropped too much |
+| Qwen3.5 2B · light | half the cores | 6 | 12.6 | 0.27 | 2.32 |  | 91 | 65 | – | True |  |
+| Qwen3.5 2B · light | all cores | 12 | 13.8 | 0.28 | 2.34 |  | 91 | 65 | – | True |  |
+| Qwen3.5 2B · light | all cores, bigger batch | 12 | 13.8 | 0.28 | 2.35 |  | 91 | 65 | – | True |  |
+| Qwen3.5 2B · light | all cores, smaller context | 12 | 13.8 | 0.27 | 2.34 |  | 91 | 65 | – | True |  |
+| Qwen3.5 2B · balanced | all cores | 12 | 12.6 | 0.31 | 2.01 |  | 90 | 58 | – | False | answer quality dropped too much |
+| Qwen3.5 2B · reference | all cores (reference) | 12 | 10.7 | 0.30 | 2.54 |  | 94 | 62 | – | True |  |
+| Qwen3.5 4B · light | all cores | 12 | 6.4 | 0.48 | 5.37 |  | 95 | 82 | – | False | answer quality dropped too much |
+| Qwen3.5 4B · balanced | all cores | 12 | 5.9 | 0.57 | 4.48 |  | 100 | 80 | – | True |  |
+| Qwen3.5 0.8B · light | all cores (fast candidate) | 12 | 24.3 | 0.23 | 1.32 |  | 71 | 28 | – | False | answer quality dropped too much |
 
 ## Capacity steps
 

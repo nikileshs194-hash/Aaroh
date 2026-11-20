@@ -2,9 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Area, AreaChart, CartesianGrid, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { Activity, ArrowLeftRight, CircleAlert, HelpCircle, RefreshCw, RotateCw, ShieldCheck, Users, Zap } from "lucide-react";
+import { ArrowLeftRight, CircleAlert, HelpCircle, RefreshCw, RotateCw, ShieldCheck, Users, Zap } from "lucide-react";
 import { api, fmt, live } from "../../api";
-import { Button, Card, Chip, cx, Notice, Stat } from "../../components/ui";
+import { Button, Card, cx, Notice, Stat } from "../../components/ui";
 
 const MODE_TONE: Record<string, string> = { quality: "bg-accent-soft text-accent", fast: "bg-warn/15 text-warn", protect: "bg-danger/10 text-danger" };
 
@@ -16,14 +16,12 @@ export default function Dashboard() {
   const [eng, setEng] = useState<any>(null);
   const [settings, setSettings] = useState<any>(null);
   const [why, setWhy] = useState<string>("");
-  const [sim, setSim] = useState<any>(null);
   const [privacy, setPrivacy] = useState<any>(null);
   const [perf, setPerf] = useState<any[]>([]);
   const lastPush = useRef(0);
 
   const loadSlow = () => {
     api("/api/engines").then(setEng).catch(() => {});
-    api("/api/simulate").then(setSim).catch(() => {});
     api("/api/privacy").then(setPrivacy).catch(() => {});
     api("/api/perf?minutes=5").then(setPerf).catch(() => {});
   };
@@ -54,8 +52,7 @@ export default function Dashboard() {
   const maxT = settings?.max_ttft ?? 3, minS = settings?.min_tps ?? 5;
   const mode = pt?.mode || "quality";
   const decisions = events.filter((e) => ["switch", "restart", "error", "offline_check", "test", "privacy"].includes(e.type));
-  const A = eng?.engines?.A, B = eng?.engines?.B;
-  const lock = settings?.lock_mode ?? null;
+  const A = eng?.engines?.A, B = eng?.engines?.B, K = eng?.engines?.K;
 
   return (
     <div className="rise space-y-5">
@@ -111,14 +108,6 @@ export default function Dashboard() {
             ) : <div className="flex h-full items-center justify-center text-sm text-muted">No answers in the last 5 minutes.</div>}
           </div>
           <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-line pt-4">
-            {sim?.running ? (
-              <>
-                <span className="badge bg-warn/15 text-warn"><Activity size={13} />Simulating {sim.students} students · {sim.seconds_left}s left · {sim.answers} answers</span>
-                <Button variant="secondary" onClick={() => api("/api/simulate", { body: { stop: true } }).then(setSim)}>Stop simulation</Button>
-              </>
-            ) : (
-              [4, 10, 16].map((n) => <Button key={n} variant={n === 10 ? "primary" : "secondary"} icon={<Users size={16} />} onClick={() => api("/api/simulate", { body: { students: n, seconds: 180 } }).then(setSim)}>{t("admin.simulate", { n })}</Button>)
-            )}
             <Button variant="ghost" icon={<HelpCircle size={16} />} onClick={() => api("/api/why-slow").then((r) => setWhy(r.text))}>{t("admin.whySlow")}</Button>
           </div>
           {why && <Notice className="mt-3">{why}</Notice>}
@@ -140,7 +129,7 @@ export default function Dashboard() {
       </div>
 
       <div className="grid gap-5 lg:grid-cols-3">
-        {[["A", A, t("admin.engineA")], ["B", B, t("admin.engineB")]].map(([k, e, label]: any) => (
+        {([["A", A, "Main model (English)"], ["K", K, "Kannada model"], ...(B?.status === "ready" ? [["B", B, t("admin.engineB")]] : [])] as any[]).map(([k, e, label]: any) => (
           <Card key={k}>
             <div className="flex items-center justify-between">
               <div className="label">{label}</div>
@@ -150,20 +139,13 @@ export default function Dashboard() {
             </div>
             <div className="mt-2 truncate font-semibold text-ink">{e?.config?.model_file?.replace(".gguf", "") || "–"}</div>
             <div className="mt-1 text-sm text-muted tnum">
-              {e?.config ? `${e.config.threads} threads · ${e.config.parallel} slots · ${fmt.n1(e.rss_gb)} GB` : k === "B" ? "Fast mode uses shorter answers on the quality model" : ""}
+              {e?.config ? `${e.config.threads} threads · ${e.config.parallel} slots · ${fmt.n1(e.rss_gb)} GB` : k === "K" ? "Kannada questions use the main model" : ""}
               {e?.restarts ? ` · restarted ${e.restarts}×` : ""}
             </div>
           </Card>
         ))}
         <Card>
-          <div className="label">{t("admin.lock")}</div>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {[null, "quality", "fast", "protect"].map((m) => (
-              <Chip key={String(m)} role="radio" selected={lock === m} onClick={() => api("/api/mode/lock", { body: { mode: m } }).then((r) => setSettings({ ...settings, lock_mode: r.lock_mode }))}>
-                {m === null ? t("admin.auto") : m}
-              </Chip>
-            ))}
-          </div>
+          <div className="label">Privacy and engine</div>
           <div className="mt-3 flex items-center gap-2 text-sm">
             <ShieldCheck size={16} className="text-ok" />
             <span>Outside connections: <b className="tnum">{privacy?.outside_count ?? 0}</b></span>

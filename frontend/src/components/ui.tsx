@@ -16,7 +16,7 @@ export function Logo({ size = 28, withName = true, className = "" }: { size?: nu
         <path d="M11 1.5v3M16 1.5v3M21 1.5v3M11 27.5v3M16 27.5v3M21 27.5v3M1.5 11h3M1.5 16h3M1.5 21h3M27.5 11h3M27.5 16h3M27.5 21h3"
           stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
       </svg>
-      {withName && <span className="font-bold tracking-tight text-ink" style={{ fontSize: size * 0.68 }}>Infer<span className="text-accent">Smart</span></span>}
+      {withName && <span className="font-bold tracking-tight text-ink" style={{ fontSize: size * 0.68 }}>Aa<span className="text-accent">roh</span></span>}
     </span>
   );
 }

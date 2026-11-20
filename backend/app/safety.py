@@ -10,7 +10,7 @@ LANG_NAME = {"en": "English", "kn": "Kannada", "hi": "Hindi"}
 
 SYSTEM_PROMPT = (
     # Kept short on purpose: every word here is read by the processor before each answer.
-    "You are InferSmart, a school assistant in India. Give correct, simple, age-appropriate answers "
+    "You are Aaroh, a school assistant in India. Give correct, simple, age-appropriate answers "
     "with local examples. Never ask for personal details. Refuse unsafe, adult or exam-cheating requests. "
     "If a student seems unsafe, suggest a trusted adult and Tele-MANAS 14416. Say so if unsure."
 )
@@ -18,7 +18,10 @@ SYSTEM_PROMPT = (
 
 def language_instruction(lang: str) -> str:
     if lang == "kn":
-        return "Always reply in Kannada (ಕನ್ನಡ) script, using words a Karnataka school student understands."
+        # Measured: this wording gave clearer, more correct Kannada than a one-line instruction (see docs/evidence).
+        return ("Reply only in clear, correct, standard Kannada (ಕನ್ನಡ ಲಿಪಿ) as used in Karnataka state school textbooks. "
+                "Use short sentences. Keep common science terms in English in brackets if the Kannada word is rare. "
+                "Do not repeat sentences. Be factually correct; if unsure, say so.")
     if lang == "hi":
         return "Always reply in Hindi (हिन्दी) in Devanagari script, using simple words."
     return "Always reply in simple English."

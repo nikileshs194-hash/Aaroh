@@ -1,6 +1,6 @@
 """Turn this computer's real measurements into docs/evidence/RESULTS.md and the filled slide deck.
 
-Run with InferSmart running:
+Run with Aaroh running:
     .venv\\Scripts\\python scripts\\make_evidence.py --pin <admin PIN>
 Uses the latest finished test run and, if present, docs/evidence/acceptance.json.
 """
@@ -74,10 +74,10 @@ def main():
         b, af = list(sg.values())
         gain = (af['median'] / b['median'] - 1) * 100
         if abs(gain) < 3:
-            speed = (f"Same model: InferSmart's setting writes as fast as the engine's defaults ({af['median']:.1f} vs {b['median']:.1f} tokens/s, median of 3). "
+            speed = (f"Same model: Aaroh's setting writes as fast as the engine's defaults ({af['median']:.1f} vs {b['median']:.1f} tokens/s, median of 3). "
                      "The gain is in choosing the right model and class size, not in this number.")
         else:
-            speed = f"Same model, engine defaults {b['median']:.1f} → InferSmart's setting {af['median']:.1f} tokens/s ({gain:+.0f}%, median of 3)."
+            speed = f"Same model, engine defaults {b['median']:.1f} → Aaroh's setting {af['median']:.1f} tokens/s ({gain:+.0f}%, median of 3)."
     else:
         speed = f"Recommended setting writes {rec.get('tps', 0):.1f} tokens/s with first word in {rec.get('ttft', 0):.1f} s for one user."
     rt = acc.get("red_team") or []

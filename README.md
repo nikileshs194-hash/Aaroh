@@ -1,4 +1,4 @@
-# InferSmart
+# Aaroh
 
 Private, offline AI that sets itself up on a school's existing computer and serves a whole classroom.
 

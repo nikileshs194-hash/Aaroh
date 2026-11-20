@@ -4,7 +4,7 @@ Everything that could be built and measured on this laptop without you is done. 
 
 ## Before you open the app (5 minutes)
 
-- [ ] **Allow the firewall.** The first time InferSmart starts, Windows may ask whether Python can use "Private networks". Press **Allow**. Without this, phones cannot open InferSmart. (I am not allowed to change security settings for you.)
+- [ ] **Allow the firewall.** The first time Aaroh starts, Windows may ask whether Python can use "Private networks". Press **Allow**. Without this, phones cannot open Aaroh. (I am not allowed to change security settings for you.)
 - [ ] **Push the code to GitHub** (optional backup). Open a terminal in the `Vyom` folder and run these one at a time:
   ```
   winget install --id GitHub.cli -e
@@ -19,11 +19,11 @@ Everything that could be built and measured on this laptop without you is done. 
 - [ ] Admin → Share: scan the QR code with your phone **on the same Wi-Fi**, ask a question in Kannada. (Module M9/M12 test.)
 - [ ] Open three browser tabs on `/chat` and ask at the same time. Does "serves about N" feel right? (Capacity manual check.)
 - [x] (Done 20 Nov 2026) Turn **Wi-Fi off**, ask a question, then Admin → Privacy → Run offline check. It should say "worked with the internet disconnected". (Offline test.)
-- [ ] Restart the laptop with "Start InferSmart when this computer is switched on" turned on in Settings, then open `http://localhost:8080`. (Reboot recovery test.)
+- [ ] Restart the laptop with "Start Aaroh when this computer is switched on" turned on in Settings, then open `http://localhost:8080`. (Reboot recovery test.)
 
 ## People you need (these make the biggest difference to judges)
 
-- [ ] **Native-speaker review**: give a Kannada teacher and a Hindi speaker the files `frontend\src\i18n\kn.ts` and `hi.ts` (or let them click through the app in each language). Note corrections; I can apply them in minutes.
+- [ ] **Native-speaker review**: give a Kannada teacher the file `frontend\src\i18n\kn.ts` (or let them click through the app in Kannada) and ask them to check 10 Kannada answers. Note corrections; I can apply them in minutes.
 - [ ] **Survey** (Google Forms, 10 questions in dossier section B6), target 30+ teachers.
 - [ ] **Five 15-minute interviews** (questions in B6).
 - [ ] **Usability test with 3 teachers**: tasks are set up, ask in Kannada, make a quiz, print it. Time each task, then the 10-question SUS form. Target 70+.

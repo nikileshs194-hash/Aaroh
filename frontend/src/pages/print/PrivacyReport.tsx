@@ -8,7 +8,7 @@ export default function PrivacyReport() {
   const [school, setSchool] = useState("");
   useEffect(() => { api("/api/privacy/report").then(setR); api("/api/public").then((p) => setSchool(p.school_name)); }, []);
   return (
-    <PrintFrame ready={!!r} title="InferSmart privacy report">
+    <PrintFrame ready={!!r} title="Aaroh privacy report">
       {r && (
         <div className="text-[11pt] leading-relaxed">
           <div className="flex items-start justify-between border-b-2 border-[#0F766E] pb-3">
@@ -20,7 +20,7 @@ export default function PrivacyReport() {
             <Box label="Outside connections (all time)" value={String(r.outside_total_all_time)} />
             <Box label="Chats stored on this computer" value="None" />
           </div>
-          <p className="mt-3 text-sm">Watched every second since {fmt.dateTime(r.watcher.watching_since)}. The watcher reads the operating system's own list of network connections opened by InferSmart's programs and counts any that go outside this computer or the school's private network. It counts connections, not bytes. Watcher self-tests that caught a deliberate outside connection: {r.watcher.selftest_caught}.</p>
+          <p className="mt-3 text-sm">Watched every second since {fmt.dateTime(r.watcher.watching_since)}. The watcher reads the operating system's own list of network connections opened by Aaroh's programs and counts any that go outside this computer or the school's private network. It counts connections, not bytes. Watcher self-tests that caught a deliberate outside connection: {r.watcher.selftest_caught}.</p>
           <h2 className="mt-6 text-lg font-bold">What is stored on this computer</h2>
           <ul className="mt-1 list-disc pl-5">{r.stored.map((x: string) => <li key={x}>{x}</li>)}</ul>
           <h2 className="mt-4 text-lg font-bold">What is not stored or sent</h2>

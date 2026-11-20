@@ -23,7 +23,7 @@ export default function Results() {
   const rejected: Record<string, string> = Object.fromEntries((sel.rejected || []).map((x: any) => [x.key, x.rejected_why]));
   const scores: Record<string, number> = Object.fromEntries((sel.scored || []).map((x: any) => [x.key, x.score]));
   const rows: any[] = r.results;
-  const langs: string[] = r.data.languages || ["en"];
+  const langs: string[] = (r.data.languages || ["en"]).filter((l: string) => l === "en" || l === "kn");
   const qn = Object.values(r.data.quality || {})[0] as any;
   const nPer = qn?.n || 30;
   const points = rows.filter((x) => !x.error && x.quality_score != null).map((x) => ({

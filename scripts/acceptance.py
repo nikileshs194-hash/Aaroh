@@ -1,6 +1,6 @@
 """M14 acceptance tests: produce real, honest evidence on THIS computer.
 
-Run with InferSmart started and set up (scripts/start.bat):
+Run with Aaroh started and set up (scripts/start.bat):
     .venv\\Scripts\\python scripts\\acceptance.py [--pin 1234]
 
 Writes docs/evidence/acceptance.json and docs/evidence/ACCEPTANCE.md.
@@ -107,11 +107,11 @@ def red_team(c):
 
 
 def speed_gain(c, h, model_file, threads, reps=3):
-    """Same model, same laptop: engine defaults ('before') vs InferSmart's chosen setting ('after')."""
+    """Same model, same laptop: engine defaults ('before') vs Aaroh's chosen setting ('after')."""
     from app.engines import EngineConfig  # noqa
     prompt = "Explain in one paragraph why we have day and night."
     res = {}
-    for label, t, b in (("before (engine defaults)", 0, 0), ("after (InferSmart's choice)", threads, 512)):
+    for label, t, b in (("before (engine defaults)", 0, 0), ("after (Aaroh's choice)", threads, 512)):
         r = c.post(B + "/api/engines/custom", json={"model_file": model_file, "threads": t, "batch": b, "parallel": 1}, headers=h, timeout=300)
         r.raise_for_status()
         tps = []
@@ -162,7 +162,7 @@ def main():
     print("3/5 safety red-team (30 prompts)...")
     results["red_team"] = red_team(c)
     if not a.skip_speed and active.get("A"):
-        print("4/5 speed: engine defaults vs InferSmart's choice (same model)...")
+        print("4/5 speed: engine defaults vs Aaroh's choice (same model)...")
         A = active["A"]
         results["speed_gain"] = speed_gain(c, h, A["model_file"], A["threads"])
         c.post(B + "/api/engines/restart", headers=h)  # back to the saved good setting
@@ -188,7 +188,7 @@ def write_md(r):
     if sg:
         b, a = list(sg.values())
         gain = (a["median"] / b["median"] - 1) * 100 if a["median"] and b["median"] else None
-        L += ["## Speed: engine defaults vs InferSmart's choice (same model, 3 runs, median)", "",
+        L += ["## Speed: engine defaults vs Aaroh's choice (same model, 3 runs, median)", "",
               f"- Before: {b['median']:.1f} tokens/s (runs {b['runs']})", f"- After: {a['median']:.1f} tokens/s (runs {a['runs']})",
               f"- Difference: {gain:+.0f}%" if gain is not None else "- Difference: n/a",
               "- Honest note: the bigger win is choosing a model and capacity that suit the class, not this one number.", ""]
@@ -206,7 +206,7 @@ def write_md(r):
           f"- Deliberate outside connection caught by the watcher: {'YES' if ps['caught'] else 'NO (no network to try)'} ({ps['target']})", ""]
     rc = r["recovery"]
     L += ["## Recovery", "", f"- Engine killed by force: {'came back by itself in ' + str(rc.get('seconds_to_ready')) + ' s' if rc['pass'] else 'FAILED: ' + rc.get('note', '')}",
-          "- Reboot test (manual): restart the laptop; InferSmart should return to ready by itself if 'start when switched on' is on.", ""]
+          "- Reboot test (manual): restart the laptop; Aaroh should return to ready by itself if 'start when switched on' is on.", ""]
     L += ["## Safety red-team", "", f"- Unsafe prompts handled appropriately: **{sum(x['pass'] for x in refuse)}/{len(refuse)}**",
           f"- Normal school questions answered: **{sum(x['pass'] for x in answer)}/{len(answer)}**", "",
           "| prompt | expected | outcome | pass |", "|---|---|---|---|"]

@@ -1,7 +1,7 @@
 # Live demo script (about 5 minutes)
 
 Before you start: laptop plugged in, "Best performance" power mode, other apps closed, notifications off.
-InferSmart already running (`scripts\start.bat`). Phone on the same Wi-Fi or hotspot. Tabs open in this order:
+Aaroh already running (`scripts\start.bat`). Phone on the same Wi-Fi or hotspot. Tabs open in this order:
 
 1. `http://localhost:8080/setup` (Welcome)
 2. `http://localhost:8080/admin` (Dashboard, logged in with the admin PIN)
@@ -11,7 +11,7 @@ InferSmart already running (`scripts\start.bat`). Phone on the same Wi-Fi or hot
 | Time | Show | Say |
 |---|---|---|
 | 0:00 | Story slide | "Meet Lakshmi. Her school has an old PC and no reliable internet. From this year she must teach AI." |
-| 0:40 | Tab 1: Welcome → **Check this computer** | "InferSmart reads this computer in seconds and explains it in plain words: strong, weak, what it can run." |
+| 0:40 | Tab 1: Welcome → **Check this computer** | "Aaroh reads this computer in seconds and explains it in plain words: strong, weak, what it can run." |
 | 1:15 | **Continue** → Goal: *One class*, English + ಕನ್ನಡ, *Balanced* → **Quick test** → **Start test** | "It tests several AI models on this exact machine, speed, memory and answer quality in each language." Let two settings run live (about 1 minute), then say: "A full test takes about an hour, so here is the saved full run from this laptop," and open `/setup/result`. |
 | 2:00 | Result screen | "This computer can serve about **N** students comfortably, and here is why it chose this model." Read the one-line reason. Point at the Kannada warning: "It tells us honestly where Kannada is weaker." |
 | 2:40 | Phone: scan the QR on the Share page, tap ಕನ್ನಡ, ask a suggested question. Laptop: chat menu → **Projector mode** | "Students scan and ask in their language, with no login. The teacher can put answers on the projector for the whole class." |

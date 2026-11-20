@@ -43,7 +43,7 @@ function Welcome() {
         <div className="mt-10 flex flex-wrap justify-center gap-3 text-sm text-muted">
           <span className="inline-flex items-center gap-1.5"><ShieldCheck size={16} className="text-ok" />No internet needed</span>
           <span className="inline-flex items-center gap-1.5"><Users size={16} className="text-accent" />Phones and lab PCs</span>
-          <span className="inline-flex items-center gap-1.5"><Sparkles size={16} className="text-teacher" />English · ಕನ್ನಡ · हिन्दी</span>
+          <span className="inline-flex items-center gap-1.5"><Sparkles size={16} className="text-teacher" />English · ಕನ್ನಡ</span>
         </div>
       </div>
     </div>
@@ -124,7 +124,7 @@ function Goal() {
   const { t } = useTranslation();
   const nav = useNavigate();
   const [size, setSize] = useState("class");
-  const [langs, setLangs] = useState<string[]>(["en", "kn", "hi"]);
+  const [langs, setLangs] = useState<string[]>(["en", "kn"]);
   const [goal, setGoal] = useState("balanced");
   const [quick, setQuick] = useState(true);
   const [saved, setSaved] = useState<any>(null);
@@ -159,7 +159,7 @@ function Goal() {
       </div>
       <h2 className="mt-8 text-lg font-semibold">{t("setup.whichLangs")}</h2>
       <div className="mt-3 flex flex-wrap gap-2">
-        {["en", "kn", "hi"].map((l) => <Chip key={l} selected={langs.includes(l)} onClick={() => toggleLang(l)}><span lang={l}>{langName(l)}</span></Chip>)}
+        {["en", "kn"].map((l) => <Chip key={l} selected={langs.includes(l)} onClick={() => toggleLang(l)}><span lang={l}>{langName(l)}</span></Chip>)}
       </div>
       <h2 className="mt-8 text-lg font-semibold">{t("setup.whatMatters")}</h2>
       <div role="radiogroup" className="mt-3 flex flex-wrap gap-2">
@@ -373,13 +373,13 @@ function Launch() {
       {!done && already ? (
         <Card>
           <h1 className="text-2xl font-bold">{t("setup.useThis")}</h1>
-          <p className="mt-2 text-muted">InferSmart is already set up. This applies the new recommended setting; the admin PIN stays the same.</p>
+          <p className="mt-2 text-muted">Aaroh is already set up. This applies the new recommended setting; the admin PIN stays the same.</p>
           {err && <Notice tone="danger" className="mt-4">{err}</Notice>}
           <Button size="lg" className="mt-6" loading={busy} icon={<Play size={18} />} onClick={applyOnly}>{busy ? t("setup.starting") : t("setup.useThis")}</Button>
         </Card>
       ) : !done ? (
         <Card>
-          <h1 className="text-2xl font-bold">{t("setup.startInferSmart")}</h1>
+          <h1 className="text-2xl font-bold">{t("setup.startAaroh")}</h1>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             <label className="block"><span className="mb-1 block text-sm font-medium text-muted">{t("setup.choosePin")}</span>
               <input className="input font-mono tracking-[0.3em]" inputMode="numeric" type="password" autoComplete="new-password" value={pin} onChange={(e) => setPin(e.target.value.replace(/\D/g, "").slice(0, 8))} />
@@ -388,7 +388,7 @@ function Launch() {
               <input className="input" value={school} onChange={(e) => setSchool(e.target.value)} placeholder="Government High School" /></label>
           </div>
           {err && <Notice tone="danger" className="mt-4">{err}</Notice>}
-          <Button size="lg" className="mt-6 w-full sm:w-auto" loading={busy} icon={<Play size={18} />} onClick={finish}>{busy ? t("setup.starting") : t("setup.startInferSmart")}</Button>
+          <Button size="lg" className="mt-6 w-full sm:w-auto" loading={busy} icon={<Play size={18} />} onClick={finish}>{busy ? t("setup.starting") : t("setup.startAaroh")}</Button>
         </Card>
       ) : (
         <>

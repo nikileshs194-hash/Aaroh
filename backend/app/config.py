@@ -1,4 +1,4 @@
-"""Paths and fixed constants for the InferSmart control centre."""
+"""Paths and fixed constants for the Aaroh control centre."""
 import json
 import os
 from pathlib import Path
@@ -16,7 +16,7 @@ MODEL_MANIFEST = ROOT / "models" / "MODELS.json"
 
 APP_HOST = os.environ.get("INFERSMART_HOST", "0.0.0.0")
 APP_PORT = int(os.environ.get("INFERSMART_PORT", "8080"))
-ENGINE_PORTS = {"A": 8091, "B": 8092, "T": 8093}  # A quality, B fast, T test runner
+ENGINE_PORTS = {"A": 8091, "B": 8092, "T": 8093, "K": 8094}  # A main, B fast, T test runner, K Kannada
 APP_VERSION = "1.0.0"
 
 # Memory kept back for the operating system, the browser and the control centre.

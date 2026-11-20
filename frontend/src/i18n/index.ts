@@ -2,13 +2,11 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import en from "./en";
 import kn from "./kn";
-import hi from "./hi";
 import { safeGet } from "../api";
 
 export const LANGS = [
   { code: "en", label: "English", native: "English" },
   { code: "kn", label: "Kannada", native: "ಕನ್ನಡ" },
-  { code: "hi", label: "Hindi", native: "हिन्दी" },
 ] as const;
 export type Lang = (typeof LANGS)[number]["code"];
 export const langName = (c: string) => LANGS.find((l) => l.code === c)?.native ?? c;
@@ -17,8 +15,8 @@ export const langEnglishName = (c: string) => LANGS.find((l) => l.code === c)?.l
 const stored = safeGet(typeof localStorage !== "undefined" ? localStorage : undefined, "is_lang");
 
 i18n.use(initReactI18next).init({
-  resources: { en: { translation: en }, kn: { translation: kn }, hi: { translation: hi } },
-  lng: stored || "en",
+  resources: { en: { translation: en }, kn: { translation: kn } },
+  lng: stored === "kn" ? "kn" : "en",
   fallbackLng: "en",
   interpolation: { escapeValue: false },
   returnNull: false,

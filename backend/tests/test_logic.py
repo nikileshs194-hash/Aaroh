@@ -198,3 +198,30 @@ def test_grid_fits_memory():
     assert 4 <= len(grid) <= 9
     assert all("4.0B-Q8" not in g.model_file for g in grid)
     assert {g.threads for g in grid} == {2, 4}
+
+
+# ---------------- Kannada routing
+def _kn(file, tps, mem, kn):
+    return {"key": file, "label": file, "model_file": file, "tps": tps, "peak_mem_gb": mem,
+            "quality": {"en": {"acc": 90}, "kn": {"acc": kn}},
+            "config": {"model_file": file, "model_path": file, "threads": 12, "batch": 512}}
+
+
+def test_kannada_model_picked_when_clearly_better_and_fits():
+    main = _kn("Qwen3.5-2B-Q4_K_M.gguf", 13.8, 2.3, 65)
+    big = _kn("Qwen3.5-4B-Q4_K_M.gguf", 6.4, 5.4, 82)
+    run = {"data": {"languages": ["en", "kn"]}, "results": [main, big]}
+    k, pick = tester.kannada_engine_config(run, main, None, None, {"mem_budget_gb": 12}, 3072, 8)
+    assert k.model_file == "Qwen3.5-4B-Q4_K_M.gguf" and k.parallel == 4 and pick is big
+    # does not fit in memory next to the main model -> Kannada stays on the main model
+    k, _ = tester.kannada_engine_config(run, main, None, None, {"mem_budget_gb": 7.5}, 3072, 8)
+    assert k is None
+    # too slow for one student -> not used
+    slow = _kn("Qwen3.5-4B-Q4_K_M.gguf", 3.0, 5.4, 82)
+    k, _ = tester.kannada_engine_config({"data": {"languages": ["en", "kn"]}, "results": [main, slow]}, main, None, None,
+                                        {"mem_budget_gb": 12}, 3072, 8)
+    assert k is None
+    # Kannada not chosen as a language -> no Kannada engine
+    k, _ = tester.kannada_engine_config({"data": {"languages": ["en"]}, "results": [main, big]}, main, None, None,
+                                        {"mem_budget_gb": 12}, 3072, 8)
+    assert k is None

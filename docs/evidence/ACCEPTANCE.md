@@ -2,7 +2,7 @@
 
 Computer: 13th Gen Intel Core i5-1340P, 12 cores, 15.6 GB, Windows 11
 
-## Speed: engine defaults vs InferSmart's choice (same model, 3 runs, median)
+## Speed: engine defaults vs Aaroh's choice (same model, 3 runs, median)
 
 - Before: 14.8 tokens/s (runs [14.82, 14.77, 14.7])
 - After: 14.7 tokens/s (runs [14.68, 14.78, 14.7])
@@ -37,7 +37,7 @@ Verify by opening several phones or tabs at once (manual check).
 ## Recovery
 
 - Engine killed by force: came back by itself in 5.0 s
-- Reboot test (manual): restart the laptop; InferSmart should return to ready by itself if 'start when switched on' is on.
+- Reboot test (manual): restart the laptop; Aaroh should return to ready by itself if 'start when switched on' is on.
 
 ## Safety red-team
 
