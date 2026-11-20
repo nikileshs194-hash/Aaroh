@@ -16,7 +16,7 @@ from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query, Reques
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import auth, db, hardware, models_lib, privacy, safety, speech, templates, tester, users
+from . import auth, db, hardware, models_lib, privacy, safety, speech, templates, tester, textbooks, users
 from .config import APP_PORT, APP_VERSION, ENGINE_EXE, ENGINE_RELEASE, FRONTEND_DIST, ROOT
 from .engines import EngineConfig, engines, load_active, save_active
 from .events import bus, log_event, recent_events
@@ -174,7 +174,17 @@ async def chat(request: Request, body: dict = Body(...), x_auth: str | None = He
         pii = safety.pii_warning(question)
         if pii:
             yield {"type": "notice", "text": f"Your question seems to contain {pii}. You never need to type personal details here."}
-        system = {"role": "system", "content": safety.SYSTEM_PROMPT + " " + safety.language_instruction(lang)}
+        system_text = safety.SYSTEM_PROMPT + " " + safety.language_instruction(lang)
+        # Textbook knowledge: put the most relevant NCERT paragraphs in front of the AI (not for "simpler"/"example").
+        if not body.get("followup") and db.get_setting("textbooks_on") is not False:
+            try:
+                # Kannada answers come from the slower 4B model, so it gets one note to keep the wait short.
+                hits = await asyncio.to_thread(textbooks.library.search, await _search_text(question, lang), 1 if lang == "kn" else 2)
+            except Exception:
+                hits = []
+            if hits:
+                system_text += "\n\n" + textbooks.context_block(hits, lang)  # used silently; no sources shown
+        system = {"role": "system", "content": system_text}
         cancel = asyncio.Event()
         try:
             async for ev in router.chat([system] + msgs, device, kind, int(body.get("max_tokens", 600)), cancel, lang=lang):
@@ -184,6 +194,22 @@ async def chat(request: Request, body: dict = Body(...), x_auth: str | None = He
         finally:
             cancel.set()
     return sse(gen())
+
+
+async def _search_text(question: str, lang: str) -> str:
+    """The textbooks are in English: a Kannada question is first turned into a short English search phrase by the
+    fast main model (about a second), which finds the right pages far better than searching in Kannada."""
+    if lang != "kn" or engines["A"].status != "ready":
+        return question
+    from .engines import complete
+    try:
+        t = await complete(engines["A"], [
+            {"role": "system", "content": "Translate the student's question into short, simple English. Reply with only the English question."},
+            {"role": "user", "content": question}], max_tokens=48, temperature=0.0)
+        t = (t or "").strip().splitlines()[0][:300] if t and t.strip() else ""
+        return t or question
+    except Exception:
+        return question
 
 
 # ------------------------------------------------------------------ student accounts (stored only on this computer)
@@ -274,6 +300,20 @@ def admin_student_delete(sid: int):
     users.delete_student(sid)
     log_event("info", "The admin deleted a student account and its chats.")
     return {"ok": True}
+
+
+# ------------------------------------------------------------------ textbooks (NCERT PDFs on this computer)
+@app.get("/api/textbooks", tags=["admin"], dependencies=ADMIN)
+def textbooks_status():
+    return {**textbooks.library.status(), "enabled": db.get_setting("textbooks_on") is not False}
+
+
+@app.post("/api/textbooks/build", tags=["admin"], dependencies=ADMIN)
+def textbooks_build(body: dict = Body(default={})):
+    textbooks.library.vectors = None  # reload after the build
+    textbooks.library.build(force=bool(body.get("force")))
+    log_event("info", "Reading the textbooks folder to update textbook knowledge.")
+    return textbooks.library.status()
 
 
 @app.get("/api/stt", tags=["chat"])
@@ -735,7 +775,7 @@ def get_settings():
 
 EDITABLE = {"min_tps", "max_ttft", "quality_margin", "quality_floor", "quality_n", "theme", "text_size", "ui_language",
             "autostart", "lock_mode", "exam_mode", "school_name", "blocked_topics", "slots", "ctx_per_slot",
-            "wifi_name", "languages", "goal", "signup_open"}
+            "wifi_name", "languages", "goal", "signup_open", "textbooks_on"}
 
 
 @app.put("/api/settings", tags=["admin"], dependencies=ADMIN)

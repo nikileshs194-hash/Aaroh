@@ -32,6 +32,9 @@ if errorlevel 1 (
 )
 echo        Voice input models (English + Kannada, about 1.3 GB, skipped if present)...
 .venv\Scripts\python scripts\download_speech.py || echo        Voice models not downloaded; typing still works.
+echo        Textbook search model (about 135 MB) and textbook knowledge (PDFs in the "NCERT textbooks" folder)...
+.venv\Scripts\python scripts\download_search.py || echo        Search model not downloaded; answers work without textbooks.
+if exist "NCERT textbooks" .venv\Scripts\python scripts\build_textbooks.py
 
 echo  [5/5] Running the automatic checks...
 .venv\Scripts\python -m pytest -q backend\tests || goto :fail

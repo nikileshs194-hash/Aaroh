@@ -2,7 +2,8 @@ import { api } from "./api";
 
 /** Each student's chats are stored on the school computer under their own account (never online).
  *  A student only ever receives their own chats. */
-export type Msg = { role: "user" | "assistant"; content: string; lang?: string; blocked?: boolean; stats?: { ttft: number; tps: number }; error?: boolean };
+export type Msg = { role: "user" | "assistant"; content: string; lang?: string; blocked?: boolean; stats?: { ttft: number; tps: number }; error?: boolean;
+  sources?: { class: number | null; subject: string; page: number; score: number }[] };
 export type ConvMeta = { id: string; title: string; created: number; updated: number };  // times in seconds
 
 export const newId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);

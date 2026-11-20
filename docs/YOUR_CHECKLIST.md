@@ -25,6 +25,8 @@ Everything that could be built and measured on this laptop without you is done. 
 
 - [ ] **Accounts**: create two student accounts (for example on the laptop and on your phone), ask a question in each, log out and in again, and check each sees only their own chats. Then look at Admin → Students.
 
+- [ ] **Textbooks**: ask 5 questions from your own NCERT chapters and open the page shown under each answer to check it matches.
+
 ## People you need (these make the biggest difference to judges)
 
 - [ ] **Native-speaker review**: give a Kannada teacher the file `frontend\src\i18n\kn.ts` (or let them click through the app in Kannada) and ask them to check 10 Kannada answers. Note corrections; I can apply them in minutes.

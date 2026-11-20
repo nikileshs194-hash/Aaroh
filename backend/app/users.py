@@ -135,7 +135,7 @@ def save_chat(student_id: int, cid: str, msgs: list, touch: bool = True) -> dict
         raise HTTPException(400, "Bad chat id.")
     if not isinstance(msgs, list):
         raise HTTPException(400, "Bad messages.")
-    keep = [{k: m.get(k) for k in ("role", "content", "lang", "blocked", "error", "stats") if m.get(k) is not None}
+    keep = [{k: m.get(k) for k in ("role", "content", "lang", "blocked", "error", "stats", "sources") if m.get(k) is not None}
             for m in msgs[-MAX_MSGS:] if isinstance(m, dict) and m.get("role") in ("user", "assistant")]
     now = time.time()
     old = db.one("SELECT created, updated FROM conversation WHERE student_id=? AND id=?", (student_id, cid))

@@ -65,6 +65,7 @@ const kn = {
     openDashboard: "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ತೆರೆಯಿರಿ", tryChat: "ವಿದ್ಯಾರ್ಥಿ ಚಾಟ್ ಪ್ರಯತ್ನಿಸಿ",
   },
   chat: {
+    fromTextbook: "ನಿಮ್ಮ NCERT ಪಠ್ಯಪುಸ್ತಕದಿಂದ",
     newChat: "ಹೊಸ ಚಾಟ್", history: "ನಿಮ್ಮ ಚಾಟ್‌ಗಳು", noChats: "ಇನ್ನೂ ಚಾಟ್‌ಗಳಿಲ್ಲ.",
     today: "ಇಂದು", yesterday: "ನಿನ್ನೆ", week: "ಹಿಂದಿನ 7 ದಿನಗಳು", earlier: "ಹಿಂದೆ",
     deleteChat: "ಚಾಟ್ ಅಳಿಸಿ", deleteAll: "ಈ ಸಾಧನದ ಎಲ್ಲ ಚಾಟ್‌ಗಳನ್ನು ಅಳಿಸಿ",

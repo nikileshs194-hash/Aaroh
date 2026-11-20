@@ -80,6 +80,7 @@ const en = {
     openDashboard: "Open dashboard", tryChat: "Try the student chat",
   },
   chat: {
+    fromTextbook: "From your NCERT textbook",
     newChat: "New chat", history: "Your chats", noChats: "No chats yet. Ask your first question.",
     today: "Today", yesterday: "Yesterday", week: "Previous 7 days", earlier: "Earlier",
     deleteChat: "Delete chat", deleteAll: "Delete all my chats",

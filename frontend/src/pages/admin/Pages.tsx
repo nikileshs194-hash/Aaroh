@@ -166,6 +166,7 @@ export function SettingsPage() {
           <Button variant="secondary" disabled={pin.length < 4} onClick={async () => { await api("/api/settings/pin", { body: { pin } }); setPin(""); toast(t("admin.saved")); }}>{t("admin.changePin")}</Button>
         </div>
       </Section>
+      <TextbooksCard />
       <Section title={t("admin.startup")}>
         <Toggle id="as" checked={!!s.autostart} onChange={(v) => put({ autostart: v })} label={t("admin.autostart")} />
         <Toggle id="asl" checked={!!s.autostart_on_login} onChange={async (v) => { const r = await api("/api/settings/autostart-login", { body: { enabled: v } }); setS({ ...s, autostart_on_login: r.enabled }); }} label={t("admin.autostartLogin")} hint="Adds Aaroh to this Windows user's start-up folder." />
@@ -251,5 +252,36 @@ export function Students() {
         </table>
       </Card>
     </div>
+  );
+}
+
+/* ---------------- Textbook knowledge (NCERT PDFs on this computer) */
+function TextbooksCard() {
+  const [d, setD] = useState<any>(null);
+  const load = () => api("/api/textbooks").then(setD).catch(() => {});
+  useEffect(() => { load(); }, []);
+  useEffect(() => { if (d?.status === "building") { const id = setTimeout(load, 3000); return () => clearTimeout(id); } }, [d]);
+  if (!d) return null;
+  const idx = d.index || {};
+  const building = d.status === "building";
+  return (
+    <Card>
+      <h2 className="mb-2 text-lg font-semibold">Textbook knowledge</h2>
+      <p className="text-sm text-muted">Before answering, Aaroh looks up the most relevant facts in the NCERT textbooks in <span className="font-mono">{d.folder}</span> and uses them quietly to keep answers correct; students see a normal, clear answer. The books stay on this computer.</p>
+      <div className="mt-3 grid grid-cols-3 gap-3 text-center">
+        <div className="card p-3"><div className="text-2xl font-bold tnum">{d.books_in_folder}</div><div className="text-xs text-muted">PDFs in the folder</div></div>
+        <div className="card p-3"><div className="text-2xl font-bold tnum">{idx.books ?? 0}</div><div className="text-xs text-muted">books learned</div></div>
+        <div className="card p-3"><div className="text-2xl font-bold tnum">{(idx.passages ?? 0).toLocaleString()}</div><div className="text-xs text-muted">paragraphs</div></div>
+      </div>
+      {building && <Notice className="mt-3">Reading book {d.done + 1} of {d.total}: {d.current}. Students can keep chatting meanwhile.</Notice>}
+      {d.status === "error" && <Notice tone="danger" className="mt-3">Could not read the textbooks: {d.error}</Notice>}
+      {!building && idx.built_at && <p className="mt-2 text-xs text-muted">Last updated {fmt.dateTime(idx.built_at)}{idx.seconds ? ` in ${Math.round(idx.seconds / 60)} min` : ""}.</p>}
+      <Toggle id="tb" checked={!!d.enabled} onChange={async (v) => { await api("/api/settings", { method: "PUT", body: { textbooks_on: v } }); load(); }}
+        label="Use the textbooks when answering" hint="Switch off to compare answers with and without the textbooks." />
+      <Button variant="secondary" disabled={building || !d.model_ready} icon={<RefreshCw size={16} />}
+        onClick={async () => { setD(await api("/api/textbooks/build", { body: {} })); setTimeout(load, 1500); }}>
+        Update from the folder (new or changed PDFs only)
+      </Button>
+    </Card>
   );
 }

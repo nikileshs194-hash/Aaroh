@@ -110,3 +110,7 @@ Phones: browsers only allow the microphone on secure (https) pages, so on phones
 
 Students open Aaroh and choose **Create account** (a username and password; no phone number, email or Aadhaar), then **Log in**. Each student sees only their own chats. Accounts and chats are stored only in this computer's database (`data\infersmart.db`), with passwords stored as secure hashes. Forgotten password: Admin → **Students** → **Reset password** gives a temporary code. After the class has signed up, switch off "Students can create their own accounts" on the same page.
 
+## Textbook knowledge (NCERT, offline)
+
+Put the NCERT PDFs in the `NCERT textbooks` folder inside `Vyom` (file names like `10th_Science.pdf`). Aaroh reads them once (about 30 minutes for Class 1 to 12) and then answers students with the most relevant textbook paragraphs, showing "From your NCERT textbook: Class 10 · Science · p. 19". Add or replace PDFs any time and press Admin → Settings → Textbook knowledge → **Update from the folder** (only new or changed books are read). The PDFs and the index stay on this computer and are never uploaded to GitHub.
+

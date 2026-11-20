@@ -269,3 +269,17 @@ def test_student_lockout_after_wrong_tries():
     with pytest.raises(HTTPException) as ex:
         users.login("userc", "goodpass", "1.2.3.4")    # locked even with the right password
     assert ex.value.status_code == 429
+
+
+# ---------------- textbooks: names, cleaning, paragraphs
+def test_textbook_names_and_paragraphs():
+    from app import textbooks as T
+    assert T.book_info("10th_Social_Democratic_Politics.pdf") == {"file": "10th_Social_Democratic_Politics.pdf", "class": 10, "subject": "Social Democratic Politics"}
+    assert T.book_info("1st_Math.pdf")["class"] == 1 and T.book_info("8th_Math_Part-II_hegp2.pdf")["subject"] == "Math Part II"
+    assert T.clean("Activity 1.7Activity 1.7Activity 1.7 Take 2 g") == "Activity 1.7 Take 2 g"
+    assert T.clean("photo-\nsynthesis is") == "photosynthesis is"
+    text = " ".join(f"Sentence number {i} explains a science idea." for i in range(120))
+    parts = T.chunks_of(text)
+    assert len(parts) > 3 and all(T.MIN_CHARS <= len(p) <= T.CHUNK_CHARS + 2 for p in parts)
+    assert all(p.rstrip().endswith(".") for p in parts[:-1])          # cut at sentence ends
+    assert T.chunks_of("Too short.") == []                            # covers and page numbers are skipped

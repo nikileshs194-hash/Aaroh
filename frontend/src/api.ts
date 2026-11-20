@@ -75,6 +75,7 @@ export async function api<T = any>(path: string, opts: { method?: string; body?:
 
 export type StreamEvent =
   | { type: "token"; text: string }
+  | { type: "sources"; items: { class: number | null; subject: string; page: number; score: number }[] }
   | { type: "queue"; position: number; eta_s: number }
   | { type: "start"; engine: string; mode: string; model?: string }
   | { type: "done"; ttft: number; tps: number; tokens: number; engine?: string; mode?: string; finish?: string }

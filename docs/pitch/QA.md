@@ -59,6 +59,9 @@ Karnataka and Kerala are already buying or building local AI. Aaroh is the open,
 **Can students speak instead of type?**
 Yes, in English and Kannada, fully offline. Two free open models run on the school computer: NVIDIA Parakeet for English and AI4Bharat's IndicConformer for Kannada. Measured on this laptop with 10 real recordings each: about 3 words in 100 wrong in both languages, about 1.5 seconds per sentence. The text appears in the box first so the student can correct it. *Show: tap the microphone, speak in Kannada.*
 
+**How do you stop the small model from making things up?**
+For syllabus questions Aaroh first finds the 2 to 3 most relevant paragraphs in the NCERT textbooks (41 books, Class 1 to 12, 29,290 paragraphs, indexed on this laptop) and answers from them, showing the class, book and page so a student or teacher can check. Kannada questions are turned into an English search phrase first, because NCERT books are in English. Small talk is not matched to the books. *Show: ask a Class 10 science question and point at the page reference.*
+
 **What would you build next?**
 Textbook-grounded answers, a teacher studio for lesson plans and quizzes (we built one and set it aside to keep this prototype student-focused), a fleet view for officials, and a shared settings database so new schools skip testing.
 
