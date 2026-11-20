@@ -90,7 +90,7 @@ DEFAULTS: dict[str, Any] = {
     "setup_done": False,
     "setup_step": "welcome",
     "slots": 4,
-    "ctx_per_slot": 3072,
+    "ctx_per_slot": 4096,
     "batch_pause_when_busy": True,
     "wifi_name": "School Wi-Fi",
 }

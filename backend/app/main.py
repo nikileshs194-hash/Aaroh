@@ -5,6 +5,7 @@ import asyncio
 import csv
 import io
 import json
+import re
 import os
 import time
 from contextlib import asynccontextmanager
@@ -134,17 +135,32 @@ async def live(token: str | None = Query(default=None)):
 
 
 # ------------------------------------------------------------------ student chat
+HISTORY_TOKENS = 2400   # of the 4096-token memory per conversation: the rest is instructions, textbook notes and the answer
+DROP_BLOCK = 6          # when a long chat is shortened, the oldest messages go 3 questions and answers at a time
+
+
+def _est_tokens(text: str) -> int:
+    """Rough token count: Kannada script takes far more tokens per character than English."""
+    kn = sum(1 for ch in text if "ಀ" <= ch <= "೿")
+    return int(kn / 1.5 + (len(text) - kn) / 3.8) + 4
+
+
 def _trim_history(messages: list[dict]) -> list[dict]:
-    msgs = [{"role": m.get("role", "user"), "content": str(m.get("content", ""))[:2000]}
-            for m in messages if m.get("role") in ("user", "assistant")][-6:]
-    total = 0
-    out = []
-    for m in reversed(msgs):
-        total += len(m["content"])
-        if total > 3500 and out:
-            break
-        out.append(m)
-    return list(reversed(out))
+    """The whole conversation of this chat, so every answer knows what was said before.
+    Very long chats drop their oldest messages in blocks, so the start of the conversation stays the same from one
+    question to the next and the engine can reuse what it has already read (measured: only new words are read)."""
+    msgs = [{"role": m.get("role", "user"), "content": str(m.get("content", ""))[:4000]}
+            for m in messages if m.get("role") in ("user", "assistant") and str(m.get("content", "")).strip()]
+    sizes = [_est_tokens(m["content"]) for m in msgs]
+    start, total = 0, sum(sizes)
+    while total > HISTORY_TOKENS and start < len(msgs) - 1:
+        cut = min(len(msgs) - 1, start + DROP_BLOCK)
+        total -= sum(sizes[start:cut])
+        start = cut
+    out = msgs[start:]
+    while out and out[0]["role"] == "assistant":   # a conversation should start with a question
+        out = out[1:]
+    return out or msgs[-1:]
 
 
 @app.post("/api/chat", tags=["chat"])
@@ -176,26 +192,42 @@ async def chat(request: Request, body: dict = Body(...), x_auth: str | None = He
         pii = safety.pii_warning(question)
         if pii:
             yield {"type": "notice", "text": f"Your question seems to contain {pii}. You never need to type personal details here."}
-        system_text = safety.SYSTEM_PROMPT + " " + safety.language_instruction(lang)
-        # Textbook knowledge: put the most relevant NCERT paragraphs in front of the AI (not for "simpler"/"example").
-        if not body.get("followup") and db.get_setting("textbooks_on") is not False:
+        # The instructions stay identical for the whole chat, so the engine reuses what it has already read.
+        system = {"role": "system", "content": safety.SYSTEM_PROMPT + " " + safety.language_instruction(lang)}
+        convo = list(msgs)
+        # Textbook knowledge for this question only (not for "simpler"/"example"): attached to the newest question,
+        # so the earlier conversation is not re-read. Short follow-ups ("where does it happen?") are searched together
+        # with the previous question.
+        if not body.get("followup") and db.get_setting("textbooks_on") is not False and not _about_chat(question):
+            users_q = [m["content"] for m in msgs if m["role"] == "user"]
+            query = question if len(question.split()) >= 8 or len(users_q) < 2 else users_q[-2] + " " + question
             try:
                 # Kannada answers come from the slower 4B model, so it gets one note to keep the wait short.
-                hits = await asyncio.to_thread(textbooks.library.search, await _search_text(question, lang), 1 if lang == "kn" else 2)
+                hits = await asyncio.to_thread(textbooks.library.search, await _search_text(query, lang), 1 if lang == "kn" else 2)
             except Exception:
                 hits = []
             if hits:
-                system_text += "\n\n" + textbooks.context_block(hits, lang)  # used silently; no sources shown
-        system = {"role": "system", "content": system_text}
+                convo[-1] = {"role": "user", "content": convo[-1]["content"] + "\n\n" + textbooks.context_block(hits, lang)}
         cancel = asyncio.Event()
         try:
-            async for ev in router.chat([system] + msgs, device, kind, int(body.get("max_tokens", 600)), cancel, lang=lang):
+            async for ev in router.chat([system] + convo, device, kind, int(body.get("max_tokens", 600)), cancel, lang=lang):
                 if await request.is_disconnected():
                     cancel.set()
                 yield ev
         finally:
             cancel.set()
     return sse(gen())
+
+
+_ABOUT_CHAT = re.compile(
+    r"\b(my name|about me|who am i|i told|i said|told you|you said|remember|earlier|previous|last (question|answer)|"
+    r"again|above|my favou?rite|my class|my school|my age|summari[sz]e (this|our|the) (chat|conversation))\b", re.I)
+
+
+def _about_chat(question: str) -> bool:
+    """Questions about the student or the conversation itself ("what is my name?", "explain that again") are answered
+    from the chat, not the textbooks: a textbook page about 'favourite subjects' only confuses the answer."""
+    return bool(_ABOUT_CHAT.search(question))
 
 
 async def _search_text(question: str, lang: str) -> str:

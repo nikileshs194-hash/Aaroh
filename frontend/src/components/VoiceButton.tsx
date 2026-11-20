@@ -86,6 +86,17 @@ export function VoiceButton({ lang, disabled, onText }: { lang: string; disabled
     return () => { if (r.current.raf) cancelAnimationFrame(r.current.raf); };
   }, [state]);
 
+  // Keyboard while recording: Enter finishes (like the tick), Esc cancels.
+  useEffect(() => {
+    if (state !== "rec") return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); finish(); }
+      else if (e.key === "Escape") { e.preventDefault(); cancel(); }
+    };
+    window.addEventListener("keydown", onKey, true);
+    return () => window.removeEventListener("keydown", onKey, true);
+  }, [state]);
+
   if (!ok || !ok[lang]) return null;
 
   function cleanup() {

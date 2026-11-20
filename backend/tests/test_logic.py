@@ -283,3 +283,25 @@ def test_textbook_names_and_paragraphs():
     assert len(parts) > 3 and all(T.MIN_CHARS <= len(p) <= T.CHUNK_CHARS + 2 for p in parts)
     assert all(p.rstrip().endswith(".") for p in parts[:-1])          # cut at sentence ends
     assert T.chunks_of("Too short.") == []                            # covers and page numbers are skipped
+
+
+# ---------------- conversation memory: whole chat, trimmed in stable blocks
+def test_history_keeps_whole_chat_and_trims_in_blocks():
+    from app import main
+    short = [{"role": "user" if i % 2 == 0 else "assistant", "content": f"message {i}"} for i in range(10)]
+    assert [m["content"] for m in main._trim_history(short)] == [f"message {i}" for i in range(10)]   # nothing dropped
+    long = [{"role": "user" if i % 2 == 0 else "assistant", "content": f"m{i} " + "word " * 400} for i in range(40)]
+    a = main._trim_history(long)
+    b = main._trim_history(long + [{"role": "assistant", "content": "ok"}, {"role": "user", "content": "next?"}])
+    assert a[0]["role"] == "user" and sum(main._est_tokens(m["content"]) for m in a) <= main.HISTORY_TOKENS + 600
+    assert a[0]["content"] == b[0]["content"] or len(b) < len(a)   # start moves only in whole blocks
+    assert main._est_tokens("ಕನ್ನಡ" * 30) > main._est_tokens("english" * 21)  # Kannada costs more tokens per character
+
+
+def test_questions_about_the_chat_skip_textbooks():
+    from app import main
+    for q in ("What is my name and my favourite subject?", "Can you explain that again?", "What did I tell you earlier?",
+              "Do you remember my class?"):
+        assert main._about_chat(q), q
+    for q in ("What is photosynthesis?", "Explain Newton's second law.", "What is the capital of Karnataka?"):
+        assert not main._about_chat(q), q
